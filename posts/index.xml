@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Hello Hugo</title><link>http://blog.minjun.pe/posts/</link><description>Recent content in Posts on Hello Hugo</description><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Sat, 06 Aug 2022 01:13:45 +0900</lastBuildDate><atom:link href="http://blog.minjun.pe/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>DDD 스터디 공유</title><link>http://blog.minjun.pe/posts/ddd-study-share/</link><pubDate>Sat, 06 Aug 2022 01:13:45 +0900</pubDate><guid>http://blog.minjun.pe/posts/ddd-study-share/</guid><description>DDD 스터디 공유 0. 참고 도메인 주도 개발 시작하기
-도메인 주도 개발 시작하기 - YES24 핵사고날 아키텍처
-Hexagonal Architecture with Java and Spring
-https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/
-예제 프로젝트
-https://github.com/jo-minjun/order-delivery-project 1. 도메인이란 무엇일까? wikipedia: Domain (software engineering) A domain is the targeted subject area of a computer program. It is a term used in software engineering. Formally it represents the target subject of a specific programming project, whether narrowly or broadly defined.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on minjun's note</title><link>http://blog.minjun.note/posts/</link><description>Recent content in Posts on minjun's note</description><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Tue, 16 Aug 2022 22:02:29 +0900</lastBuildDate><atom:link href="http://blog.minjun.note/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Second</title><link>http://blog.minjun.note/posts/second/</link><pubDate>Tue, 16 Aug 2022 22:02:29 +0900</pubDate><guid>http://blog.minjun.note/posts/second/</guid><description>test2 테스트 페이지2
+태그: html, http
+카테고리: tech</description></item><item><title>First</title><link>http://blog.minjun.note/posts/first/</link><pubDate>Tue, 16 Aug 2022 22:00:46 +0900</pubDate><guid>http://blog.minjun.note/posts/first/</guid><description>test1 테스트 페이지1
+태그: html, css
+카테고리: tech</description></item></channel></rss>
