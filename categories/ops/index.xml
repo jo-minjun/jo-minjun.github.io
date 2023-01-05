@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ops on minjun's memory</title><link>https://jo-minjun.github.io/categories/ops/</link><description>Recent content in Ops on minjun's memory</description><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Wed, 04 Jan 2023 23:51:30 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/categories/ops/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 스터디</title><link>https://jo-minjun.github.io/notes/docker-study/</link><pubDate>Wed, 04 Jan 2023 23:51:30 +0900</pubDate><guid>https://jo-minjun.github.io/notes/docker-study/</guid><description>Docker Docker란 애플리케이션 개발, 실행, 공유를 위한 오픈 플랫폼이다. 호스트 시스템과 격리된 환경에서 애플리케이션을 패키징하고 실행할 수 있게 해준다. (컨테이너) 협업 시 각 로컬에 개발환경을 설치하지 않아도 된다. 서버 관리에 편리하다. https://docs.docker.com/get-started/overview/
-도커 명령어 크게 4가지 종류의 명령어가 있다. Registry 관련 Image 관련 Container 관련 Compose 관련 명령어의 자세한 옵션과 설명은 아래 문서를 참조
-docker
-Registry 관련 login
-docker login Registry에 로그인한다. logout
-docker logout Registry에서 로그아웃한다. search
-docker search [OPTIONS] &amp;lt;TERM&amp;gt; Registry에 있는 이미지를 검색한다.</description></item></channel></rss>
