@@ -4,4 +4,8 @@ ctrl + a: 커서를 라인 가장 앞으로 옮긴다. ctrl + e: 커서를 라�
 apk [&amp;lt;OPTIONS&amp;gt;...] COMMAND [&amp;lt;ARGUMENTS&amp;gt;...] 존재하는 리포지터리(repository)는 다음과 같다. main 공식적으로 지원하는 패키지들 community testing 리포지터리에서 테스트된 패키지들 testing 새롭거나, 손상됐거나, 오래된 테스트가 필요한 패키지들 Updating repository
 apk update 리포지터리 인덱스를 업데이트한다. Searching
 apk search [&amp;lt;OPTIONS&amp;gt;...] PATTERN... 리포지터리에서 PATTERN을 검색한다. Option Description &amp;ndash;description -d 설명에서 PATTERN을 검색한다. &amp;ndash;exact -e 패키지 이름을 정확하게 매칭시킨다. Installing
-apk add [&amp;lt;OPTIONS&amp;gt;...] PACKAGES... 패키지를 설치한다.</description></item></channel></rss>
+apk add [&amp;lt;OPTIONS&amp;gt;...] PACKAGES... 패키지를 설치한다.</description></item><item><title>Shell Script</title><link>https://jo-minjun.github.io/notes/shell-script/</link><pubDate>Sun, 09 Jan 2022 23:30:12 +0900</pubDate><guid>https://jo-minjun.github.io/notes/shell-script/</guid><description>Shell Script Shell이란 운영체제에서 커널과 사용자 사이를 이어주는 역할을 하는 명령어 해석기이다.
+Shell은 bash sh csh zsh등이 있다.
+Shell Script란 운영체제의 Shell을 이용해서 Shell 명령어들을 순차적으로 실행시켜주는 스크립트이다.
+Shell Script를 사용하기 위해서는 다음과 같이 시작해야 한다.
+#!/bin/bash #!/usr/bin/env bash #!/usr/bin/env python3 위와 같이 #!으로 시작하여 Shell의 경로를 선언해준다. 이를 쉬뱅이라 한다. 쉬뱅은 어느 인터프리터가 스크립트의 명령어를 해석할 지 가리킨다. 변수 변수 number=1 string=&amp;#34;string&amp;#34; echo &amp;#34;$number&amp;#34; echo &amp;#34;$string&amp;#34; echo &amp;#34;${number}&amp;#34; echo &amp;#34;${string}&amp;#34; 변수는 위와 같이 공백을 사용하지 않고 선언한다.</description></item></channel></rss>
