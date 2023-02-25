@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Kafka on minjun's memory</title><link>https://jo-minjun.github.io/tags/kafka/</link><description>Recent content in Kafka on minjun's memory</description><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Fri, 01 Jul 2022 12:51:30 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/tags/kafka/index.xml" rel="self" type="application/rss+xml"/><item><title>Kafka란?</title><link>https://jo-minjun.github.io/notes/kafka/</link><pubDate>Fri, 01 Jul 2022 12:51:30 +0900</pubDate><guid>https://jo-minjun.github.io/notes/kafka/</guid><description>1. kafka 란? apache kafka는 오픈 소스 분산 이벤트 스트리밍 플랫폼이다.
+*데이터 파이프 라인 구성시, 주로 사용되는 오픈 소스로 대용량 실시간 로그 처리에 특화되어 많은 사람들이 사용하고 있다.
+*데이터 파이프 라인: 데이터 처리 단계의 출력이 다음 단계의 입력으로 이어지는 형태로 연결된 구조를 가리킨다.
+2. kafka의 특성 2.1. Publisher-Subscriber 모델 Publisher-Subscriber 모델은 중간에 데이터 큐를 두고 서로 간 독립적으로 데이터를 생산하고 소비한다.
+이러한 구조를 통해, Publisher나 Subscriber에 장애가 생겨도, 독립적이기 때문에 안정적으로 데이터를 처리할 수 있다.</description></item></channel></rss>
