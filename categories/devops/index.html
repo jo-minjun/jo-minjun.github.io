@@ -14,7 +14,11 @@ docker
 Registry 관련 login
 docker login Registry에 로그인한다. logout
 docker logout Registry에서 로그아웃한다. search
-docker search [OPTIONS] &lt;TERM> Registry에 있는 이미지를 검색한다....</p></div><footer class=entry-footer><span title='2023-01-04 23:51:30 +0900 +0900'>January 4, 2023</span>&nbsp;·&nbsp;조민준</footer><a class=entry-link aria-label="post link to Docker 스터디" href=https://jo-minjun.github.io/notes/docker-study/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Kafka란?</h2></header><div class=entry-content><p>1. kafka 란? apache kafka는 오픈 소스 분산 이벤트 스트리밍 플랫폼이다.
+docker search [OPTIONS] &lt;TERM> Registry에 있는 이미지를 검색한다....</p></div><footer class=entry-footer><span title='2023-01-04 23:51:30 +0900 +0900'>January 4, 2023</span>&nbsp;·&nbsp;조민준</footer><a class=entry-link aria-label="post link to Docker 스터디" href=https://jo-minjun.github.io/notes/docker-study/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Schema registry란?</h2></header><div class=entry-content><p>1. Schema registry 란? 데이터 관리의 중요한 관점들 중 하나는 schema의 버전 관리이다. 응용프로그램의 시간이 지날수록 schema가 정의되기 시작한 시점부터 schema는 점점 바뀌어가고, producer와 consumer는 직접적인 관계가 끊어져있기 때문에 운영상에 발생하는 이슈가 있다.
+producer는 consumer가 어떤 메세지를 소비할지 알 수 없다.
+consumer는 producer가 어떤 메세지를 생산했는지 알 수 없다.
+위와 같은 상황에서 producer가 갑자기 다른 schema를 이용해서 메세지를 생산할 경우, consumer는 이 메세지에 대해서 대처하지 못할 수 있다.
+이는 구조적인 결합도는 낮지만, 메세지 schema에 대한 의존성이 높기 때문인데, schema registry는 이를 보완하기 위해 고안되었다....</p></div><footer class=entry-footer><span title='2022-07-01 21:42:30 +0900 +0900'>July 1, 2022</span>&nbsp;·&nbsp;조민준</footer><a class=entry-link aria-label="post link to Schema registry란?" href=https://jo-minjun.github.io/notes/schema-registry/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>Kafka란?</h2></header><div class=entry-content><p>1. kafka 란? apache kafka는 오픈 소스 분산 이벤트 스트리밍 플랫폼이다.
 *데이터 파이프 라인 구성시, 주로 사용되는 오픈 소스로 대용량 실시간 로그 처리에 특화되어 많은 사람들이 사용하고 있다.
 *데이터 파이프 라인: 데이터 처리 단계의 출력이 다음 단계의 입력으로 이어지는 형태로 연결된 구조를 가리킨다.
 2. kafka의 특성 2.1. Publisher-Subscriber 모델 Publisher-Subscriber 모델은 중간에 데이터 큐를 두고 서로 간 독립적으로 데이터를 생산하고 소비한다.
