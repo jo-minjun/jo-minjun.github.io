@@ -82,7 +82,7 @@
 <li><strong>역할</strong>과 <strong>구현</strong>으로 세상을 구분</li>
 </ul>
 <p><strong>운전자 - 자동차 예시</strong></p>
-<p><img loading="lazy" src="./spring-core-basic/0.png" alt="운전자-자동차_예시.png"  />
+<p><img loading="lazy" src="/images/notes/spring-core-basic/0.png" alt="운전자-자동차_예시.png"  />
 </p>
 <ul>
 <li>자동차의 역할(인터페이스)을 3개의 자동차로 구현함</li>
@@ -129,7 +129,7 @@
 <li>수 많은 객체 클라이언트와 객체 서버는 서로 협력 관계를 가진다.</li>
 </ul>
 <h3 id="자바-언어의-다형성">자바 언어의 다형성</h3>
-<p><img loading="lazy" src="./spring-core-basic/1.png" alt="오버라이딩.png"  />
+<p><img loading="lazy" src="/images/notes/spring-core-basic/1.png" alt="오버라이딩.png"  />
 </p>
 <ul>
 <li>오버라이딩을 떠올려보자</li>

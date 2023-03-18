@@ -41,7 +41,7 @@
 </li>
 </ul>
 <h3 id="엔티티-class">엔티티 Class</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/1.png" alt="1"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/1.png" alt="1"  />
 </p>
 <h2 id="2-프로젝트-scaffolding">2. 프로젝트 scaffolding</h2>
 <h3 id="섀시-패턴">섀시 패턴</h3>
@@ -161,7 +161,7 @@
 </ul>
 </li>
 </ul>
-<p><img loading="lazy" src="../msa-stack-quick-peek/2.png" alt="2"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/2.png" alt="2"  />
 </p>
 <h3 id="api-first-도구---oas-openapi-specification">API-First 도구 - OAS (OpenApi Specification)</h3>
 <ul>
@@ -341,7 +341,7 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew openApiGenerate
 </span></span></code></pre></div><ul>
 <li>Stub을 생성하면 아래의 파일이 생성된다.
-<img loading="lazy" src="../msa-stack-quick-peek/3.png" alt="3"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/3.png" alt="3"  />
 
 <ul>
 <li>model에는 OAS에서 정의한 schema를 가진 DTO가 있다.</li>
@@ -359,7 +359,7 @@
 <ul>
 <li>
 <p>서버 코드 스켈레톤을 이용해서 controller를 구현한다.
-<img loading="lazy" src="../msa-stack-quick-peek/4.png" alt="4"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/4.png" alt="4"  />
 </p>
 </li>
 <li>
@@ -491,7 +491,7 @@
 <li>이벤트 메세지 또는 커맨드 메세지를 이용하여 상호간에 통신하는 방식</li>
 </ul>
 <h3 id="이벤트">이벤트</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/5.png" alt="5"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/5.png" alt="5"  />
 </p>
 <ul>
 <li>이미 일어난 정보에 대한 메세지이다.</li>
@@ -505,7 +505,7 @@
 </li>
 </ul>
 <h3 id="커맨드">커맨드</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/6.png" alt="6"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/6.png" alt="6"  />
 </p>
 <ul>
 <li>수행할 작업에 대한 하나의 시스템에서 다른 시스템으로의 메세지</li>
@@ -527,7 +527,7 @@
 <li>별도의 MessageRelay가 주기적으로 OUTBOX 테이블에 있는 메세지를 발행한다.
 <ul>
 <li>MessageRelay는 polling publisher로 구현할 수 있다.
-<img loading="lazy" src="../msa-stack-quick-peek/7.png" alt="transactional-outbox-pattern.png"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/7.png" alt="transactional-outbox-pattern.png"  />
 </li>
 </ul>
 </li>
@@ -548,7 +548,7 @@
 </ol>
 <ul>
 <li>(메세지 식별자에 unique 제약조건을 걸어서 구분할 수도 있다.)
-<img loading="lazy" src="../msa-stack-quick-peek/8.png" alt="idempotent-receiver.png"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/8.png" alt="idempotent-receiver.png"  />
 </li>
 </ul>
 </li>
@@ -701,7 +701,7 @@
 </span></span></code></pre></div></li>
 </ul>
 <h3 id="전체-흐름">전체 흐름</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/9.png" alt="messaging-sequence.png"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/9.png" alt="messaging-sequence.png"  />
 </p>
 <h2 id="6-cicd">6. CI/CD</h2>
 <h3 id="cicd란">CI/CD란</h3>
@@ -781,7 +781,7 @@
 </li>
 </ul>
 <h3 id="빌드-및-배포-과정">빌드 및 배포 과정</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/10.png" alt="10"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/10.png" alt="10"  />
 </p>
 <ol>
 <li>Start</li>
@@ -827,7 +827,7 @@
 </li>
 <li>End</li>
 </ol>
-<p><img loading="lazy" src="../msa-stack-quick-peek/11.png" alt="11"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/11.png" alt="11"  />
 </p>
 <ol>
 <li>
@@ -840,7 +840,7 @@
 <p>pod가 잘 교체 되는지 확인한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>k9s
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/<span style="color:#f92672">{</span>서비스 이름으로 검색<span style="color:#f92672">}</span>
-</span></span></code></pre></div><p><img loading="lazy" src="../msa-stack-quick-peek/12.png" alt="12"  />
+</span></span></code></pre></div><p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/12.png" alt="12"  />
 </p>
 <ul>
 <li>상단 Context에서 현재 환경을 확인할 수 있다.</li>

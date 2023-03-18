@@ -19,13 +19,13 @@
 <h3 id="형상관리-시스템에서-하나의-코드베이스를-관리하면서-다수에-배포한다">형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다.</h3>
 <p>하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.</p>
 <p>코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.</p>
-<p><img loading="lazy" src="../12-factor-app/codebase.png" alt="codebase"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/codebase.png" alt="codebase"  />
 </p>
 <h2 id="2-dependencies">2. Dependencies</h2>
 <h3 id="의존성을-명시적으로-선언하고-분리한다">의존성을 명시적으로 선언하고 분리한다.</h3>
 <p>의존성은 명시적으로 선언되어, 신규 개발자 또는 시스템 설정을 편리하게 해야합니다.</p>
 <p>대부분의 프로그래밍 언어는 패키징 시스템을 제공하기 때문에 새로 설정을 해야할 때는 언어와 패키지 매니저만 설치하면 됩니다.</p>
-<p><img loading="lazy" src="../12-factor-app/dependencies.png" alt="dependencies"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/dependencies.png" alt="dependencies"  />
 </p>
 <h2 id="3-config">3. Config</h2>
 <h3 id="설정값을-환경에-저장한다">설정값을 환경에 저장한다.</h3>
@@ -35,13 +35,13 @@
 <li>Amazon S3 또는 트위터와 같은 외부 서비스에 대한 인증 정보</li>
 <li>배포 환경 호스트 이름과 같은 값</li>
 </ul>
-<p><img loading="lazy" src="../12-factor-app/config.png" alt="config"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/config.png" alt="config"  />
 </p>
 <h2 id="4-backing-services">4. Backing services</h2>
 <h3 id="backing-service">Backing service</h3>
 <p>Backing 서비스는 데이터베이스와, 메시징, 메일 서비스 등 통해 연결된 모든 서비스입니다.</p>
 <p>12 factor app은 Backing 서비스를 모두 리소스로 취급하고, 설정에서 값을 읽어서 처리하여 느슨하게 연결합니다.</p>
-<p><img loading="lazy" src="../12-factor-app/backing-service.png" alt="backing-service"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/backing-service.png" alt="backing-service"  />
 </p>
 <h2 id="5-build-release-run">5. Build, release, run</h2>
 <h3 id="빌드와-실행-단계를-엄격하게-구분한다">빌드와 실행 단계를 엄격하게 구분한다.</h3>
@@ -56,7 +56,7 @@
 <h3 id="애플리케이션을-하나-이상의-stateless-프로세스로-실행한다">애플리케이션을 하나 이상의 Stateless 프로세스로 실행한다.</h3>
 <p>애플리케이션은 실행 환경에서 하나 이상의 프로세스로 실행됩니다.</p>
 <p>상태는 데이터베이스와 같은 상태 저장 서비스에 저장해야 하며, 애플리케이션은 Stateless하게 유지해야 합니다.</p>
-<p><img loading="lazy" src="../12-factor-app/processes.png" alt="processes"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/processes.png" alt="processes"  />
 </p>
 <h2 id="7-port-binding">7. Port binding</h2>
 <h3 id="포트-바인딩을-통해-서비스-제공을-한다">포트 바인딩을 통해 서비스 제공을 한다.</h3>
@@ -80,7 +80,7 @@
 <h3 id="로그를-이벤트-스트림으로-처리한다">로그를 이벤트 스트림으로 처리한다.</h3>
 <p>애플리케이션은 로그에 관여하면 안되며, 단순히 버퍼링없이 출력할 뿐입니다.</p>
 <p>애플리케이션은 언제든지 생성되고 삭제될 수 있습니다. 따라서 이벤트는 별도 저장소에 보관되는 것이 좋습니다.</p>
-<p><img loading="lazy" src="../12-factor-app/logs.png" alt="logs"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/logs.png" alt="logs"  />
 </p>
 <h2 id="12-admin-processes">12. Admin processes</h2>
 <h3 id="어드민관리-작업을-일회성-프로세스로-실행해야-한다">어드민/관리 작업을 일회성 프로세스로 실행해야 한다.</h3>
@@ -338,7 +338,7 @@
 </ul>
 <p>→ 서버가 효율적인 개수를 유지하고 자동화 됨으로써 유지보수 비용이 감소한다.</p>
 <h2 id="overview">Overview</h2>
-<p><img loading="lazy" src="../introduce-kubernetes/1.png" alt="1"  />
+<p><img loading="lazy" src="/images/notes/introduce-kubernetes/1.png" alt="1"  />
 </p>
 <ul>
 <li>서버 한대는 Master, 나머지 서버는 Node가 된다.</li>
@@ -370,7 +370,7 @@
 </li>
 </ul>
 <h2 id="components">Components</h2>
-<p><img loading="lazy" src="../introduce-kubernetes/2.png" alt="2"  />
+<p><img loading="lazy" src="/images/notes/introduce-kubernetes/2.png" alt="2"  />
 </p>
 <ul>
 <li>master 노드
@@ -421,7 +421,7 @@
 <ul>
 <li>강의에서 소개된 환경이 아닌 minikube를 사용한다.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>minikube start <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>minikube start <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --driver<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;docker&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubernetes-version<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;stable&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --nodes<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
@@ -1914,7 +1914,7 @@ docker search [OPTIONS] &amp;lt;TERM&amp;gt; Registry에 있는 이미지를 검
 </ul>
 </li>
 </ul>
-<p><img loading="lazy" src="../docker-study/1.svg" alt="1"  />
+<p><img loading="lazy" src="/images/notes/docker-study/1.svg" alt="1"  />
 </p>
 <p><a href="https://docs.docker.com/get-started/overview/">https://docs.docker.com/get-started/overview/</a></p>
 <h2 id="도커-명령어">도커 명령어</h2>
@@ -2869,7 +2869,7 @@ Formally it represents the target subject of a specific programming project, whe
 <li>복잡도 관리
 <ul>
 <li>시간 경과에 따라 코드 라인이 늘어나고, 변경 비용이 증가한다.
-<img loading="lazy" src="../DDD-study/1.png" alt="1"  />
+<img loading="lazy" src="/images/notes/DDD-study/1.png" alt="1"  />
 
 <a href="https://dreamix.eu/blog/java/why-good-clean-software-architecture-matters">https://dreamix.eu/blog/java/why-good-clean-software-architecture-matters</a></li>
 </ul>
@@ -2921,7 +2921,7 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>특정 도메인을 개념적으로 표현한 것</li>
 <li>도메인에 대한 이해도에 따라 도메인 모델도 변경된다.
-<img loading="lazy" src="../DDD-study/2.png" alt="2"  />
+<img loading="lazy" src="/images/notes/DDD-study/2.png" alt="2"  />
 </li>
 </ul>
 </li>
@@ -2988,7 +2988,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 <li>이상적으로는 바운디드 컨텍스트와 하위 도메인이 1대1로 대응되는 것이 좋다.</li>
 <li>하지만 팀 상황이나 유비쿼터스 언어가 명확하게 정의되지 않아 1대1로 대응되지 않는 경우도 있다.
-<img loading="lazy" src="../DDD-study/3.png" alt="3"  />
+<img loading="lazy" src="/images/notes/DDD-study/3.png" alt="3"  />
 </li>
 </ul>
 <h3 id="바운디드-컨텍스트-간-관계">바운디드 컨텍스트 간 관계</h3>
@@ -3004,7 +3004,7 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>가장 흔한 관계이다.</li>
 <li>한쪽에서 **API를 제공(상류)**하고 다른쪽에서 **API를 호출(하류)**한다.
-<img loading="lazy" src="../DDD-study/4.png" alt="카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다."  />
+<img loading="lazy" src="/images/notes/DDD-study/4.png" alt="카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다."  />
 
 카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다.</li>
 </ul>
@@ -3038,37 +3038,37 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>특정 바운디드 컨텍스트에 과도하게 집중하면 전체적인 바운디드 컨텍스트 간의 관계를 인식하지 못할 수 있다.</li>
 <li>도메인을 더 잘 이해하거나 컨텍스트 간 관계가 바뀌면 컨텍스트 맵도 바뀐다.
-<img loading="lazy" src="../DDD-study/5.png" alt="5"  />
+<img loading="lazy" src="/images/notes/DDD-study/5.png" alt="5"  />
 </li>
 </ul>
 <h2 id="5-핵사고날-아키텍처">5. 핵사고날 아키텍처</h2>
 <ul>
 <li>예제 프로젝트에 핵사고날 아키텍처를 적용했다.
-<img loading="lazy" src="../DDD-study/6.png" alt="6"  />
+<img loading="lazy" src="/images/notes/DDD-study/6.png" alt="6"  />
 
 <a href="https://reflectoring.io/spring-hexagonal/">https://reflectoring.io/spring-hexagonal/</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">└──</span> xxx
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">├──</span> adapter
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> in
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxController<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> EventHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">(</span>or MessageHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> out
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">└──</span> EventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">(</span>or MessagePublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">├──</span> application
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxService<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> port
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">├──</span> in
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxCommand<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxDto<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> xxxUsecase<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">└──</span> out
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">├──</span> xxxEvent<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">├──</span> xxxEventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">└──</span> xxxRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">└──</span> domain
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">├──</span> AggregateRootEntity<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">└──</span> ValueObject<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>└── xxx
+</span></span><span style="display:flex;"><span>    ├── adapter
+</span></span><span style="display:flex;"><span>    │   ├── in
+</span></span><span style="display:flex;"><span>    │   │   ├── xxxController.java
+</span></span><span style="display:flex;"><span>    │   │   └── EventHandler.java <span style="color:#f92672">(</span>or MessageHandler.java<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    │   └── out
+</span></span><span style="display:flex;"><span>    │       └── EventPublisher.java <span style="color:#f92672">(</span>or MessagePublisher.java<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    ├── application
+</span></span><span style="display:flex;"><span>    │   ├── xxxService.java
+</span></span><span style="display:flex;"><span>    │   └── port
+</span></span><span style="display:flex;"><span>    │       ├── in
+</span></span><span style="display:flex;"><span>    │       │   ├── xxxCommand.java
+</span></span><span style="display:flex;"><span>    │       │   ├── xxxDto.java
+</span></span><span style="display:flex;"><span>    │       │   └── xxxUsecase.java
+</span></span><span style="display:flex;"><span>    │       └── out
+</span></span><span style="display:flex;"><span>    │           ├── xxxEvent.java
+</span></span><span style="display:flex;"><span>    │           ├── xxxEventPublisher.java
+</span></span><span style="display:flex;"><span>    │           └── xxxRepository.java
+</span></span><span style="display:flex;"><span>    └── domain
+</span></span><span style="display:flex;"><span>        ├── AggregateRootEntity.java
+</span></span><span style="display:flex;"><span>        └── ValueObject.java
 </span></span></code></pre></div><h2 id="6-전술적-설계">6. 전술적 설계</h2>
 <h3 id="도메인-영역의-주요-구성-요소">도메인 영역의 주요 구성 요소</h3>
 <table>
@@ -3239,11 +3239,11 @@ Formally it represents the target subject of a specific programming project, whe
 </span></span><span style="display:flex;"><span><span style="color:#f92672">...</span> <span style="color:#75715e">// 애너테이션
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Delivery</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Id</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Id</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@GeneratedValue</span><span style="color:#f92672">(</span>strategy <span style="color:#f92672">=</span> GenerationType<span style="color:#f92672">.</span><span style="color:#a6e22e">IDENTITY</span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Long id<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Embedded</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Embedded</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Address address<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String phoneNumber<span style="color:#f92672">;</span>
@@ -3304,11 +3304,11 @@ Formally it represents the target subject of a specific programming project, whe
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DiscountCalculationService</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Money <span style="color:#a6e22e">calculateDiscountAmounts</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>OrderLine<span style="color:#f92672">&gt;</span> orderLines<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>																				List<span style="color:#f92672">&lt;</span>Coupon<span style="color:#f92672">&gt;</span> coupons<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>																				MemberGrade grade<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                                        List<span style="color:#f92672">&lt;</span>Coupon<span style="color:#f92672">&gt;</span> coupons<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                                        MemberGrade grade<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>		Money couponDiscount <span style="color:#f92672">=</span> coupons<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
-</span></span><span style="display:flex;"><span>												<span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>coupon <span style="color:#f92672">-&gt;</span> calculateDiscount<span style="color:#f92672">(</span>coupon<span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>												<span style="color:#f92672">.</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Money<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">),</span> <span style="color:#f92672">(</span>v1<span style="color:#f92672">,</span> v2<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> v1<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>v2<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>coupon <span style="color:#f92672">-&gt;</span> calculateDiscount<span style="color:#f92672">(</span>coupon<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">.</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Money<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">),</span> <span style="color:#f92672">(</span>v1<span style="color:#f92672">,</span> v2<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> v1<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>v2<span style="color:#f92672">));</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>		Money membershipDiscount <span style="color:#f92672">=</span> calculateDiscount<span style="color:#f92672">(</span>orderer<span style="color:#f92672">.</span><span style="color:#a6e22e">getMember</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getGrade</span><span style="color:#f92672">());</span>
 </span></span><span style="display:flex;"><span>
@@ -3377,19 +3377,19 @@ Formally it represents the target subject of a specific programming project, whe
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderService</span> <span style="color:#66d9ef">implements</span> OrderUsecase <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PaymentPort paymentPort<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PaymentPort paymentPort<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cancelOrder</span><span style="color:#f92672">(</span>Long orderId<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> Order order <span style="color:#f92672">=</span> findOrder<span style="color:#f92672">(</span>orderId<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Payment 도메인 로직
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Payment 도메인 로직
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> Boolean responseFromPayment <span style="color:#f92672">=</span> paymentPort<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelPayment</span><span style="color:#f92672">(</span>order<span style="color:#f92672">.</span><span style="color:#a6e22e">getPaymentId</span><span style="color:#f92672">());</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>responseFromPayment<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;결제 취소 실패&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Order 도메인 로직
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Order 도메인 로직
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    order<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelOrder</span><span style="color:#f92672">();</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
@@ -3405,7 +3405,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 <li>
 <p>이벤트는 다음과 같이 네 개의 구성요소를 가진다.
-<img loading="lazy" src="../DDD-study/7.png" alt="7.png"  />
+<img loading="lazy" src="/images/notes/DDD-study/7.png" alt="7.png"  />
 </p>
 <ul>
 <li>
@@ -3465,10 +3465,10 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>이벤트 저장소를 이용한 메시징 (<strong>Transactional Outbox Pattern</strong>)</li>
 <li>이벤트 발행 서비스
-<img loading="lazy" src="../DDD-study/8.png" alt="transactional-outbox-pattern.png"  />
+<img loading="lazy" src="/images/notes/DDD-study/8.png" alt="transactional-outbox-pattern.png"  />
 </li>
 <li>이벤트 소비 서비스
-<img loading="lazy" src="../DDD-study/9.png" alt="idempotent-receiver.png"  />
+<img loading="lazy" src="/images/notes/DDD-study/9.png" alt="idempotent-receiver.png"  />
 </li>
 </ul>
 </li>
@@ -3516,7 +3516,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 </ul>
 <h3 id="엔티티-class">엔티티 Class</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/1.png" alt="1"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/1.png" alt="1"  />
 </p>
 <h2 id="2-프로젝트-scaffolding">2. 프로젝트 scaffolding</h2>
 <h3 id="섀시-패턴">섀시 패턴</h3>
@@ -3636,7 +3636,7 @@ Formally it represents the target subject of a specific programming project, whe
 </ul>
 </li>
 </ul>
-<p><img loading="lazy" src="../msa-stack-quick-peek/2.png" alt="2"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/2.png" alt="2"  />
 </p>
 <h3 id="api-first-도구---oas-openapi-specification">API-First 도구 - OAS (OpenApi Specification)</h3>
 <ul>
@@ -3816,7 +3816,7 @@ Formally it represents the target subject of a specific programming project, whe
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew openApiGenerate
 </span></span></code></pre></div><ul>
 <li>Stub을 생성하면 아래의 파일이 생성된다.
-<img loading="lazy" src="../msa-stack-quick-peek/3.png" alt="3"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/3.png" alt="3"  />
 
 <ul>
 <li>model에는 OAS에서 정의한 schema를 가진 DTO가 있다.</li>
@@ -3834,7 +3834,7 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>
 <p>서버 코드 스켈레톤을 이용해서 controller를 구현한다.
-<img loading="lazy" src="../msa-stack-quick-peek/4.png" alt="4"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/4.png" alt="4"  />
 </p>
 </li>
 <li>
@@ -3966,7 +3966,7 @@ Formally it represents the target subject of a specific programming project, whe
 <li>이벤트 메세지 또는 커맨드 메세지를 이용하여 상호간에 통신하는 방식</li>
 </ul>
 <h3 id="이벤트">이벤트</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/5.png" alt="5"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/5.png" alt="5"  />
 </p>
 <ul>
 <li>이미 일어난 정보에 대한 메세지이다.</li>
@@ -3980,7 +3980,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 </ul>
 <h3 id="커맨드">커맨드</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/6.png" alt="6"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/6.png" alt="6"  />
 </p>
 <ul>
 <li>수행할 작업에 대한 하나의 시스템에서 다른 시스템으로의 메세지</li>
@@ -4002,7 +4002,7 @@ Formally it represents the target subject of a specific programming project, whe
 <li>별도의 MessageRelay가 주기적으로 OUTBOX 테이블에 있는 메세지를 발행한다.
 <ul>
 <li>MessageRelay는 polling publisher로 구현할 수 있다.
-<img loading="lazy" src="../msa-stack-quick-peek/7.png" alt="transactional-outbox-pattern.png"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/7.png" alt="transactional-outbox-pattern.png"  />
 </li>
 </ul>
 </li>
@@ -4023,7 +4023,7 @@ Formally it represents the target subject of a specific programming project, whe
 </ol>
 <ul>
 <li>(메세지 식별자에 unique 제약조건을 걸어서 구분할 수도 있다.)
-<img loading="lazy" src="../msa-stack-quick-peek/8.png" alt="idempotent-receiver.png"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/8.png" alt="idempotent-receiver.png"  />
 </li>
 </ul>
 </li>
@@ -4176,7 +4176,7 @@ Formally it represents the target subject of a specific programming project, whe
 </span></span></code></pre></div></li>
 </ul>
 <h3 id="전체-흐름">전체 흐름</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/9.png" alt="messaging-sequence.png"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/9.png" alt="messaging-sequence.png"  />
 </p>
 <h2 id="6-cicd">6. CI/CD</h2>
 <h3 id="cicd란">CI/CD란</h3>
@@ -4256,7 +4256,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 </ul>
 <h3 id="빌드-및-배포-과정">빌드 및 배포 과정</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/10.png" alt="10"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/10.png" alt="10"  />
 </p>
 <ol>
 <li>Start</li>
@@ -4302,7 +4302,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 <li>End</li>
 </ol>
-<p><img loading="lazy" src="../msa-stack-quick-peek/11.png" alt="11"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/11.png" alt="11"  />
 </p>
 <ol>
 <li>
@@ -4315,7 +4315,7 @@ Formally it represents the target subject of a specific programming project, whe
 <p>pod가 잘 교체 되는지 확인한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>k9s
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/<span style="color:#f92672">{</span>서비스 이름으로 검색<span style="color:#f92672">}</span>
-</span></span></code></pre></div><p><img loading="lazy" src="../msa-stack-quick-peek/12.png" alt="12"  />
+</span></span></code></pre></div><p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/12.png" alt="12"  />
 </p>
 <ul>
 <li>상단 Context에서 현재 환경을 확인할 수 있다.</li>
@@ -4365,21 +4365,21 @@ Host에 대해서 IP가 식별자가 된다. Host: 네트워크에 연결된 컴
 → Host에 IP가 여러개 존재한다. Access
 Network Interface Card에 대해서 MAC이 식별자가 된다.</description><content:encoded><![CDATA[<h2 id="1-mac-ip-port-번호의-식별">1. MAC, IP, Port 번호의 식별</h2>
 <h3 id="mac-ip-port는-각-다음과-같은-레이어의-식별자이다">MAC, IP, Port는 각 다음과 같은 레이어의 식별자이다.</h3>
-<pre tabindex="0"><code>* DoD로 구분한 Layer *
-
-user mode
-============================================
-- Application
-
-kernel mode
-============================================
-- Transport: PORT
-- Network: IP
-
-H/W
-============================================
-- Access: MAC
-</code></pre><p>Transport</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>* DoD로 구분한 Layer *
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Application
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kernel mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Transport: PORT
+</span></span><span style="display:flex;"><span>- Network: IP
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>H/W
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Access: MAC
+</span></span></code></pre></div><p>Transport</p>
 <ul>
 <li>Port가 식별자가 된다.</li>
 </ul>
@@ -4412,35 +4412,35 @@ H/W
 → 이 Computer를 <strong>Switch</strong>라 한다. (Firewall, Router 등)</li>
 </ul>
 <p><strong>Network</strong>는 <strong>Router(L3 Switch)와 DNS의 집합체</strong>이다.</p>
-<pre tabindex="0"><code>(스위칭 비용 증가)
-
-user mode
-============================================
-L7
---------------------------------------------
-L6
---------------------------------------------
-L5
---------------------------------------------
-
-kernel mode
-============================================
-L4
-- TCP
---------------------------------------------
-L3 (Router)
-- IP
---------------------------------------------
-
-H/W
-============================================
-L2
---------------------------------------------
-L1
---------------------------------------------
-
-(스위칭 비용 감소)
-</code></pre><h2 id="3-ipv4-주소-체계">3. IPv4 주소 체계</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">(</span>스위칭 비용 증가<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>L7
+</span></span><span style="display:flex;"><span>--------------------------------------------
+</span></span><span style="display:flex;"><span>L6
+</span></span><span style="display:flex;"><span>--------------------------------------------
+</span></span><span style="display:flex;"><span>L5
+</span></span><span style="display:flex;"><span>--------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kernel mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>L4
+</span></span><span style="display:flex;"><span>- TCP
+</span></span><span style="display:flex;"><span>--------------------------------------------
+</span></span><span style="display:flex;"><span>L3 <span style="color:#f92672">(</span>Router<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>- IP
+</span></span><span style="display:flex;"><span>--------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>H/W
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>L2
+</span></span><span style="display:flex;"><span>--------------------------------------------
+</span></span><span style="display:flex;"><span>L1
+</span></span><span style="display:flex;"><span>--------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>스위칭 비용 감소<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h2 id="3-ipv4-주소-체계">3. IPv4 주소 체계</h2>
 <h3 id="ip-주소">IP 주소</h3>
 <p>Host에 대한 식별자</p>
 <p>IP 주소는 다음과 같이 두가지 표현 방법이 있다.</p>
@@ -4459,10 +4459,10 @@ L1
 <ul>
 <li>Net ID, Host ID</li>
 </ul>
-<pre tabindex="0"><code>Net ID   Host ID
------------ --
-121.123.223.10
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Net ID   Host ID
+</span></span><span style="display:flex;"><span>----------- --
+</span></span><span style="display:flex;"><span>121.123.223.10
+</span></span></code></pre></div><ul>
 <li>이때 Net ID의 길이를 구분하기 위해 서브넷 마스크를 사용한다.</li>
 </ul>
 </li>
@@ -4486,20 +4486,20 @@ L1
 <li>Interface 번호</li>
 </ul>
 <p>여기서는 개발자 관점에서 Process 식별자를 알아본다.</p>
-<pre tabindex="0"><code>user mode
-============================================
-- Process
-
-kernel mode
-============================================
-- TCP
-- IP
-
-- Driver
-H/W
-============================================
-- NIC
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>user mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Process
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kernel mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- TCP
+</span></span><span style="display:flex;"><span>- IP
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- Driver
+</span></span><span style="display:flex;"><span>H/W
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- NIC
+</span></span></code></pre></div><ul>
 <li>kernel mode는 user mode가 접근이 가능하게 하기 위해 file이라는 인터페이스를 제공한다.</li>
 <li>하지만 이를 프로토콜 관점에서 추상화하면 socket이 된다.</li>
 <li>이때 socket에 attach되는 정보 중 하나가 Port 번호이다.</li>
@@ -4523,19 +4523,19 @@ H/W
 <li>라우터는 <strong>라우팅 테이블</strong>을 근거로 최적의 경로를 찾아낸다.</li>
 </ul>
 <h2 id="6-네트워크-데이터-단위">6. 네트워크 데이터 단위</h2>
-<pre tabindex="0"><code>user mode
-============================================
-- Application (Socket 수준)
-
-kernel mode
-============================================
-- TCP
-- IP
-
-H/W
-============================================
--
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>user mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Application <span style="color:#f92672">(</span>Socket 수준<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kernel mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- TCP
+</span></span><span style="display:flex;"><span>- IP
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>H/W
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>-
+</span></span></code></pre></div><ul>
 <li>위에서 설명한 user와 kernel 모드 사이의 file(socket)은 <strong>Stream</strong>이다.
 <ul>
 <li>기본적으로 file은 사용자가 계속 데이터를 입력하면 계속해서 데이터가 커진다.</li>
@@ -4556,22 +4556,22 @@ H/W
 <li>이 Packet을 Frame 데이터로 캡슐화하여 전달한다.</li>
 </ul>
 <h2 id="7-네트워크-인터페이스-선택-원리와-기준">7. 네트워크 인터페이스 선택 원리와 기준</h2>
-<pre tabindex="0"><code>user mode
-============================================
-- HTTP (L7)
--
-- SSL
-
-kernel mode
-============================================
-- TCP, UDP (L4)
-- IP (L3)
-
-H/W
-============================================
-- Ethernet
--
-</code></pre><p>아래와 같은 상황에서 인터페이스는 어떻게 선택될까?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>user mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- HTTP <span style="color:#f92672">(</span>L7<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>-
+</span></span><span style="display:flex;"><span>- SSL
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kernel mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- TCP, UDP <span style="color:#f92672">(</span>L4<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>- IP <span style="color:#f92672">(</span>L3<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>H/W
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Ethernet
+</span></span><span style="display:flex;"><span>-
+</span></span></code></pre></div><p>아래와 같은 상황에서 인터페이스는 어떻게 선택될까?</p>
 <ul>
 <li>사용자가 브라우저를 켰다. (Socket이 열리고, TCP와 IP가 바인딩 되어야 한다.)</li>
 <li>KT 유선 인터넷과 SKT 무선 인터넷을 두 개 연결했다. (일반적으로 IP 주소는 2개가 된다.)</li>
@@ -4631,22 +4631,22 @@ H/W
 <ul>
 <li>주의) 이 내용은 명확한 구분은 아니다.</li>
 </ul>
-<pre tabindex="0"><code>user mode
-============================================
-- HTTP
--
-- SSL
-
-kernel mode (Logical == virtual)
-============================================
-- TCP, UDP
-- IP(IP 주소) --&gt; [Internet] == [virtual network] -&gt; *WAN
-
-H/W (Physical)
-============================================
-- Ethernet(MAC 주소) --&gt; *LAN
--
-</code></pre><p>LAN과 WAN은 흔히 범위의 차이로 구분한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>user mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- HTTP
+</span></span><span style="display:flex;"><span>-
+</span></span><span style="display:flex;"><span>- SSL
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kernel mode <span style="color:#f92672">(</span>Logical <span style="color:#f92672">==</span> virtual<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- TCP, UDP
+</span></span><span style="display:flex;"><span>- IP<span style="color:#f92672">(</span>IP 주소<span style="color:#f92672">)</span> --&gt; <span style="color:#f92672">[</span>Internet<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#f92672">[</span>virtual network<span style="color:#f92672">]</span> -&gt; *WAN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>H/W <span style="color:#f92672">(</span>Physical<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Ethernet<span style="color:#f92672">(</span>MAC 주소<span style="color:#f92672">)</span> --&gt; *LAN
+</span></span><span style="display:flex;"><span>-
+</span></span></code></pre></div><p>LAN과 WAN은 흔히 범위의 차이로 구분한다.</p>
 <p>하지만 논리/물리적 구성요소로 구분하는 방법은 아래와 같다.</p>
 <ul>
 <li>시스템은 S/W와 H/W로 구분된다.</li>
@@ -4661,22 +4661,22 @@ H/W (Physical)
 → LAN</li>
 </ul>
 <h2 id="12-패킷의-생성-원리와-캡슐화">12. 패킷의 생성 원리와 캡슐화</h2>
-<pre tabindex="0"><code>user mode
-============================================
-- HTTP
--
-- SSL
-
-kernel mode
-============================================
-- TCP, UDP
-- IP
-
-H/W
-============================================
-- Ethernet
--
-</code></pre><ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>user mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- HTTP
+</span></span><span style="display:flex;"><span>-
+</span></span><span style="display:flex;"><span>- SSL
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kernel mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- TCP, UDP
+</span></span><span style="display:flex;"><span>- IP
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>H/W
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Ethernet
+</span></span><span style="display:flex;"><span>-
+</span></span></code></pre></div><ol>
 <li>user mode 영역은 socket에 데이터를 IO한다.
 <ul>
 <li>socket은 file을 추상화한 것이다. 때문에 데이터를 계속해서 쓰기할 수 있다.</li>
@@ -4717,31 +4717,31 @@ H/W
 </ol>
 <h2 id="13-l2-스위치">13. L2 스위치</h2>
 <p>L2 스위치는 MAC 주소(48bit)로 스위칭시킨다.</p>
-<pre tabindex="0"><code>                (multilayer switch)
- NIC  L2 Access   L2 Distribution    L2 Access    NIC
-         |  (Up-link)        (Up-link)
-         |---------------#---------------|
-PC1------|               |               |---------PC3
-         |               |               |
-         |               |               |
-         |               |               |---------PC4
-PC2------|               |               |
-         |               |               |
-                         |
-                         | (Up-link)
-                         |
-                     (gateway)
-                         @
-                       라우터
-                         |
-                       (방화벽)
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>                <span style="color:#f92672">(</span>multilayer switch<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span> NIC  L2 Access   L2 Distribution    L2 Access    NIC
+</span></span><span style="display:flex;"><span>         |  <span style="color:#f92672">(</span>Up-link<span style="color:#f92672">)</span>        <span style="color:#f92672">(</span>Up-link<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         |---------------#---------------|
+</span></span><span style="display:flex;"><span>PC1------|               |               |---------PC3
+</span></span><span style="display:flex;"><span>         |               |               |
+</span></span><span style="display:flex;"><span>         |               |               |
+</span></span><span style="display:flex;"><span>         |               |               |---------PC4
+</span></span><span style="display:flex;"><span>PC2------|               |               |
+</span></span><span style="display:flex;"><span>         |               |               |
+</span></span><span style="display:flex;"><span>                         |
+</span></span><span style="display:flex;"><span>                         | <span style="color:#f92672">(</span>Up-link<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                         |
+</span></span><span style="display:flex;"><span>                     <span style="color:#f92672">(</span>gateway<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                         @
+</span></span><span style="display:flex;"><span>                       라우터
+</span></span><span style="display:flex;"><span>                         |
+</span></span><span style="display:flex;"><span>                       <span style="color:#f92672">(</span>방화벽<span style="color:#f92672">)</span>
+</span></span></code></pre></div><ul>
 <li>L2 Access: End-Point가 네트워크에서 가장 처음 만나는 스위치</li>
 <li>L2 Distribution: L2 Access와 L3 라우터를 연결해주는 스위치</li>
 <li>Up-link: 상위 계층 스위치로 연결되는 케이블</li>
 </ul>
 <h2 id="14-ip-header">14. IP Header</h2>
-<p><img loading="lazy" src="../networkbasic/0.png" alt="0.png"  />
+<p><img loading="lazy" src="/images/notes/networkbasic/0.png" alt="0.png"  />
 </p>
 <p>위에서 언급한 것처럼 IP의 헤더는 20바이트이다. (+ @ Opitonal)</p>
 <p>최상단 우측에 Total Length는 16비트인데, 이것은 패킷의 최대 크기를 나타낸다.</p>
@@ -4765,33 +4765,33 @@ PC2------|               |               |
 <h2 id="15-proxy-구조와-원리">15. Proxy 구조와 원리</h2>
 <p>Proxy는 대리자 역할을 한다.</p>
 <p>&lt;Proxy 미적용&gt;</p>
-<pre tabindex="0"><code>										    HTTPS TCP/IP
-PC1 (1.1.1.1)--------------Internet--------------------SERVER(9.9.9.9)
-</code></pre><p>&lt;Proxy 적용&gt;</p>
-<pre tabindex="0"><code>PC1 (1.1.1.1)                                          SERVER(9.9.9.9)
-  |                                                        |
-  |                                                        |
-Internet                                                   |
-  |                                                        |
-  | (Proxy)                                                |
-PC2 (2.2.2.2)---------------- Internet---------------------|
-</code></pre><p>&lt;PC2의 역할&gt;</p>
-<pre tabindex="0"><code>user mode    |          PC2
-============================================
-- HTTP       |   Proxy 역할을 하는
--            |       Process
-- SSL        |       (Stream)
-             |   socket1  socket2
-kernel mode  |
-============================================
-- TCP, UDP   |
-- IP         |
-             |
-H/W          |
-============================================
-- Ethernet   |
--            |
-</code></pre><ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>										    HTTPS TCP/IP
+</span></span><span style="display:flex;"><span>PC1 <span style="color:#f92672">(</span>1.1.1.1<span style="color:#f92672">)</span>--------------Internet--------------------SERVER<span style="color:#f92672">(</span>9.9.9.9<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>&lt;Proxy 적용&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PC1 <span style="color:#f92672">(</span>1.1.1.1<span style="color:#f92672">)</span>                                          SERVER<span style="color:#f92672">(</span>9.9.9.9<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  |                                                        |
+</span></span><span style="display:flex;"><span>  |                                                        |
+</span></span><span style="display:flex;"><span>Internet                                                   |
+</span></span><span style="display:flex;"><span>  |                                                        |
+</span></span><span style="display:flex;"><span>  | <span style="color:#f92672">(</span>Proxy<span style="color:#f92672">)</span>                                                |
+</span></span><span style="display:flex;"><span>PC2 <span style="color:#f92672">(</span>2.2.2.2<span style="color:#f92672">)</span>---------------- Internet---------------------|
+</span></span></code></pre></div><p>&lt;PC2의 역할&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>user mode    |          PC2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- HTTP       |   Proxy 역할을 하는
+</span></span><span style="display:flex;"><span>-            |       Process
+</span></span><span style="display:flex;"><span>- SSL        |       <span style="color:#f92672">(</span>Stream<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>             |   socket1  socket2
+</span></span><span style="display:flex;"><span>kernel mode  |
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- TCP, UDP   |
+</span></span><span style="display:flex;"><span>- IP         |
+</span></span><span style="display:flex;"><span>             |
+</span></span><span style="display:flex;"><span>H/W          |
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================</span>
+</span></span><span style="display:flex;"><span>- Ethernet   |
+</span></span><span style="display:flex;"><span>-            |
+</span></span></code></pre></div><ol>
 <li>socket1은 외부에서 접속하길 대기하고 있다.</li>
 <li>PC1이 접근</li>
 <li>정보가 들어오면 socket2를 이용해서 9.9.9.9에 접근</li>
@@ -4840,7 +4840,7 @@ H/W          |
 <h2 id="18-tcp-연결에-대해">18. TCP 연결에 대해</h2>
 <p>TCP는 연결지향 프로토콜이다.</p>
 <p>우선 아래 TCP 헤더를 보자</p>
-<p><img loading="lazy" src="../networkbasic/1.png" alt="1.png"  />
+<p><img loading="lazy" src="/images/notes/networkbasic/1.png" alt="1.png"  />
 </p>
 <ul>
 <li>출발지/목적지 Port 번호가 가장위에 위치한다.</li>
@@ -4857,21 +4857,21 @@ H/W          |
 <li>혼잡 제어 정책 교환</li>
 </ul>
 <h2 id="19-unicast-broadcast-multicast">19. Unicast, Broadcast, Multicast</h2>
-<pre tabindex="0"><code> NIC  L2 Access   L2 Distribution    L2 Access    NIC
-         |  (Up-link)        (Up-link)
-         |---------------#---------------|
-PC1------|               |               |---------PC3
-         |               |               |
-         |               |               |
-         |               |               |---------PC4
-PC2------|               |               |
-         |               |               |
-                         |
-                         | (Up-link)
-                         |
-                         @ 라우터 (gateway)
-                       (방화벽)
-</code></pre><p>Unicast</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> NIC  L2 Access   L2 Distribution    L2 Access    NIC
+</span></span><span style="display:flex;"><span>         |  <span style="color:#f92672">(</span>Up-link<span style="color:#f92672">)</span>        <span style="color:#f92672">(</span>Up-link<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         |---------------#---------------|
+</span></span><span style="display:flex;"><span>PC1------|               |               |---------PC3
+</span></span><span style="display:flex;"><span>         |               |               |
+</span></span><span style="display:flex;"><span>         |               |               |
+</span></span><span style="display:flex;"><span>         |               |               |---------PC4
+</span></span><span style="display:flex;"><span>PC2------|               |               |
+</span></span><span style="display:flex;"><span>         |               |               |
+</span></span><span style="display:flex;"><span>                         |
+</span></span><span style="display:flex;"><span>                         | <span style="color:#f92672">(</span>Up-link<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                         |
+</span></span><span style="display:flex;"><span>                         @ 라우터 <span style="color:#f92672">(</span>gateway<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#f92672">(</span>방화벽<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>Unicast</p>
 <ul>
 <li>L2 스위치 내부에서 연결이 끝나는 것 (라우터 이전)</li>
 <li>한번에 한 지점에게만 신호를 보낸다.</li>
@@ -4982,7 +4982,7 @@ PC2------|               |               |
 </li>
 </ol>
 <h2 id="23-mtu와-packet-단편화">23. MTU와 Packet 단편화</h2>
-<p><img loading="lazy" src="../networkbasic/2.png" alt="2.png"  />
+<p><img loading="lazy" src="/images/notes/networkbasic/2.png" alt="2.png"  />
 </p>
 <ul>
 <li>위 그림에서 2번째 줄(Identification, Fragment Offset)이 단편화 관련 부분이다.</li>
@@ -4990,9 +4990,9 @@ PC2------|               |               |
 <li>MTU - 20(IP 헤더) - 20(TCP 헤더) = MSS이다.</li>
 </ul>
 <p>아래와 같은 경우에는 단편화가 어떻게 이루어 질까?</p>
-<pre tabindex="0"><code>MTU:1500     MTU:1500       MTU:1400       MTU:1500  MTU:1500
-PC1 ---|---#-----R1-------------R2-------------R3-----SERVER
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>MTU:1500     MTU:1500       MTU:1400       MTU:1500  MTU:1500
+</span></span><span style="display:flex;"><span>PC1 ---|---#-----R1-------------R2-------------R3-----SERVER
+</span></span></code></pre></div><ul>
 <li>위 경우 R1 → R2에서 단편화가 이루어져야 한다.
 <ol>
 <li>1500짜리 패킷을 어느 지점에서 자른다. A와 B가 생긴다.</li>
@@ -5181,14 +5181,14 @@ consumer는 producer가 어떤 메세지를 생산했는지 알 수 없다.</p>
 <p>이는 구조적인 결합도는 낮지만, 메세지 schema에 대한 의존성이 높기 때문인데,
 schema registry는 이를 보완하기 위해 고안되었다.</p>
 <p>Confluent Schema registry는 Avro, Json, Protobuf 등의 schema 정보의 history를 subjects를 통해 관리하며, REST API를 통해 <strong>compatibility settings</strong>을 결정하고 현재 버전과 이전 버전간의 호환성을 지원한다.</p>
-<p><img loading="lazy" src="../schema-registry/schema-registry-kafka.png" alt="schema-registry-kafka.png"  />
+<p><img loading="lazy" src="/images/notes/schema-registry/schema-registry-kafka.png" alt="schema-registry-kafka.png"  />
 </p>
 <p>Schema registry는 kafka boroker와 독립적으로 존재하며, producer와 consumer는 kafka broker와 읽고 쓰는 동안 Schema registry와 동작하며 데이터 모델을 확인할 수 있다.</p>
 <h2 id="2-schemas-subjects-and-topics-란">2. Schemas, Subjects and Topics 란?</h2>
 <p>topic은 kafka의 topic을, schema는 Avro, Json, Protobuf 등으로 정의된 데이터 포맷 구조를 의미한다.</p>
 <p>Subject는 Schema registry에 schema가 등록된 이름이며, 여러 버전의 schema가 등록될 수 있다.</p>
 <p>따라서 Subject를 통해 계속해서 Schema의 정보를 관리할 수 있고, 새로운 버전의 Schema ID와 버전을 확인할 수 있다.</p>
-<p><img loading="lazy" src="../schema-registry/schema-subject-topic.png" alt="schema registry.png"  />
+<p><img loading="lazy" src="/images/notes/schema-registry/schema-subject-topic.png" alt="schema registry.png"  />
 </p>
 <ul>
 <li>kafka topic은 메세지가 포함되어 있으며, 각 메세지는 key - value 쌍으로 되어있으며
@@ -5274,13 +5274,13 @@ schema registry는 이를 보완하기 위해 고안되었다.</p>
 <p>추천하는 content type은 <code>application/vnd.schemaregistry.v1+json</code>이다.
 v1은 API의 버전이고, json은 직렬화 포맷이다.</p>
 <p>모든 API endpoint는 다음과 같은 error message 포맷을 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">422</span> <span style="color:#960050;background-color:#1e0010">Unprocessable</span> <span style="color:#960050;background-color:#1e0010">Entity</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">422</span> Unprocessable Entity
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;error_code&#34;</span>: <span style="color:#ae81ff">422</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;schema may not be empty&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;error_code&#34;</span>: 422,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;schema may not be empty&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><blockquote>
 <p>추가적으로 요청시 json은 string 형태로 전달해야 한다.</p>
 </blockquote>
@@ -5301,12 +5301,12 @@ schema (string) - id로 구분한 schema string</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>: <span style="color:#e6db74">&#34;{\&#34;type\&#34;: \&#34;string\&#34;}&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>: <span style="color:#e6db74">&#34;{\&#34;type\&#34;: \&#34;string\&#34;}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="getschemastypes"><code>GET /schemas/types/</code></h4>
 <p>Schema Registry에 저장된 스키마 타입을 요청한다.</p>
 <blockquote>
@@ -5321,12 +5321,12 @@ schema (string) - Schema Registry에서 현재 사용가능한 스키마 타입<
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#f92672">&#34;JSON&#34;</span>, <span style="color:#f92672">&#34;PROTOBUF&#34;</span>, <span style="color:#f92672">&#34;AVRO&#34;</span><span style="color:#960050;background-color:#1e0010">]</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;JSON&#34;</span>, <span style="color:#e6db74">&#34;PROTOBUF&#34;</span>, <span style="color:#e6db74">&#34;AVRO&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="getschemasidsintidversions"><code>GET /schemas/ids/{int: id}/versions</code></h4>
 <p>Schema Registry에 저장된 스키마 타입을 요청한다.</p>
 <blockquote>
@@ -5344,10 +5344,10 @@ version - return된 subject의 버전</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[{<span style="color:#f92672">&#34;subject&#34;</span>:<span style="color:#e6db74">&#34;test-subject1&#34;</span>,<span style="color:#f92672">&#34;version&#34;</span>:<span style="color:#ae81ff">1</span>}]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;subject&#34;</span>:<span style="color:#e6db74">&#34;test-subject1&#34;</span>,<span style="color:#e6db74">&#34;version&#34;</span>:1<span style="color:#f92672">}]</span>
 </span></span></code></pre></div><h3 id="subjects-관련">Subjects 관련</h3>
 <blockquote>
 <p>subject resource는 Schema Registry에 저장된 모든 subject 목록을 제공한다.<br>
@@ -5370,10 +5370,10 @@ name (string) - subject</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#34;subject1&#34;</span>, <span style="color:#e6db74">&#34;subject2&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;subject1&#34;</span>, <span style="color:#e6db74">&#34;subject2&#34;</span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><h4 id="getsubjectsstring-subjectversions"><code>GET /subjects/(string: subject)/versions</code></h4>
 <p>Schema Registry에 저장된 subject의 버전 목록을 요청한다.</p>
 <blockquote>
@@ -5390,12 +5390,12 @@ version (int) - subject 아래에 저장된 스키마의 버전</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>
-</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>  1, 2, 3, <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><h4 id="deletesubjectsstringsubject"><code>DELETE /subjects/(string: subject)</code></h4>
 <p>등록된 특정 subject를 삭제한다.
 이 API는 topic을 재사용하거나 개발 환경에서만 사용하는 것이 권장된다.</p>
@@ -5414,12 +5414,12 @@ version (int) - subject 아래에 저장된 스키마의 버전</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>
-</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>  1, 2, 3, <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><h4 id="getsubjectsstringsubjectversionsversionidversion"><code>GET /subjects/(string: subject)/versions/(versionId: version)</code></h4>
 <p>등록된 특정 subject를 요청한다.</p>
 <blockquote>
@@ -5442,14 +5442,14 @@ schema (string) - schema의 내용</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>: <span style="color:#e6db74">&#34;{\&#34;type\&#34;: \&#34;string\&#34;}&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;version&#34;</span>: 1,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>: <span style="color:#e6db74">&#34;{\&#34;type\&#34;: \&#34;string\&#34;}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="getsubjectsstringsubjectversionsversionidversionschema"><code>GET /subjects/(string: subject)/versions/(versionId: version)/schema</code></h4>
 <p>등록된 특정 subject를 요청한다. unescaped schema만 return 된다.?</p>
 <blockquote>
@@ -5470,10 +5470,10 @@ schema (string) - schema의 내용</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="postsubjectsstringsubjectversions"><code>POST /subjects/(string: subject)/versions</code></h4>
 <p>등록된 특정 subject에 새로운 스키마를 등록한다.
 만약 성공적으로 등록되면, unique한 스키마의 id가 return 된다.
@@ -5497,12 +5497,12 @@ schema (string) - schema의 내용</p>
 422 Unprocessable Entity - Invalid version
 500 Internal Server Error - Error in the backend datastore or Operation timed out or Error while forwarding the request to the primary</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST</span> <span style="color:#960050;background-color:#1e0010">/subjects/test/versions</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /subjects/test/versions HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;type\&#34;: \&#34;record\&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;name\&#34;: \&#34;test\&#34;,
@@ -5518,20 +5518,20 @@ schema (string) - schema의 내용</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     }&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schemaType&#34;</span>: <span style="color:#e6db74">&#34;AVRO&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;references&#34;</span>: [
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;com.acme.Referenced&#34;</span>,
-</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;subject&#34;</span>:  <span style="color:#e6db74">&#34;childSubject&#34;</span>,
-</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  ]
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schemaType&#34;</span>: <span style="color:#e6db74">&#34;AVRO&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;references&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;com.acme.Referenced&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;subject&#34;</span>:  <span style="color:#e6db74">&#34;childSubject&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:1<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="postsubjectsstringsubject"><code>POST /subjects/(string: subject)</code></h4>
 <p>특정 subject에 schema가 이미 등록됐는지 확인한다.
 만약 존재하면 전역적으로 unique한 id와 schema를 return 한다.</p>
@@ -5553,12 +5553,12 @@ schema (string) - schema의 내용</p>
 404 Not Found - Subject not found
 500 Internal Server Error - Internal server error</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST</span> <span style="color:#960050;background-color:#1e0010">/subjects/test</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /subjects/test HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;schema&#34;</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>         <span style="color:#e6db74">&#34;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                \&#34;type\&#34;: \&#34;record\&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                \&#34;name\&#34;: \&#34;test\&#34;,
@@ -5574,14 +5574,14 @@ schema (string) - schema의 내용</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              }&#34;</span>
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;subject&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;subject&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#ae81ff">3</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>         <span style="color:#e6db74">&#34;{
@@ -5599,7 +5599,7 @@ schema (string) - schema의 내용</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              }&#34;</span>
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="deletesubjectsstringsubjectversionsversionidversion"><code>DELETE /subjects/(string: subject)/versions/(versionId: version)</code></h4>
 <p>특정 subject에 등록된 schema의 버전을 삭제한다.
 이 API는 호환성 목적으로 이전에 등록한 스키마를 삭제하거나 이전에 등록한 스키마를 다시 등록해야 하는 개발 환경이나 극단적인 상황에서만 사용하는 것이 좋다.</p>
@@ -5641,12 +5641,12 @@ id (int) - 전역적으로 unique한 스키마의 id</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>
-</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>  1, 2, 3, <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><h2 id="5-rest-api-interface-reference---compatibility-config">5. REST API Interface Reference - Compatibility, Config</h2>
 <h3 id="compatibility">Compatibility</h3>
 <p>compatibility resource는 모든 버전 또는 특정 버전에 대해 사용자가 스키마의 호환성을 검사할 수 있도록 한다.</p>
@@ -5670,12 +5670,12 @@ is_compatible (boolean) - 호환가능 여부</p>
 422 Unprocessable Entity - Invalid schema or Invalid version
 500 Internal Server Error - Error in the backend data store</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST</span> <span style="color:#960050;background-color:#1e0010">/compatibility/subjects/test/versions/latest</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /compatibility/subjects/test/versions/latest HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;type\&#34;: \&#34;record\&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;name\&#34;: \&#34;test\&#34;,
@@ -5691,14 +5691,14 @@ is_compatible (boolean) - 호환가능 여부</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     }&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;is_compatible&#34;</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;is_compatible&#34;</span>: true
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="postcompatibilitysubjectsstringsubjectversions"><code>POST /compatibility/subjects/(string: subject)/versions</code></h4>
 <p>호환성 전략에 따라 subject의 하나의 버전 또는 여러 버전의 호환성을 확인한다.</p>
 <blockquote>
@@ -5718,12 +5718,12 @@ is_compatible (boolean) - 호환가능 여부</p>
 422 Unprocessable Entity - Invalid schema
 500 Internal Server Error - Error in the backend data store</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST</span> <span style="color:#960050;background-color:#1e0010">/compatibility/subjects/test/versions</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /compatibility/subjects/test/versions
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;type\&#34;: \&#34;record\&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;name\&#34;: \&#34;test\&#34;,
@@ -5739,14 +5739,14 @@ is_compatible (boolean) - 호환가능 여부</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     }&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;is_compatible&#34;</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;is_compatible&#34;</span>: true
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="config">Config</h3>
 <h4 id="putconfig"><code>PUT /config</code></h4>
 <p>전역적 호환성 전략을 변경한다.</p>
@@ -5759,20 +5759,20 @@ compatibility (string) - 새롭게 변경된 호환성 전략을 표시한다.</
 422 Unprocessable Entity - Invalid compatibility level
 500 Internal Server Error - Error in the backend data store or Error while forwarding request to the primary</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">PUT</span> <span style="color:#960050;background-color:#1e0010">/config</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">kafkaproxy.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PUT /config HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: kafkaproxy.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="get-config"><code>**GET /config**</code></h4>
 <p>전역적 호환성 전략을 요청한다.</p>
 <blockquote>
@@ -5787,12 +5787,12 @@ compatibility (string) - 현재 호환성 전략을 표시한다.</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibilityLevel&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibilityLevel&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="putconfigstring-subject"><code>PUT /config/(string: subject)</code></h4>
 <p>특정 subject에 대한 호환성 전략을 변경한다.</p>
 <blockquote>
@@ -5806,20 +5806,20 @@ compatibility (string) - 새롭게 변경된 호환성 전략을 표시한다.</
 422 Unprocessable Entity - Invalid compatibility level
 500 Internal Server Error - Error in the backend data store or Error while forwarding request to the primary</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">PUT</span> <span style="color:#960050;background-color:#1e0010">/config/test</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PUT /config/test HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="get-configstring-subject"><code>GET /config/(string: subject)</code></h4>
 <p>특정 subject에 대한 호환성 전략을 요청한다.</p>
 <blockquote>
@@ -5839,12 +5839,12 @@ compatibility (string) - 현재 호환성 전략을 표시한다.</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;compatibilityLevel&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;compatibilityLevel&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="deleteconfigstringsubject"><code>DELETE /config/(string: subject)</code></h4>
 <p>특정 subject에 대한 호환성 전략을 삭제하고, 전역적 호환성 전략을 사용한다.</p>
 <blockquote>
@@ -5860,12 +5860,12 @@ subject (string) - subject의 이름</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;NONE&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;NONE&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h2 id="6-subject-name-strategy">6. Subject Name Strategy</h2>
 <p>subject 이름을 만들어 내기 위한 subject naming strategy가 있다.</p>
 <table>
@@ -5890,8 +5890,10 @@ subject (string) - subject의 이름</p>
 </tr>
 </tbody>
 </table>
-<p>&lt;참고&gt;</p>
-<p><a href="https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#">https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#</a></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#">https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#</a></li>
+</ul>
 ]]></content:encoded></item><item><title>객체 지향 설계와 스프링</title><link>https://jo-minjun.github.io/notes/spring-core-basic/</link><pubDate>Fri, 01 Jul 2022 19:42:48 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-core-basic/</guid><description>1. 스프링이란? 스프링의 생태계 필수: 스프링 프레임워크, 스프링 부트
 선택: 스프링 데이터, 스프링 세션, 스프링 시큐리티, 스프링 Rest Docs, 스프링 배치, 스프링 클라우드
 가장 중요한 것: 스프링 프레임워크 핵심 기술: 스프링 DI 컨테이너, AOP, 이벤트, 기타 웹 기술: 스프링 MVC, 스프링 webFlux 데이터 접근 기술: 트랜잭션, JDBC, ORM 지원, XML 지원 기술 통합: 캐시, 이메일, 원격접근, 스케줄링 테스트: 스프링 기반 테스트 지원 언어: 코틀린, 그루비 *최근에는 스프링 부트를 통해서 스프링 프레임워크의 기술들을 편리하게 사용한다.</description><content:encoded><![CDATA[<h2 id="1-스프링이란">1. 스프링이란?</h2>
@@ -5976,7 +5978,7 @@ subject (string) - subject의 이름</p>
 <li><strong>역할</strong>과 <strong>구현</strong>으로 세상을 구분</li>
 </ul>
 <p><strong>운전자 - 자동차 예시</strong></p>
-<p><img loading="lazy" src="./spring-core-basic/0.png" alt="운전자-자동차_예시.png"  />
+<p><img loading="lazy" src="/images/notes/spring-core-basic/0.png" alt="운전자-자동차_예시.png"  />
 </p>
 <ul>
 <li>자동차의 역할(인터페이스)을 3개의 자동차로 구현함</li>
@@ -6023,7 +6025,7 @@ subject (string) - subject의 이름</p>
 <li>수 많은 객체 클라이언트와 객체 서버는 서로 협력 관계를 가진다.</li>
 </ul>
 <h3 id="자바-언어의-다형성">자바 언어의 다형성</h3>
-<p><img loading="lazy" src="./spring-core-basic/1.png" alt="오버라이딩.png"  />
+<p><img loading="lazy" src="/images/notes/spring-core-basic/1.png" alt="오버라이딩.png"  />
 </p>
 <ul>
 <li>오버라이딩을 떠올려보자</li>
@@ -6242,7 +6244,7 @@ subject (string) - subject의 이름</p>
 <p>Pub-Sub (발행-구독) 모델은 특정 시스템에 직접 메세지를 전달하는 시스템이 아니다.</p>
 <p>publisher은 메세지를 <strong>*Topic</strong>을 통해서 분류하여 관리하고, receiver은 전달받기를 원하는 <strong>*Topic</strong>을 구독하여 메세지를 전달 받는다.</p>
 <p>즉 <strong>*kafka cluster</strong>를 중심으로 producer가 push하고, consumer가 메세지를 pull하는 구조이다.</p>
-<p><img loading="lazy" src="../kafka/pub-sub.png" alt="pub-sub"  />
+<p><img loading="lazy" src="/images/notes/kafka/pub-sub.png" alt="pub-sub"  />
 </p>
 <blockquote>
 <p><strong>*kafka cluster:</strong>
@@ -6283,18 +6285,18 @@ partition을 분담하지 못한 consumer는 idle이 된다.</p>
 이 때 partition 들은 각 메세지의 순차적인 위치인 offset으로 구성된다.</p>
 <p>따라서 offset은 partition 내에서 메세지의 위치를 표시하는 유니크한 숫자이다.
 consumer는 자신이 어디까지 메세지를 처리했는지 offset을 이용해서 관리한다.</p>
-<p><img loading="lazy" src="../kafka/offset.png" alt="offset"  />
+<p><img loading="lazy" src="/images/notes/kafka/offset.png" alt="offset"  />
 </p>
 <h2 id="4-zookeeper-란">4. zookeeper 란?</h2>
 <p>zookeeper는 분산 애플리케이션이 안정적으로 서비스될 수 있도록 각 애플리케이션의 구성 정보를 중앙 집중시키고, 네이밍, 동기화 등의 서비스를 지원한다.</p>
-<p><img loading="lazy" src="../kafka/zookeeper.png" alt="zookeeper"  />
+<p><img loading="lazy" src="/images/notes/kafka/zookeeper.png" alt="zookeeper"  />
 </p>
 <blockquote>
 <p>zookeeper 여러개를 하나의 클러스터로 구성하고, 각각의 zookeeper 서버는 클라이언트 애플리케이션과 커넥션을 유지하며, 상태 정보를 공유한다.</p>
 </blockquote>
 <p>상태 정보는 zookeeper의 데이터 레지스터의 공유 계층 name space에 저장된다. 그리고 이 공간을 znode라고 부른다.</p>
 <p>znode는 key-value 형태이며, 자식 노드를 가지고 있는 계층형 구조로 구성되어 있다.</p>
-<p><img loading="lazy" src="../kafka/znode.png" alt="znode"  />
+<p><img loading="lazy" src="/images/notes/kafka/znode.png" alt="znode"  />
 </p>
 <p>zookeeper는 클러스터로 구성될 시 몇개의 서버가 다운되더라도 과반수 구조에 의해 서비스가 유지된다.</p>
 <p>따라서 일반적으로 클러스터는 홀수개의 서버로 구성된다.</p>

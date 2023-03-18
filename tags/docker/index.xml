@@ -15,7 +15,7 @@ docker search [OPTIONS] &amp;lt;TERM&amp;gt; Registry에 있는 이미지를 검
 </ul>
 </li>
 </ul>
-<p><img loading="lazy" src="../docker-study/1.svg" alt="1"  />
+<p><img loading="lazy" src="/images/notes/docker-study/1.svg" alt="1"  />
 </p>
 <p><a href="https://docs.docker.com/get-started/overview/">https://docs.docker.com/get-started/overview/</a></p>
 <h2 id="도커-명령어">도커 명령어</h2>

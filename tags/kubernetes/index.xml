@@ -230,7 +230,7 @@
 </ul>
 <p>→ 서버가 효율적인 개수를 유지하고 자동화 됨으로써 유지보수 비용이 감소한다.</p>
 <h2 id="overview">Overview</h2>
-<p><img loading="lazy" src="../introduce-kubernetes/1.png" alt="1"  />
+<p><img loading="lazy" src="/images/notes/introduce-kubernetes/1.png" alt="1"  />
 </p>
 <ul>
 <li>서버 한대는 Master, 나머지 서버는 Node가 된다.</li>
@@ -262,7 +262,7 @@
 </li>
 </ul>
 <h2 id="components">Components</h2>
-<p><img loading="lazy" src="../introduce-kubernetes/2.png" alt="2"  />
+<p><img loading="lazy" src="/images/notes/introduce-kubernetes/2.png" alt="2"  />
 </p>
 <ul>
 <li>master 노드
@@ -313,7 +313,7 @@
 <ul>
 <li>강의에서 소개된 환경이 아닌 minikube를 사용한다.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>minikube start <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>minikube start <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --driver<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;docker&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubernetes-version<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;stable&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --nodes<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>

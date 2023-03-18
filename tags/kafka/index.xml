@@ -145,14 +145,14 @@ consumer는 producer가 어떤 메세지를 생산했는지 알 수 없다.</p>
 <p>이는 구조적인 결합도는 낮지만, 메세지 schema에 대한 의존성이 높기 때문인데,
 schema registry는 이를 보완하기 위해 고안되었다.</p>
 <p>Confluent Schema registry는 Avro, Json, Protobuf 등의 schema 정보의 history를 subjects를 통해 관리하며, REST API를 통해 <strong>compatibility settings</strong>을 결정하고 현재 버전과 이전 버전간의 호환성을 지원한다.</p>
-<p><img loading="lazy" src="../schema-registry/schema-registry-kafka.png" alt="schema-registry-kafka.png"  />
+<p><img loading="lazy" src="/images/notes/schema-registry/schema-registry-kafka.png" alt="schema-registry-kafka.png"  />
 </p>
 <p>Schema registry는 kafka boroker와 독립적으로 존재하며, producer와 consumer는 kafka broker와 읽고 쓰는 동안 Schema registry와 동작하며 데이터 모델을 확인할 수 있다.</p>
 <h2 id="2-schemas-subjects-and-topics-란">2. Schemas, Subjects and Topics 란?</h2>
 <p>topic은 kafka의 topic을, schema는 Avro, Json, Protobuf 등으로 정의된 데이터 포맷 구조를 의미한다.</p>
 <p>Subject는 Schema registry에 schema가 등록된 이름이며, 여러 버전의 schema가 등록될 수 있다.</p>
 <p>따라서 Subject를 통해 계속해서 Schema의 정보를 관리할 수 있고, 새로운 버전의 Schema ID와 버전을 확인할 수 있다.</p>
-<p><img loading="lazy" src="../schema-registry/schema-subject-topic.png" alt="schema registry.png"  />
+<p><img loading="lazy" src="/images/notes/schema-registry/schema-subject-topic.png" alt="schema registry.png"  />
 </p>
 <ul>
 <li>kafka topic은 메세지가 포함되어 있으며, 각 메세지는 key - value 쌍으로 되어있으며
@@ -238,13 +238,13 @@ schema registry는 이를 보완하기 위해 고안되었다.</p>
 <p>추천하는 content type은 <code>application/vnd.schemaregistry.v1+json</code>이다.
 v1은 API의 버전이고, json은 직렬화 포맷이다.</p>
 <p>모든 API endpoint는 다음과 같은 error message 포맷을 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">422</span> <span style="color:#960050;background-color:#1e0010">Unprocessable</span> <span style="color:#960050;background-color:#1e0010">Entity</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">422</span> Unprocessable Entity
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;error_code&#34;</span>: <span style="color:#ae81ff">422</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;schema may not be empty&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;error_code&#34;</span>: 422,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;schema may not be empty&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><blockquote>
 <p>추가적으로 요청시 json은 string 형태로 전달해야 한다.</p>
 </blockquote>
@@ -265,12 +265,12 @@ schema (string) - id로 구분한 schema string</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>: <span style="color:#e6db74">&#34;{\&#34;type\&#34;: \&#34;string\&#34;}&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>: <span style="color:#e6db74">&#34;{\&#34;type\&#34;: \&#34;string\&#34;}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="getschemastypes"><code>GET /schemas/types/</code></h4>
 <p>Schema Registry에 저장된 스키마 타입을 요청한다.</p>
 <blockquote>
@@ -285,12 +285,12 @@ schema (string) - Schema Registry에서 현재 사용가능한 스키마 타입<
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#f92672">&#34;JSON&#34;</span>, <span style="color:#f92672">&#34;PROTOBUF&#34;</span>, <span style="color:#f92672">&#34;AVRO&#34;</span><span style="color:#960050;background-color:#1e0010">]</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;JSON&#34;</span>, <span style="color:#e6db74">&#34;PROTOBUF&#34;</span>, <span style="color:#e6db74">&#34;AVRO&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="getschemasidsintidversions"><code>GET /schemas/ids/{int: id}/versions</code></h4>
 <p>Schema Registry에 저장된 스키마 타입을 요청한다.</p>
 <blockquote>
@@ -308,10 +308,10 @@ version - return된 subject의 버전</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[{<span style="color:#f92672">&#34;subject&#34;</span>:<span style="color:#e6db74">&#34;test-subject1&#34;</span>,<span style="color:#f92672">&#34;version&#34;</span>:<span style="color:#ae81ff">1</span>}]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;subject&#34;</span>:<span style="color:#e6db74">&#34;test-subject1&#34;</span>,<span style="color:#e6db74">&#34;version&#34;</span>:1<span style="color:#f92672">}]</span>
 </span></span></code></pre></div><h3 id="subjects-관련">Subjects 관련</h3>
 <blockquote>
 <p>subject resource는 Schema Registry에 저장된 모든 subject 목록을 제공한다.<br>
@@ -334,10 +334,10 @@ name (string) - subject</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#34;subject1&#34;</span>, <span style="color:#e6db74">&#34;subject2&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;subject1&#34;</span>, <span style="color:#e6db74">&#34;subject2&#34;</span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><h4 id="getsubjectsstring-subjectversions"><code>GET /subjects/(string: subject)/versions</code></h4>
 <p>Schema Registry에 저장된 subject의 버전 목록을 요청한다.</p>
 <blockquote>
@@ -354,12 +354,12 @@ version (int) - subject 아래에 저장된 스키마의 버전</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>
-</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>  1, 2, 3, <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><h4 id="deletesubjectsstringsubject"><code>DELETE /subjects/(string: subject)</code></h4>
 <p>등록된 특정 subject를 삭제한다.
 이 API는 topic을 재사용하거나 개발 환경에서만 사용하는 것이 권장된다.</p>
@@ -378,12 +378,12 @@ version (int) - subject 아래에 저장된 스키마의 버전</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>
-</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>  1, 2, 3, <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><h4 id="getsubjectsstringsubjectversionsversionidversion"><code>GET /subjects/(string: subject)/versions/(versionId: version)</code></h4>
 <p>등록된 특정 subject를 요청한다.</p>
 <blockquote>
@@ -406,14 +406,14 @@ schema (string) - schema의 내용</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>: <span style="color:#e6db74">&#34;{\&#34;type\&#34;: \&#34;string\&#34;}&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;version&#34;</span>: 1,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>: <span style="color:#e6db74">&#34;{\&#34;type\&#34;: \&#34;string\&#34;}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="getsubjectsstringsubjectversionsversionidversionschema"><code>GET /subjects/(string: subject)/versions/(versionId: version)/schema</code></h4>
 <p>등록된 특정 subject를 요청한다. unescaped schema만 return 된다.?</p>
 <blockquote>
@@ -434,10 +434,10 @@ schema (string) - schema의 내용</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="postsubjectsstringsubjectversions"><code>POST /subjects/(string: subject)/versions</code></h4>
 <p>등록된 특정 subject에 새로운 스키마를 등록한다.
 만약 성공적으로 등록되면, unique한 스키마의 id가 return 된다.
@@ -461,12 +461,12 @@ schema (string) - schema의 내용</p>
 422 Unprocessable Entity - Invalid version
 500 Internal Server Error - Error in the backend datastore or Operation timed out or Error while forwarding the request to the primary</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST</span> <span style="color:#960050;background-color:#1e0010">/subjects/test/versions</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /subjects/test/versions HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;type\&#34;: \&#34;record\&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;name\&#34;: \&#34;test\&#34;,
@@ -482,20 +482,20 @@ schema (string) - schema의 내용</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     }&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schemaType&#34;</span>: <span style="color:#e6db74">&#34;AVRO&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;references&#34;</span>: [
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;com.acme.Referenced&#34;</span>,
-</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;subject&#34;</span>:  <span style="color:#e6db74">&#34;childSubject&#34;</span>,
-</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  ]
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schemaType&#34;</span>: <span style="color:#e6db74">&#34;AVRO&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;references&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;com.acme.Referenced&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;subject&#34;</span>:  <span style="color:#e6db74">&#34;childSubject&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:1<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="postsubjectsstringsubject"><code>POST /subjects/(string: subject)</code></h4>
 <p>특정 subject에 schema가 이미 등록됐는지 확인한다.
 만약 존재하면 전역적으로 unique한 id와 schema를 return 한다.</p>
@@ -517,12 +517,12 @@ schema (string) - schema의 내용</p>
 404 Not Found - Subject not found
 500 Internal Server Error - Internal server error</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST</span> <span style="color:#960050;background-color:#1e0010">/subjects/test</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /subjects/test HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;schema&#34;</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>         <span style="color:#e6db74">&#34;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                \&#34;type\&#34;: \&#34;record\&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                \&#34;name\&#34;: \&#34;test\&#34;,
@@ -538,14 +538,14 @@ schema (string) - schema의 내용</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              }&#34;</span>
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;subject&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;subject&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#ae81ff">3</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>         <span style="color:#e6db74">&#34;{
@@ -563,7 +563,7 @@ schema (string) - schema의 내용</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              }&#34;</span>
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="deletesubjectsstringsubjectversionsversionidversion"><code>DELETE /subjects/(string: subject)/versions/(versionId: version)</code></h4>
 <p>특정 subject에 등록된 schema의 버전을 삭제한다.
 이 API는 호환성 목적으로 이전에 등록한 스키마를 삭제하거나 이전에 등록한 스키마를 다시 등록해야 하는 개발 환경이나 극단적인 상황에서만 사용하는 것이 좋다.</p>
@@ -605,12 +605,12 @@ id (int) - 전역적으로 unique한 스키마의 id</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>
-</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>  1, 2, 3, <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><h2 id="5-rest-api-interface-reference---compatibility-config">5. REST API Interface Reference - Compatibility, Config</h2>
 <h3 id="compatibility">Compatibility</h3>
 <p>compatibility resource는 모든 버전 또는 특정 버전에 대해 사용자가 스키마의 호환성을 검사할 수 있도록 한다.</p>
@@ -634,12 +634,12 @@ is_compatible (boolean) - 호환가능 여부</p>
 422 Unprocessable Entity - Invalid schema or Invalid version
 500 Internal Server Error - Error in the backend data store</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST</span> <span style="color:#960050;background-color:#1e0010">/compatibility/subjects/test/versions/latest</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /compatibility/subjects/test/versions/latest HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;type\&#34;: \&#34;record\&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;name\&#34;: \&#34;test\&#34;,
@@ -655,14 +655,14 @@ is_compatible (boolean) - 호환가능 여부</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     }&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;is_compatible&#34;</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;is_compatible&#34;</span>: true
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="postcompatibilitysubjectsstringsubjectversions"><code>POST /compatibility/subjects/(string: subject)/versions</code></h4>
 <p>호환성 전략에 따라 subject의 하나의 버전 또는 여러 버전의 호환성을 확인한다.</p>
 <blockquote>
@@ -682,12 +682,12 @@ is_compatible (boolean) - 호환가능 여부</p>
 422 Unprocessable Entity - Invalid schema
 500 Internal Server Error - Error in the backend data store</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST</span> <span style="color:#960050;background-color:#1e0010">/compatibility/subjects/test/versions</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /compatibility/subjects/test/versions
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schema&#34;</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schema&#34;</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;type\&#34;: \&#34;record\&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       \&#34;name\&#34;: \&#34;test\&#34;,
@@ -703,14 +703,14 @@ is_compatible (boolean) - 호환가능 여부</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         ]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     }&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;is_compatible&#34;</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;is_compatible&#34;</span>: true
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="config">Config</h3>
 <h4 id="putconfig"><code>PUT /config</code></h4>
 <p>전역적 호환성 전략을 변경한다.</p>
@@ -723,20 +723,20 @@ compatibility (string) - 새롭게 변경된 호환성 전략을 표시한다.</
 422 Unprocessable Entity - Invalid compatibility level
 500 Internal Server Error - Error in the backend data store or Error while forwarding request to the primary</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">PUT</span> <span style="color:#960050;background-color:#1e0010">/config</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">kafkaproxy.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PUT /config HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: kafkaproxy.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="get-config"><code>**GET /config**</code></h4>
 <p>전역적 호환성 전략을 요청한다.</p>
 <blockquote>
@@ -751,12 +751,12 @@ compatibility (string) - 현재 호환성 전략을 표시한다.</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibilityLevel&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibilityLevel&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="putconfigstring-subject"><code>PUT /config/(string: subject)</code></h4>
 <p>특정 subject에 대한 호환성 전략을 변경한다.</p>
 <blockquote>
@@ -770,20 +770,20 @@ compatibility (string) - 새롭게 변경된 호환성 전략을 표시한다.</
 422 Unprocessable Entity - Invalid compatibility level
 500 Internal Server Error - Error in the backend data store or Error while forwarding request to the primary</p>
 <p><strong>Example request:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">PUT</span> <span style="color:#960050;background-color:#1e0010">/config/test</span> <span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Host:</span> <span style="color:#960050;background-color:#1e0010">schemaregistry.example.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Accept:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json,</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry+json,</span> <span style="color:#960050;background-color:#1e0010">application/json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PUT /config/test HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
+</span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="get-configstring-subject"><code>GET /config/(string: subject)</code></h4>
 <p>특정 subject에 대한 호환성 전략을 요청한다.</p>
 <blockquote>
@@ -803,12 +803,12 @@ compatibility (string) - 현재 호환성 전략을 표시한다.</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;compatibilityLevel&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;compatibilityLevel&#34;</span>: <span style="color:#e6db74">&#34;FULL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h4 id="deleteconfigstringsubject"><code>DELETE /config/(string: subject)</code></h4>
 <p>특정 subject에 대한 호환성 전략을 삭제하고, 전역적 호환성 전략을 사용한다.</p>
 <blockquote>
@@ -824,12 +824,12 @@ subject (string) - subject의 이름</p>
 </span></span><span style="display:flex;"><span>Host: schemaregistry.example.com
 </span></span><span style="display:flex;"><span>Accept: application/vnd.schemaregistry.v1+json, application/vnd.schemaregistry+json, application/json
 </span></span></code></pre></div><p><strong>Example response:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HTTP/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#960050;background-color:#1e0010">OK</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Content-Type:</span> <span style="color:#960050;background-color:#1e0010">application/vnd.schemaregistry.v</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">+json</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Content-Type: application/vnd.schemaregistry.v1+json
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;NONE&#34;</span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;compatibility&#34;</span>: <span style="color:#e6db74">&#34;NONE&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h2 id="6-subject-name-strategy">6. Subject Name Strategy</h2>
 <p>subject 이름을 만들어 내기 위한 subject naming strategy가 있다.</p>
 <table>
@@ -854,8 +854,10 @@ subject (string) - subject의 이름</p>
 </tr>
 </tbody>
 </table>
-<p>&lt;참고&gt;</p>
-<p><a href="https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#">https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#</a></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#">https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#</a></li>
+</ul>
 ]]></content:encoded></item><item><title>Kafka란?</title><link>https://jo-minjun.github.io/notes/kafka/</link><pubDate>Fri, 01 Jul 2022 12:51:30 +0900</pubDate><guid>https://jo-minjun.github.io/notes/kafka/</guid><description>1. kafka 란? apache kafka는 오픈 소스 분산 이벤트 스트리밍 플랫폼이다.
 *데이터 파이프 라인 구성시, 주로 사용되는 오픈 소스로 대용량 실시간 로그 처리에 특화되어 많은 사람들이 사용하고 있다.
 *데이터 파이프 라인: 데이터 처리 단계의 출력이 다음 단계의 입력으로 이어지는 형태로 연결된 구조를 가리킨다.
@@ -886,7 +888,7 @@ subject (string) - subject의 이름</p>
 <p>Pub-Sub (발행-구독) 모델은 특정 시스템에 직접 메세지를 전달하는 시스템이 아니다.</p>
 <p>publisher은 메세지를 <strong>*Topic</strong>을 통해서 분류하여 관리하고, receiver은 전달받기를 원하는 <strong>*Topic</strong>을 구독하여 메세지를 전달 받는다.</p>
 <p>즉 <strong>*kafka cluster</strong>를 중심으로 producer가 push하고, consumer가 메세지를 pull하는 구조이다.</p>
-<p><img loading="lazy" src="../kafka/pub-sub.png" alt="pub-sub"  />
+<p><img loading="lazy" src="/images/notes/kafka/pub-sub.png" alt="pub-sub"  />
 </p>
 <blockquote>
 <p><strong>*kafka cluster:</strong>
@@ -927,18 +929,18 @@ partition을 분담하지 못한 consumer는 idle이 된다.</p>
 이 때 partition 들은 각 메세지의 순차적인 위치인 offset으로 구성된다.</p>
 <p>따라서 offset은 partition 내에서 메세지의 위치를 표시하는 유니크한 숫자이다.
 consumer는 자신이 어디까지 메세지를 처리했는지 offset을 이용해서 관리한다.</p>
-<p><img loading="lazy" src="../kafka/offset.png" alt="offset"  />
+<p><img loading="lazy" src="/images/notes/kafka/offset.png" alt="offset"  />
 </p>
 <h2 id="4-zookeeper-란">4. zookeeper 란?</h2>
 <p>zookeeper는 분산 애플리케이션이 안정적으로 서비스될 수 있도록 각 애플리케이션의 구성 정보를 중앙 집중시키고, 네이밍, 동기화 등의 서비스를 지원한다.</p>
-<p><img loading="lazy" src="../kafka/zookeeper.png" alt="zookeeper"  />
+<p><img loading="lazy" src="/images/notes/kafka/zookeeper.png" alt="zookeeper"  />
 </p>
 <blockquote>
 <p>zookeeper 여러개를 하나의 클러스터로 구성하고, 각각의 zookeeper 서버는 클라이언트 애플리케이션과 커넥션을 유지하며, 상태 정보를 공유한다.</p>
 </blockquote>
 <p>상태 정보는 zookeeper의 데이터 레지스터의 공유 계층 name space에 저장된다. 그리고 이 공간을 znode라고 부른다.</p>
 <p>znode는 key-value 형태이며, 자식 노드를 가지고 있는 계층형 구조로 구성되어 있다.</p>
-<p><img loading="lazy" src="../kafka/znode.png" alt="znode"  />
+<p><img loading="lazy" src="/images/notes/kafka/znode.png" alt="znode"  />
 </p>
 <p>zookeeper는 클러스터로 구성될 시 몇개의 서버가 다운되더라도 과반수 구조에 의해 서비스가 유지된다.</p>
 <p>따라서 일반적으로 클러스터는 홀수개의 서버로 구성된다.</p>

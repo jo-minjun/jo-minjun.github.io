@@ -19,13 +19,13 @@
 <h3 id="형상관리-시스템에서-하나의-코드베이스를-관리하면서-다수에-배포한다">형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다.</h3>
 <p>하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.</p>
 <p>코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.</p>
-<p><img loading="lazy" src="../12-factor-app/codebase.png" alt="codebase"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/codebase.png" alt="codebase"  />
 </p>
 <h2 id="2-dependencies">2. Dependencies</h2>
 <h3 id="의존성을-명시적으로-선언하고-분리한다">의존성을 명시적으로 선언하고 분리한다.</h3>
 <p>의존성은 명시적으로 선언되어, 신규 개발자 또는 시스템 설정을 편리하게 해야합니다.</p>
 <p>대부분의 프로그래밍 언어는 패키징 시스템을 제공하기 때문에 새로 설정을 해야할 때는 언어와 패키지 매니저만 설치하면 됩니다.</p>
-<p><img loading="lazy" src="../12-factor-app/dependencies.png" alt="dependencies"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/dependencies.png" alt="dependencies"  />
 </p>
 <h2 id="3-config">3. Config</h2>
 <h3 id="설정값을-환경에-저장한다">설정값을 환경에 저장한다.</h3>
@@ -35,13 +35,13 @@
 <li>Amazon S3 또는 트위터와 같은 외부 서비스에 대한 인증 정보</li>
 <li>배포 환경 호스트 이름과 같은 값</li>
 </ul>
-<p><img loading="lazy" src="../12-factor-app/config.png" alt="config"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/config.png" alt="config"  />
 </p>
 <h2 id="4-backing-services">4. Backing services</h2>
 <h3 id="backing-service">Backing service</h3>
 <p>Backing 서비스는 데이터베이스와, 메시징, 메일 서비스 등 통해 연결된 모든 서비스입니다.</p>
 <p>12 factor app은 Backing 서비스를 모두 리소스로 취급하고, 설정에서 값을 읽어서 처리하여 느슨하게 연결합니다.</p>
-<p><img loading="lazy" src="../12-factor-app/backing-service.png" alt="backing-service"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/backing-service.png" alt="backing-service"  />
 </p>
 <h2 id="5-build-release-run">5. Build, release, run</h2>
 <h3 id="빌드와-실행-단계를-엄격하게-구분한다">빌드와 실행 단계를 엄격하게 구분한다.</h3>
@@ -56,7 +56,7 @@
 <h3 id="애플리케이션을-하나-이상의-stateless-프로세스로-실행한다">애플리케이션을 하나 이상의 Stateless 프로세스로 실행한다.</h3>
 <p>애플리케이션은 실행 환경에서 하나 이상의 프로세스로 실행됩니다.</p>
 <p>상태는 데이터베이스와 같은 상태 저장 서비스에 저장해야 하며, 애플리케이션은 Stateless하게 유지해야 합니다.</p>
-<p><img loading="lazy" src="../12-factor-app/processes.png" alt="processes"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/processes.png" alt="processes"  />
 </p>
 <h2 id="7-port-binding">7. Port binding</h2>
 <h3 id="포트-바인딩을-통해-서비스-제공을-한다">포트 바인딩을 통해 서비스 제공을 한다.</h3>
@@ -80,7 +80,7 @@
 <h3 id="로그를-이벤트-스트림으로-처리한다">로그를 이벤트 스트림으로 처리한다.</h3>
 <p>애플리케이션은 로그에 관여하면 안되며, 단순히 버퍼링없이 출력할 뿐입니다.</p>
 <p>애플리케이션은 언제든지 생성되고 삭제될 수 있습니다. 따라서 이벤트는 별도 저장소에 보관되는 것이 좋습니다.</p>
-<p><img loading="lazy" src="../12-factor-app/logs.png" alt="logs"  />
+<p><img loading="lazy" src="/images/notes/12-factor-app/logs.png" alt="logs"  />
 </p>
 <h2 id="12-admin-processes">12. Admin processes</h2>
 <h3 id="어드민관리-작업을-일회성-프로세스로-실행해야-한다">어드민/관리 작업을 일회성 프로세스로 실행해야 한다.</h3>
@@ -411,7 +411,7 @@ Formally it represents the target subject of a specific programming project, whe
 <li>복잡도 관리
 <ul>
 <li>시간 경과에 따라 코드 라인이 늘어나고, 변경 비용이 증가한다.
-<img loading="lazy" src="../DDD-study/1.png" alt="1"  />
+<img loading="lazy" src="/images/notes/DDD-study/1.png" alt="1"  />
 
 <a href="https://dreamix.eu/blog/java/why-good-clean-software-architecture-matters">https://dreamix.eu/blog/java/why-good-clean-software-architecture-matters</a></li>
 </ul>
@@ -463,7 +463,7 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>특정 도메인을 개념적으로 표현한 것</li>
 <li>도메인에 대한 이해도에 따라 도메인 모델도 변경된다.
-<img loading="lazy" src="../DDD-study/2.png" alt="2"  />
+<img loading="lazy" src="/images/notes/DDD-study/2.png" alt="2"  />
 </li>
 </ul>
 </li>
@@ -530,7 +530,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 <li>이상적으로는 바운디드 컨텍스트와 하위 도메인이 1대1로 대응되는 것이 좋다.</li>
 <li>하지만 팀 상황이나 유비쿼터스 언어가 명확하게 정의되지 않아 1대1로 대응되지 않는 경우도 있다.
-<img loading="lazy" src="../DDD-study/3.png" alt="3"  />
+<img loading="lazy" src="/images/notes/DDD-study/3.png" alt="3"  />
 </li>
 </ul>
 <h3 id="바운디드-컨텍스트-간-관계">바운디드 컨텍스트 간 관계</h3>
@@ -546,7 +546,7 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>가장 흔한 관계이다.</li>
 <li>한쪽에서 **API를 제공(상류)**하고 다른쪽에서 **API를 호출(하류)**한다.
-<img loading="lazy" src="../DDD-study/4.png" alt="카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다."  />
+<img loading="lazy" src="/images/notes/DDD-study/4.png" alt="카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다."  />
 
 카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다.</li>
 </ul>
@@ -580,37 +580,37 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>특정 바운디드 컨텍스트에 과도하게 집중하면 전체적인 바운디드 컨텍스트 간의 관계를 인식하지 못할 수 있다.</li>
 <li>도메인을 더 잘 이해하거나 컨텍스트 간 관계가 바뀌면 컨텍스트 맵도 바뀐다.
-<img loading="lazy" src="../DDD-study/5.png" alt="5"  />
+<img loading="lazy" src="/images/notes/DDD-study/5.png" alt="5"  />
 </li>
 </ul>
 <h2 id="5-핵사고날-아키텍처">5. 핵사고날 아키텍처</h2>
 <ul>
 <li>예제 프로젝트에 핵사고날 아키텍처를 적용했다.
-<img loading="lazy" src="../DDD-study/6.png" alt="6"  />
+<img loading="lazy" src="/images/notes/DDD-study/6.png" alt="6"  />
 
 <a href="https://reflectoring.io/spring-hexagonal/">https://reflectoring.io/spring-hexagonal/</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">└──</span> xxx
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">├──</span> adapter
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> in
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxController<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> EventHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">(</span>or MessageHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> out
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">└──</span> EventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">(</span>or MessagePublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">├──</span> application
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxService<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> port
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">├──</span> in
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxCommand<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxDto<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> xxxUsecase<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">└──</span> out
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">├──</span> xxxEvent<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">├──</span> xxxEventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">└──</span> xxxRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">└──</span> domain
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">├──</span> AggregateRootEntity<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">└──</span> ValueObject<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>└── xxx
+</span></span><span style="display:flex;"><span>    ├── adapter
+</span></span><span style="display:flex;"><span>    │   ├── in
+</span></span><span style="display:flex;"><span>    │   │   ├── xxxController.java
+</span></span><span style="display:flex;"><span>    │   │   └── EventHandler.java <span style="color:#f92672">(</span>or MessageHandler.java<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    │   └── out
+</span></span><span style="display:flex;"><span>    │       └── EventPublisher.java <span style="color:#f92672">(</span>or MessagePublisher.java<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    ├── application
+</span></span><span style="display:flex;"><span>    │   ├── xxxService.java
+</span></span><span style="display:flex;"><span>    │   └── port
+</span></span><span style="display:flex;"><span>    │       ├── in
+</span></span><span style="display:flex;"><span>    │       │   ├── xxxCommand.java
+</span></span><span style="display:flex;"><span>    │       │   ├── xxxDto.java
+</span></span><span style="display:flex;"><span>    │       │   └── xxxUsecase.java
+</span></span><span style="display:flex;"><span>    │       └── out
+</span></span><span style="display:flex;"><span>    │           ├── xxxEvent.java
+</span></span><span style="display:flex;"><span>    │           ├── xxxEventPublisher.java
+</span></span><span style="display:flex;"><span>    │           └── xxxRepository.java
+</span></span><span style="display:flex;"><span>    └── domain
+</span></span><span style="display:flex;"><span>        ├── AggregateRootEntity.java
+</span></span><span style="display:flex;"><span>        └── ValueObject.java
 </span></span></code></pre></div><h2 id="6-전술적-설계">6. 전술적 설계</h2>
 <h3 id="도메인-영역의-주요-구성-요소">도메인 영역의 주요 구성 요소</h3>
 <table>
@@ -781,11 +781,11 @@ Formally it represents the target subject of a specific programming project, whe
 </span></span><span style="display:flex;"><span><span style="color:#f92672">...</span> <span style="color:#75715e">// 애너테이션
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Delivery</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Id</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Id</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@GeneratedValue</span><span style="color:#f92672">(</span>strategy <span style="color:#f92672">=</span> GenerationType<span style="color:#f92672">.</span><span style="color:#a6e22e">IDENTITY</span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Long id<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Embedded</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Embedded</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Address address<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String phoneNumber<span style="color:#f92672">;</span>
@@ -846,11 +846,11 @@ Formally it represents the target subject of a specific programming project, whe
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DiscountCalculationService</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Money <span style="color:#a6e22e">calculateDiscountAmounts</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>OrderLine<span style="color:#f92672">&gt;</span> orderLines<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>																				List<span style="color:#f92672">&lt;</span>Coupon<span style="color:#f92672">&gt;</span> coupons<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>																				MemberGrade grade<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                                        List<span style="color:#f92672">&lt;</span>Coupon<span style="color:#f92672">&gt;</span> coupons<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                                        MemberGrade grade<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>		Money couponDiscount <span style="color:#f92672">=</span> coupons<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
-</span></span><span style="display:flex;"><span>												<span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>coupon <span style="color:#f92672">-&gt;</span> calculateDiscount<span style="color:#f92672">(</span>coupon<span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>												<span style="color:#f92672">.</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Money<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">),</span> <span style="color:#f92672">(</span>v1<span style="color:#f92672">,</span> v2<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> v1<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>v2<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>coupon <span style="color:#f92672">-&gt;</span> calculateDiscount<span style="color:#f92672">(</span>coupon<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">.</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Money<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">),</span> <span style="color:#f92672">(</span>v1<span style="color:#f92672">,</span> v2<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> v1<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>v2<span style="color:#f92672">));</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>		Money membershipDiscount <span style="color:#f92672">=</span> calculateDiscount<span style="color:#f92672">(</span>orderer<span style="color:#f92672">.</span><span style="color:#a6e22e">getMember</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getGrade</span><span style="color:#f92672">());</span>
 </span></span><span style="display:flex;"><span>
@@ -919,19 +919,19 @@ Formally it represents the target subject of a specific programming project, whe
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderService</span> <span style="color:#66d9ef">implements</span> OrderUsecase <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PaymentPort paymentPort<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PaymentPort paymentPort<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cancelOrder</span><span style="color:#f92672">(</span>Long orderId<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> Order order <span style="color:#f92672">=</span> findOrder<span style="color:#f92672">(</span>orderId<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Payment 도메인 로직
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Payment 도메인 로직
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> Boolean responseFromPayment <span style="color:#f92672">=</span> paymentPort<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelPayment</span><span style="color:#f92672">(</span>order<span style="color:#f92672">.</span><span style="color:#a6e22e">getPaymentId</span><span style="color:#f92672">());</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>responseFromPayment<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;결제 취소 실패&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Order 도메인 로직
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Order 도메인 로직
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    order<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelOrder</span><span style="color:#f92672">();</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
@@ -947,7 +947,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 <li>
 <p>이벤트는 다음과 같이 네 개의 구성요소를 가진다.
-<img loading="lazy" src="../DDD-study/7.png" alt="7.png"  />
+<img loading="lazy" src="/images/notes/DDD-study/7.png" alt="7.png"  />
 </p>
 <ul>
 <li>
@@ -1007,10 +1007,10 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>이벤트 저장소를 이용한 메시징 (<strong>Transactional Outbox Pattern</strong>)</li>
 <li>이벤트 발행 서비스
-<img loading="lazy" src="../DDD-study/8.png" alt="transactional-outbox-pattern.png"  />
+<img loading="lazy" src="/images/notes/DDD-study/8.png" alt="transactional-outbox-pattern.png"  />
 </li>
 <li>이벤트 소비 서비스
-<img loading="lazy" src="../DDD-study/9.png" alt="idempotent-receiver.png"  />
+<img loading="lazy" src="/images/notes/DDD-study/9.png" alt="idempotent-receiver.png"  />
 </li>
 </ul>
 </li>
@@ -1058,7 +1058,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 </ul>
 <h3 id="엔티티-class">엔티티 Class</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/1.png" alt="1"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/1.png" alt="1"  />
 </p>
 <h2 id="2-프로젝트-scaffolding">2. 프로젝트 scaffolding</h2>
 <h3 id="섀시-패턴">섀시 패턴</h3>
@@ -1178,7 +1178,7 @@ Formally it represents the target subject of a specific programming project, whe
 </ul>
 </li>
 </ul>
-<p><img loading="lazy" src="../msa-stack-quick-peek/2.png" alt="2"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/2.png" alt="2"  />
 </p>
 <h3 id="api-first-도구---oas-openapi-specification">API-First 도구 - OAS (OpenApi Specification)</h3>
 <ul>
@@ -1358,7 +1358,7 @@ Formally it represents the target subject of a specific programming project, whe
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew openApiGenerate
 </span></span></code></pre></div><ul>
 <li>Stub을 생성하면 아래의 파일이 생성된다.
-<img loading="lazy" src="../msa-stack-quick-peek/3.png" alt="3"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/3.png" alt="3"  />
 
 <ul>
 <li>model에는 OAS에서 정의한 schema를 가진 DTO가 있다.</li>
@@ -1376,7 +1376,7 @@ Formally it represents the target subject of a specific programming project, whe
 <ul>
 <li>
 <p>서버 코드 스켈레톤을 이용해서 controller를 구현한다.
-<img loading="lazy" src="../msa-stack-quick-peek/4.png" alt="4"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/4.png" alt="4"  />
 </p>
 </li>
 <li>
@@ -1508,7 +1508,7 @@ Formally it represents the target subject of a specific programming project, whe
 <li>이벤트 메세지 또는 커맨드 메세지를 이용하여 상호간에 통신하는 방식</li>
 </ul>
 <h3 id="이벤트">이벤트</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/5.png" alt="5"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/5.png" alt="5"  />
 </p>
 <ul>
 <li>이미 일어난 정보에 대한 메세지이다.</li>
@@ -1522,7 +1522,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 </ul>
 <h3 id="커맨드">커맨드</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/6.png" alt="6"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/6.png" alt="6"  />
 </p>
 <ul>
 <li>수행할 작업에 대한 하나의 시스템에서 다른 시스템으로의 메세지</li>
@@ -1544,7 +1544,7 @@ Formally it represents the target subject of a specific programming project, whe
 <li>별도의 MessageRelay가 주기적으로 OUTBOX 테이블에 있는 메세지를 발행한다.
 <ul>
 <li>MessageRelay는 polling publisher로 구현할 수 있다.
-<img loading="lazy" src="../msa-stack-quick-peek/7.png" alt="transactional-outbox-pattern.png"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/7.png" alt="transactional-outbox-pattern.png"  />
 </li>
 </ul>
 </li>
@@ -1565,7 +1565,7 @@ Formally it represents the target subject of a specific programming project, whe
 </ol>
 <ul>
 <li>(메세지 식별자에 unique 제약조건을 걸어서 구분할 수도 있다.)
-<img loading="lazy" src="../msa-stack-quick-peek/8.png" alt="idempotent-receiver.png"  />
+<img loading="lazy" src="/images/notes/msa-stack-quick-peek/8.png" alt="idempotent-receiver.png"  />
 </li>
 </ul>
 </li>
@@ -1718,7 +1718,7 @@ Formally it represents the target subject of a specific programming project, whe
 </span></span></code></pre></div></li>
 </ul>
 <h3 id="전체-흐름">전체 흐름</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/9.png" alt="messaging-sequence.png"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/9.png" alt="messaging-sequence.png"  />
 </p>
 <h2 id="6-cicd">6. CI/CD</h2>
 <h3 id="cicd란">CI/CD란</h3>
@@ -1798,7 +1798,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 </ul>
 <h3 id="빌드-및-배포-과정">빌드 및 배포 과정</h3>
-<p><img loading="lazy" src="../msa-stack-quick-peek/10.png" alt="10"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/10.png" alt="10"  />
 </p>
 <ol>
 <li>Start</li>
@@ -1844,7 +1844,7 @@ Formally it represents the target subject of a specific programming project, whe
 </li>
 <li>End</li>
 </ol>
-<p><img loading="lazy" src="../msa-stack-quick-peek/11.png" alt="11"  />
+<p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/11.png" alt="11"  />
 </p>
 <ol>
 <li>
@@ -1857,7 +1857,7 @@ Formally it represents the target subject of a specific programming project, whe
 <p>pod가 잘 교체 되는지 확인한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>k9s
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/<span style="color:#f92672">{</span>서비스 이름으로 검색<span style="color:#f92672">}</span>
-</span></span></code></pre></div><p><img loading="lazy" src="../msa-stack-quick-peek/12.png" alt="12"  />
+</span></span></code></pre></div><p><img loading="lazy" src="/images/notes/msa-stack-quick-peek/12.png" alt="12"  />
 </p>
 <ul>
 <li>상단 Context에서 현재 환경을 확인할 수 있다.</li>
@@ -1985,7 +1985,7 @@ Formally it represents the target subject of a specific programming project, whe
 <li><strong>역할</strong>과 <strong>구현</strong>으로 세상을 구분</li>
 </ul>
 <p><strong>운전자 - 자동차 예시</strong></p>
-<p><img loading="lazy" src="./spring-core-basic/0.png" alt="운전자-자동차_예시.png"  />
+<p><img loading="lazy" src="/images/notes/spring-core-basic/0.png" alt="운전자-자동차_예시.png"  />
 </p>
 <ul>
 <li>자동차의 역할(인터페이스)을 3개의 자동차로 구현함</li>
@@ -2032,7 +2032,7 @@ Formally it represents the target subject of a specific programming project, whe
 <li>수 많은 객체 클라이언트와 객체 서버는 서로 협력 관계를 가진다.</li>
 </ul>
 <h3 id="자바-언어의-다형성">자바 언어의 다형성</h3>
-<p><img loading="lazy" src="./spring-core-basic/1.png" alt="오버라이딩.png"  />
+<p><img loading="lazy" src="/images/notes/spring-core-basic/1.png" alt="오버라이딩.png"  />
 </p>
 <ul>
 <li>오버라이딩을 떠올려보자</li>
