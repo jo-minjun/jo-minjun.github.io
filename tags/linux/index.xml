@@ -2,10 +2,1351 @@
 Shell은 bash sh csh zsh등이 있다.
 Shell Script란 운영체제의 Shell을 이용해서 Shell 명령어들을 순차적으로 실행시켜주는 스크립트이다.
 Shell Script를 사용하기 위해서는 다음과 같이 시작해야 한다.
-#!/bin/bash #!/usr/bin/env bash #!/usr/bin/env python3 위와 같이 #!으로 시작하여 Shell의 경로를 선언해준다. 이를 쉬뱅이라 한다. 쉬뱅은 어느 인터프리터가 스크립트의 명령어를 해석할 지 가리킨다. 변수 변수 number=1 string=&amp;#34;string&amp;#34; echo &amp;#34;$number&amp;#34; echo &amp;#34;$string&amp;#34; echo &amp;#34;${number}&amp;#34; echo &amp;#34;${string}&amp;#34; 변수는 위와 같이 공백을 사용하지 않고 선언한다.</description></item><item><title>Linux 주요 커맨드와 옵션들</title><link>https://jo-minjun.github.io/notes/linux-command/</link><pubDate>Fri, 06 Jan 2023 00:01:11 +0900</pubDate><guid>https://jo-minjun.github.io/notes/linux-command/</guid><description>Linux 주요 커맨드와 옵션 커맨드 라인 단축키
+#!/bin/bash #!/usr/bin/env bash #!/usr/bin/env python3 위와 같이 #!으로 시작하여 Shell의 경로를 선언해준다. 이를 쉬뱅이라 한다. 쉬뱅은 어느 인터프리터가 스크립트의 명령어를 해석할 지 가리킨다. 변수 변수 number=1 string=&amp;#34;string&amp;#34; echo &amp;#34;$number&amp;#34; echo &amp;#34;$string&amp;#34; echo &amp;#34;${number}&amp;#34; echo &amp;#34;${string}&amp;#34; 변수는 위와 같이 공백을 사용하지 않고 선언한다.</description><content:encoded><![CDATA[<h2 id="shell-script">Shell Script</h2>
+<ul>
+<li><a href="https://github.com/jo-minjun/shell-script-up-down-game">쉘 스크립트로 만든 UP-DOWN 게임</a></li>
+</ul>
+<h3 id="shell이란">Shell이란</h3>
+<p>운영체제에서 커널과 사용자 사이를 이어주는 역할을 하는 명령어 해석기이다.</p>
+<p>Shell은 <code>bash</code> <code>sh</code> <code>csh</code> <code>zsh</code>등이 있다.</p>
+<h3 id="shell-script란">Shell Script란</h3>
+<p>운영체제의 Shell을 이용해서 Shell 명령어들을 순차적으로 실행시켜주는 스크립트이다.</p>
+<p>Shell Script를 사용하기 위해서는 다음과 같이 시작해야 한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span></code></pre></div><ul>
+<li>위와 같이 <code>#!</code>으로 시작하여 Shell의 경로를 선언해준다. 이를 <strong>쉬뱅</strong>이라 한다.</li>
+<li><strong>쉬뱅</strong>은 어느 인터프리터가 스크립트의 명령어를 해석할 지 가리킨다.</li>
+</ul>
+<h2 id="변수">변수</h2>
+<h3 id="변수-1">변수</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>number<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>string<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;string&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$number<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$string<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>number<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>string<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><ul>
+<li>변수는 위와 같이 공백을 사용하지 않고 선언한다.</li>
+<li>변수명은 대소문자를 구분한다.</li>
+<li>변수명은 숫자를 포함할 수 있으나, 숫자로 시작할 수 없다.</li>
+<li>변수에 숫자를 대입해도 문자열로 취급된다.</li>
+<li>변수는 <code>$변수명</code> 또는 <code>${변수명}</code>으로 사용할 수 있다.</li>
+</ul>
+<h3 id="배열">배열</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>array<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>array<span style="color:#f92672">+=(</span><span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>array[0]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>array[*]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${#</span>array[*]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><ul>
+<li>배열은 각 원소를 공백으로 구분한다.</li>
+<li>원소를 추가할 경우 <code>+=</code>으로 한다.</li>
+<li><code>변수명[index]</code>를 사용해서 특정 인덱스(0 ~ n)의 원소에 접근할 수 있고, <code>변수명[*]</code>으로 모든 원소에 접근할 수 있다.</li>
+<li><code>#변수명[*]</code>으로 원소의 수를 확인할 수 있다.</li>
+</ul>
+<h3 id="미리-정의된-변수">미리 정의된 변수</h3>
+<table>
+<thead>
+<tr>
+<th>변수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>쉘 스크립트의 파일명</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>쉘 스크립트에 전달된 인자의 수</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>쉘 스크립트의 PID</td>
+</tr>
+<tr>
+<td>$1 ~ $n</td>
+<td>쉘 스크립트에 전달된 인자 값</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>쉘 스크립트에 전달된 인자들의 문자열</td>
+</tr>
+</tbody>
+</table>
+<h2 id="비교-연산자">비교 연산자</h2>
+<h3 id="변수-비교-연산자">변수 비교 연산자</h3>
+<table>
+<thead>
+<tr>
+<th>연산자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-z ${변수A}</td>
+<td>변수A의 문자열 길이가 0이면 참</td>
+</tr>
+<tr>
+<td>-n ${변수A}</td>
+<td>변수A의 문자열 길이가 0이 아니면 참</td>
+</tr>
+<tr>
+<td>${변수A} -eq ${변수B}</td>
+<td>변수A와 변수B의 값이 같으면 참</td>
+</tr>
+<tr>
+<td>${변수A} -ne ${변수B}</td>
+<td>변수A와 변수B의 값이 다르면 참</td>
+</tr>
+<tr>
+<td>${변수A} -gt ${변수B}</td>
+<td>변수A의 값이 변수B의 값보다 크면 참</td>
+</tr>
+<tr>
+<td>${변수A} -ge ${변수B}</td>
+<td>변수A의 값이 변수B의 값보다 크거나 같으면 참</td>
+</tr>
+<tr>
+<td>${변수A} -lt ${변수B}</td>
+<td>변수A의 값이 변수B의 값보다 작으면 참</td>
+</tr>
+<tr>
+<td>${변수A} -le ${변수B}</td>
+<td>변수A의 값이 변수B의 값보다 작거나 같으면 참</td>
+</tr>
+<tr>
+<td>연산1 -a 연산2</td>
+<td>연산1과 연산2가 모두 참이면 참</td>
+</tr>
+<tr>
+<td>연산1 -o 연산2</td>
+<td>연산1과 연산2중 하나라도 참이면 참</td>
+</tr>
+</tbody>
+</table>
+<h3 id="파일디렉터리-비교-연산자">파일/디렉터리 비교 연산자</h3>
+<table>
+<thead>
+<tr>
+<th>연산자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d ${A}</td>
+<td>A가 디렉터리면 참</td>
+</tr>
+<tr>
+<td>-e ${A}</td>
+<td>A파일이 존재하면 참</td>
+</tr>
+<tr>
+<td>-L ${A}</td>
+<td>A파일이 심볼릭 링크면 참</td>
+</tr>
+<tr>
+<td>-r ${A}</td>
+<td>A파일에 읽기 권한이 존재하면 참</td>
+</tr>
+<tr>
+<td>-w ${A}</td>
+<td>A파일에 쓰기 권한이 존재하면 참</td>
+</tr>
+<tr>
+<td>-x ${A}</td>
+<td>A파일에 실행 권한이 존재하면 참</td>
+</tr>
+<tr>
+<td>-s ${A}</td>
+<td>A파일의 크기가 0보다 크면 참</td>
+</tr>
+<tr>
+<td>-f ${A}</td>
+<td>A파일이 존재하면 참</td>
+</tr>
+<tr>
+<td>${A} -nt ${B}</td>
+<td>A파일이 B파일보다 최신 파일이면 참</td>
+</tr>
+<tr>
+<td>${A} -ot ${B}</td>
+<td>A파일이 B파일보다 이전 파일이면 참</td>
+</tr>
+<tr>
+<td>${A} -ef ${B}</td>
+<td>A파일이 B파일과 같은 파일이면 참</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>주로 <code>-d</code> <code>-f</code> 를 자주 사용한다.</li>
+</ul>
+<h2 id="제어문">제어문</h2>
+<h3 id="분기문">분기문</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> 비교 연산자 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> 비교 연산자 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><ul>
+<li><code>if</code>로 시작하고 <code>fi</code>로 끝난다.</li>
+<li>분기문에서 비교 연산은 <code>[ 비교 연산자 ]; then</code> 구분을 사용한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">case</span> target in
+</span></span><span style="display:flex;"><span>	값1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span>	;;
+</span></span><span style="display:flex;"><span>	값2|값3<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span>	;;
+</span></span><span style="display:flex;"><span>	*<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span>	;;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">esac</span>
+</span></span></code></pre></div><ul>
+<li><code>case</code>로 시작하고 <code>esac</code>로 끝난다.</li>
+<li><code>;;</code> 를 이용해서 break를 할 수 있다.</li>
+</ul>
+<h3 id="반복문">반복문</h3>
+<p>반복문은 공통적으로 <code>do</code>로 시작하고 <code>done</code>으로 끝난다.</p>
+<p><code>continue</code>와 <code>break</code>를 이용해서 반복문을 제어할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>비교 연산자<span style="color:#f92672">)</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#e6db74">${</span>array[*]<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><ul>
+<li>배열의 각 요소에 접근한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>0..10<span style="color:#f92672">}</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><ul>
+<li>0 ~ 10 범위의 값을 접근한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span> i <span style="color:#f92672">=</span> 0; i &lt; 10; i++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><ul>
+<li>0 ~ 10 범위의 값을 접근한다.</li>
+</ul>
+]]></content:encoded></item><item><title>Linux 주요 커맨드와 옵션들</title><link>https://jo-minjun.github.io/notes/linux-command/</link><pubDate>Fri, 06 Jan 2023 00:01:11 +0900</pubDate><guid>https://jo-minjun.github.io/notes/linux-command/</guid><description>Linux 주요 커맨드와 옵션 커맨드 라인 단축키
 ctrl + a: 커서를 라인 가장 앞으로 옮긴다. ctrl + e: 커서를 라인 가장 뒤로 옮긴다. ctrl + k: 커서를 기준으로 뒤쪽을 모두 지운다. 유틸리티 piping, redirect
-&amp;lt;COMMAND&amp;gt; | &amp;lt;COMMAND&amp;gt; |를 기준으로 앞 커맨드의 표준 출력을 뒷 커맨드의 표준 입력으로 사용한다. curl -s https://apigateway.dev1.meshdev.io/neogeo/management/info | jq &amp;lt;COMMAND&amp;gt; &amp;lt; &amp;lt;FILE&amp;gt; &amp;lt;COMMAND&amp;gt; &amp;gt; &amp;lt;FILE&amp;gt; &amp;lt;COMMAND&amp;gt; 1&amp;gt; &amp;lt;FILE&amp;gt; # 위 명령어와 같다. &amp;lt;COMMAND&amp;gt; 2&amp;gt; &amp;lt;FILE&amp;gt; # 커맨드의 에러 내용을 파일에 덮어 쓴다.</description></item><item><title>Linux 배포판 별 패키지 매니저</title><link>https://jo-minjun.github.io/notes/linux-package-manager/</link><pubDate>Thu, 05 Jan 2023 20:45:12 +0900</pubDate><guid>https://jo-minjun.github.io/notes/linux-package-manager/</guid><description>배포판 별 패키지 매니저 alpine 참고: Working with the Alpine Package Keeper (apk)
+&amp;lt;COMMAND&amp;gt; | &amp;lt;COMMAND&amp;gt; |를 기준으로 앞 커맨드의 표준 출력을 뒷 커맨드의 표준 입력으로 사용한다. curl -s https://apigateway.dev1.meshdev.io/neogeo/management/info | jq &amp;lt;COMMAND&amp;gt; &amp;lt; &amp;lt;FILE&amp;gt; &amp;lt;COMMAND&amp;gt; &amp;gt; &amp;lt;FILE&amp;gt; &amp;lt;COMMAND&amp;gt; 1&amp;gt; &amp;lt;FILE&amp;gt; # 위 명령어와 같다. &amp;lt;COMMAND&amp;gt; 2&amp;gt; &amp;lt;FILE&amp;gt; # 커맨드의 에러 내용을 파일에 덮어 쓴다.</description><content:encoded><![CDATA[<h2 id="linux-주요-커맨드와-옵션">Linux 주요 커맨드와 옵션</h2>
+<p><strong>커맨드 라인 단축키</strong></p>
+<ul>
+<li>ctrl + a: 커서를 라인 가장 앞으로 옮긴다.</li>
+<li>ctrl + e: 커서를 라인 가장 뒤로 옮긴다.</li>
+<li>ctrl + k: 커서를 기준으로 뒤쪽을 모두 지운다.</li>
+</ul>
+<h3 id="유틸리티">유틸리티</h3>
+<p><strong>piping, redirect</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;COMMAND&gt; | &lt;COMMAND&gt;
+</span></span></code></pre></div><ul>
+<li><code>|</code>를 기준으로 앞 커맨드의 표준 출력을 뒷 커맨드의 표준 입력으로 사용한다.</li>
+<li><code>curl -s https://apigateway.dev1.meshdev.io/neogeo/management/info | jq</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;COMMAND&gt; &lt; &lt;FILE&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;COMMAND&gt; &gt; &lt;FILE&gt;
+</span></span><span style="display:flex;"><span>&lt;COMMAND&gt; 1&gt; &lt;FILE&gt; <span style="color:#75715e"># 위 명령어와 같다.</span>
+</span></span><span style="display:flex;"><span>&lt;COMMAND&gt; 2&gt; &lt;FILE&gt; <span style="color:#75715e"># 커맨드의 에러 내용을 파일에 덮어 쓴다.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;COMMAND&gt; &gt;&gt; &lt;FILE&gt;
+</span></span></code></pre></div><ul>
+<li><code>&lt;</code>는 뒷 파일의 내용을 커맨드의 입력으로 사용한다.</li>
+<li><code>&gt;</code>는 앞 커맨드의 결과를 파일 등에 덮어 쓴다.</li>
+<li><code>&gt;&gt;</code>는 앞 커맨드의 결과를 파일 등에 추가한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt; EOT &gt; template.json
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;tag&#34;: &#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOT</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat template.json
+</span></span></code></pre></div><p><strong>grep</strong></p>
+<ul>
+<li>지정한 패턴이나 문자열에 매칭되는 내용만 출력한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>PATTERN<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>FILE<span style="color:#f92672">]</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-c</th>
+<th>패턴이 일치하는 행의 수를 출력한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>대소문자를 구분하지 않는다.</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>패턴이 일치하는 않는 내용만 출력한다.</td>
+</tr>
+<tr>
+<td>-A <!-- raw HTML omitted --></td>
+<td>패턴 일치 줄 이후 n개 라인을 출력한다.</td>
+</tr>
+<tr>
+<td>-B <!-- raw HTML omitted --></td>
+<td>패턴 일치 줄 이전 n개 라인을 출력한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>watch</strong></p>
+<ul>
+<li>COMMAND의 결과를 계속해서 보여준다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>watch <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;COMMAND&gt;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-d</th>
+<th>변경된 부분을 표시한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n <!-- raw HTML omitted --></td>
+<td>m초 주기로 리프레쉬한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>time</strong></p>
+<ul>
+<li>특정 명령어 또는 프로그램의 수행 시간을 보여준다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>time &lt;COMMAND&gt;
+</span></span></code></pre></div><ul>
+<li>real: 총 수행 시간</li>
+<li>user: CPU가 사용자 영역에서 보낸 시간</li>
+<li>sys: CPU가 커널 영역에서 보낸 시간</li>
+</ul>
+<p><strong>xargs</strong></p>
+<ul>
+<li>앞 커맨드의 수행 결과를 뒤 커맨드의 인자로 넘긴다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;COMMAND&gt; | xargs &lt;COMMAND&gt;
+</span></span></code></pre></div><ul>
+<li>아무 커맨드를 입력하지 않으면 <code>echo</code>가 수행된다.</li>
+</ul>
+<h3 id="파일dir">파일/DIR</h3>
+<p><strong>cat</strong></p>
+<ul>
+<li>파일 이름을 받아서 내용을 터미널에 출력한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;FILE_NAME&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat name <span style="color:#75715e"># name 파일의 내용을 터미널에 출력한다.</span>
+</span></span><span style="display:flex;"><span>cat name1 name2 <span style="color:#75715e"># name1, name2 파일의 내용을 터미널에 출력한다.</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-b</th>
+<th>줄번호를 출력한다. 비어있는 행은 포함하지 않는다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>줄번호를 출력한다. 비어있는 행을 포함한다.</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>2개 이상의 빈 행을 한 행으로 출력한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>touch</strong></p>
+<ul>
+<li>파일의 날짜와 시간을 수정하는 명령어다.</li>
+<li>빈 파일을 생성하기 위해 자주 사용된다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>touch <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;FILE_NAME&gt; <span style="color:#75715e"># 파일이 없으면 생성하고, 접근 시간, 상태 변경 시간, 수정 시간을 현재로 변경</span>
+</span></span></code></pre></div><p><strong>mkdir</strong></p>
+<ul>
+<li>디렉토리를 생성한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;DIRECTORY_NAME&gt;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-m &ndash;mode</th>
+<th>권한을 함께 부여한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-p &ndash;parent</td>
+<td>상위 디렉토리를 같이 생성한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>rm</strong></p>
+<ul>
+<li>파일이나 디렉토리를 삭제한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;FILE_NAME | DIRECTORY_NAME&gt;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-f &ndash;force</th>
+<th>삭제 여부를 묻지 않는다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-r &ndash;recursive</td>
+<td>해당 디렉토리와 해당 디렉토리 하위의 모든 파일과 디렉토리를 삭제한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>tree</strong></p>
+<ul>
+<li>디렉토리의 하위 구조를 계층적으로 보여준다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tree <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;DIRECTORY_NAME&gt;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-L <!-- raw HTML omitted --></th>
+<th>하위 구조의 레벨을 지정한다. (해당 레벨까지 출력)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>파일은 제외하고 디렉토리만 출력한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>echo</strong></p>
+<ul>
+<li>텍스트를 터미널에 출력한다.</li>
+<li>텍스트에 특수문자가 있는 경우 <code>&quot;&lt;text&gt;&quot;</code>로 명시해주어야 한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;TEXT&gt;
+</span></span></code></pre></div><p><strong>sed</strong></p>
+<p><a href="https://www.computerhope.com/unix/used.htm">Linux sed command help and examples</a></p>
+<ul>
+<li>파일을 수정하는 stream editor이다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed OPTIONS... <span style="color:#f92672">[</span>SCRIPT<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>INPUT_FILE<span style="color:#f92672">]</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-i</th>
+<th>결과를 터미널에 출력하지 않고 파일에서 처리한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-r</td>
+<td>정규식을 사용한다.</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>적용 부분만 구분해서 출력한다.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>&rsquo;s/문자1/문자2/'</th>
+<th>문자1을 문자2로 대체한다. (/은 (공백)</th>
+<th>. 으로 사용해도 된다.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&rsquo;n,ms/문자1/문자2/'</td>
+<td>n ~ m 번 줄에서 문자1을 문자2로 대체한다.</td>
+<td></td>
+</tr>
+<tr>
+<td>&rsquo;n,mp'</td>
+<td>n ~ m 번 줄을 출력한다.</td>
+<td></td>
+</tr>
+<tr>
+<td>&rsquo;n,md'</td>
+<td>n ~ m 번 줄을 지운다.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gsed <span style="color:#e6db74">&#39;s/&#34;tag&#34;: ./&#34;tag&#34;: &#34;latest&#34;/g&#39;</span> template.json &gt; output.json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat output.json
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>file: mail
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>billy@example.org
+</span></span><span style="display:flex;"><span>tom@example.org
+</span></span><span style="display:flex;"><span>jay@example.org
+</span></span><span style="display:flex;"><span>root@example.org
+</span></span></code></pre></div><ul>
+<li>billy와 tom의 example.org만 example.com으로 변경하고 싶은 경우</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gsed -i -r <span style="color:#e6db74">&#39;s/^(billy|tom)@example.org/\1@example.com/&#39;</span> file
+</span></span></code></pre></div><ul>
+<li>1~2번 라인만 출력하고 싶은 경우</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gsed -n <span style="color:#e6db74">&#39;1,2p&#39;</span> file
+</span></span></code></pre></div><ul>
+<li>1~2번 라인을 지우고 출력하고 싶은 경우</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gsed <span style="color:#e6db74">&#39;1,2d&#39;</span> file
+</span></span></code></pre></div><p><strong>tee</strong></p>
+<ul>
+<li>입력과 출력을 동시에 한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tee <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>FILE<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>출력을 redirection할 경우 파일이 root 권한이라면 실패한다.</li>
+<li>이 경우 tee를 사용할 수 있다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo echo <span style="color:#e6db74">&#34;TEXT&#34;</span> &gt; ROOT_FILE <span style="color:#75715e"># permission denied</span>
+</span></span><span style="display:flex;"><span>sudo echo <span style="color:#e6db74">&#34;TEXT&#34;</span> | tee ROOT_FILE
+</span></span></code></pre></div><p><strong>less</strong></p>
+<ul>
+<li>내용을 터미널에 출력한다.</li>
+<li>위 → 아래, 아래 → 위 방향으로 이동할 수 있다.</li>
+<li>종료하려면 q를 눌러야 한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>less file
+</span></span></code></pre></div><p><strong>more</strong></p>
+<ul>
+<li>파일의 내용을 터미널에 출력한다.</li>
+<li>위 → 아래 방향으로만 이동 가능하다.</li>
+<li>가장 아래로 이동하면 more가 종료된다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>more file
+</span></span></code></pre></div><p><strong>ls</strong></p>
+<ul>
+<li>디렉토리에 있는 파일이나 디렉토리를 출력한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>DIRECTORY<span style="color:#f92672">]</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-a</th>
+<th>모든 파일과 디렉토리를 보여준다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>사용자의 권한, 소유자, 크기, 날짜 등 디테일 정보를 보여준다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>which</strong></p>
+<ul>
+<li>특정 명령어의 위치를 출력한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>which <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> COMMAND
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-n <!-- raw HTML omitted --></th>
+<th>옵션은 모든 위치에서의 명령어를 찾는다.</th>
+</tr>
+</thead>
+</table>
+<p><strong>head</strong></p>
+<ul>
+<li>파일의 앞 부분을 출력한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>head <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> FILE
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-n <!-- raw HTML omitted --></th>
+<th>파일의 앞 부분 m줄 만큼 출력한다.</th>
+</tr>
+</thead>
+</table>
+<p><strong>tail</strong></p>
+<ul>
+<li>파일의 끝 부분을 출력한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tail <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> FILE
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-n <!-- raw HTML omitted --></th>
+<th>파일의 끝 부분 m줄 만큼 출력한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>파일의 끝부터 10줄을 출력하고, 새로 입력되는 정보를 계속해서 출력한다.</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>파일이 변경되어도 계속해서 추적하며 출력한다. (삭제되어도 다시 파일이 생기면 출력)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>tar</strong></p>
+<ul>
+<li>여러개의 파일과 디렉토리를 하나의 파일로 묶거나 해제한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;TARGET&gt;
+</span></span><span style="display:flex;"><span>tar cvf name.tar ./dir <span style="color:#75715e"># tar 생성</span>
+</span></span><span style="display:flex;"><span>tar xvf name.tar <span style="color:#75715e"># tar 해제</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>c</th>
+<th>tar 파일 생성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>tar 파일 해제</td>
+</tr>
+<tr>
+<td>v</td>
+<td>생성 또는 해제 시 파일 리스트 출력</td>
+</tr>
+<tr>
+<td>t</td>
+<td>tar에 포함된 내용 확인</td>
+</tr>
+<tr>
+<td>f</td>
+<td>파일 이름 지정</td>
+</tr>
+</tbody>
+</table>
+<p><strong>gzip / gunzip</strong></p>
+<ul>
+<li>gzip: 파일을 압축한다.</li>
+<li>gunzip: gz파일을 해제한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gzip <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;TARGET&gt;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-<!-- raw HTML omitted --></th>
+<th>n(1 ~ 9)은 압축 속도이다. 압축 속도가 빠르면 압축률이 낮아진다. (1: 빠름, 9: 느림)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>압축 결과를 출력하고 원본은 유지한다.</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>압축을 해제한다.</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>압축 시 자세한 정보를 출력한다. (진행률 등)</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>디렉토리의 모든 파일을 압축한다.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gunzip <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;TARGET&gt;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-l</th>
+<th>압축 파일 정보를 출력한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-v</td>
+<td>해제 시 자세한 정보를 출력한다. (진행률 등)</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>디렉토리의 모든 파일을 해제한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>zip / unzip</strong></p>
+<ul>
+<li>zip: 파일 또는 디렉토리를 압축한다.</li>
+<li>unzip: zip 파일을 해제한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zip <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;ZIP_NAME.zip&gt; &lt;TARGET...&gt;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-<!-- raw HTML omitted --></th>
+<th>압축 정도 (0: store only ~ 9: compress better)</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-e</td>
+<td>압축 파일에 암호 적용</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-s &lt;n(k</td>
+<td>m</td>
+<td>g</td>
+<td>t)&gt;</td>
+<td>분할 압축 (k: kilobytes, m: megabytes, g: gigabytes, t: terabytes)</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>메시지 출력 제한</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-r</td>
+<td>하위 디렉토리의 파일과 숨겨진 파일을 포함한다.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>upzip <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;TARGET&gt;
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>-d</th>
+<th>특정 디렉토리에 zip을 해제한다.</th>
+</tr>
+</thead>
+</table>
+<p><strong>chmod</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;MODE&gt; &lt;TARGET&gt;
+</span></span></code></pre></div><ul>
+<li>파일 또는 디렉토리의 권한 등을 변경한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-R</th>
+<th>지정한 모드를 하위 디렉토리 및 파일에 전부 적용한다.</th>
+</tr>
+</thead>
+</table>
+<table>
+<thead>
+<tr>
+<th>000</th>
+<th>모든 사용자가 r/w/x 불가능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>440</td>
+<td>소유자 및 그룹은 r 가능, 그 외에는 불가능</td>
+</tr>
+<tr>
+<td>664</td>
+<td>소유자 및 그룹은 r/w 가능, 그 외에는 r만 가능</td>
+</tr>
+<tr>
+<td>755</td>
+<td>소유자는 r/w/x 가능, 그룹 및 그 외에는 r/x만 가능</td>
+</tr>
+<tr>
+<td>777</td>
+<td>모든 사용자가 r/w/x 가능</td>
+</tr>
+</tbody>
+</table>
+<h3 id="네트워크">네트워크</h3>
+<p><strong>curl</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;URL&gt;
+</span></span></code></pre></div><ul>
+<li>여러 통신 프로토콜을 이용해서 데이터를 전송한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-X <!-- raw HTML omitted --></th>
+<th>HTTP METHOD를 지정한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-H <!-- raw HTML omitted --></td>
+<td>HEADER 값을 지정한다.</td>
+</tr>
+<tr>
+<td>-d <!-- raw HTML omitted --></td>
+<td>BODY에 들어갈 값을 지정한다.</td>
+</tr>
+<tr>
+<td>-T <!-- raw HTML omitted --></td>
+<td>PUT 방식으로 파일을 업로드 한다.</td>
+</tr>
+<tr>
+<td>-b <!-- raw HTML omitted --></td>
+<td>쿠키를 지정한다.</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>진행 상태, 에러 메세지 등을 보여주지 않는다.</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>헤어 등의 데이터를 추가로 보여준다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>wget</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;URL&gt;
+</span></span></code></pre></div><ul>
+<li>웹에서 파일 다운로드를 한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-c</th>
+<th>중단된 파일 다운로드를 다시 시작한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>파일 다운로드를 백그라운드로 한다.</td>
+</tr>
+<tr>
+<td>-O <!-- raw HTML omitted --></td>
+<td>파일의 이름을 지정한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>nc</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nc <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>HOST<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>PORT<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>TCP 또는 UDP 프로토콜을 사용하는 네트워크 환경에서 데이터를 읽고 쓴다.</li>
+<li>일반적으로 서버의 포트 상태를 확인과 접속 가능 여부를 확인하기 위해 사용한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-z</th>
+<th>포트 스캔만 진행한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-v</td>
+<td>더 많은 정보를 출력한다.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nc -z google.com <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><p><strong>telnet</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>telnet <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>HOST<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>PORT<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>원격으로 호스트에 접속한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-l <!-- raw HTML omitted --></th>
+<th>접속할 ID를 지정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>현재 사용자를 ID로 지정</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>telnet</code>만 입력하면 LINEMODE로 진입한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>?</th>
+<th>사용법을 출력한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logout</td>
+<td>사용자가 로그아웃하며 접속을 해제한다.</td>
+</tr>
+<tr>
+<td>open</td>
+<td>지정한 호스트로 연결한다.</td>
+</tr>
+<tr>
+<td>quit</td>
+<td>텔넷을 종료한다.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>텔넷의 상태를 출력한다.</td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>telnet google.com <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>GET / HTTP/1.1
+</span></span></code></pre></div><p><strong>openssl</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># rsa 개인키 생성</span>
+</span></span><span style="display:flex;"><span>openssl genrsa <span style="color:#f92672">[</span>-des3<span style="color:#f92672">]</span> -out PRIVATE_KEY_NAME.key <span style="color:#f92672">[</span>BIT_SIZE;1024, 2048<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># rsa 공개키 생성</span>
+</span></span><span style="display:flex;"><span>openssl rsa -in PRIVATE_KEY_NAME.key -pubout -out PUBLIC_KEY_NAME.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 인증서 생성</span>
+</span></span><span style="display:flex;"><span>openssl req -new -key PRIVATE_KEY_NAME.key <span style="color:#f92672">[</span>-days n<span style="color:#f92672">]</span> -out certification.csr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HTTPS 통신</span>
+</span></span><span style="display:flex;"><span>openssl s_client -connect google.com:443
+</span></span></code></pre></div><ul>
+<li>SSL/TLS 프로토콜을 이용하기 위한 오픈소스 라이브러리이다.</li>
+<li><code># rsa 비밀키 생성</code>
+<ul>
+<li>공개키 암호화 방식의 개인키를 생성한다.</li>
+<li><code>-des3</code> 옵션을 넣으면 des3 대칭키 알고리즘으로 한 번 더 암호화 해준다.
+<ul>
+<li>비밀키를 추가로 요구한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code># rsa 공개키 생성</code>
+<ul>
+<li>공개키 암호화 방식의 공개키를 생성한다.</li>
+</ul>
+</li>
+<li><code># 인증서 생성</code>
+<ul>
+<li>개인키로 서명한 인증서를 생성한다.</li>
+<li><code>-days</code> 옵션으로 유효한 기간을 설정할 수 있다.</li>
+<li>인증서는 공개키와 발급자 정보를 식별하는 정보를 가지고 있다.</li>
+<li>이 명령어를 수행하면 몇 가지 정보를 요청한다. (국가, 회사, 이메일 등)</li>
+</ul>
+</li>
+</ul>
+<p><strong>ab</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ab <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> &lt;HOST&gt;<span style="color:#f92672">[</span>:PORT<span style="color:#f92672">][</span>/PATH<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>아파치가 제공하는 HTTP 서버 성능 검증 도구이다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-n <!-- raw HTML omitted --></th>
+<th>요청의 전체 수, m번 만큼 전체 요청을 수행한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c <!-- raw HTML omitted --></td>
+<td>동시에 요청하는 수, n개의 요청을 동시에 한다.</td>
+</tr>
+<tr>
+<td>-H</td>
+<td>요청 헤더를 지정한다.</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>요청 쿠키를 지정한다.</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>요청 Content-type을 지정한다.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ab -n <span style="color:#ae81ff">10</span> -c <span style="color:#ae81ff">2</span> https://apigateway.dev1.meshdev.io/neogeo/management/info
+</span></span></code></pre></div><p><strong>nslookup</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nslookup <span style="color:#f92672">[</span>-type<span style="color:#f92672">=</span>&lt;TYPE&gt;<span style="color:#f92672">]</span> DOMAIN_NAME <span style="color:#f92672">[</span>DNS<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>DNS 서버에서 도메인의 정보를 조회한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-type=soa</th>
+<th>origin DNS를 조회한다.</th>
+</tr>
+</thead>
+</table>
+<p><strong>host</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>host <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> NAME
+</span></span></code></pre></div><ul>
+<li>DNS 서버에서 도메인의 정보를 조회한다.</li>
+</ul>
+<p><strong>netstat</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>netstat <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>네트워크 연결상태, 인터페이스 상태 등을 보여준다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>모든 소켓 확인한다.</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>라우팅 테이블 확인한다.</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>호스트 이름을 ip 주소로 보여준다.</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>TCP 소켓을 확인한다.</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>UDP 소켓을 확인한다.</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>PID/program name을 확인한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>traceroute</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>traceroute <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> HOST
+</span></span></code></pre></div><ul>
+<li>HOST까지 가는 네트워크 경로를 확인해준다.</li>
+</ul>
+<h3 id="프로세스">프로세스</h3>
+<p><strong>top</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>top <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>실시간으로 시스템의 프로세스 상태를 확인한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-b</th>
+<th>배치 모드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n <!-- raw HTML omitted --></td>
+<td>m 후에 인터렉션 종료 (top 화면을 나간다.)</td>
+</tr>
+<tr>
+<td>-d <!-- raw HTML omitted --></td>
+<td>화면 새로고침 주기</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>shift + p</th>
+<th>CPU 사용률 내림차순</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shift + m</td>
+<td>메모리 사용률 내림차순</td>
+</tr>
+<tr>
+<td>shift + t</td>
+<td>프로세스 런타임 내림차순</td>
+</tr>
+<tr>
+<td>k</td>
+<td>PID 작성시 kill</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ps</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>현재 실행중인 프로세스의 목록과 상태를 보여준다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-A</th>
+<th>모든 프로세스를 출력한다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>풀 포맷으로 보여준다. (UID, PPID 등)</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>현재 실행 중인 프로세스를 보여준다.</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>커널 프로세스를 제외한 모든 프로세스를 출력한다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>kill / pkill</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kill <span style="color:#f92672">[</span>SIGNAL<span style="color:#f92672">]</span> PID
+</span></span></code></pre></div><ul>
+<li>PID를 이용해서 프로세스에 signal을 보낸다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pkill <span style="color:#f92672">[</span>SIGNAL<span style="color:#f92672">]</span> NAME
+</span></span></code></pre></div><ul>
+<li>프로세스 이름을 이용해서 프로세스에 signal을 보낸다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>9</th>
+<th>SIGKILL</th>
+<th>강제 종료 시그널</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15</td>
+<td>SIGTERM</td>
+<td>정상 종료 시그널 (termination)</td>
+</tr>
+</tbody>
+</table>
+<pre tabindex="0"><code>kill vs terminate
+- kill
+	- It is more like pressing PC power and reset button.
+		It wont save any logs or other data.
+- terminate
+		- it will store all your data before shutting down
+		(write data from RAM to disk, logs, etc)
+</code></pre><p><strong>pgrep</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pgrep <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>PATTERN<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>패턴에 일치하는 프로세스 정보를 출력한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-u <!-- raw HTML omitted --></th>
+<th>특정 유저가 실행시킨 프로세스를 검색한다. (이름)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-U <!-- raw HTML omitted --></td>
+<td>특정 유저가 실행시킨 프로세스를 검색한다. (UID)</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>특정 그룹이 실행시킨 프로세스를 검색한다. (이름)</td>
+</tr>
+<tr>
+<td>-G</td>
+<td>특정 그룹이 실행시킨 프로세스를 검색한다. (이름)</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>프로세스 이름을 같이 출력한다.</td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded></item><item><title>Linux 배포판 별 패키지 매니저</title><link>https://jo-minjun.github.io/notes/linux-package-manager/</link><pubDate>Thu, 05 Jan 2023 20:45:12 +0900</pubDate><guid>https://jo-minjun.github.io/notes/linux-package-manager/</guid><description>배포판 별 패키지 매니저 alpine 참고: Working with the Alpine Package Keeper (apk)
 apk [&amp;lt;OPTIONS&amp;gt;...] COMMAND [&amp;lt;ARGUMENTS&amp;gt;...] 존재하는 리포지터리(repository)는 다음과 같다. main 공식적으로 지원하는 패키지들 community testing 리포지터리에서 테스트된 패키지들 testing 새롭거나, 손상됐거나, 오래된 테스트가 필요한 패키지들 Updating repository
 apk update 리포지터리 인덱스를 업데이트한다. Searching
 apk search [&amp;lt;OPTIONS&amp;gt;...] PATTERN... 리포지터리에서 PATTERN을 검색한다. Option Description &amp;ndash;description -d 설명에서 PATTERN을 검색한다. &amp;ndash;exact -e 패키지 이름을 정확하게 매칭시킨다. Installing
-apk add [&amp;lt;OPTIONS&amp;gt;...] PACKAGES... 패키지를 설치한다.</description></item></channel></rss>
+apk add [&amp;lt;OPTIONS&amp;gt;...] PACKAGES... 패키지를 설치한다.</description><content:encoded><![CDATA[<h2 id="배포판-별-패키지-매니저">배포판 별 패키지 매니저</h2>
+<h3 id="alpine">alpine</h3>
+<p>참고: <a href="https://docs.alpinelinux.org/user-handbook/0.1a/Working/apk.html">Working with the Alpine Package Keeper (apk)</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apk <span style="color:#f92672">[</span>&lt;OPTIONS&gt;...<span style="color:#f92672">]</span> COMMAND <span style="color:#f92672">[</span>&lt;ARGUMENTS&gt;...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>존재하는 리포지터리(repository)는 다음과 같다.
+<ul>
+<li>main
+<ul>
+<li>공식적으로 지원하는 패키지들</li>
+</ul>
+</li>
+<li>community
+<ul>
+<li>testing 리포지터리에서 테스트된 패키지들</li>
+</ul>
+</li>
+<li>testing
+<ul>
+<li>새롭거나, 손상됐거나, 오래된 테스트가 필요한 패키지들</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Updating repository</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apk update
+</span></span></code></pre></div><ul>
+<li>리포지터리 인덱스를 업데이트한다.</li>
+</ul>
+<p><strong>Searching</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apk search <span style="color:#f92672">[</span>&lt;OPTIONS&gt;...<span style="color:#f92672">]</span> PATTERN...
+</span></span></code></pre></div><ul>
+<li>리포지터리에서 PATTERN을 검색한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ndash;description -d</td>
+<td>설명에서 PATTERN을 검색한다.</td>
+</tr>
+<tr>
+<td>&ndash;exact -e</td>
+<td>패키지 이름을 정확하게 매칭시킨다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Installing</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apk add <span style="color:#f92672">[</span>&lt;OPTIONS&gt;...<span style="color:#f92672">]</span> PACKAGES...
+</span></span></code></pre></div><ul>
+<li>패키지를 설치한다.</li>
+<li>이미 존재하면 업그레이드를 시도한다.</li>
+</ul>
+<p><strong>Upgrading</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apk upgrade <span style="color:#f92672">[</span>&lt;OPTIONS&gt;...<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;PACKAGES&gt;...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>설치된 패키지를 업그레이드 한다.</li>
+<li>특정 패키지가 명시되지 않으면 설치된 패키지 중 가능한 패키지를 업그레이드 한다.</li>
+</ul>
+<p><strong>Removing</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apk del <span style="color:#f92672">[</span>&lt;OPTIONS&gt;...<span style="color:#f92672">]</span> PACKAGES...
+</span></span></code></pre></div><ul>
+<li>설치된 패키지를 제거한다.</li>
+</ul>
+<h3 id="centosamazon-linux-2-amazon-linux-2022">centos(Amazon Linux 2, Amazon Linux 2022)</h3>
+<p>참고: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-yum#doc-wrapper">Chapter 9. Yum Red Hat Enterprise Linux 7 | Red Hat Customer Portal</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum <span style="color:#f92672">[</span>&lt;OPTIONS&gt;...<span style="color:#f92672">]</span> COMMAND <span style="color:#f92672">[</span>&lt;ARGUMENTS&gt;...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><strong>Searching</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum search PATTERN
+</span></span></code></pre></div><ul>
+<li>패키지 이름은 모르지만 관련 용어를 알고 있을 때 편리한 패키지 검색 명령어이다.</li>
+</ul>
+<p><strong>Listing</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum list all
+</span></span></code></pre></div><ul>
+<li>설치 되었거나 설치 가능한 패키지 목록을 보여준다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum list installed
+</span></span></code></pre></div><ul>
+<li>설치된 패키지 목록을 보여준다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum list available
+</span></span></code></pre></div><ul>
+<li>설치 가능한 패키지 목록을 보여준다.</li>
+</ul>
+<p><strong>Installing</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum install PACKAGE
+</span></span></code></pre></div><ul>
+<li>패키지를 설치한다.</li>
+</ul>
+<p><strong>Updating packages</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum check-update
+</span></span></code></pre></div><ul>
+<li>설치된 패키지 중 업데이트가 가능한 패키지를 확인한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum update PACKAGE
+</span></span></code></pre></div><ul>
+<li>한 개 이상 패키지에 대한 업데이트를 진행한다.</li>
+<li>패키지를 입력하지 않으면 모든 패키지에 대해 업데이트를 진행한다.</li>
+</ul>
+<p><strong>Removing</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum remove PACKAGE
+</span></span></code></pre></div><ul>
+<li>패키지를 제거한다.</li>
+</ul>
+<p><strong>History</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum history list
+</span></span></code></pre></div><ul>
+<li>실행되었던 yum 관련 명령어들을 확인한다.</li>
+</ul>
+<p><strong>Rollback</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum history rollback HISTORY_ID
+</span></span></code></pre></div><ul>
+<li>history에서 확인한 ID로 해당 명령어를 수행하기 전으로 되돌린다.</li>
+</ul>
+<h3 id="ubuntudebian">ubuntu(debian)</h3>
+<p>참고: <a href="https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html#description">Ubuntu Manpage: apt - command-line interface</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> command
+</span></span></code></pre></div><p><strong>Updating</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt update
+</span></span></code></pre></div><ul>
+<li>리포지터리의 설치 가능한 목록을 업데이트 한다.</li>
+</ul>
+<p><strong>Listing</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt list PATTERN
+</span></span></code></pre></div><ul>
+<li>패키지 이름으로 목록을 검색해서 보여준다.</li>
+<li><code>apt -i list</code> 로 설치된 목록을 확인 할 수 있다.</li>
+</ul>
+<p><strong>Searching</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt search PATTERN
+</span></span></code></pre></div><ul>
+<li>패키지 설명, 이름 등으로 목록을 검색해서 보여준다.</li>
+</ul>
+<p><strong>Installing</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install PACKAGE
+</span></span></code></pre></div><ul>
+<li>패키지를 설치한다.</li>
+</ul>
+<p><strong>Removing</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt remove PACKAGE
+</span></span></code></pre></div><ul>
+<li>패키지를 제거한다.</li>
+</ul>
+<p><strong>Upgrading</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt upgrade <span style="color:#f92672">[</span>PACKAGE<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>설치된 패키지를 업그레이드 한다.</li>
+</ul>
+]]></content:encoded></item></channel></rss>
