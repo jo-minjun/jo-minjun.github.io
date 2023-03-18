@@ -1,4 +1,112 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>MSA on minjun's memory</title><link>https://jo-minjun.github.io/tags/msa/</link><description>Recent content in MSA on minjun's memory</description><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Fri, 24 Feb 2023 00:02:51 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/tags/msa/index.xml" rel="self" type="application/rss+xml"/><item><title>MSA 개발 스택 빠르게 훑어보기</title><link>https://jo-minjun.github.io/notes/msa-stack-quick-peek/</link><pubDate>Wed, 28 Dec 2022 17:10:30 +0900</pubDate><guid>https://jo-minjun.github.io/notes/msa-stack-quick-peek/</guid><description>1. 요구사항 아주 간단한 웹 기반 ITunes 주요 데이터는 다음과 같다. 가수 (Singer) 이름 정보를 가진다. 앨범 (Album) 발매 날짜, 앨범 제목 정보를 가진다. 노래 (Song) 노래 제목과 재생 시간 정보를 가진다. 공통 데이터 생성 시간 업데이트 시간 생성한 사람 업데이트한 사람 주요 기능 가수를 등록할 수 있다. 앨범을 등록할 수 있다. 노래를 등록할 수 있다. 노래 목록들을 조회할 수 있다. 노래를 조회할 수 있다. 노래를 업데이트 할 수 있다. 노래를 삭제할 수 있다.</description><content:encoded><![CDATA[<h2 id="1-요구사항">1. 요구사항</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>MSA on minjun's memory</title><link>https://jo-minjun.github.io/tags/msa/</link><description>Recent content in MSA on minjun's memory</description><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Fri, 24 Feb 2023 00:02:51 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/tags/msa/index.xml" rel="self" type="application/rss+xml"/><item><title>12 factor app (15 factor app)</title><link>https://jo-minjun.github.io/notes/12-factor-app/</link><pubDate>Fri, 24 Feb 2023 00:02:51 +0900</pubDate><guid>https://jo-minjun.github.io/notes/12-factor-app/</guid><description>Introduction 12 factor app은 서비스형 소프트웨어를 구성하기 위한 방법론입니다.
+개발 언어/프레임워크에 상관없는 이식성과 플랫폼 호환성 향상을 위한 디자인 원칙입니다. 애플리케이션의 수평적 확장이 용이하도록 합니다. 애플리케이션 확장 가능성 CI/CD에 용이성 플랫폼간 이식성 기본적인 기대치, 정책 설정 1. Codebase 형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다. 하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.
+코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.
+2. Dependencies 의존성을 명시적으로 선언하고 분리한다.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>12 factor app은 서비스형 소프트웨어를 구성하기 위한 방법론입니다.</p>
+<ul>
+<li>개발 언어/프레임워크에 상관없는 이식성과 플랫폼 호환성 향상을 위한 디자인 원칙입니다.</li>
+<li>애플리케이션의 수평적 확장이 용이하도록 합니다.</li>
+</ul>
+<blockquote>
+<ul>
+<li>애플리케이션 확장 가능성</li>
+<li>CI/CD에 용이성</li>
+<li>플랫폼간 이식성</li>
+<li>기본적인 기대치, 정책 설정</li>
+</ul>
+</blockquote>
+<h2 id="1-codebase">1. Codebase</h2>
+<h3 id="형상관리-시스템에서-하나의-코드베이스를-관리하면서-다수에-배포한다">형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다.</h3>
+<p>하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.</p>
+<p>코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.</p>
+<p><img loading="lazy" src="../12-factor-app/codebase.png" alt="codebase"  />
+</p>
+<h2 id="2-dependencies">2. Dependencies</h2>
+<h3 id="의존성을-명시적으로-선언하고-분리한다">의존성을 명시적으로 선언하고 분리한다.</h3>
+<p>의존성은 명시적으로 선언되어, 신규 개발자 또는 시스템 설정을 편리하게 해야합니다.</p>
+<p>대부분의 프로그래밍 언어는 패키징 시스템을 제공하기 때문에 새로 설정을 해야할 때는 언어와 패키지 매니저만 설치하면 됩니다.</p>
+<p><img loading="lazy" src="../12-factor-app/dependencies.png" alt="dependencies"  />
+</p>
+<h2 id="3-config">3. Config</h2>
+<h3 id="설정값을-환경에-저장한다">설정값을 환경에 저장한다.</h3>
+<p>애플리케이션 설정값은 배포 환경에 따라 달라지는 값들입니다.</p>
+<ul>
+<li>데이터베이스 또는 Backing 서비스를 처리하는 리소스</li>
+<li>Amazon S3 또는 트위터와 같은 외부 서비스에 대한 인증 정보</li>
+<li>배포 환경 호스트 이름과 같은 값</li>
+</ul>
+<p><img loading="lazy" src="../12-factor-app/config.png" alt="config"  />
+</p>
+<h2 id="4-backing-services">4. Backing services</h2>
+<h3 id="backing-service">Backing service</h3>
+<p>Backing 서비스는 데이터베이스와, 메시징, 메일 서비스 등 통해 연결된 모든 서비스입니다.</p>
+<p>12 factor app은 Backing 서비스를 모두 리소스로 취급하고, 설정에서 값을 읽어서 처리하여 느슨하게 연결합니다.</p>
+<p><img loading="lazy" src="../12-factor-app/backing-service.png" alt="backing-service"  />
+</p>
+<h2 id="5-build-release-run">5. Build, release, run</h2>
+<h3 id="빌드와-실행-단계를-엄격하게-구분한다">빌드와 실행 단계를 엄격하게 구분한다.</h3>
+<p>코드베이스는 3단계를 거쳐 배포되고, 엄격하게 구분되어야 합니다.</p>
+<ol>
+<li>Build: 지정된 코드 버전을 사용하여 의존성을 가져오고 컴파일합니다.</li>
+<li>Release: 컴파일된 결과물과 현재 배포 환경의 설정을 연결합니다. Release 단계의 결과물은 즉시 실행될 수 있습니다.</li>
+<li>Run: 애플리케이션을 실행합니다.</li>
+</ol>
+<p>코드 변경은 반드시 빌드 단계에서만 이루어져야만 하며 만들어진 Release 결과는 변경될 수 없고, 이전 버전으로 롤백이 가능해야합니다.</p>
+<h2 id="6-processes">6. Processes</h2>
+<h3 id="애플리케이션을-하나-이상의-stateless-프로세스로-실행한다">애플리케이션을 하나 이상의 Stateless 프로세스로 실행한다.</h3>
+<p>애플리케이션은 실행 환경에서 하나 이상의 프로세스로 실행됩니다.</p>
+<p>상태는 데이터베이스와 같은 상태 저장 서비스에 저장해야 하며, 애플리케이션은 Stateless하게 유지해야 합니다.</p>
+<p><img loading="lazy" src="../12-factor-app/processes.png" alt="processes"  />
+</p>
+<h2 id="7-port-binding">7. Port binding</h2>
+<h3 id="포트-바인딩을-통해-서비스-제공을-한다">포트 바인딩을 통해 서비스 제공을 한다.</h3>
+<p>애플리케이션은 포트를 바인딩하여 서비스를 제공해야 합니다.</p>
+<p>포트를 통해 서비스를 제공함으로써 다른 애플리케이션의 Backing 서비스가 될 수 있습니다.</p>
+<h2 id="8-concurrency">8. Concurrency</h2>
+<h3 id="프로세스-모델을-통해-수평적-확장을-한다">프로세스 모델을 통해 수평적 확장을 한다.</h3>
+<p>애플리케이션은 리소스 추가를 통한 수직 확장 뿐만 아니라, 수를 늘리는 수평적 확장이 가능해야 합니다.</p>
+<ol start="6">
+<li>Processes를 준수함으로써 확장하거나 축소할 수 있습니다.</li>
+</ol>
+<h2 id="9-disposability">9. Disposability</h2>
+<h3 id="빠른-시작과-그레이스풀-셧다운으로-안정성을-최대화한다">빠른 시작과 그레이스풀 셧다운으로 안정성을 최대화한다.</h3>
+<p>배포와 수평 확장시 빠른 애플리케이션 구동을 위해 필요합니다.</p>
+<p>종료 시그널을 받은 애플리케이션은 새로운 요청을 받지 않고, 기존 요청을 처리한 후 안정적으로 종료되어야 합니다.</p>
+<h2 id="10-devprod-parity">10. Dev/prod parity</h2>
+<h3 id="개발-스테이징-상용-환경을-최대한-비슷하게-유지한다">개발, 스테이징, 상용 환경을 최대한 비슷하게 유지한다.</h3>
+<p>Local에서는 H2 database를 사용하고 상용에서는 MySQL을 사용하는 것과 같은 차이를 줄이는 것입니다.</p>
+<p>12 factor app은 개발과 상용 환경 사이의 차이를 줄여 지속적인 배포가 가능하도록 해야합니다.</p>
+<h2 id="11-logs">11. Logs</h2>
+<h3 id="로그를-이벤트-스트림으로-처리한다">로그를 이벤트 스트림으로 처리한다.</h3>
+<p>애플리케이션은 로그에 관여하면 안되며, 단순히 버퍼링없이 출력할 뿐입니다.</p>
+<p>애플리케이션은 언제든지 생성되고 삭제될 수 있습니다. 따라서 이벤트는 별도 저장소에 보관되는 것이 좋습니다.</p>
+<p><img loading="lazy" src="../12-factor-app/logs.png" alt="logs"  />
+</p>
+<h2 id="12-admin-processes">12. Admin processes</h2>
+<h3 id="어드민관리-작업을-일회성-프로세스로-실행해야-한다">어드민/관리 작업을 일회성 프로세스로 실행해야 한다.</h3>
+<p>개발자는 종종 일회성으로 애플리케이션 관리 작업을 수행해야 하며, 작업을 스크립트화하여 한번에 실행할 수 있도록 해야합니다.</p>
+<ul>
+<li>데이터베이스 마이그레이션</li>
+<li>일회성 스크립트 실행</li>
+</ul>
+<p>관리 스크립트는 애플리케이션과 같은 코드베이스에서 같은 설정 값을 사용해야 합니다.</p>
+<hr>
+<blockquote>
+<p>케빈 허프만이 “Beyond the 12 factor app”을 통해 MSA 환경에 적합한 3가지 요소를 제시했다.</p>
+</blockquote>
+<h2 id="13-api-first">13. API first</h2>
+<h3 id="api-스펙-정의를-우선으로-한다">API 스펙 정의를 우선으로 한다.</h3>
+<p>API 스펙을 먼저 정의하여 어떤 스키마로 통신할지 결정해야 합니다.</p>
+<p>API first를 통해 클라이언트와 서버가 동시에 작업을 진행할 수 있습니다.</p>
+<h2 id="14-telemetry">14. Telemetry</h2>
+<h3 id="애플리케이션-및-리소스를-모니터링한다">애플리케이션 및 리소스를 모니터링한다.</h3>
+<p>애플리케이션 및 CPU, RAM등 리소스를 모니터링하여 성능, 이벤트 및 헬스 체크 등을 확인할 수 있습니다.</p>
+<p>서비스 관리 및 경고 알람 트리거 설정에 도움을 줍니다.</p>
+<h2 id="15-security">15. Security</h2>
+<h3 id="보안-정책이-적절한지-확인한다">보안 정책이 적절한지 확인한다.</h3>
+<p>API, DB 등 보안 정책이 적절한지 확인해야 합니다.</p>
+<p>API는 OAuth 등으로 보호되어야 하며 HTTPS를 이용해서 노출시켜야 합니다.</p>
+]]></content:encoded></item><item><title>MSA 개발 스택 빠르게 훑어보기</title><link>https://jo-minjun.github.io/notes/msa-stack-quick-peek/</link><pubDate>Wed, 28 Dec 2022 17:10:30 +0900</pubDate><guid>https://jo-minjun.github.io/notes/msa-stack-quick-peek/</guid><description>1. 요구사항 아주 간단한 웹 기반 ITunes 주요 데이터는 다음과 같다. 가수 (Singer) 이름 정보를 가진다. 앨범 (Album) 발매 날짜, 앨범 제목 정보를 가진다. 노래 (Song) 노래 제목과 재생 시간 정보를 가진다. 공통 데이터 생성 시간 업데이트 시간 생성한 사람 업데이트한 사람 주요 기능 가수를 등록할 수 있다. 앨범을 등록할 수 있다. 노래를 등록할 수 있다. 노래 목록들을 조회할 수 있다. 노래를 조회할 수 있다. 노래를 업데이트 할 수 있다. 노래를 삭제할 수 있다.</description><content:encoded><![CDATA[<h2 id="1-요구사항">1. 요구사항</h2>
 <ul>
 <li>아주 간단한 웹 기반 ITunes</li>
 <li>주요 데이터는 다음과 같다.
@@ -884,115 +992,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">authorized-grant-type</span>: <span style="color:#ae81ff">password, client_credentials, refresh_token</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">resource</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">jwt.key-uri</span>: <span style="color:#ae81ff">http://localhost:9999/oauth/token_key</span>
-</span></span></code></pre></div>]]></content:encoded></item><item><title>12 factor app (15 factor app)</title><link>https://jo-minjun.github.io/notes/12-factor-app/</link><pubDate>Fri, 24 Feb 2023 00:02:51 +0900</pubDate><guid>https://jo-minjun.github.io/notes/12-factor-app/</guid><description>Introduction 12 factor app은 서비스형 소프트웨어를 구성하기 위한 방법론입니다.
-개발 언어/프레임워크에 상관없는 이식성과 플랫폼 호환성 향상을 위한 디자인 원칙입니다. 애플리케이션의 수평적 확장이 용이하도록 합니다. 애플리케이션 확장 가능성 CI/CD에 용이성 플랫폼간 이식성 기본적인 기대치, 정책 설정 1. Codebase 형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다. 하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.
-코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.
-2. Dependencies 의존성을 명시적으로 선언하고 분리한다.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>12 factor app은 서비스형 소프트웨어를 구성하기 위한 방법론입니다.</p>
-<ul>
-<li>개발 언어/프레임워크에 상관없는 이식성과 플랫폼 호환성 향상을 위한 디자인 원칙입니다.</li>
-<li>애플리케이션의 수평적 확장이 용이하도록 합니다.</li>
-</ul>
-<blockquote>
-<ul>
-<li>애플리케이션 확장 가능성</li>
-<li>CI/CD에 용이성</li>
-<li>플랫폼간 이식성</li>
-<li>기본적인 기대치, 정책 설정</li>
-</ul>
-</blockquote>
-<h2 id="1-codebase">1. Codebase</h2>
-<h3 id="형상관리-시스템에서-하나의-코드베이스를-관리하면서-다수에-배포한다">형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다.</h3>
-<p>하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.</p>
-<p>코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.</p>
-<p><img loading="lazy" src="../12-factor-app/codebase.png" alt="codebase"  />
-</p>
-<h2 id="2-dependencies">2. Dependencies</h2>
-<h3 id="의존성을-명시적으로-선언하고-분리한다">의존성을 명시적으로 선언하고 분리한다.</h3>
-<p>의존성은 명시적으로 선언되어, 신규 개발자 또는 시스템 설정을 편리하게 해야합니다.</p>
-<p>대부분의 프로그래밍 언어는 패키징 시스템을 제공하기 때문에 새로 설정을 해야할 때는 언어와 패키지 매니저만 설치하면 됩니다.</p>
-<p><img loading="lazy" src="../12-factor-app/dependencies.png" alt="dependencies"  />
-</p>
-<h2 id="3-config">3. Config</h2>
-<h3 id="설정값을-환경에-저장한다">설정값을 환경에 저장한다.</h3>
-<p>애플리케이션 설정값은 배포 환경에 따라 달라지는 값들입니다.</p>
-<ul>
-<li>데이터베이스 또는 Backing 서비스를 처리하는 리소스</li>
-<li>Amazon S3 또는 트위터와 같은 외부 서비스에 대한 인증 정보</li>
-<li>배포 환경 호스트 이름과 같은 값</li>
-</ul>
-<p><img loading="lazy" src="../12-factor-app/config.png" alt="config"  />
-</p>
-<h2 id="4-backing-services">4. Backing services</h2>
-<h3 id="backing-service">Backing service</h3>
-<p>Backing 서비스는 데이터베이스와, 메시징, 메일 서비스 등 통해 연결된 모든 서비스입니다.</p>
-<p>12 factor app은 Backing 서비스를 모두 리소스로 취급하고, 설정에서 값을 읽어서 처리하여 느슨하게 연결합니다.</p>
-<p><img loading="lazy" src="../12-factor-app/backing-service.png" alt="backing-service"  />
-</p>
-<h2 id="5-build-release-run">5. Build, release, run</h2>
-<h3 id="빌드와-실행-단계를-엄격하게-구분한다">빌드와 실행 단계를 엄격하게 구분한다.</h3>
-<p>코드베이스는 3단계를 거쳐 배포되고, 엄격하게 구분되어야 합니다.</p>
-<ol>
-<li>Build: 지정된 코드 버전을 사용하여 의존성을 가져오고 컴파일합니다.</li>
-<li>Release: 컴파일된 결과물과 현재 배포 환경의 설정을 연결합니다. Release 단계의 결과물은 즉시 실행될 수 있습니다.</li>
-<li>Run: 애플리케이션을 실행합니다.</li>
-</ol>
-<p>코드 변경은 반드시 빌드 단계에서만 이루어져야만 하며 만들어진 Release 결과는 변경될 수 없고, 이전 버전으로 롤백이 가능해야합니다.</p>
-<h2 id="6-processes">6. Processes</h2>
-<h3 id="애플리케이션을-하나-이상의-stateless-프로세스로-실행한다">애플리케이션을 하나 이상의 Stateless 프로세스로 실행한다.</h3>
-<p>애플리케이션은 실행 환경에서 하나 이상의 프로세스로 실행됩니다.</p>
-<p>상태는 데이터베이스와 같은 상태 저장 서비스에 저장해야 하며, 애플리케이션은 Stateless하게 유지해야 합니다.</p>
-<p><img loading="lazy" src="../12-factor-app/processes.png" alt="processes"  />
-</p>
-<h2 id="7-port-binding">7. Port binding</h2>
-<h3 id="포트-바인딩을-통해-서비스-제공을-한다">포트 바인딩을 통해 서비스 제공을 한다.</h3>
-<p>애플리케이션은 포트를 바인딩하여 서비스를 제공해야 합니다.</p>
-<p>포트를 통해 서비스를 제공함으로써 다른 애플리케이션의 Backing 서비스가 될 수 있습니다.</p>
-<h2 id="8-concurrency">8. Concurrency</h2>
-<h3 id="프로세스-모델을-통해-수평적-확장을-한다">프로세스 모델을 통해 수평적 확장을 한다.</h3>
-<p>애플리케이션은 리소스 추가를 통한 수직 확장 뿐만 아니라, 수를 늘리는 수평적 확장이 가능해야 합니다.</p>
-<ol start="6">
-<li>Processes를 준수함으로써 확장하거나 축소할 수 있습니다.</li>
-</ol>
-<h2 id="9-disposability">9. Disposability</h2>
-<h3 id="빠른-시작과-그레이스풀-셧다운으로-안정성을-최대화한다">빠른 시작과 그레이스풀 셧다운으로 안정성을 최대화한다.</h3>
-<p>배포와 수평 확장시 빠른 애플리케이션 구동을 위해 필요합니다.</p>
-<p>종료 시그널을 받은 애플리케이션은 새로운 요청을 받지 않고, 기존 요청을 처리한 후 안정적으로 종료되어야 합니다.</p>
-<h2 id="10-devprod-parity">10. Dev/prod parity</h2>
-<h3 id="개발-스테이징-상용-환경을-최대한-비슷하게-유지한다">개발, 스테이징, 상용 환경을 최대한 비슷하게 유지한다.</h3>
-<p>Local에서는 H2 database를 사용하고 상용에서는 MySQL을 사용하는 것과 같은 차이를 줄이는 것입니다.</p>
-<p>12 factor app은 개발과 상용 환경 사이의 차이를 줄여 지속적인 배포가 가능하도록 해야합니다.</p>
-<h2 id="11-logs">11. Logs</h2>
-<h3 id="로그를-이벤트-스트림으로-처리한다">로그를 이벤트 스트림으로 처리한다.</h3>
-<p>애플리케이션은 로그에 관여하면 안되며, 단순히 버퍼링없이 출력할 뿐입니다.</p>
-<p>애플리케이션은 언제든지 생성되고 삭제될 수 있습니다. 따라서 이벤트는 별도 저장소에 보관되는 것이 좋습니다.</p>
-<p><img loading="lazy" src="../12-factor-app/logs.png" alt="logs"  />
-</p>
-<h2 id="12-admin-processes">12. Admin processes</h2>
-<h3 id="어드민관리-작업을-일회성-프로세스로-실행해야-한다">어드민/관리 작업을 일회성 프로세스로 실행해야 한다.</h3>
-<p>개발자는 종종 일회성으로 애플리케이션 관리 작업을 수행해야 하며, 작업을 스크립트화하여 한번에 실행할 수 있도록 해야합니다.</p>
-<ul>
-<li>데이터베이스 마이그레이션</li>
-<li>일회성 스크립트 실행</li>
-</ul>
-<p>관리 스크립트는 애플리케이션과 같은 코드베이스에서 같은 설정 값을 사용해야 합니다.</p>
-<hr>
-<blockquote>
-<p>케빈 허프만이 “Beyond the 12 factor app”을 통해 MSA 환경에 적합한 3가지 요소를 제시했다.</p>
-</blockquote>
-<h2 id="13-api-first">13. API first</h2>
-<h3 id="api-스펙-정의를-우선으로-한다">API 스펙 정의를 우선으로 한다.</h3>
-<p>API 스펙을 먼저 정의하여 어떤 스키마로 통신할지 결정해야 합니다.</p>
-<p>API first를 통해 클라이언트와 서버가 동시에 작업을 진행할 수 있습니다.</p>
-<h2 id="14-telemetry">14. Telemetry</h2>
-<h3 id="애플리케이션-및-리소스를-모니터링한다">애플리케이션 및 리소스를 모니터링한다.</h3>
-<p>애플리케이션 및 CPU, RAM등 리소스를 모니터링하여 성능, 이벤트 및 헬스 체크 등을 확인할 수 있습니다.</p>
-<p>서비스 관리 및 경고 알람 트리거 설정에 도움을 줍니다.</p>
-<h2 id="15-security">15. Security</h2>
-<h3 id="보안-정책이-적절한지-확인한다">보안 정책이 적절한지 확인한다.</h3>
-<p>API, DB 등 보안 정책이 적절한지 확인해야 합니다.</p>
-<p>API는 OAuth 등으로 보호되어야 하며 HTTPS를 이용해서 노출시켜야 합니다.</p>
-]]></content:encoded></item><item><title>Avro schema</title><link>https://jo-minjun.github.io/notes/avro-schema/</link><pubDate>Sat, 02 Jul 2022 18:12:21 +0900</pubDate><guid>https://jo-minjun.github.io/notes/avro-schema/</guid><description>1. Avro 란? 아브로(Avro)는 아파치의 하둡 프로젝트에서 개발된 RPC 및 데이터 직렬화 프레임워크이다.
+</span></span></code></pre></div>]]></content:encoded></item><item><title>Avro schema</title><link>https://jo-minjun.github.io/notes/avro-schema/</link><pubDate>Sat, 02 Jul 2022 18:12:21 +0900</pubDate><guid>https://jo-minjun.github.io/notes/avro-schema/</guid><description>1. Avro 란? 아브로(Avro)는 아파치의 하둡 프로젝트에서 개발된 RPC 및 데이터 직렬화 프레임워크이다.
 schema를 json으로 정의하여 바이너리 포맷으로 직렬화 한다.
 2. 장점 데이터의 타입을 알 수 있다. 스키마가 직렬화되어 네트워크 통신에 자유롭다. 스키마에 설명이 포함되어 schema 구조를 이해하는데 도움을 준다. 다양한 language를 지원한다. (java, c, c++ 등) default 값을 정의할 수 있다. 3. Data Type 이름 태그 null no value boolean a binary value int 32bit signed integer long 62bit signed integer float single precision(단정밀도) 32bit floating-point number double double percision(배정밀도) 64bit floating-point number bytes sequence of 8-bit unsigned bytes string unicode character sequence Enums name, namespace, aliases, doc, symbols, default 등을 가진다.</description><content:encoded><![CDATA[<h2 id="1-avro-란">1. Avro 란?</h2>
 <p>아브로(Avro)는 아파치의 하둡 프로젝트에서 개발된 RPC 및 데이터 직렬화 프레임워크이다.<br>

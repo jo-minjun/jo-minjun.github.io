@@ -1,4 +1,1021 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Dev on minjun's memory</title><link>https://jo-minjun.github.io/categories/dev/</link><description>Recent content in Dev on minjun's memory</description><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Fri, 24 Feb 2023 00:02:51 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/categories/dev/index.xml" rel="self" type="application/rss+xml"/><item><title>MSA 개발 스택 빠르게 훑어보기</title><link>https://jo-minjun.github.io/notes/msa-stack-quick-peek/</link><pubDate>Wed, 28 Dec 2022 17:10:30 +0900</pubDate><guid>https://jo-minjun.github.io/notes/msa-stack-quick-peek/</guid><description>1. 요구사항 아주 간단한 웹 기반 ITunes 주요 데이터는 다음과 같다. 가수 (Singer) 이름 정보를 가진다. 앨범 (Album) 발매 날짜, 앨범 제목 정보를 가진다. 노래 (Song) 노래 제목과 재생 시간 정보를 가진다. 공통 데이터 생성 시간 업데이트 시간 생성한 사람 업데이트한 사람 주요 기능 가수를 등록할 수 있다. 앨범을 등록할 수 있다. 노래를 등록할 수 있다. 노래 목록들을 조회할 수 있다. 노래를 조회할 수 있다. 노래를 업데이트 할 수 있다. 노래를 삭제할 수 있다.</description><content:encoded><![CDATA[<h2 id="1-요구사항">1. 요구사항</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Dev on minjun's memory</title><link>https://jo-minjun.github.io/categories/dev/</link><description>Recent content in Dev on minjun's memory</description><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Fri, 24 Feb 2023 00:02:51 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/categories/dev/index.xml" rel="self" type="application/rss+xml"/><item><title>12 factor app (15 factor app)</title><link>https://jo-minjun.github.io/notes/12-factor-app/</link><pubDate>Fri, 24 Feb 2023 00:02:51 +0900</pubDate><guid>https://jo-minjun.github.io/notes/12-factor-app/</guid><description>Introduction 12 factor app은 서비스형 소프트웨어를 구성하기 위한 방법론입니다.
+개발 언어/프레임워크에 상관없는 이식성과 플랫폼 호환성 향상을 위한 디자인 원칙입니다. 애플리케이션의 수평적 확장이 용이하도록 합니다. 애플리케이션 확장 가능성 CI/CD에 용이성 플랫폼간 이식성 기본적인 기대치, 정책 설정 1. Codebase 형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다. 하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.
+코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.
+2. Dependencies 의존성을 명시적으로 선언하고 분리한다.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>12 factor app은 서비스형 소프트웨어를 구성하기 위한 방법론입니다.</p>
+<ul>
+<li>개발 언어/프레임워크에 상관없는 이식성과 플랫폼 호환성 향상을 위한 디자인 원칙입니다.</li>
+<li>애플리케이션의 수평적 확장이 용이하도록 합니다.</li>
+</ul>
+<blockquote>
+<ul>
+<li>애플리케이션 확장 가능성</li>
+<li>CI/CD에 용이성</li>
+<li>플랫폼간 이식성</li>
+<li>기본적인 기대치, 정책 설정</li>
+</ul>
+</blockquote>
+<h2 id="1-codebase">1. Codebase</h2>
+<h3 id="형상관리-시스템에서-하나의-코드베이스를-관리하면서-다수에-배포한다">형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다.</h3>
+<p>하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.</p>
+<p>코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.</p>
+<p><img loading="lazy" src="../12-factor-app/codebase.png" alt="codebase"  />
+</p>
+<h2 id="2-dependencies">2. Dependencies</h2>
+<h3 id="의존성을-명시적으로-선언하고-분리한다">의존성을 명시적으로 선언하고 분리한다.</h3>
+<p>의존성은 명시적으로 선언되어, 신규 개발자 또는 시스템 설정을 편리하게 해야합니다.</p>
+<p>대부분의 프로그래밍 언어는 패키징 시스템을 제공하기 때문에 새로 설정을 해야할 때는 언어와 패키지 매니저만 설치하면 됩니다.</p>
+<p><img loading="lazy" src="../12-factor-app/dependencies.png" alt="dependencies"  />
+</p>
+<h2 id="3-config">3. Config</h2>
+<h3 id="설정값을-환경에-저장한다">설정값을 환경에 저장한다.</h3>
+<p>애플리케이션 설정값은 배포 환경에 따라 달라지는 값들입니다.</p>
+<ul>
+<li>데이터베이스 또는 Backing 서비스를 처리하는 리소스</li>
+<li>Amazon S3 또는 트위터와 같은 외부 서비스에 대한 인증 정보</li>
+<li>배포 환경 호스트 이름과 같은 값</li>
+</ul>
+<p><img loading="lazy" src="../12-factor-app/config.png" alt="config"  />
+</p>
+<h2 id="4-backing-services">4. Backing services</h2>
+<h3 id="backing-service">Backing service</h3>
+<p>Backing 서비스는 데이터베이스와, 메시징, 메일 서비스 등 통해 연결된 모든 서비스입니다.</p>
+<p>12 factor app은 Backing 서비스를 모두 리소스로 취급하고, 설정에서 값을 읽어서 처리하여 느슨하게 연결합니다.</p>
+<p><img loading="lazy" src="../12-factor-app/backing-service.png" alt="backing-service"  />
+</p>
+<h2 id="5-build-release-run">5. Build, release, run</h2>
+<h3 id="빌드와-실행-단계를-엄격하게-구분한다">빌드와 실행 단계를 엄격하게 구분한다.</h3>
+<p>코드베이스는 3단계를 거쳐 배포되고, 엄격하게 구분되어야 합니다.</p>
+<ol>
+<li>Build: 지정된 코드 버전을 사용하여 의존성을 가져오고 컴파일합니다.</li>
+<li>Release: 컴파일된 결과물과 현재 배포 환경의 설정을 연결합니다. Release 단계의 결과물은 즉시 실행될 수 있습니다.</li>
+<li>Run: 애플리케이션을 실행합니다.</li>
+</ol>
+<p>코드 변경은 반드시 빌드 단계에서만 이루어져야만 하며 만들어진 Release 결과는 변경될 수 없고, 이전 버전으로 롤백이 가능해야합니다.</p>
+<h2 id="6-processes">6. Processes</h2>
+<h3 id="애플리케이션을-하나-이상의-stateless-프로세스로-실행한다">애플리케이션을 하나 이상의 Stateless 프로세스로 실행한다.</h3>
+<p>애플리케이션은 실행 환경에서 하나 이상의 프로세스로 실행됩니다.</p>
+<p>상태는 데이터베이스와 같은 상태 저장 서비스에 저장해야 하며, 애플리케이션은 Stateless하게 유지해야 합니다.</p>
+<p><img loading="lazy" src="../12-factor-app/processes.png" alt="processes"  />
+</p>
+<h2 id="7-port-binding">7. Port binding</h2>
+<h3 id="포트-바인딩을-통해-서비스-제공을-한다">포트 바인딩을 통해 서비스 제공을 한다.</h3>
+<p>애플리케이션은 포트를 바인딩하여 서비스를 제공해야 합니다.</p>
+<p>포트를 통해 서비스를 제공함으로써 다른 애플리케이션의 Backing 서비스가 될 수 있습니다.</p>
+<h2 id="8-concurrency">8. Concurrency</h2>
+<h3 id="프로세스-모델을-통해-수평적-확장을-한다">프로세스 모델을 통해 수평적 확장을 한다.</h3>
+<p>애플리케이션은 리소스 추가를 통한 수직 확장 뿐만 아니라, 수를 늘리는 수평적 확장이 가능해야 합니다.</p>
+<ol start="6">
+<li>Processes를 준수함으로써 확장하거나 축소할 수 있습니다.</li>
+</ol>
+<h2 id="9-disposability">9. Disposability</h2>
+<h3 id="빠른-시작과-그레이스풀-셧다운으로-안정성을-최대화한다">빠른 시작과 그레이스풀 셧다운으로 안정성을 최대화한다.</h3>
+<p>배포와 수평 확장시 빠른 애플리케이션 구동을 위해 필요합니다.</p>
+<p>종료 시그널을 받은 애플리케이션은 새로운 요청을 받지 않고, 기존 요청을 처리한 후 안정적으로 종료되어야 합니다.</p>
+<h2 id="10-devprod-parity">10. Dev/prod parity</h2>
+<h3 id="개발-스테이징-상용-환경을-최대한-비슷하게-유지한다">개발, 스테이징, 상용 환경을 최대한 비슷하게 유지한다.</h3>
+<p>Local에서는 H2 database를 사용하고 상용에서는 MySQL을 사용하는 것과 같은 차이를 줄이는 것입니다.</p>
+<p>12 factor app은 개발과 상용 환경 사이의 차이를 줄여 지속적인 배포가 가능하도록 해야합니다.</p>
+<h2 id="11-logs">11. Logs</h2>
+<h3 id="로그를-이벤트-스트림으로-처리한다">로그를 이벤트 스트림으로 처리한다.</h3>
+<p>애플리케이션은 로그에 관여하면 안되며, 단순히 버퍼링없이 출력할 뿐입니다.</p>
+<p>애플리케이션은 언제든지 생성되고 삭제될 수 있습니다. 따라서 이벤트는 별도 저장소에 보관되는 것이 좋습니다.</p>
+<p><img loading="lazy" src="../12-factor-app/logs.png" alt="logs"  />
+</p>
+<h2 id="12-admin-processes">12. Admin processes</h2>
+<h3 id="어드민관리-작업을-일회성-프로세스로-실행해야-한다">어드민/관리 작업을 일회성 프로세스로 실행해야 한다.</h3>
+<p>개발자는 종종 일회성으로 애플리케이션 관리 작업을 수행해야 하며, 작업을 스크립트화하여 한번에 실행할 수 있도록 해야합니다.</p>
+<ul>
+<li>데이터베이스 마이그레이션</li>
+<li>일회성 스크립트 실행</li>
+</ul>
+<p>관리 스크립트는 애플리케이션과 같은 코드베이스에서 같은 설정 값을 사용해야 합니다.</p>
+<hr>
+<blockquote>
+<p>케빈 허프만이 “Beyond the 12 factor app”을 통해 MSA 환경에 적합한 3가지 요소를 제시했다.</p>
+</blockquote>
+<h2 id="13-api-first">13. API first</h2>
+<h3 id="api-스펙-정의를-우선으로-한다">API 스펙 정의를 우선으로 한다.</h3>
+<p>API 스펙을 먼저 정의하여 어떤 스키마로 통신할지 결정해야 합니다.</p>
+<p>API first를 통해 클라이언트와 서버가 동시에 작업을 진행할 수 있습니다.</p>
+<h2 id="14-telemetry">14. Telemetry</h2>
+<h3 id="애플리케이션-및-리소스를-모니터링한다">애플리케이션 및 리소스를 모니터링한다.</h3>
+<p>애플리케이션 및 CPU, RAM등 리소스를 모니터링하여 성능, 이벤트 및 헬스 체크 등을 확인할 수 있습니다.</p>
+<p>서비스 관리 및 경고 알람 트리거 설정에 도움을 줍니다.</p>
+<h2 id="15-security">15. Security</h2>
+<h3 id="보안-정책이-적절한지-확인한다">보안 정책이 적절한지 확인한다.</h3>
+<p>API, DB 등 보안 정책이 적절한지 확인해야 합니다.</p>
+<p>API는 OAuth 등으로 보호되어야 하며 HTTPS를 이용해서 노출시켜야 합니다.</p>
+]]></content:encoded></item><item><title>Shell Script</title><link>https://jo-minjun.github.io/notes/shell-script/</link><pubDate>Mon, 09 Jan 2023 23:30:12 +0900</pubDate><guid>https://jo-minjun.github.io/notes/shell-script/</guid><description>Shell Script 쉘 스크립트로 만든 UP-DOWN 게임 Shell이란 운영체제에서 커널과 사용자 사이를 이어주는 역할을 하는 명령어 해석기이다.
+Shell은 bash sh csh zsh등이 있다.
+Shell Script란 운영체제의 Shell을 이용해서 Shell 명령어들을 순차적으로 실행시켜주는 스크립트이다.
+Shell Script를 사용하기 위해서는 다음과 같이 시작해야 한다.
+#!/bin/bash #!/usr/bin/env bash #!/usr/bin/env python3 위와 같이 #!으로 시작하여 Shell의 경로를 선언해준다. 이를 쉬뱅이라 한다. 쉬뱅은 어느 인터프리터가 스크립트의 명령어를 해석할 지 가리킨다. 변수 변수 number=1 string=&amp;#34;string&amp;#34; echo &amp;#34;$number&amp;#34; echo &amp;#34;$string&amp;#34; echo &amp;#34;${number}&amp;#34; echo &amp;#34;${string}&amp;#34; 변수는 위와 같이 공백을 사용하지 않고 선언한다.</description><content:encoded><![CDATA[<h2 id="shell-script">Shell Script</h2>
+<ul>
+<li><a href="https://github.com/jo-minjun/shell-script-up-down-game">쉘 스크립트로 만든 UP-DOWN 게임</a></li>
+</ul>
+<h3 id="shell이란">Shell이란</h3>
+<p>운영체제에서 커널과 사용자 사이를 이어주는 역할을 하는 명령어 해석기이다.</p>
+<p>Shell은 <code>bash</code> <code>sh</code> <code>csh</code> <code>zsh</code>등이 있다.</p>
+<h3 id="shell-script란">Shell Script란</h3>
+<p>운영체제의 Shell을 이용해서 Shell 명령어들을 순차적으로 실행시켜주는 스크립트이다.</p>
+<p>Shell Script를 사용하기 위해서는 다음과 같이 시작해야 한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span></code></pre></div><ul>
+<li>위와 같이 <code>#!</code>으로 시작하여 Shell의 경로를 선언해준다. 이를 <strong>쉬뱅</strong>이라 한다.</li>
+<li><strong>쉬뱅</strong>은 어느 인터프리터가 스크립트의 명령어를 해석할 지 가리킨다.</li>
+</ul>
+<h2 id="변수">변수</h2>
+<h3 id="변수-1">변수</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>number<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>string<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;string&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$number<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$string<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>number<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>string<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><ul>
+<li>변수는 위와 같이 공백을 사용하지 않고 선언한다.</li>
+<li>변수명은 대소문자를 구분한다.</li>
+<li>변수명은 숫자를 포함할 수 있으나, 숫자로 시작할 수 없다.</li>
+<li>변수에 숫자를 대입해도 문자열로 취급된다.</li>
+<li>변수는 <code>$변수명</code> 또는 <code>${변수명}</code>으로 사용할 수 있다.</li>
+</ul>
+<h3 id="배열">배열</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>array<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>array<span style="color:#f92672">+=(</span><span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>array[0]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>array[*]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${#</span>array[*]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><ul>
+<li>배열은 각 원소를 공백으로 구분한다.</li>
+<li>원소를 추가할 경우 <code>+=</code>으로 한다.</li>
+<li><code>변수명[index]</code>를 사용해서 특정 인덱스(0 ~ n)의 원소에 접근할 수 있고, <code>변수명[*]</code>으로 모든 원소에 접근할 수 있다.</li>
+<li><code>#변수명[*]</code>으로 원소의 수를 확인할 수 있다.</li>
+</ul>
+<h3 id="미리-정의된-변수">미리 정의된 변수</h3>
+<table>
+<thead>
+<tr>
+<th>변수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>쉘 스크립트의 파일명</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>쉘 스크립트에 전달된 인자의 수</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>쉘 스크립트의 PID</td>
+</tr>
+<tr>
+<td>$1 ~ $n</td>
+<td>쉘 스크립트에 전달된 인자 값</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>쉘 스크립트에 전달된 인자들의 문자열</td>
+</tr>
+</tbody>
+</table>
+<h2 id="비교-연산자">비교 연산자</h2>
+<h3 id="변수-비교-연산자">변수 비교 연산자</h3>
+<table>
+<thead>
+<tr>
+<th>연산자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-z ${변수A}</td>
+<td>변수A의 문자열 길이가 0이면 참</td>
+</tr>
+<tr>
+<td>-n ${변수A}</td>
+<td>변수A의 문자열 길이가 0이 아니면 참</td>
+</tr>
+<tr>
+<td>${변수A} -eq ${변수B}</td>
+<td>변수A와 변수B의 값이 같으면 참</td>
+</tr>
+<tr>
+<td>${변수A} -ne ${변수B}</td>
+<td>변수A와 변수B의 값이 다르면 참</td>
+</tr>
+<tr>
+<td>${변수A} -gt ${변수B}</td>
+<td>변수A의 값이 변수B의 값보다 크면 참</td>
+</tr>
+<tr>
+<td>${변수A} -ge ${변수B}</td>
+<td>변수A의 값이 변수B의 값보다 크거나 같으면 참</td>
+</tr>
+<tr>
+<td>${변수A} -lt ${변수B}</td>
+<td>변수A의 값이 변수B의 값보다 작으면 참</td>
+</tr>
+<tr>
+<td>${변수A} -le ${변수B}</td>
+<td>변수A의 값이 변수B의 값보다 작거나 같으면 참</td>
+</tr>
+<tr>
+<td>연산1 -a 연산2</td>
+<td>연산1과 연산2가 모두 참이면 참</td>
+</tr>
+<tr>
+<td>연산1 -o 연산2</td>
+<td>연산1과 연산2중 하나라도 참이면 참</td>
+</tr>
+</tbody>
+</table>
+<h3 id="파일디렉터리-비교-연산자">파일/디렉터리 비교 연산자</h3>
+<table>
+<thead>
+<tr>
+<th>연산자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d ${A}</td>
+<td>A가 디렉터리면 참</td>
+</tr>
+<tr>
+<td>-e ${A}</td>
+<td>A파일이 존재하면 참</td>
+</tr>
+<tr>
+<td>-L ${A}</td>
+<td>A파일이 심볼릭 링크면 참</td>
+</tr>
+<tr>
+<td>-r ${A}</td>
+<td>A파일에 읽기 권한이 존재하면 참</td>
+</tr>
+<tr>
+<td>-w ${A}</td>
+<td>A파일에 쓰기 권한이 존재하면 참</td>
+</tr>
+<tr>
+<td>-x ${A}</td>
+<td>A파일에 실행 권한이 존재하면 참</td>
+</tr>
+<tr>
+<td>-s ${A}</td>
+<td>A파일의 크기가 0보다 크면 참</td>
+</tr>
+<tr>
+<td>-f ${A}</td>
+<td>A파일이 존재하면 참</td>
+</tr>
+<tr>
+<td>${A} -nt ${B}</td>
+<td>A파일이 B파일보다 최신 파일이면 참</td>
+</tr>
+<tr>
+<td>${A} -ot ${B}</td>
+<td>A파일이 B파일보다 이전 파일이면 참</td>
+</tr>
+<tr>
+<td>${A} -ef ${B}</td>
+<td>A파일이 B파일과 같은 파일이면 참</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>주로 <code>-d</code> <code>-f</code> 를 자주 사용한다.</li>
+</ul>
+<h2 id="제어문">제어문</h2>
+<h3 id="분기문">분기문</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> 비교 연산자 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> 비교 연산자 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><ul>
+<li><code>if</code>로 시작하고 <code>fi</code>로 끝난다.</li>
+<li>분기문에서 비교 연산은 <code>[ 비교 연산자 ]; then</code> 구분을 사용한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">case</span> target in
+</span></span><span style="display:flex;"><span>	값1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span>	;;
+</span></span><span style="display:flex;"><span>	값2|값3<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span>	;;
+</span></span><span style="display:flex;"><span>	*<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span>	;;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">esac</span>
+</span></span></code></pre></div><ul>
+<li><code>case</code>로 시작하고 <code>esac</code>로 끝난다.</li>
+<li><code>;;</code> 를 이용해서 break를 할 수 있다.</li>
+</ul>
+<h3 id="반복문">반복문</h3>
+<p>반복문은 공통적으로 <code>do</code>로 시작하고 <code>done</code>으로 끝난다.</p>
+<p><code>continue</code>와 <code>break</code>를 이용해서 반복문을 제어할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>비교 연산자<span style="color:#f92672">)</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#e6db74">${</span>array[*]<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><ul>
+<li>배열의 각 요소에 접근한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>0..10<span style="color:#f92672">}</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><ul>
+<li>0 ~ 10 범위의 값을 접근한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span> i <span style="color:#f92672">=</span> 0; i &lt; 10; i++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><ul>
+<li>0 ~ 10 범위의 값을 접근한다.</li>
+</ul>
+]]></content:encoded></item><item><title>DDD 핵심 정리</title><link>https://jo-minjun.github.io/notes/ddd-study/</link><pubDate>Fri, 30 Dec 2022 17:10:50 +0900</pubDate><guid>https://jo-minjun.github.io/notes/ddd-study/</guid><description>0. 참고 도메인 주도 개발 시작하기
+도메인 주도 개발 시작하기 - YES24 핵사고날 아키텍처
+Hexagonal Architecture with Java and Spring
+https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/
+예제 프로젝트
+https://github.com/jo-minjun/order-delivery-project 1. 도메인이란 무엇일까? wikipedia: Domain (software engineering) A domain is the targeted subject area of a computer program. It is a term used in software engineering. Formally it represents the target subject of a specific programming project, whether narrowly or broadly defined.
+소프트웨어 엔지니어링에서 사용되는 용어 컴퓨터 프로그램의 대상이 되는 영역 Example 소프트웨어 프로젝트의 목표가 특정 병원을 위한 프로그램을 만드는 경우 범위를 확장하여 모든 병원을 대상으로 하는 프로그램을 만드는 경우 상점과 기사를 이어주고 고객에게 물품을 전달해주는 라스트마일 서비스 2.</description><content:encoded><![CDATA[<h2 id="0-참고">0. 참고</h2>
+<ul>
+<li>
+<p>도메인 주도 개발 시작하기</p>
+<ul>
+<li><a href="http://www.yes24.com/Product/Goods/108431347">도메인 주도 개발 시작하기 - YES24</a></li>
+</ul>
+</li>
+<li>
+<p>핵사고날 아키텍처</p>
+<ul>
+<li>
+<p><a href="https://reflectoring.io/spring-hexagonal/">Hexagonal Architecture with Java and Spring</a></p>
+</li>
+<li>
+<p><a href="https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/">https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>예제 프로젝트</p>
+<ul>
+<li><a href="https://github.com/jo-minjun/order-delivery-project">https://github.com/jo-minjun/order-delivery-project</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-도메인이란-무엇일까">1. 도메인이란 무엇일까?</h2>
+<h3 id="wikipedia-domain-software-engineering">wikipedia: Domain (software engineering)</h3>
+<blockquote>
+<p>A domain is the targeted subject area of a <a href="https://en.wikipedia.org/wiki/Computer_program">computer program</a>. It is a term used in <a href="https://en.wikipedia.org/wiki/Software_engineering">software engineering</a>.
+Formally it represents the target subject of a specific programming project, whether narrowly or broadly defined.</p>
+</blockquote>
+<ol>
+<li>소프트웨어 엔지니어링에서 사용되는 용어</li>
+<li>컴퓨터 프로그램의 대상이 되는 영역</li>
+</ol>
+<h3 id="example">Example</h3>
+<ul>
+<li>소프트웨어 프로젝트의 목표가 특정 병원을 위한 프로그램을 만드는 경우</li>
+<li>범위를 확장하여 모든 병원을 대상으로 하는 프로그램을 만드는 경우</li>
+<li>상점과 기사를 이어주고 고객에게 물품을 전달해주는 라스트마일 서비스</li>
+</ul>
+<h2 id="2-ddd란-무엇일까">2. DDD란 무엇일까?</h2>
+<ul>
+<li>Domain Driven Design이다.</li>
+<li>프로그램을 도메인별로 나누어 설계하는 방법</li>
+<li>모듈(도메인)간 응집도는 높이고, 결합도는 낮춰 준다.</li>
+<li>DDD의 목표를 달성하기 위해 전략적 설계 패턴과 전술적 설계 패턴을 사용한다.</li>
+</ul>
+<h2 id="3-왜-ddd를-할까">3. 왜 DDD를 할까?</h2>
+<ul>
+<li>복잡도 관리
+<ul>
+<li>시간 경과에 따라 코드 라인이 늘어나고, 변경 비용이 증가한다.
+<img loading="lazy" src="../DDD-study/1.png" alt="1"  />
+
+<a href="https://dreamix.eu/blog/java/why-good-clean-software-architecture-matters">https://dreamix.eu/blog/java/why-good-clean-software-architecture-matters</a></li>
+</ul>
+</li>
+<li>개발자는 특정 도메인의 전문가보다 도메인에 대한 전문성이 떨어진다.
+<ul>
+<li>공인 중개사와 개발자</li>
+<li>변호사와 개발자</li>
+<li>인사팀과 개발자</li>
+<li>…</li>
+</ul>
+</li>
+<li>전문가와 기획자, 개발자의 언어가 다르다.
+<ul>
+<li>도저히 이해할 수 없는 말들…</li>
+<li>네트워크 광전송 장비: OTN, PTN, ROADM, SERVICE, TUNNEL…</li>
+</ul>
+</li>
+</ul>
+<p>→ 최소 문서를 읽거나 대화할 때 서로가 하는 말을 이해하고 context를 맞춰 나가야 한다.</p>
+<h2 id="4-전략적-설계">4. 전략적 설계</h2>
+<h3 id="유비쿼터스-언어">유비쿼터스 언어</h3>
+<ul>
+<li>도메인 전문가, 기획자, 개발자 등 구성원들이 서로 다른 용어를 사용하면, 의사소통에 불편함이 있다.
+<ul>
+<li>지번주소 vs 구주소</li>
+</ul>
+</li>
+</ul>
+<p>→ <strong>유비쿼터스 언어</strong>를 사용해야 한다.</p>
+<ul>
+<li>구성원들 모두가 <strong>보편적으로 사용하는 언어</strong></li>
+<li>구성원들의 공통된 언어를 만들고 대화, 문서, 코드, 테스트 <strong>모든 곳에서 같은 용어</strong>를 사용한다.</li>
+</ul>
+<h3 id="도메인-모델과-경계">도메인 모델과 경계</h3>
+<ul>
+<li>다시 도메인에 대해 짚어보자면
+<ul>
+<li>소프트웨어 프로젝트에서 대상이 되고, 해결해야 할 영역</li>
+<li>온라인 쇼핑몰을 개발하는 프로젝트</li>
+</ul>
+</li>
+<li>도메인은 다시 하위 도메인으로 나뉘어 진다.
+<ul>
+<li>회원, 혜택(쿠폰), 주문, 카탈로그, 배송, 결제…</li>
+</ul>
+</li>
+<li><strong>도메인 모델</strong>
+<ul>
+<li>특정 도메인을 개념적으로 표현한 것</li>
+<li>도메인에 대한 이해도에 따라 도메인 모델도 변경된다.
+<img loading="lazy" src="../DDD-study/2.png" alt="2"  />
+</li>
+</ul>
+</li>
+<li>위와 같은 서브 도메인을 하나의 도메인으로 표현하기는 불가능에 가깝다.</li>
+<li>서브 도메인마다 같은 대상이라도 지칭하는 용어가 다를 수 있다.</li>
+</ul>
+<p>→ Problem Space가 된다.</p>
+<ul>
+<li>상품
+<ul>
+<li>카탈로그의 상품: 이미지, 상품명, 가격…</li>
+<li>배송의 상품: 무게, 수량…</li>
+</ul>
+</li>
+<li>회원
+<ul>
+<li>회원 도메인의 회원: 회원</li>
+<li>주문 도메인의 회원: 주문자</li>
+<li>배송 도메인의 회원: 받는 사람</li>
+</ul>
+</li>
+<li>즉, 모델은 특정한 컨텍스트 하에서 완전한 의미를 갖는다.</li>
+</ul>
+<p>→ 각 서브 도메인마다 <strong>명시적으로 구분되는 경계</strong>를 가져서 섞이지 않도록 해야 한다.</p>
+<h3 id="바운디드-컨텍스트">바운디드 컨텍스트</h3>
+<ul>
+<li>각 도메인 영역의 경계를 결정하는 <strong>명시적인 구분</strong></li>
+<li>각각의 도메인이 가진 모델을 정확하게 표현하기 위함이다.</li>
+</ul>
+<p>→ 즉 문제를 해결하기 위한 공간, Solution Space이다.</p>
+<ul>
+<li>바운디드 컨텍스트를 구분하는 조건
+<ul>
+<li>같은 용어, 다른 의미
+<ul>
+<li><strong>계정</strong>을 의미하는 Account</li>
+<li><strong>계좌</strong>를 의미하는 Account
+→ 이런 경우 두 가지 의미를 하나의 도메인 모델에 포함해서는 안된다.</li>
+</ul>
+</li>
+<li>같은 개념, 다른 용도
+<ul>
+<li>회원 서비스의 <strong>맴버</strong></li>
+<li>주문 서비스의 <strong>맴버</strong>
+→ 맴버는 서로 다른 도메인에 집중하고 있고, 발전의 방향성도 다르다.</li>
+</ul>
+</li>
+<li>팀 조직 구조
+<ul>
+<li>A팀의 관심사는 주문, B팀의 관심사는 결제.
+<ul>
+<li>하나의 주문 도메인에서도 관심사에 따라 컨텍스트가 달라진다.</li>
+</ul>
+</li>
+<li>한 팀이 하나의 시스템에서 온라인 쇼핑을 서비스한다.
+<ul>
+<li>서브 도메인은 회원, 카탈로그, 재고, 구매, 결제 등이 있다.</li>
+<li>상품 컨텍스트에서 재고와 카탈로그를 구현한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>이상적으로는 바운디드 컨텍스트와 하위 도메인이 1대1로 대응되는 것이 좋다.</li>
+<li>하지만 팀 상황이나 유비쿼터스 언어가 명확하게 정의되지 않아 1대1로 대응되지 않는 경우도 있다.
+<img loading="lazy" src="../DDD-study/3.png" alt="3"  />
+</li>
+</ul>
+<h3 id="바운디드-컨텍스트-간-관계">바운디드 컨텍스트 간 관계</h3>
+<ul>
+<li>바운디드 컨텍스트는 어떻게든 연결되기 때문에 다양한 방식으로 관계를 형성한다.
+<ul>
+<li>고객/공급자</li>
+<li>공유 커널</li>
+<li>독립 방식</li>
+</ul>
+</li>
+<li><strong>고객/공급자</strong>
+<ul>
+<li>가장 흔한 관계이다.</li>
+<li>한쪽에서 **API를 제공(상류)**하고 다른쪽에서 **API를 호출(하류)**한다.
+<img loading="lazy" src="../DDD-study/4.png" alt="카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다."  />
+
+카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다.</li>
+</ul>
+</li>
+<li><strong>공유 커널</strong>
+<ul>
+<li>여러 바운디드 컨텍스트가 <strong>같은 모델을 공유</strong>하는 관계이다.</li>
+<li>중복을 줄일 수 있지만 공유 모델을 사용하는 바운디드 컨텍스트가 서로 영향을 받을 수 있다.</li>
+</ul>
+</li>
+<li><strong>독립 방식</strong>
+<ul>
+<li>여러 바운디드 컨텍스트가 <strong>외부에 의해 관계</strong>를 맺는다.
+<ul>
+<li>수동으로 두 바운디드 컨텍스트 간 통합시킨다.
+<ul>
+<li>사람에 의한 관계</li>
+</ul>
+</li>
+<li>자동화 시스템을 개발해서 두 바운디드 컨텍스트를 통합시킨다.
+<ul>
+<li>자동화 시스템에 의한 관계</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="바운디드-컨텍스트-맵">바운디드 컨텍스트 맵</h3>
+<ul>
+<li>특정 바운디드 컨텍스트에 과도하게 집중하면 전체적인 바운디드 컨텍스트 간의 관계를 인식하지 못할 수 있다.</li>
+<li>도메인을 더 잘 이해하거나 컨텍스트 간 관계가 바뀌면 컨텍스트 맵도 바뀐다.
+<img loading="lazy" src="../DDD-study/5.png" alt="5"  />
+</li>
+</ul>
+<h2 id="5-핵사고날-아키텍처">5. 핵사고날 아키텍처</h2>
+<ul>
+<li>예제 프로젝트에 핵사고날 아키텍처를 적용했다.
+<img loading="lazy" src="../DDD-study/6.png" alt="6"  />
+
+<a href="https://reflectoring.io/spring-hexagonal/">https://reflectoring.io/spring-hexagonal/</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">└──</span> xxx
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">├──</span> adapter
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> in
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxController<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> EventHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">(</span>or MessageHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> out
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">└──</span> EventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">(</span>or MessagePublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">├──</span> application
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxService<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> port
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">├──</span> in
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxCommand<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxDto<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> xxxUsecase<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">└──</span> out
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">├──</span> xxxEvent<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">├──</span> xxxEventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">└──</span> xxxRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">└──</span> domain
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">├──</span> AggregateRootEntity<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">└──</span> ValueObject<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</span></span></code></pre></div><h2 id="6-전술적-설계">6. 전술적 설계</h2>
+<h3 id="도메인-영역의-주요-구성-요소">도메인 영역의 주요 구성 요소</h3>
+<table>
+<thead>
+<tr>
+<th>요소</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>엔티티 (ENTITY)</td>
+<td>고유의 식별자를 갖는 객체로 자신의 라이프 사이클을 갖는다. 도메인의 고유한 개념을 표현한다. 도메인 모델의 데이터를 포함하며 해당 데이터와 관련된 기능을 함께 제공한다.</td>
+</tr>
+<tr>
+<td>밸류 (VALUE)</td>
+<td>고유의 식별자를 갖지 않는 객체다. 엔티티의 속성으로 사용할 뿐만 아니라 다른 밸류 타입의 속성으로도 사용할 수 있다.</td>
+</tr>
+<tr>
+<td>애그리거트 (AGGREGATE)</td>
+<td>애그리거트는 연관된 엔티티와 밸류 객체를 개념적으로 하나로 묶은 것이다.</td>
+</tr>
+<tr>
+<td>리포지터리 (REPOSITORY)</td>
+<td>도메인 모델의 영속성을 처리한다.</td>
+</tr>
+<tr>
+<td>도메인 서비스 (DOMAIN SERVICE)</td>
+<td>특정 엔티티에 속하지 않은 도메인 로직을 제공한다. 도메인 로직이 여러 엔티티와 밸류를 필요로 하면 도메인 서비스에서 로직을 구현한다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="엔티티--밸류">엔티티 &amp; 밸류</h3>
+<ul>
+<li>
+<p>도메인 모델을 표현할 때 이용한다.</p>
+</li>
+<li>
+<p>도메인 모델의 엔티티는 기능을 함께 제공한다.</p>
+<ul>
+<li>도메인 관점에서 도메인 로직을 구현하고 캡슐화해서 데이터가 임의로 변경되는 것을 막는다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.delivery.domain<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeDeliveryInfo</span><span style="color:#f92672">(</span>Address address<span style="color:#f92672">,</span> String phoneNumber<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  canChangeDelivery<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">address</span> <span style="color:#f92672">=</span> address<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">phoneNumber</span> <span style="color:#f92672">=</span> phoneNumber<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">canChangeDelivery</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">status</span><span style="color:#f92672">.</span><span style="color:#a6e22e">canChangeDelivery</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;배송 정보 수정 불가&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>외부에서 setter를 이용해 배송지 정보를 변경한다면 배송지 변경 가능 여부 검증이 누락될 수 있고, 같은 로직이 반복될 수도 있다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> DeliveryStatus status <span style="color:#f92672">=</span> delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">getStatus</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 배송지 변경 조건
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">status</span><span style="color:#f92672">.</span><span style="color:#a6e22e">canChangeDelivery</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;배송 정보 수정 불가&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">setAddress</span><span style="color:#f92672">(</span>newAddress<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">setPhoneNumber</span><span style="color:#f92672">(</span>newPhoneNumber<span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+<li>
+<p>밸류는 도메인 모델에서 두 개 이상의 데이터가 개념적으로 하나인 경우 사용한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.domain<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Entity</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Table</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;orders&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Getter</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@NoArgsConstructor</span><span style="color:#f92672">(</span>access <span style="color:#f92672">=</span> AccessLevel<span style="color:#f92672">.</span><span style="color:#a6e22e">PROTECTED</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@AllArgsConstructor</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EqualsAndHashCode</span><span style="color:#f92672">(</span>of <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">})</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ToString</span><span style="color:#f92672">(</span>of <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;orderLine&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;totalAmount&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;deliveryId&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;paymentId&#34;</span><span style="color:#f92672">})</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span> <span style="color:#66d9ef">implements</span> Serializable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Id</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@GeneratedValue</span><span style="color:#f92672">(</span>strategy <span style="color:#f92672">=</span> GenerationType<span style="color:#f92672">.</span><span style="color:#a6e22e">IDENTITY</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Long id<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Embedded</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> OrderLine orderLine<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 밸류 타입, AttributeConverter를 이용함.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> Money totalAmount <span style="color:#f92672">=</span> Money<span style="color:#f92672">.</span><span style="color:#a6e22e">ZERO</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">...</span> <span style="color:#75715e">// 다른 필드
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.common<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Converter</span><span style="color:#f92672">(</span>autoApply <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MoneyConverter</span> <span style="color:#66d9ef">implements</span> AttributeConverter<span style="color:#f92672">&lt;</span>Money<span style="color:#f92672">,</span> BigDecimal<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> BigDecimal <span style="color:#a6e22e">convertToDatabaseColumn</span><span style="color:#f92672">(</span>Money attribute<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> attribute<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> Money <span style="color:#a6e22e">convertToEntityAttribute</span><span style="color:#f92672">(</span>BigDecimal dbData<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Money<span style="color:#f92672">(</span>dbData<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>엔티티는 @Entity 애너테이션을 사용한다.</p>
+</li>
+<li>
+<p>밸류는 @Embeddable, @Embedded, @SecondaryTable, @ElementCollection, @CollectionTable을 사용한다.</p>
+<ul>
+<li>@ElementCollection은 생명주기를 상위 엔티티에 종속시킨다.</li>
+<li>즉, cascade와 orphanRemoval 옵션을 제공하지 않는다.</li>
+<li>@OneToMany(cascade = ALL, orphanRemoval = true)와 차이점
+<ul>
+<li>@ElementCollection은 식별자를 갖지 않는다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.domain<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Embedded</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> OrderLine orderLine<span style="color:#f92672">;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.domain<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Embeddable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderLine</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@ElementCollection</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@CollectionTable</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;order_lines&#34;</span><span style="color:#f92672">,</span> joinColumns <span style="color:#f92672">=</span> <span style="color:#a6e22e">@JoinColumn</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;orders_id&#34;</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Set<span style="color:#f92672">&lt;</span>LineItem<span style="color:#f92672">&gt;</span> lineItems <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">...</span> <span style="color:#75715e">// 메서드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>@AttributeOverride를 이용해서 @Embeddable 밸류의 애트리뷰트를 override할 수도 있다.</li>
+</ul>
+<h3 id="애그리거트">애그리거트</h3>
+<ul>
+<li>
+<p>도메인이 커지면 도메인 모델이 복잡해진다.</p>
+</li>
+<li>
+<p>도메인 모델이 복잡해지면 전체 구조에 초점을 맞추지 못하게 되고, 모델 간에 관계를 이해하기 어렵게 된다.</p>
+</li>
+<li>
+<p>애그리거트는 관련 객체를 묶어서 <strong>상위 개념으로 표현</strong>해준다.</p>
+<ul>
+<li>Order 도메인은 주문, 주문 목록, 총 결제 금액 등 하위 모델로 구성된다.</li>
+<li>이를 하나로 묶어 <strong>주문</strong>이라는 상위 개념으로 표현해준다.</li>
+</ul>
+</li>
+<li>
+<p>애그리거트는 루트 엔티티를 가지며, 이를 애그리거트 루트라 한다.</p>
+</li>
+<li>
+<p>애그리거트 루트는 애그리거트에 속해 있는 엔티티와 밸류 객체를 이용해서 애그리거트가 구현해야 할 기능을 제공한다.</p>
+<ul>
+<li>애그리거트의 내부 구현을 숨겨서 애그리거트 단위로 구현을 캡슐화 한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.delivery.domain<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Entity</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span> <span style="color:#75715e">// 애너테이션
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Delivery</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Id</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@GeneratedValue</span><span style="color:#f92672">(</span>strategy <span style="color:#f92672">=</span> GenerationType<span style="color:#f92672">.</span><span style="color:#a6e22e">IDENTITY</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Long id<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Embedded</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Address address<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String phoneNumber<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">...</span> <span style="color:#75715e">// 다른 필드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeDeliveryInfo</span><span style="color:#f92672">(</span>Address address<span style="color:#f92672">,</span> String phoneNumber<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    canChangeDelivery<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">address</span> <span style="color:#f92672">=</span> address<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">phoneNumber</span> <span style="color:#f92672">=</span> phoneNumber<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="리포지터리">리포지터리</h3>
+<ul>
+<li>리포지터리는 애그리거트 단위로 도메인 객체를 저장하고 조회한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.application.port.out<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> minjun.ddd.order.domain.Order<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.data.jpa.repository.JpaRepository<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">OrderRepository</span> <span style="color:#66d9ef">extends</span> JpaRepository<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">,</span> Long<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>애그리거트의 <strong>루트 엔티티만 리포지터리를 갖는다.</strong></p>
+<ul>
+<li>애그리거트의 밸류 등은 루트 엔티티와 생명 주기가 같다.</li>
+<li><strong>생명 주기가 다르거나 데이터 변경 주체가 다르다면 다른 애그리거트일 가능성이 높다.</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.product.application.port.out<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> minjun.ddd.product.domain.Product<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.data.jpa.repository.JpaRepository<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ProductRepository</span> <span style="color:#66d9ef">extends</span> JpaRepository<span style="color:#f92672">&lt;</span>Product<span style="color:#f92672">,</span> Long<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>Product 애그리거트는 Order나 Delivery와 연관이 있기 때문에 같은 애그리거트로 생각될 수 있다.</li>
+<li>하지만 Order나 Delivery는 변경 주체가 주문자와 기사이지만, Product는 상품 관리자가 관리한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="도메인-서비스">도메인 서비스</h3>
+<ul>
+<li>도메인 영역을 개발하다 보면 <strong>한 애그리거트로 기능을 구현하지 못할 때</strong>가 있다.</li>
+<li>결제 금액 계산 로직에 할인이 적용되는 경우
+<ul>
+<li>할인 쿠폰 애그리거트: 쿠폰별로 지정한 금액이나 비율에 따라 총 금액을 할인한다.</li>
+<li>회원 애그리거트: 회원 등급에 따라 추가 할인이 가능하다.</li>
+</ul>
+</li>
+<li>주문 애그리거트에 할인 관련 로직을 적용하면 할인 정책 변경시 주문 애그리거트가 변경된다.</li>
+</ul>
+<p>→ <strong>도메인 서비스 사용</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DiscountCalculationService</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Money <span style="color:#a6e22e">calculateDiscountAmounts</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>OrderLine<span style="color:#f92672">&gt;</span> orderLines<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>																				List<span style="color:#f92672">&lt;</span>Coupon<span style="color:#f92672">&gt;</span> coupons<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>																				MemberGrade grade<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		Money couponDiscount <span style="color:#f92672">=</span> coupons<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>												<span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>coupon <span style="color:#f92672">-&gt;</span> calculateDiscount<span style="color:#f92672">(</span>coupon<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>												<span style="color:#f92672">.</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Money<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">),</span> <span style="color:#f92672">(</span>v1<span style="color:#f92672">,</span> v2<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> v1<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>v2<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		Money membershipDiscount <span style="color:#f92672">=</span> calculateDiscount<span style="color:#f92672">(</span>orderer<span style="color:#f92672">.</span><span style="color:#a6e22e">getMember</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getGrade</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> couponDiscount<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>membershipDiscount<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Money <span style="color:#a6e22e">calculateDiscount</span><span style="color:#f92672">(</span>Coupon coupon<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Money <span style="color:#a6e22e">calculateDiscount</span><span style="color:#f92672">(</span>MemberGrade grade<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>외부 시스템이나 타 도메인과 <strong>연동 기능</strong>도 도메인 서비스가 될 수 있다.</p>
+</li>
+<li>
+<p>상품 관리 시스템에서 사용자가 권한을 가졌는지 확인하기 위해 맴버 시스템을 연동하는 경우</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">PermissionChecker</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">hasUserPermission</span><span style="color:#f92672">(</span>String userId<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>여기서 인터페이스는 외부 시스템의 역할을 표현하기 위해 도메인 로직 관점에서 작성한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateProductService</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> PermissionChecker permissionChecker<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Long <span style="color:#a6e22e">createProduct</span><span style="color:#f92672">(</span>CreateProductRequest req<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		validate<span style="color:#f92672">(</span>req<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>permissionChecker<span style="color:#f92672">.</span><span style="color:#a6e22e">hasUserPermission</span><span style="color:#f92672">(</span>req<span style="color:#f92672">.</span><span style="color:#a6e22e">getUserId</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NoPermissionException<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">...</span> <span style="color:#75715e">// 생성
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="이벤트">이벤트</h3>
+<ul>
+<li>
+<p>API를 이용하는 방법은 <strong>시스템간 결합 문제</strong>를 발생시킨다.</p>
+<ul>
+<li>외부 서비스의 성능</li>
+<li>트랜잭션 처리 정책</li>
+<li>설계상 문제</li>
+</ul>
+</li>
+<li>
+<p><strong>외부 서비스의 성능</strong></p>
+</li>
+<li>
+<p><strong>트랜잭션 처리 정책</strong></p>
+<ol>
+<li>환불 외부 서비스에서 익셉션이 발생하면 주문까지 트랜잭션을 롤백한다.</li>
+<li>주문만 취소 상태로 변경하고 환불은 나중에 처리한다.</li>
+</ol>
+</li>
+<li>
+<p><strong>설계상 문제</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.application.service<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequiredArgsConstructor</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderService</span> <span style="color:#66d9ef">implements</span> OrderUsecase <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PaymentPort paymentPort<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cancelOrder</span><span style="color:#f92672">(</span>Long orderId<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> Order order <span style="color:#f92672">=</span> findOrder<span style="color:#f92672">(</span>orderId<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Payment 도메인 로직
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> Boolean responseFromPayment <span style="color:#f92672">=</span> paymentPort<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelPayment</span><span style="color:#f92672">(</span>order<span style="color:#f92672">.</span><span style="color:#a6e22e">getPaymentId</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>responseFromPayment<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;결제 취소 실패&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Order 도메인 로직
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    order<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelOrder</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>다른 도메인의 로직이 섞이고, 트랜잭션 처리 정책 및 외부 서비스 영향이 증가한다.</li>
+</ul>
+</li>
+</ul>
+<p><strong>→ 시스템의 결합도를 낮추기 위해 이벤트를 사용한다.</strong></p>
+<ul>
+<li>
+<p>이벤트는 <strong>과거에 벌어진 어떤 것</strong>을 의미하며, <strong>상태가 변경</strong>됐다는 것을 의미한다.</p>
+</li>
+<li>
+<p>이벤트는 다음과 같이 네 개의 구성요소를 가진다.
+<img loading="lazy" src="../DDD-study/7.png" alt="7.png"  />
+</p>
+<ul>
+<li>
+<p>이벤트</p>
+<ul>
+<li>이벤트 종류, 발생 시간, 이벤트 관련 정보</li>
+</ul>
+</li>
+<li>
+<p>이벤트 생성 주체</p>
+<ul>
+<li>도메인 로직을 실행해서 <strong>상태가 바뀌면</strong> 관련 이벤트를 발생시킨다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.delivery.application<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">startDelivery</span><span style="color:#f92672">(</span>Long deliveryId<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> Delivery delivery <span style="color:#f92672">=</span> deliveryRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">findById</span><span style="color:#f92672">(</span>deliveryId<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span><span style="color:#a6e22e">orElseThrow</span><span style="color:#f92672">(</span>NoSuchElementException<span style="color:#f92672">::</span><span style="color:#66d9ef">new</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">startDelivery</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>  deliveryEventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">publish</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DeliveryStartedEvent<span style="color:#f92672">(</span>delivery<span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>이벤트 디스패처</p>
+<ul>
+<li>핸들러에 <strong>이벤트를 전파</strong>한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.delivery.adapter.out<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// org.springframework.context.ApplicationEventPublisher
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ApplicationEventPublisher publisher<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">publish</span><span style="color:#f92672">(</span>DeliveryEvent event<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  publisher<span style="color:#f92672">.</span><span style="color:#a6e22e">publishEvent</span><span style="color:#f92672">(</span>event<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>  log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Order Event Published: {} {}&#34;</span><span style="color:#f92672">,</span> event<span style="color:#f92672">.</span><span style="color:#a6e22e">getDelivery</span><span style="color:#f92672">(),</span> event<span style="color:#f92672">.</span><span style="color:#a6e22e">getTimestamp</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>이벤트 핸들러</p>
+<ul>
+<li>이벤트 생성 주체가 발생시킨 이벤트에 반응한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.adapter.in<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EventListener</span><span style="color:#f92672">(</span>DeliveryStartedEvent<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handleDeliveryStartedEvent</span><span style="color:#f92672">(</span>DeliveryStartedEvent event<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  orderUsecase<span style="color:#f92672">.</span><span style="color:#a6e22e">startDelivery</span><span style="color:#f92672">(</span>event<span style="color:#f92672">.</span><span style="color:#a6e22e">getDelivery</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getOrderId</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>위와 같은 방법이 아닌, <strong>메시징 시스템을 이용한 방법</strong>도 가능하다.</p>
+<ul>
+<li>이벤트 저장소를 이용한 메시징 (<strong>Transactional Outbox Pattern</strong>)</li>
+<li>이벤트 발행 서비스
+<img loading="lazy" src="../DDD-study/8.png" alt="transactional-outbox-pattern.png"  />
+</li>
+<li>이벤트 소비 서비스
+<img loading="lazy" src="../DDD-study/9.png" alt="idempotent-receiver.png"  />
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded></item><item><title>MSA 개발 스택 빠르게 훑어보기</title><link>https://jo-minjun.github.io/notes/msa-stack-quick-peek/</link><pubDate>Wed, 28 Dec 2022 17:10:30 +0900</pubDate><guid>https://jo-minjun.github.io/notes/msa-stack-quick-peek/</guid><description>1. 요구사항 아주 간단한 웹 기반 ITunes 주요 데이터는 다음과 같다. 가수 (Singer) 이름 정보를 가진다. 앨범 (Album) 발매 날짜, 앨범 제목 정보를 가진다. 노래 (Song) 노래 제목과 재생 시간 정보를 가진다. 공통 데이터 생성 시간 업데이트 시간 생성한 사람 업데이트한 사람 주요 기능 가수를 등록할 수 있다. 앨범을 등록할 수 있다. 노래를 등록할 수 있다. 노래 목록들을 조회할 수 있다. 노래를 조회할 수 있다. 노래를 업데이트 할 수 있다. 노래를 삭제할 수 있다.</description><content:encoded><![CDATA[<h2 id="1-요구사항">1. 요구사항</h2>
 <ul>
 <li>아주 간단한 웹 기반 ITunes</li>
 <li>주요 데이터는 다음과 같다.
@@ -884,1024 +1901,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">authorized-grant-type</span>: <span style="color:#ae81ff">password, client_credentials, refresh_token</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">resource</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">jwt.key-uri</span>: <span style="color:#ae81ff">http://localhost:9999/oauth/token_key</span>
-</span></span></code></pre></div>]]></content:encoded></item><item><title>DDD 핵심 정리</title><link>https://jo-minjun.github.io/notes/ddd-study/</link><pubDate>Fri, 30 Dec 2022 17:10:50 +0900</pubDate><guid>https://jo-minjun.github.io/notes/ddd-study/</guid><description>0. 참고 도메인 주도 개발 시작하기
-도메인 주도 개발 시작하기 - YES24 핵사고날 아키텍처
-Hexagonal Architecture with Java and Spring
-https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/
-예제 프로젝트
-https://github.com/jo-minjun/order-delivery-project 1. 도메인이란 무엇일까? wikipedia: Domain (software engineering) A domain is the targeted subject area of a computer program. It is a term used in software engineering. Formally it represents the target subject of a specific programming project, whether narrowly or broadly defined.
-소프트웨어 엔지니어링에서 사용되는 용어 컴퓨터 프로그램의 대상이 되는 영역 Example 소프트웨어 프로젝트의 목표가 특정 병원을 위한 프로그램을 만드는 경우 범위를 확장하여 모든 병원을 대상으로 하는 프로그램을 만드는 경우 상점과 기사를 이어주고 고객에게 물품을 전달해주는 라스트마일 서비스 2.</description><content:encoded><![CDATA[<h2 id="0-참고">0. 참고</h2>
-<ul>
-<li>
-<p>도메인 주도 개발 시작하기</p>
-<ul>
-<li><a href="http://www.yes24.com/Product/Goods/108431347">도메인 주도 개발 시작하기 - YES24</a></li>
-</ul>
-</li>
-<li>
-<p>핵사고날 아키텍처</p>
-<ul>
-<li>
-<p><a href="https://reflectoring.io/spring-hexagonal/">Hexagonal Architecture with Java and Spring</a></p>
-</li>
-<li>
-<p><a href="https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/">https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p>예제 프로젝트</p>
-<ul>
-<li><a href="https://github.com/jo-minjun/order-delivery-project">https://github.com/jo-minjun/order-delivery-project</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="1-도메인이란-무엇일까">1. 도메인이란 무엇일까?</h2>
-<h3 id="wikipedia-domain-software-engineering">wikipedia: Domain (software engineering)</h3>
-<blockquote>
-<p>A domain is the targeted subject area of a <a href="https://en.wikipedia.org/wiki/Computer_program">computer program</a>. It is a term used in <a href="https://en.wikipedia.org/wiki/Software_engineering">software engineering</a>.
-Formally it represents the target subject of a specific programming project, whether narrowly or broadly defined.</p>
-</blockquote>
-<ol>
-<li>소프트웨어 엔지니어링에서 사용되는 용어</li>
-<li>컴퓨터 프로그램의 대상이 되는 영역</li>
-</ol>
-<h3 id="example">Example</h3>
-<ul>
-<li>소프트웨어 프로젝트의 목표가 특정 병원을 위한 프로그램을 만드는 경우</li>
-<li>범위를 확장하여 모든 병원을 대상으로 하는 프로그램을 만드는 경우</li>
-<li>상점과 기사를 이어주고 고객에게 물품을 전달해주는 라스트마일 서비스</li>
-</ul>
-<h2 id="2-ddd란-무엇일까">2. DDD란 무엇일까?</h2>
-<ul>
-<li>Domain Driven Design이다.</li>
-<li>프로그램을 도메인별로 나누어 설계하는 방법</li>
-<li>모듈(도메인)간 응집도는 높이고, 결합도는 낮춰 준다.</li>
-<li>DDD의 목표를 달성하기 위해 전략적 설계 패턴과 전술적 설계 패턴을 사용한다.</li>
-</ul>
-<h2 id="3-왜-ddd를-할까">3. 왜 DDD를 할까?</h2>
-<ul>
-<li>복잡도 관리
-<ul>
-<li>시간 경과에 따라 코드 라인이 늘어나고, 변경 비용이 증가한다.
-<img loading="lazy" src="../DDD-study/1.png" alt="1"  />
-
-<a href="https://dreamix.eu/blog/java/why-good-clean-software-architecture-matters">https://dreamix.eu/blog/java/why-good-clean-software-architecture-matters</a></li>
-</ul>
-</li>
-<li>개발자는 특정 도메인의 전문가보다 도메인에 대한 전문성이 떨어진다.
-<ul>
-<li>공인 중개사와 개발자</li>
-<li>변호사와 개발자</li>
-<li>인사팀과 개발자</li>
-<li>…</li>
-</ul>
-</li>
-<li>전문가와 기획자, 개발자의 언어가 다르다.
-<ul>
-<li>도저히 이해할 수 없는 말들…</li>
-<li>네트워크 광전송 장비: OTN, PTN, ROADM, SERVICE, TUNNEL…</li>
-</ul>
-</li>
-</ul>
-<p>→ 최소 문서를 읽거나 대화할 때 서로가 하는 말을 이해하고 context를 맞춰 나가야 한다.</p>
-<h2 id="4-전략적-설계">4. 전략적 설계</h2>
-<h3 id="유비쿼터스-언어">유비쿼터스 언어</h3>
-<ul>
-<li>도메인 전문가, 기획자, 개발자 등 구성원들이 서로 다른 용어를 사용하면, 의사소통에 불편함이 있다.
-<ul>
-<li>지번주소 vs 구주소</li>
-</ul>
-</li>
-</ul>
-<p>→ <strong>유비쿼터스 언어</strong>를 사용해야 한다.</p>
-<ul>
-<li>구성원들 모두가 <strong>보편적으로 사용하는 언어</strong></li>
-<li>구성원들의 공통된 언어를 만들고 대화, 문서, 코드, 테스트 <strong>모든 곳에서 같은 용어</strong>를 사용한다.</li>
-</ul>
-<h3 id="도메인-모델과-경계">도메인 모델과 경계</h3>
-<ul>
-<li>다시 도메인에 대해 짚어보자면
-<ul>
-<li>소프트웨어 프로젝트에서 대상이 되고, 해결해야 할 영역</li>
-<li>온라인 쇼핑몰을 개발하는 프로젝트</li>
-</ul>
-</li>
-<li>도메인은 다시 하위 도메인으로 나뉘어 진다.
-<ul>
-<li>회원, 혜택(쿠폰), 주문, 카탈로그, 배송, 결제…</li>
-</ul>
-</li>
-<li><strong>도메인 모델</strong>
-<ul>
-<li>특정 도메인을 개념적으로 표현한 것</li>
-<li>도메인에 대한 이해도에 따라 도메인 모델도 변경된다.
-<img loading="lazy" src="../DDD-study/2.png" alt="2"  />
-</li>
-</ul>
-</li>
-<li>위와 같은 서브 도메인을 하나의 도메인으로 표현하기는 불가능에 가깝다.</li>
-<li>서브 도메인마다 같은 대상이라도 지칭하는 용어가 다를 수 있다.</li>
-</ul>
-<p>→ Problem Space가 된다.</p>
-<ul>
-<li>상품
-<ul>
-<li>카탈로그의 상품: 이미지, 상품명, 가격…</li>
-<li>배송의 상품: 무게, 수량…</li>
-</ul>
-</li>
-<li>회원
-<ul>
-<li>회원 도메인의 회원: 회원</li>
-<li>주문 도메인의 회원: 주문자</li>
-<li>배송 도메인의 회원: 받는 사람</li>
-</ul>
-</li>
-<li>즉, 모델은 특정한 컨텍스트 하에서 완전한 의미를 갖는다.</li>
-</ul>
-<p>→ 각 서브 도메인마다 <strong>명시적으로 구분되는 경계</strong>를 가져서 섞이지 않도록 해야 한다.</p>
-<h3 id="바운디드-컨텍스트">바운디드 컨텍스트</h3>
-<ul>
-<li>각 도메인 영역의 경계를 결정하는 <strong>명시적인 구분</strong></li>
-<li>각각의 도메인이 가진 모델을 정확하게 표현하기 위함이다.</li>
-</ul>
-<p>→ 즉 문제를 해결하기 위한 공간, Solution Space이다.</p>
-<ul>
-<li>바운디드 컨텍스트를 구분하는 조건
-<ul>
-<li>같은 용어, 다른 의미
-<ul>
-<li><strong>계정</strong>을 의미하는 Account</li>
-<li><strong>계좌</strong>를 의미하는 Account
-→ 이런 경우 두 가지 의미를 하나의 도메인 모델에 포함해서는 안된다.</li>
-</ul>
-</li>
-<li>같은 개념, 다른 용도
-<ul>
-<li>회원 서비스의 <strong>맴버</strong></li>
-<li>주문 서비스의 <strong>맴버</strong>
-→ 맴버는 서로 다른 도메인에 집중하고 있고, 발전의 방향성도 다르다.</li>
-</ul>
-</li>
-<li>팀 조직 구조
-<ul>
-<li>A팀의 관심사는 주문, B팀의 관심사는 결제.
-<ul>
-<li>하나의 주문 도메인에서도 관심사에 따라 컨텍스트가 달라진다.</li>
-</ul>
-</li>
-<li>한 팀이 하나의 시스템에서 온라인 쇼핑을 서비스한다.
-<ul>
-<li>서브 도메인은 회원, 카탈로그, 재고, 구매, 결제 등이 있다.</li>
-<li>상품 컨텍스트에서 재고와 카탈로그를 구현한다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>이상적으로는 바운디드 컨텍스트와 하위 도메인이 1대1로 대응되는 것이 좋다.</li>
-<li>하지만 팀 상황이나 유비쿼터스 언어가 명확하게 정의되지 않아 1대1로 대응되지 않는 경우도 있다.
-<img loading="lazy" src="../DDD-study/3.png" alt="3"  />
-</li>
-</ul>
-<h3 id="바운디드-컨텍스트-간-관계">바운디드 컨텍스트 간 관계</h3>
-<ul>
-<li>바운디드 컨텍스트는 어떻게든 연결되기 때문에 다양한 방식으로 관계를 형성한다.
-<ul>
-<li>고객/공급자</li>
-<li>공유 커널</li>
-<li>독립 방식</li>
-</ul>
-</li>
-<li><strong>고객/공급자</strong>
-<ul>
-<li>가장 흔한 관계이다.</li>
-<li>한쪽에서 **API를 제공(상류)**하고 다른쪽에서 **API를 호출(하류)**한다.
-<img loading="lazy" src="../DDD-study/4.png" alt="카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다."  />
-
-카탈로그 바운디드 컨텍스트는 추천 바운디드 컨텍스트에 의존한다.</li>
-</ul>
-</li>
-<li><strong>공유 커널</strong>
-<ul>
-<li>여러 바운디드 컨텍스트가 <strong>같은 모델을 공유</strong>하는 관계이다.</li>
-<li>중복을 줄일 수 있지만 공유 모델을 사용하는 바운디드 컨텍스트가 서로 영향을 받을 수 있다.</li>
-</ul>
-</li>
-<li><strong>독립 방식</strong>
-<ul>
-<li>여러 바운디드 컨텍스트가 <strong>외부에 의해 관계</strong>를 맺는다.
-<ul>
-<li>수동으로 두 바운디드 컨텍스트 간 통합시킨다.
-<ul>
-<li>사람에 의한 관계</li>
-</ul>
-</li>
-<li>자동화 시스템을 개발해서 두 바운디드 컨텍스트를 통합시킨다.
-<ul>
-<li>자동화 시스템에 의한 관계</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="바운디드-컨텍스트-맵">바운디드 컨텍스트 맵</h3>
-<ul>
-<li>특정 바운디드 컨텍스트에 과도하게 집중하면 전체적인 바운디드 컨텍스트 간의 관계를 인식하지 못할 수 있다.</li>
-<li>도메인을 더 잘 이해하거나 컨텍스트 간 관계가 바뀌면 컨텍스트 맵도 바뀐다.
-<img loading="lazy" src="../DDD-study/5.png" alt="5"  />
-</li>
-</ul>
-<h2 id="5-핵사고날-아키텍처">5. 핵사고날 아키텍처</h2>
-<ul>
-<li>예제 프로젝트에 핵사고날 아키텍처를 적용했다.
-<img loading="lazy" src="../DDD-study/6.png" alt="6"  />
-
-<a href="https://reflectoring.io/spring-hexagonal/">https://reflectoring.io/spring-hexagonal/</a></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">└──</span> xxx
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">├──</span> adapter
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> in
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxController<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> EventHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">(</span>or MessageHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> out
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">└──</span> EventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">(</span>or MessagePublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">├──</span> application
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxService<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> port
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">├──</span> in
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxCommand<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> xxxDto<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> xxxUsecase<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>       <span style="color:#960050;background-color:#1e0010">└──</span> out
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">├──</span> xxxEvent<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">├──</span> xxxEventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">│</span>           <span style="color:#960050;background-color:#1e0010">└──</span> xxxRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">└──</span> domain
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">├──</span> AggregateRootEntity<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">└──</span> ValueObject<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
-</span></span></code></pre></div><h2 id="6-전술적-설계">6. 전술적 설계</h2>
-<h3 id="도메인-영역의-주요-구성-요소">도메인 영역의 주요 구성 요소</h3>
-<table>
-<thead>
-<tr>
-<th>요소</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>엔티티 (ENTITY)</td>
-<td>고유의 식별자를 갖는 객체로 자신의 라이프 사이클을 갖는다. 도메인의 고유한 개념을 표현한다. 도메인 모델의 데이터를 포함하며 해당 데이터와 관련된 기능을 함께 제공한다.</td>
-</tr>
-<tr>
-<td>밸류 (VALUE)</td>
-<td>고유의 식별자를 갖지 않는 객체다. 엔티티의 속성으로 사용할 뿐만 아니라 다른 밸류 타입의 속성으로도 사용할 수 있다.</td>
-</tr>
-<tr>
-<td>애그리거트 (AGGREGATE)</td>
-<td>애그리거트는 연관된 엔티티와 밸류 객체를 개념적으로 하나로 묶은 것이다.</td>
-</tr>
-<tr>
-<td>리포지터리 (REPOSITORY)</td>
-<td>도메인 모델의 영속성을 처리한다.</td>
-</tr>
-<tr>
-<td>도메인 서비스 (DOMAIN SERVICE)</td>
-<td>특정 엔티티에 속하지 않은 도메인 로직을 제공한다. 도메인 로직이 여러 엔티티와 밸류를 필요로 하면 도메인 서비스에서 로직을 구현한다.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="엔티티--밸류">엔티티 &amp; 밸류</h3>
-<ul>
-<li>
-<p>도메인 모델을 표현할 때 이용한다.</p>
-</li>
-<li>
-<p>도메인 모델의 엔티티는 기능을 함께 제공한다.</p>
-<ul>
-<li>도메인 관점에서 도메인 로직을 구현하고 캡슐화해서 데이터가 임의로 변경되는 것을 막는다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.delivery.domain<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeDeliveryInfo</span><span style="color:#f92672">(</span>Address address<span style="color:#f92672">,</span> String phoneNumber<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  canChangeDelivery<span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">address</span> <span style="color:#f92672">=</span> address<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">phoneNumber</span> <span style="color:#f92672">=</span> phoneNumber<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">canChangeDelivery</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">status</span><span style="color:#f92672">.</span><span style="color:#a6e22e">canChangeDelivery</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;배송 정보 수정 불가&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>외부에서 setter를 이용해 배송지 정보를 변경한다면 배송지 변경 가능 여부 검증이 누락될 수 있고, 같은 로직이 반복될 수도 있다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> DeliveryStatus status <span style="color:#f92672">=</span> delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">getStatus</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 배송지 변경 조건
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">status</span><span style="color:#f92672">.</span><span style="color:#a6e22e">canChangeDelivery</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;배송 정보 수정 불가&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">setAddress</span><span style="color:#f92672">(</span>newAddress<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">setPhoneNumber</span><span style="color:#f92672">(</span>newPhoneNumber<span style="color:#f92672">);</span>
-</span></span></code></pre></div></li>
-<li>
-<p>밸류는 도메인 모델에서 두 개 이상의 데이터가 개념적으로 하나인 경우 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.domain<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Entity</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Table</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;orders&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Getter</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@NoArgsConstructor</span><span style="color:#f92672">(</span>access <span style="color:#f92672">=</span> AccessLevel<span style="color:#f92672">.</span><span style="color:#a6e22e">PROTECTED</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@AllArgsConstructor</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EqualsAndHashCode</span><span style="color:#f92672">(</span>of <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">})</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ToString</span><span style="color:#f92672">(</span>of <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;orderLine&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;totalAmount&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;deliveryId&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;paymentId&#34;</span><span style="color:#f92672">})</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span> <span style="color:#66d9ef">implements</span> Serializable <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Id</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@GeneratedValue</span><span style="color:#f92672">(</span>strategy <span style="color:#f92672">=</span> GenerationType<span style="color:#f92672">.</span><span style="color:#a6e22e">IDENTITY</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Long id<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Embedded</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> OrderLine orderLine<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 밸류 타입, AttributeConverter를 이용함.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> Money totalAmount <span style="color:#f92672">=</span> Money<span style="color:#f92672">.</span><span style="color:#a6e22e">ZERO</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">...</span> <span style="color:#75715e">// 다른 필드
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.common<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Converter</span><span style="color:#f92672">(</span>autoApply <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MoneyConverter</span> <span style="color:#66d9ef">implements</span> AttributeConverter<span style="color:#f92672">&lt;</span>Money<span style="color:#f92672">,</span> BigDecimal<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> BigDecimal <span style="color:#a6e22e">convertToDatabaseColumn</span><span style="color:#f92672">(</span>Money attribute<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> attribute<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> Money <span style="color:#a6e22e">convertToEntityAttribute</span><span style="color:#f92672">(</span>BigDecimal dbData<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Money<span style="color:#f92672">(</span>dbData<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div></li>
-<li>
-<p>엔티티는 @Entity 애너테이션을 사용한다.</p>
-</li>
-<li>
-<p>밸류는 @Embeddable, @Embedded, @SecondaryTable, @ElementCollection, @CollectionTable을 사용한다.</p>
-<ul>
-<li>@ElementCollection은 생명주기를 상위 엔티티에 종속시킨다.</li>
-<li>즉, cascade와 orphanRemoval 옵션을 제공하지 않는다.</li>
-<li>@OneToMany(cascade = ALL, orphanRemoval = true)와 차이점
-<ul>
-<li>@ElementCollection은 식별자를 갖지 않는다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.domain<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Embedded</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> OrderLine orderLine<span style="color:#f92672">;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.domain<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Embeddable</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderLine</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@ElementCollection</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@CollectionTable</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;order_lines&#34;</span><span style="color:#f92672">,</span> joinColumns <span style="color:#f92672">=</span> <span style="color:#a6e22e">@JoinColumn</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;orders_id&#34;</span><span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Set<span style="color:#f92672">&lt;</span>LineItem<span style="color:#f92672">&gt;</span> lineItems <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">...</span> <span style="color:#75715e">// 메서드
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>@AttributeOverride를 이용해서 @Embeddable 밸류의 애트리뷰트를 override할 수도 있다.</li>
-</ul>
-<h3 id="애그리거트">애그리거트</h3>
-<ul>
-<li>
-<p>도메인이 커지면 도메인 모델이 복잡해진다.</p>
-</li>
-<li>
-<p>도메인 모델이 복잡해지면 전체 구조에 초점을 맞추지 못하게 되고, 모델 간에 관계를 이해하기 어렵게 된다.</p>
-</li>
-<li>
-<p>애그리거트는 관련 객체를 묶어서 <strong>상위 개념으로 표현</strong>해준다.</p>
-<ul>
-<li>Order 도메인은 주문, 주문 목록, 총 결제 금액 등 하위 모델로 구성된다.</li>
-<li>이를 하나로 묶어 <strong>주문</strong>이라는 상위 개념으로 표현해준다.</li>
-</ul>
-</li>
-<li>
-<p>애그리거트는 루트 엔티티를 가지며, 이를 애그리거트 루트라 한다.</p>
-</li>
-<li>
-<p>애그리거트 루트는 애그리거트에 속해 있는 엔티티와 밸류 객체를 이용해서 애그리거트가 구현해야 할 기능을 제공한다.</p>
-<ul>
-<li>애그리거트의 내부 구현을 숨겨서 애그리거트 단위로 구현을 캡슐화 한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.delivery.domain<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Entity</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span> <span style="color:#75715e">// 애너테이션
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Delivery</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Id</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@GeneratedValue</span><span style="color:#f92672">(</span>strategy <span style="color:#f92672">=</span> GenerationType<span style="color:#f92672">.</span><span style="color:#a6e22e">IDENTITY</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Long id<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Embedded</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Address address<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String phoneNumber<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">...</span> <span style="color:#75715e">// 다른 필드
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">changeDeliveryInfo</span><span style="color:#f92672">(</span>Address address<span style="color:#f92672">,</span> String phoneNumber<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    canChangeDelivery<span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">address</span> <span style="color:#f92672">=</span> address<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">phoneNumber</span> <span style="color:#f92672">=</span> phoneNumber<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
-</span></span></code></pre></div></li>
-</ul>
-<h3 id="리포지터리">리포지터리</h3>
-<ul>
-<li>리포지터리는 애그리거트 단위로 도메인 객체를 저장하고 조회한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.application.port.out<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> minjun.ddd.order.domain.Order<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.data.jpa.repository.JpaRepository<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">OrderRepository</span> <span style="color:#66d9ef">extends</span> JpaRepository<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">,</span> Long<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>
-<p>애그리거트의 <strong>루트 엔티티만 리포지터리를 갖는다.</strong></p>
-<ul>
-<li>애그리거트의 밸류 등은 루트 엔티티와 생명 주기가 같다.</li>
-<li><strong>생명 주기가 다르거나 데이터 변경 주체가 다르다면 다른 애그리거트일 가능성이 높다.</strong></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.product.application.port.out<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> minjun.ddd.product.domain.Product<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.data.jpa.repository.JpaRepository<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ProductRepository</span> <span style="color:#66d9ef">extends</span> JpaRepository<span style="color:#f92672">&lt;</span>Product<span style="color:#f92672">,</span> Long<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>Product 애그리거트는 Order나 Delivery와 연관이 있기 때문에 같은 애그리거트로 생각될 수 있다.</li>
-<li>하지만 Order나 Delivery는 변경 주체가 주문자와 기사이지만, Product는 상품 관리자가 관리한다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="도메인-서비스">도메인 서비스</h3>
-<ul>
-<li>도메인 영역을 개발하다 보면 <strong>한 애그리거트로 기능을 구현하지 못할 때</strong>가 있다.</li>
-<li>결제 금액 계산 로직에 할인이 적용되는 경우
-<ul>
-<li>할인 쿠폰 애그리거트: 쿠폰별로 지정한 금액이나 비율에 따라 총 금액을 할인한다.</li>
-<li>회원 애그리거트: 회원 등급에 따라 추가 할인이 가능하다.</li>
-</ul>
-</li>
-<li>주문 애그리거트에 할인 관련 로직을 적용하면 할인 정책 변경시 주문 애그리거트가 변경된다.</li>
-</ul>
-<p>→ <strong>도메인 서비스 사용</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DiscountCalculationService</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Money <span style="color:#a6e22e">calculateDiscountAmounts</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>OrderLine<span style="color:#f92672">&gt;</span> orderLines<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>																				List<span style="color:#f92672">&lt;</span>Coupon<span style="color:#f92672">&gt;</span> coupons<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>																				MemberGrade grade<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		Money couponDiscount <span style="color:#f92672">=</span> coupons<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">()</span>
-</span></span><span style="display:flex;"><span>												<span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>coupon <span style="color:#f92672">-&gt;</span> calculateDiscount<span style="color:#f92672">(</span>coupon<span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>												<span style="color:#f92672">.</span><span style="color:#a6e22e">reduce</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Money<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">),</span> <span style="color:#f92672">(</span>v1<span style="color:#f92672">,</span> v2<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> v1<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>v2<span style="color:#f92672">));</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		Money membershipDiscount <span style="color:#f92672">=</span> calculateDiscount<span style="color:#f92672">(</span>orderer<span style="color:#f92672">.</span><span style="color:#a6e22e">getMember</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getGrade</span><span style="color:#f92672">());</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> couponDiscount<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>membershipDiscount<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Money <span style="color:#a6e22e">calculateDiscount</span><span style="color:#f92672">(</span>Coupon coupon<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Money <span style="color:#a6e22e">calculateDiscount</span><span style="color:#f92672">(</span>MemberGrade grade<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>
-<p>외부 시스템이나 타 도메인과 <strong>연동 기능</strong>도 도메인 서비스가 될 수 있다.</p>
-</li>
-<li>
-<p>상품 관리 시스템에서 사용자가 권한을 가졌는지 확인하기 위해 맴버 시스템을 연동하는 경우</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">PermissionChecker</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">hasUserPermission</span><span style="color:#f92672">(</span>String userId<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>여기서 인터페이스는 외부 시스템의 역할을 표현하기 위해 도메인 로직 관점에서 작성한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateProductService</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> PermissionChecker permissionChecker<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Long <span style="color:#a6e22e">createProduct</span><span style="color:#f92672">(</span>CreateProductRequest req<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		validate<span style="color:#f92672">(</span>req<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>permissionChecker<span style="color:#f92672">.</span><span style="color:#a6e22e">hasUserPermission</span><span style="color:#f92672">(</span>req<span style="color:#f92672">.</span><span style="color:#a6e22e">getUserId</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NoPermissionException<span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">...</span> <span style="color:#75715e">// 생성
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div></li>
-</ul>
-<h3 id="이벤트">이벤트</h3>
-<ul>
-<li>
-<p>API를 이용하는 방법은 <strong>시스템간 결합 문제</strong>를 발생시킨다.</p>
-<ul>
-<li>외부 서비스의 성능</li>
-<li>트랜잭션 처리 정책</li>
-<li>설계상 문제</li>
-</ul>
-</li>
-<li>
-<p><strong>외부 서비스의 성능</strong></p>
-</li>
-<li>
-<p><strong>트랜잭션 처리 정책</strong></p>
-<ol>
-<li>환불 외부 서비스에서 익셉션이 발생하면 주문까지 트랜잭션을 롤백한다.</li>
-<li>주문만 취소 상태로 변경하고 환불은 나중에 처리한다.</li>
-</ol>
-</li>
-<li>
-<p><strong>설계상 문제</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.application.service<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequiredArgsConstructor</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderService</span> <span style="color:#66d9ef">implements</span> OrderUsecase <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PaymentPort paymentPort<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cancelOrder</span><span style="color:#f92672">(</span>Long orderId<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> Order order <span style="color:#f92672">=</span> findOrder<span style="color:#f92672">(</span>orderId<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Payment 도메인 로직
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> Boolean responseFromPayment <span style="color:#f92672">=</span> paymentPort<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelPayment</span><span style="color:#f92672">(</span>order<span style="color:#f92672">.</span><span style="color:#a6e22e">getPaymentId</span><span style="color:#f92672">());</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>responseFromPayment<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;결제 취소 실패&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Order 도메인 로직
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    order<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelOrder</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>다른 도메인의 로직이 섞이고, 트랜잭션 처리 정책 및 외부 서비스 영향이 증가한다.</li>
-</ul>
-</li>
-</ul>
-<p><strong>→ 시스템의 결합도를 낮추기 위해 이벤트를 사용한다.</strong></p>
-<ul>
-<li>
-<p>이벤트는 <strong>과거에 벌어진 어떤 것</strong>을 의미하며, <strong>상태가 변경</strong>됐다는 것을 의미한다.</p>
-</li>
-<li>
-<p>이벤트는 다음과 같이 네 개의 구성요소를 가진다.
-<img loading="lazy" src="../DDD-study/7.png" alt="7.png"  />
-</p>
-<ul>
-<li>
-<p>이벤트</p>
-<ul>
-<li>이벤트 종류, 발생 시간, 이벤트 관련 정보</li>
-</ul>
-</li>
-<li>
-<p>이벤트 생성 주체</p>
-<ul>
-<li>도메인 로직을 실행해서 <strong>상태가 바뀌면</strong> 관련 이벤트를 발생시킨다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.delivery.application<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">startDelivery</span><span style="color:#f92672">(</span>Long deliveryId<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> Delivery delivery <span style="color:#f92672">=</span> deliveryRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">findById</span><span style="color:#f92672">(</span>deliveryId<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span><span style="color:#a6e22e">orElseThrow</span><span style="color:#f92672">(</span>NoSuchElementException<span style="color:#f92672">::</span><span style="color:#66d9ef">new</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">startDelivery</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>  deliveryEventPublisher<span style="color:#f92672">.</span><span style="color:#a6e22e">publish</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DeliveryStartedEvent<span style="color:#f92672">(</span>delivery<span style="color:#f92672">));</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div></li>
-<li>
-<p>이벤트 디스패처</p>
-<ul>
-<li>핸들러에 <strong>이벤트를 전파</strong>한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.delivery.adapter.out<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// org.springframework.context.ApplicationEventPublisher
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ApplicationEventPublisher publisher<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">publish</span><span style="color:#f92672">(</span>DeliveryEvent event<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  publisher<span style="color:#f92672">.</span><span style="color:#a6e22e">publishEvent</span><span style="color:#f92672">(</span>event<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>  log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Order Event Published: {} {}&#34;</span><span style="color:#f92672">,</span> event<span style="color:#f92672">.</span><span style="color:#a6e22e">getDelivery</span><span style="color:#f92672">(),</span> event<span style="color:#f92672">.</span><span style="color:#a6e22e">getTimestamp</span><span style="color:#f92672">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div></li>
-<li>
-<p>이벤트 핸들러</p>
-<ul>
-<li>이벤트 생성 주체가 발생시킨 이벤트에 반응한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> minjun.ddd.order.adapter.in<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EventListener</span><span style="color:#f92672">(</span>DeliveryStartedEvent<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handleDeliveryStartedEvent</span><span style="color:#f92672">(</span>DeliveryStartedEvent event<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  orderUsecase<span style="color:#f92672">.</span><span style="color:#a6e22e">startDelivery</span><span style="color:#f92672">(</span>event<span style="color:#f92672">.</span><span style="color:#a6e22e">getDelivery</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getOrderId</span><span style="color:#f92672">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li>
-<p>위와 같은 방법이 아닌, <strong>메시징 시스템을 이용한 방법</strong>도 가능하다.</p>
-<ul>
-<li>이벤트 저장소를 이용한 메시징 (<strong>Transactional Outbox Pattern</strong>)</li>
-<li>이벤트 발행 서비스
-<img loading="lazy" src="../DDD-study/8.png" alt="transactional-outbox-pattern.png"  />
-</li>
-<li>이벤트 소비 서비스
-<img loading="lazy" src="../DDD-study/9.png" alt="idempotent-receiver.png"  />
-</li>
-</ul>
-</li>
-</ul>
-]]></content:encoded></item><item><title>12 factor app (15 factor app)</title><link>https://jo-minjun.github.io/notes/12-factor-app/</link><pubDate>Fri, 24 Feb 2023 00:02:51 +0900</pubDate><guid>https://jo-minjun.github.io/notes/12-factor-app/</guid><description>Introduction 12 factor app은 서비스형 소프트웨어를 구성하기 위한 방법론입니다.
-개발 언어/프레임워크에 상관없는 이식성과 플랫폼 호환성 향상을 위한 디자인 원칙입니다. 애플리케이션의 수평적 확장이 용이하도록 합니다. 애플리케이션 확장 가능성 CI/CD에 용이성 플랫폼간 이식성 기본적인 기대치, 정책 설정 1. Codebase 형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다. 하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.
-코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.
-2. Dependencies 의존성을 명시적으로 선언하고 분리한다.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>12 factor app은 서비스형 소프트웨어를 구성하기 위한 방법론입니다.</p>
-<ul>
-<li>개발 언어/프레임워크에 상관없는 이식성과 플랫폼 호환성 향상을 위한 디자인 원칙입니다.</li>
-<li>애플리케이션의 수평적 확장이 용이하도록 합니다.</li>
-</ul>
-<blockquote>
-<ul>
-<li>애플리케이션 확장 가능성</li>
-<li>CI/CD에 용이성</li>
-<li>플랫폼간 이식성</li>
-<li>기본적인 기대치, 정책 설정</li>
-</ul>
-</blockquote>
-<h2 id="1-codebase">1. Codebase</h2>
-<h3 id="형상관리-시스템에서-하나의-코드베이스를-관리하면서-다수에-배포한다">형상관리 시스템에서 하나의 코드베이스를 관리하면서, 다수에 배포한다.</h3>
-<p>하나의 코드베이스에 여러개의 애플리케이션 코드가 있다면 12 factor app 위반입니다.</p>
-<p>코드베이스는 모든 배포에 사용되지만 각 배포는 다른 버전이 사용될 수 있습니다.</p>
-<p><img loading="lazy" src="../12-factor-app/codebase.png" alt="codebase"  />
-</p>
-<h2 id="2-dependencies">2. Dependencies</h2>
-<h3 id="의존성을-명시적으로-선언하고-분리한다">의존성을 명시적으로 선언하고 분리한다.</h3>
-<p>의존성은 명시적으로 선언되어, 신규 개발자 또는 시스템 설정을 편리하게 해야합니다.</p>
-<p>대부분의 프로그래밍 언어는 패키징 시스템을 제공하기 때문에 새로 설정을 해야할 때는 언어와 패키지 매니저만 설치하면 됩니다.</p>
-<p><img loading="lazy" src="../12-factor-app/dependencies.png" alt="dependencies"  />
-</p>
-<h2 id="3-config">3. Config</h2>
-<h3 id="설정값을-환경에-저장한다">설정값을 환경에 저장한다.</h3>
-<p>애플리케이션 설정값은 배포 환경에 따라 달라지는 값들입니다.</p>
-<ul>
-<li>데이터베이스 또는 Backing 서비스를 처리하는 리소스</li>
-<li>Amazon S3 또는 트위터와 같은 외부 서비스에 대한 인증 정보</li>
-<li>배포 환경 호스트 이름과 같은 값</li>
-</ul>
-<p><img loading="lazy" src="../12-factor-app/config.png" alt="config"  />
-</p>
-<h2 id="4-backing-services">4. Backing services</h2>
-<h3 id="backing-service">Backing service</h3>
-<p>Backing 서비스는 데이터베이스와, 메시징, 메일 서비스 등 통해 연결된 모든 서비스입니다.</p>
-<p>12 factor app은 Backing 서비스를 모두 리소스로 취급하고, 설정에서 값을 읽어서 처리하여 느슨하게 연결합니다.</p>
-<p><img loading="lazy" src="../12-factor-app/backing-service.png" alt="backing-service"  />
-</p>
-<h2 id="5-build-release-run">5. Build, release, run</h2>
-<h3 id="빌드와-실행-단계를-엄격하게-구분한다">빌드와 실행 단계를 엄격하게 구분한다.</h3>
-<p>코드베이스는 3단계를 거쳐 배포되고, 엄격하게 구분되어야 합니다.</p>
-<ol>
-<li>Build: 지정된 코드 버전을 사용하여 의존성을 가져오고 컴파일합니다.</li>
-<li>Release: 컴파일된 결과물과 현재 배포 환경의 설정을 연결합니다. Release 단계의 결과물은 즉시 실행될 수 있습니다.</li>
-<li>Run: 애플리케이션을 실행합니다.</li>
-</ol>
-<p>코드 변경은 반드시 빌드 단계에서만 이루어져야만 하며 만들어진 Release 결과는 변경될 수 없고, 이전 버전으로 롤백이 가능해야합니다.</p>
-<h2 id="6-processes">6. Processes</h2>
-<h3 id="애플리케이션을-하나-이상의-stateless-프로세스로-실행한다">애플리케이션을 하나 이상의 Stateless 프로세스로 실행한다.</h3>
-<p>애플리케이션은 실행 환경에서 하나 이상의 프로세스로 실행됩니다.</p>
-<p>상태는 데이터베이스와 같은 상태 저장 서비스에 저장해야 하며, 애플리케이션은 Stateless하게 유지해야 합니다.</p>
-<p><img loading="lazy" src="../12-factor-app/processes.png" alt="processes"  />
-</p>
-<h2 id="7-port-binding">7. Port binding</h2>
-<h3 id="포트-바인딩을-통해-서비스-제공을-한다">포트 바인딩을 통해 서비스 제공을 한다.</h3>
-<p>애플리케이션은 포트를 바인딩하여 서비스를 제공해야 합니다.</p>
-<p>포트를 통해 서비스를 제공함으로써 다른 애플리케이션의 Backing 서비스가 될 수 있습니다.</p>
-<h2 id="8-concurrency">8. Concurrency</h2>
-<h3 id="프로세스-모델을-통해-수평적-확장을-한다">프로세스 모델을 통해 수평적 확장을 한다.</h3>
-<p>애플리케이션은 리소스 추가를 통한 수직 확장 뿐만 아니라, 수를 늘리는 수평적 확장이 가능해야 합니다.</p>
-<ol start="6">
-<li>Processes를 준수함으로써 확장하거나 축소할 수 있습니다.</li>
-</ol>
-<h2 id="9-disposability">9. Disposability</h2>
-<h3 id="빠른-시작과-그레이스풀-셧다운으로-안정성을-최대화한다">빠른 시작과 그레이스풀 셧다운으로 안정성을 최대화한다.</h3>
-<p>배포와 수평 확장시 빠른 애플리케이션 구동을 위해 필요합니다.</p>
-<p>종료 시그널을 받은 애플리케이션은 새로운 요청을 받지 않고, 기존 요청을 처리한 후 안정적으로 종료되어야 합니다.</p>
-<h2 id="10-devprod-parity">10. Dev/prod parity</h2>
-<h3 id="개발-스테이징-상용-환경을-최대한-비슷하게-유지한다">개발, 스테이징, 상용 환경을 최대한 비슷하게 유지한다.</h3>
-<p>Local에서는 H2 database를 사용하고 상용에서는 MySQL을 사용하는 것과 같은 차이를 줄이는 것입니다.</p>
-<p>12 factor app은 개발과 상용 환경 사이의 차이를 줄여 지속적인 배포가 가능하도록 해야합니다.</p>
-<h2 id="11-logs">11. Logs</h2>
-<h3 id="로그를-이벤트-스트림으로-처리한다">로그를 이벤트 스트림으로 처리한다.</h3>
-<p>애플리케이션은 로그에 관여하면 안되며, 단순히 버퍼링없이 출력할 뿐입니다.</p>
-<p>애플리케이션은 언제든지 생성되고 삭제될 수 있습니다. 따라서 이벤트는 별도 저장소에 보관되는 것이 좋습니다.</p>
-<p><img loading="lazy" src="../12-factor-app/logs.png" alt="logs"  />
-</p>
-<h2 id="12-admin-processes">12. Admin processes</h2>
-<h3 id="어드민관리-작업을-일회성-프로세스로-실행해야-한다">어드민/관리 작업을 일회성 프로세스로 실행해야 한다.</h3>
-<p>개발자는 종종 일회성으로 애플리케이션 관리 작업을 수행해야 하며, 작업을 스크립트화하여 한번에 실행할 수 있도록 해야합니다.</p>
-<ul>
-<li>데이터베이스 마이그레이션</li>
-<li>일회성 스크립트 실행</li>
-</ul>
-<p>관리 스크립트는 애플리케이션과 같은 코드베이스에서 같은 설정 값을 사용해야 합니다.</p>
-<hr>
-<blockquote>
-<p>케빈 허프만이 “Beyond the 12 factor app”을 통해 MSA 환경에 적합한 3가지 요소를 제시했다.</p>
-</blockquote>
-<h2 id="13-api-first">13. API first</h2>
-<h3 id="api-스펙-정의를-우선으로-한다">API 스펙 정의를 우선으로 한다.</h3>
-<p>API 스펙을 먼저 정의하여 어떤 스키마로 통신할지 결정해야 합니다.</p>
-<p>API first를 통해 클라이언트와 서버가 동시에 작업을 진행할 수 있습니다.</p>
-<h2 id="14-telemetry">14. Telemetry</h2>
-<h3 id="애플리케이션-및-리소스를-모니터링한다">애플리케이션 및 리소스를 모니터링한다.</h3>
-<p>애플리케이션 및 CPU, RAM등 리소스를 모니터링하여 성능, 이벤트 및 헬스 체크 등을 확인할 수 있습니다.</p>
-<p>서비스 관리 및 경고 알람 트리거 설정에 도움을 줍니다.</p>
-<h2 id="15-security">15. Security</h2>
-<h3 id="보안-정책이-적절한지-확인한다">보안 정책이 적절한지 확인한다.</h3>
-<p>API, DB 등 보안 정책이 적절한지 확인해야 합니다.</p>
-<p>API는 OAuth 등으로 보호되어야 하며 HTTPS를 이용해서 노출시켜야 합니다.</p>
-]]></content:encoded></item><item><title>Shell Script</title><link>https://jo-minjun.github.io/notes/shell-script/</link><pubDate>Mon, 09 Jan 2023 23:30:12 +0900</pubDate><guid>https://jo-minjun.github.io/notes/shell-script/</guid><description>Shell Script 쉘 스크립트로 만든 UP-DOWN 게임 Shell이란 운영체제에서 커널과 사용자 사이를 이어주는 역할을 하는 명령어 해석기이다.
-Shell은 bash sh csh zsh등이 있다.
-Shell Script란 운영체제의 Shell을 이용해서 Shell 명령어들을 순차적으로 실행시켜주는 스크립트이다.
-Shell Script를 사용하기 위해서는 다음과 같이 시작해야 한다.
-#!/bin/bash #!/usr/bin/env bash #!/usr/bin/env python3 위와 같이 #!으로 시작하여 Shell의 경로를 선언해준다. 이를 쉬뱅이라 한다. 쉬뱅은 어느 인터프리터가 스크립트의 명령어를 해석할 지 가리킨다. 변수 변수 number=1 string=&amp;#34;string&amp;#34; echo &amp;#34;$number&amp;#34; echo &amp;#34;$string&amp;#34; echo &amp;#34;${number}&amp;#34; echo &amp;#34;${string}&amp;#34; 변수는 위와 같이 공백을 사용하지 않고 선언한다.</description><content:encoded><![CDATA[<h2 id="shell-script">Shell Script</h2>
-<ul>
-<li><a href="https://github.com/jo-minjun/shell-script-up-down-game">쉘 스크립트로 만든 UP-DOWN 게임</a></li>
-</ul>
-<h3 id="shell이란">Shell이란</h3>
-<p>운영체제에서 커널과 사용자 사이를 이어주는 역할을 하는 명령어 해석기이다.</p>
-<p>Shell은 <code>bash</code> <code>sh</code> <code>csh</code> <code>zsh</code>등이 있다.</p>
-<h3 id="shell-script란">Shell Script란</h3>
-<p>운영체제의 Shell을 이용해서 Shell 명령어들을 순차적으로 실행시켜주는 스크립트이다.</p>
-<p>Shell Script를 사용하기 위해서는 다음과 같이 시작해야 한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
-</span></span></code></pre></div><ul>
-<li>위와 같이 <code>#!</code>으로 시작하여 Shell의 경로를 선언해준다. 이를 <strong>쉬뱅</strong>이라 한다.</li>
-<li><strong>쉬뱅</strong>은 어느 인터프리터가 스크립트의 명령어를 해석할 지 가리킨다.</li>
-</ul>
-<h2 id="변수">변수</h2>
-<h3 id="변수-1">변수</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>number<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>string<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;string&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$number<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span>$string<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>number<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>string<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div><ul>
-<li>변수는 위와 같이 공백을 사용하지 않고 선언한다.</li>
-<li>변수명은 대소문자를 구분한다.</li>
-<li>변수명은 숫자를 포함할 수 있으나, 숫자로 시작할 수 없다.</li>
-<li>변수에 숫자를 대입해도 문자열로 취급된다.</li>
-<li>변수는 <code>$변수명</code> 또는 <code>${변수명}</code>으로 사용할 수 있다.</li>
-</ul>
-<h3 id="배열">배열</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>array<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>array<span style="color:#f92672">+=(</span><span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>array[0]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>array[*]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${#</span>array[*]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div><ul>
-<li>배열은 각 원소를 공백으로 구분한다.</li>
-<li>원소를 추가할 경우 <code>+=</code>으로 한다.</li>
-<li><code>변수명[index]</code>를 사용해서 특정 인덱스(0 ~ n)의 원소에 접근할 수 있고, <code>변수명[*]</code>으로 모든 원소에 접근할 수 있다.</li>
-<li><code>#변수명[*]</code>으로 원소의 수를 확인할 수 있다.</li>
-</ul>
-<h3 id="미리-정의된-변수">미리 정의된 변수</h3>
-<table>
-<thead>
-<tr>
-<th>변수</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$0</td>
-<td>쉘 스크립트의 파일명</td>
-</tr>
-<tr>
-<td>$#</td>
-<td>쉘 스크립트에 전달된 인자의 수</td>
-</tr>
-<tr>
-<td>$$</td>
-<td>쉘 스크립트의 PID</td>
-</tr>
-<tr>
-<td>$1 ~ $n</td>
-<td>쉘 스크립트에 전달된 인자 값</td>
-</tr>
-<tr>
-<td>$*</td>
-<td>쉘 스크립트에 전달된 인자들의 문자열</td>
-</tr>
-</tbody>
-</table>
-<h2 id="비교-연산자">비교 연산자</h2>
-<h3 id="변수-비교-연산자">변수 비교 연산자</h3>
-<table>
-<thead>
-<tr>
-<th>연산자</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-z ${변수A}</td>
-<td>변수A의 문자열 길이가 0이면 참</td>
-</tr>
-<tr>
-<td>-n ${변수A}</td>
-<td>변수A의 문자열 길이가 0이 아니면 참</td>
-</tr>
-<tr>
-<td>${변수A} -eq ${변수B}</td>
-<td>변수A와 변수B의 값이 같으면 참</td>
-</tr>
-<tr>
-<td>${변수A} -ne ${변수B}</td>
-<td>변수A와 변수B의 값이 다르면 참</td>
-</tr>
-<tr>
-<td>${변수A} -gt ${변수B}</td>
-<td>변수A의 값이 변수B의 값보다 크면 참</td>
-</tr>
-<tr>
-<td>${변수A} -ge ${변수B}</td>
-<td>변수A의 값이 변수B의 값보다 크거나 같으면 참</td>
-</tr>
-<tr>
-<td>${변수A} -lt ${변수B}</td>
-<td>변수A의 값이 변수B의 값보다 작으면 참</td>
-</tr>
-<tr>
-<td>${변수A} -le ${변수B}</td>
-<td>변수A의 값이 변수B의 값보다 작거나 같으면 참</td>
-</tr>
-<tr>
-<td>연산1 -a 연산2</td>
-<td>연산1과 연산2가 모두 참이면 참</td>
-</tr>
-<tr>
-<td>연산1 -o 연산2</td>
-<td>연산1과 연산2중 하나라도 참이면 참</td>
-</tr>
-</tbody>
-</table>
-<h3 id="파일디렉터리-비교-연산자">파일/디렉터리 비교 연산자</h3>
-<table>
-<thead>
-<tr>
-<th>연산자</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-d ${A}</td>
-<td>A가 디렉터리면 참</td>
-</tr>
-<tr>
-<td>-e ${A}</td>
-<td>A파일이 존재하면 참</td>
-</tr>
-<tr>
-<td>-L ${A}</td>
-<td>A파일이 심볼릭 링크면 참</td>
-</tr>
-<tr>
-<td>-r ${A}</td>
-<td>A파일에 읽기 권한이 존재하면 참</td>
-</tr>
-<tr>
-<td>-w ${A}</td>
-<td>A파일에 쓰기 권한이 존재하면 참</td>
-</tr>
-<tr>
-<td>-x ${A}</td>
-<td>A파일에 실행 권한이 존재하면 참</td>
-</tr>
-<tr>
-<td>-s ${A}</td>
-<td>A파일의 크기가 0보다 크면 참</td>
-</tr>
-<tr>
-<td>-f ${A}</td>
-<td>A파일이 존재하면 참</td>
-</tr>
-<tr>
-<td>${A} -nt ${B}</td>
-<td>A파일이 B파일보다 최신 파일이면 참</td>
-</tr>
-<tr>
-<td>${A} -ot ${B}</td>
-<td>A파일이 B파일보다 이전 파일이면 참</td>
-</tr>
-<tr>
-<td>${A} -ef ${B}</td>
-<td>A파일이 B파일과 같은 파일이면 참</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>주로 <code>-d</code> <code>-f</code> 를 자주 사용한다.</li>
-</ul>
-<h2 id="제어문">제어문</h2>
-<h3 id="분기문">분기문</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> 비교 연산자 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> 비교 연산자 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
-</span></span></code></pre></div><ul>
-<li><code>if</code>로 시작하고 <code>fi</code>로 끝난다.</li>
-<li>분기문에서 비교 연산은 <code>[ 비교 연산자 ]; then</code> 구분을 사용한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">case</span> target in
-</span></span><span style="display:flex;"><span>	값1<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span>	;;
-</span></span><span style="display:flex;"><span>	값2|값3<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span>	;;
-</span></span><span style="display:flex;"><span>	*<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span>	;;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">esac</span>
-</span></span></code></pre></div><ul>
-<li><code>case</code>로 시작하고 <code>esac</code>로 끝난다.</li>
-<li><code>;;</code> 를 이용해서 break를 할 수 있다.</li>
-</ul>
-<h3 id="반복문">반복문</h3>
-<p>반복문은 공통적으로 <code>do</code>로 시작하고 <code>done</code>으로 끝난다.</p>
-<p><code>continue</code>와 <code>break</code>를 이용해서 반복문을 제어할 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>비교 연산자<span style="color:#f92672">)</span>; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#e6db74">${</span>array[*]<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
-</span></span></code></pre></div><ul>
-<li>배열의 각 요소에 접근한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>0..10<span style="color:#f92672">}</span>; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
-</span></span></code></pre></div><ul>
-<li>0 ~ 10 범위의 값을 접근한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span> i <span style="color:#f92672">=</span> 0; i &lt; 10; i++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 실행</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
-</span></span></code></pre></div><ul>
-<li>0 ~ 10 범위의 값을 접근한다.</li>
-</ul>
-]]></content:encoded></item><item><title>객체 지향 설계와 스프링</title><link>https://jo-minjun.github.io/notes/spring-core-basic/</link><pubDate>Fri, 01 Jul 2022 19:42:48 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-core-basic/</guid><description>1. 스프링이란? 스프링의 생태계 필수: 스프링 프레임워크, 스프링 부트
+</span></span></code></pre></div>]]></content:encoded></item><item><title>객체 지향 설계와 스프링</title><link>https://jo-minjun.github.io/notes/spring-core-basic/</link><pubDate>Fri, 01 Jul 2022 19:42:48 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-core-basic/</guid><description>1. 스프링이란? 스프링의 생태계 필수: 스프링 프레임워크, 스프링 부트
 선택: 스프링 데이터, 스프링 세션, 스프링 시큐리티, 스프링 Rest Docs, 스프링 배치, 스프링 클라우드
 가장 중요한 것: 스프링 프레임워크 핵심 기술: 스프링 DI 컨테이너, AOP, 이벤트, 기타 웹 기술: 스프링 MVC, 스프링 webFlux 데이터 접근 기술: 트랜잭션, JDBC, ORM 지원, XML 지원 기술 통합: 캐시, 이메일, 원격접근, 스케줄링 테스트: 스프링 기반 테스트 지원 언어: 코틀린, 그루비 *최근에는 스프링 부트를 통해서 스프링 프레임워크의 기술들을 편리하게 사용한다.</description><content:encoded><![CDATA[<h2 id="1-스프링이란">1. 스프링이란?</h2>
 <h3 id="스프링의-생태계">스프링의 생태계</h3>
