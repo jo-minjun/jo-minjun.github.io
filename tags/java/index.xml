@@ -61,7 +61,7 @@
 <tr>
 <td>workQueue</td>
 <td>BlockingQueue</td>
-<td>작업을 저장해두는 큐의 크기</td>
+<td>작업을 저장해두는 큐</td>
 </tr>
 <tr>
 <td>threadFactory</td>
