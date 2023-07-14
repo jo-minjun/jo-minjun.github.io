@@ -1,4 +1,256 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>minjun's memory</title><link>https://jo-minjun.github.io/</link><description>Recent content on minjun's memory</description><image><title>minjun's memory</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Thu, 13 Jul 2023 18:40:44 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>사소한 ThreadLocal Tips</title><link>https://jo-minjun.github.io/notes/threadlocal-tips/</link><pubDate>Thu, 13 Jul 2023 18:40:44 +0900</pubDate><guid>https://jo-minjun.github.io/notes/threadlocal-tips/</guid><description>가능하다면 로컬 변수를 사용합니다. 프레임워크에 위임합니다. e.g. RequestContextHolder ConcurrentHashMap 같은 요소를 ThreadLocal 변수로 변경할 수 있는지 검토합니다. public class UserContextHolder { public static ThreadLocal&amp;lt;User&amp;gt; holder = new ThreadLocal(); } class HoldingService { public void holdUser() { // Set user for this thread User user = getUser(); UserContextHolder.holder.set(user); } } class SomeService { public void getUser() { // Get user for this thread User user = UserContextHolder.holder.get(); // Remove user; user no longer required UserContextHolder.</description><content:encoded><![CDATA[<ol>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>minjun's memory</title><link>https://jo-minjun.github.io/</link><description>Recent content on minjun's memory</description><image><title>minjun's memory</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Fri, 14 Jul 2023 10:18:29 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Java ExecutorService에 대하여</title><link>https://jo-minjun.github.io/notes/about-executor-service/</link><pubDate>Fri, 14 Jul 2023 10:18:29 +0900</pubDate><guid>https://jo-minjun.github.io/notes/about-executor-service/</guid><description>ExecutorService를 사용하면 간단하게 스레드풀을 생성해서 병렬처리를 할 수 있습니다. Executors의 스태틱 메서드를 통해 간단하게 ExecutorService를 사용할 수 있습니다. 생성자를 이용해 커스텀하게 생성할 수도 있습니다. 이상적인 풀 사이즈 Task Type Ideal pool size Considerations CPU bound CPU Core count 얼마나 많은 작업이 같은 CPU에서 동작하는지 (Context switching 비용) I/O bound High 각 작업의 평균 대기 시간, 너무 큰 스레드 풀은 메모리 사용량을 고려해야함. int coreCount = Runtime.getRuntime().availableProcessors(); // int coreCount = taskExecutionProperties.</description><content:encoded><![CDATA[<ul>
+<li>ExecutorService를 사용하면 간단하게 스레드풀을 생성해서 병렬처리를 할 수 있습니다.</li>
+<li>Executors의 스태틱 메서드를 통해 간단하게 ExecutorService를 사용할 수 있습니다.
+<ul>
+<li>생성자를 이용해 커스텀하게 생성할 수도 있습니다.</li>
+</ul>
+</li>
+<li>이상적인 풀 사이즈
+<table>
+<thead>
+<tr>
+<th>Task Type</th>
+<th>Ideal pool size</th>
+<th>Considerations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU bound</td>
+<td>CPU Core count</td>
+<td>얼마나 많은 작업이 같은 CPU에서 동작하는지 (Context switching 비용)</td>
+</tr>
+<tr>
+<td>I/O bound</td>
+<td>High</td>
+<td>각 작업의 평균 대기 시간, 너무 큰 스레드 풀은 메모리 사용량을 고려해야함.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> coreCount <span style="color:#f92672">=</span> Runtime<span style="color:#f92672">.</span><span style="color:#a6e22e">getRuntime</span><span style="color:#f92672">().</span><span style="color:#a6e22e">availableProcessors</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// int coreCount = taskExecutionProperties.getPool().getCoreSize();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>ExecutorService service <span style="color:#f92672">=</span> Executors<span style="color:#f92672">.</span><span style="color:#a6e22e">newFixedThreadPool</span><span style="color:#f92672">(</span>coreCount<span style="color:#f92672">);</span>
+</span></span></code></pre></div><h2 id="threadpoolexecutor-생성자-파라미터">ThreadPoolExecutor 생성자 파라미터</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>corePoolSize</td>
+<td>Integer</td>
+<td>pool 최소 크기</td>
+</tr>
+<tr>
+<td>maxPoolSize</td>
+<td>Integer</td>
+<td>pool 최대 크기</td>
+</tr>
+<tr>
+<td>keepAliveTime + unit</td>
+<td>Long</td>
+<td>Thread를 idle 상태로 유지할 시간 (시간 초과 후에는 kill)</td>
+</tr>
+<tr>
+<td>workQueue</td>
+<td>BlockingQueue</td>
+<td>작업을 저장해두는 큐의 크기</td>
+</tr>
+<tr>
+<td>threadFactory</td>
+<td>ThreadFactory</td>
+<td>새로운 Thread를 생성하는 Factory</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>RejectedExecutionHandler</td>
+<td>작업 실행이 거부되었을 때 사용할 callback</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>core pool thread는 <code>allowCoreThreadTimeOut(boolean value)</code>를 <code>true</code>로 설정하지 않으면 Kill되지 않습니다.</li>
+</ul>
+<h2 id="풀의-종류">풀의 종류</h2>
+<ul>
+<li>FixedThreadPool
+<ul>
+<li>고정된 수의 Thread를 가집니다.</li>
+<li>Blocking queue에 작업을 쌓아두고 Thread가 작업을 하나씩 수행합니다.</li>
+</ul>
+</li>
+<li>CachedThreadPool
+<ul>
+<li>고정된 수의 Thread가 없습니다.</li>
+<li>하나의 작업만 저장할 수 있는 Syncronus queue에 작업을 저장해두고 사용 가능한 Thread에 할당합니다.</li>
+<li>사용 가능한 Thread가 없으면 새로운 Thread를 생성합니다.</li>
+</ul>
+</li>
+<li>ScheduledThreadPool
+<ul>
+<li>고정된 수의 Thread를 가집니다.</li>
+<li>작업을 일정 시간 지연 후에 수행하거나 일정 시간 간격으로 실행시킵니다.</li>
+<li><code>schedule(Runnable runnable, Long delay, TimeUnit timeunit)</code>
+<ul>
+<li>일정 시간 뒤에 작업을 한번 실행시킵니다.</li>
+</ul>
+</li>
+<li><code>scheduleAtFixedRate(Runnable runnable, Long delay, Long period, TimeUnit timeunit)</code>
+<ul>
+<li>작업을 일정 시간 간격으로 반복적으로 실행시킵니다.</li>
+</ul>
+</li>
+<li><code>scheduleAtFixedDelay(Runnable runnable, Long initDelay, Long period, TimeUnit timeunit)</code>
+<ul>
+<li>이전 작업 완료 시 작업을 일정 시간 간격으로 반복적으로 실행시킵니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SingleThreadExecutor
+<ul>
+<li>1개의 Thread를 가집니다.</li>
+<li>Blocking queue에 작업을 쌓아두고 Thread가 작업을 하나씩 수행합니다.</li>
+<li>Thread가 kill되면 다시 Thread생성됩니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="풀-종류-별-queue">풀 종류 별 Queue</h3>
+<table>
+<thead>
+<tr>
+<th>Pool</th>
+<th>Queue Type</th>
+<th>Why?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FixedThreadPool</td>
+<td>LinkedBlockingQueue</td>
+<td>Unbounded queue에 모든 작업을 저장해두고, 한정된 Thread에서 작업을 순서대로 처리한다.</td>
+</tr>
+<tr>
+<td>SingleThreadExecutor</td>
+<td>LinkedBlockingQueue</td>
+<td>Unbounded queue에 모든 작업을 저장해두고, 한정된 Thread에서 작업을 순서대로 처리한다.</td>
+</tr>
+<tr>
+<td>CachedThreadPool</td>
+<td>SynchronousQueue</td>
+<td>Thread가 Unbounded이므로, 작업을 queue에 저장해두지 않아도 된다. 단 하나의 slot만 가진다.</td>
+</tr>
+<tr>
+<td>ScheduledThreadPool</td>
+<td>DelayWorkQueue</td>
+<td>시간 딜레이를 가지는 특별한 queue.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="작업이-거부되었을-때-정책">작업이 거부되었을 때 정책</h2>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AbortPolicy</td>
+<td>제출된 새로운 작업이 RejectedExecutionException을 발생시킨다. 정책을 등록하지 않으면 기본으로 사용된다.</td>
+</tr>
+<tr>
+<td>DiscardPolicy</td>
+<td>새로운 작업이 삭제된다.</td>
+</tr>
+<tr>
+<td>DiscardOldestPolicy</td>
+<td>가장 오래된 작업이 삭제되고, 새로운 작업이 queue에 저장된다.</td>
+</tr>
+<tr>
+<td>CallerRunsPolicy</td>
+<td>작업을 요청한 스레드에서 작업이 실행된다. 작업을 요청한 스레드에서 제출한 작업이 실행되는 동안 새로운 작업을 생성하지 못할 수 있다.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>정책은 아래와 같은 생성자 방식으로 사용할 수 있습니다.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ExecutorService executorService <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPoolExecutor<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">10</span><span style="color:#f92672">,</span>                             <span style="color:#75715e">// corePoolSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">100</span><span style="color:#f92672">,</span>                            <span style="color:#75715e">// maxPoolSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">120</span><span style="color:#f92672">,</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">SECONDS</span><span style="color:#f92672">,</span>          <span style="color:#75715e">// keepAliveTime
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">),</span>  <span style="color:#75715e">// Queue
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> DiscardPolicy<span style="color:#f92672">()</span>             <span style="color:#75715e">// Policy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="rejectedexecutionexception-핸들링">RejectedExecutionException 핸들링</h3>
+<p>&lt;방법 1&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ExecutorService executorService <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPoolExecutor<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">10</span><span style="color:#f92672">,</span>                             <span style="color:#75715e">// corePoolSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">100</span><span style="color:#f92672">,</span>                            <span style="color:#75715e">// maxPoolSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">120</span><span style="color:#f92672">,</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">SECONDS</span><span style="color:#f92672">,</span>          <span style="color:#75715e">// keepAliveTime
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">)</span>   <span style="color:#75715e">// Queue
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">execute</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Task<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>RejectedExecutionException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;task rejected&#34;</span><span style="color:#f92672">,</span> e<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>&lt;방법2&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ExecutorService executorService <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPoolExecutor<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">10</span><span style="color:#f92672">,</span>                             <span style="color:#75715e">// corePoolSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">100</span><span style="color:#f92672">,</span>                            <span style="color:#75715e">// maxPoolSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">120</span><span style="color:#f92672">,</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">SECONDS</span><span style="color:#f92672">,</span>          <span style="color:#75715e">// keepAliveTime
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">),</span>  <span style="color:#75715e">// Queue
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> CustomRejectionHandler<span style="color:#f92672">()</span>    <span style="color:#75715e">// 커스텀 핸들러를 Policy로 등록한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">execute</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Task<span style="color:#f92672">());</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomRejectionHandler</span> <span style="color:#66d9ef">implements</span> RejectedExecutionHandler <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Overrid</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rejectedExecution</span><span style="color:#f92672">(</span>Runnable runnble<span style="color:#f92672">,</span> ThreadPoolExecutor executor<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// logging, operations to perform on rejection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="lifecycle-메서드">LifeCycle 메서드</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ExecutorService executorService <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPoolExecutor<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">10</span><span style="color:#f92672">,</span>                             <span style="color:#75715e">// corePoolSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">100</span><span style="color:#f92672">,</span>                            <span style="color:#75715e">// maxPoolSize
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">120</span><span style="color:#f92672">,</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">SECONDS</span><span style="color:#f92672">,</span>          <span style="color:#75715e">// keepAliveTime
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;(</span><span style="color:#ae81ff">300</span><span style="color:#f92672">)</span>   <span style="color:#75715e">// Queue
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">execute</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Task<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// init shutdown
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">shutdown</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// throw RejectionExecutionException
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">execute</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Task<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// return true, since shutdown has begun
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">isShutdown</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// return true if all tasks are completed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">isTerminated</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// block until all tasks are completed or timeouted
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">awaitTermination</span><span style="color:#f92672">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">,</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">SECOND</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// init shutdown and return all queued tasks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>List<span style="color:#f92672">&lt;</span>Runnable<span style="color:#f92672">&gt;</span> runnables <span style="color:#f92672">=</span> executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">shutdownNow</span><span style="color:#f92672">();</span>
+</span></span></code></pre></div>]]></content:encoded></item><item><title>사소한 ThreadLocal Tips</title><link>https://jo-minjun.github.io/notes/threadlocal-tips/</link><pubDate>Thu, 13 Jul 2023 18:40:44 +0900</pubDate><guid>https://jo-minjun.github.io/notes/threadlocal-tips/</guid><description>가능하다면 로컬 변수를 사용합니다. 프레임워크에 위임합니다. e.g. RequestContextHolder ConcurrentHashMap 같은 요소를 ThreadLocal 변수로 변경할 수 있는지 검토합니다. public class UserContextHolder { public static ThreadLocal&amp;lt;User&amp;gt; holder = new ThreadLocal(); } class HoldingService { public void holdUser() { // Set user for this thread User user = getUser(); UserContextHolder.holder.set(user); } } class SomeService { public void getUser() { // Get user for this thread User user = UserContextHolder.holder.get(); // Remove user; user no longer required UserContextHolder.</description><content:encoded><![CDATA[<ol>
 <li>가능하다면 로컬 변수를 사용합니다.</li>
 <li>프레임워크에 위임합니다.
 <ul>
