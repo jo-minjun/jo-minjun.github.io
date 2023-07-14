@@ -78,7 +78,7 @@
 <ul>
 <li>core pool thread는 <code>allowCoreThreadTimeOut(boolean value)</code>를 <code>true</code>로 설정하지 않으면 Kill되지 않습니다.</li>
 </ul>
-<h2 id="풀의-종류">풀의 종류</h2>
+<h2 id="executors-스태틱-메서드로-제공하는-풀의-종류">Executors 스태틱 메서드로 제공하는 풀의 종류</h2>
 <ul>
 <li>FixedThreadPool
 <ul>
