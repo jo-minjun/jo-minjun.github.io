@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Dev on minjun's blog</title><link>https://jo-minjun.github.io/categories/dev/</link><description>Recent content in Dev on minjun's blog</description><image><title>minjun's blog</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Fri, 14 Jul 2023 10:18:29 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/categories/dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Java ExecutorService에 대하여</title><link>https://jo-minjun.github.io/notes/about-executor-service/</link><pubDate>Fri, 14 Jul 2023 10:18:29 +0900</pubDate><guid>https://jo-minjun.github.io/notes/about-executor-service/</guid><description>ExecutorService ExecutorService를 사용하면 간단하게 스레드풀을 생성해서 병렬처리를 할 수 있습니다. Executors의 스태틱 메서드를 통해 간단하게 ExecutorService를 사용할 수 있습니다. 생성자를 이용해 커스텀하게 생성할 수도 있습니다. 이상적인 풀 사이즈 Task Type Ideal pool size Considerations CPU bound CPU Core count 얼마나 많은 작업이 같은 CPU에서 동작하는지 (Context switching 비용) I/O bound High 각 작업의 평균 대기 시간, 너무 큰 스레드 풀은 메모리 사용량을 고려해야함. int coreCount = Runtime.getRuntime().availableProcessors(); // int coreCount = taskExecutionProperties.</description><content:encoded><![CDATA[<h2 id="executorservice">ExecutorService</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Dev on minjun's blog</title><link>https://jo-minjun.github.io/categories/dev/</link><description>Recent content in Dev on minjun's blog</description><image><title>minjun's blog</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Tue, 18 Jul 2023 15:16:13 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/categories/dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Spring Security 기본 구성</title><link>https://jo-minjun.github.io/notes/spring-security-in-action1/</link><pubDate>Tue, 18 Jul 2023 15:16:13 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-security-in-action1/</guid><description>*Spring Security in action을 읽고 작성했습니다.
+https://product.kyobobook.co.kr/detail/S000061695014
+Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성요소만 재정의하여 사용할 수 있습니다. Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다. Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This generated password is for development use only. Your security configuration must be updated before running your application in production. 구성요소를 재정의 하지 않으면 위와 같이 기본 사용자 user와 암호(UUID)를 제공합니다.</description><content:encoded><![CDATA[<blockquote>
+<p>*Spring Security in action을 읽고 작성했습니다.<br>
+<a href="https://product.kyobobook.co.kr/detail/S000061695014">https://product.kyobobook.co.kr/detail/S000061695014</a></p>
+</blockquote>
+<h2 id="spring-security와-구성-요소">Spring Security와 구성 요소</h2>
+<ul>
+<li>Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성요소만 재정의하여 사용할 수 있습니다.</li>
+<li>Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>This generated password is <span style="color:#66d9ef">for</span> development use only. Your security configuration must be updated before running your application in production.
+</span></span></code></pre></div></li>
+<li>구성요소를 재정의 하지 않으면 위와 같이 기본 사용자 <code>user</code>와 암호(UUID)를 제공합니다. 애플리케이션의 엔드포인트를 호출하기 위해서는 Basic Auth를 사용하여 인증해야 합니다.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 인증을 사용한 경우</span>
+</span></span><span style="display:flex;"><span>curl -u user:41632cba-2835-43e3-85c8-3aeac7ce686a http://localhost:8080/hello
+</span></span><span style="display:flex;"><span>&lt; Hello!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 인증을 사용하지 않은 경우</span>
+</span></span><span style="display:flex;"><span>curl -v -X GET http://localhost:8080/hello
+</span></span><span style="display:flex;"><span>&lt; ...
+</span></span><span style="display:flex;"><span>&lt; HTTP/1.1 <span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span>&lt; ...
+</span></span></code></pre></div></li>
+<li>위와 같은 기본 사용자와 애플리케이션이 시작될 때 발급되는 암호를 이용한 인증은 사전 구성된 <code>UserDetailsService</code>, <code>PasswordEncoder</code>를 통해 구현됩니다.<br>
+<img loading="lazy" src="/images/notes/spring-security-in-action/composition.png" alt="composition"  />
+
+<ul>
+<li>가장 기본적인 Spring Security의 구성요소는 아래와 같습니다.</li>
+<li><code>AuthenticationProvider</code>: 인증 논리를 정의하고 사용자와 암호의 관리를 위임합니다.</li>
+<li><code>UserDetailsService</code>: 사용자에 대한 세부 정보를 제공합니다.</li>
+<li><code>PasswordEncoder</code>: 인호를 인코딩하며, 암호가 기존 인코딩과 일치하는지 검증합니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="기본-구성요소-재정의">기본 구성요소 재정의</h2>
+<ul>
+<li>기본 구성요소를 재정의하여 상황에 맞게 인증을 구현하고 보안을 적용할 수 있습니다.</li>
+<li>기본 구성요소는 직접 구현하여 만들거나, Spring Security에서 재공하는 구현을 사용할 수 있습니다.</li>
+<li><code>UserDetailsService</code>와 <code>PasswordEncoder</code>는 가장 기본적인 구성요소로, 인증에 이용되며 대부분의 애플리케이션은 이 두 구성요소를 재정의합니다.</li>
+</ul>
+<blockquote>
+<p>*&ldquo;hello!&ldquo;응답을 반환해주는 <code>/hello</code> 엔드포인트를 구현했다고 가정합니다.</p>
+</blockquote>
+<h3 id="passwordencoder-재정의">PasswordEncoder 재정의</h3>
+<ul>
+<li>먼저 <code>PasswordEncoder</code>부터 재정의해보겠습니다. 이 구성요소는 암호를 인코딩하는 정책에 관한 내용을 설정합니다.</li>
+<li><code>BCryptPasswordEncoder</code>는 Spring Security에서 제공하는 권장 구현입니다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> PasswordEncoder <span style="color:#a6e22e">passwordEncoder</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> strength <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">;</span> <span style="color:#75715e">// the log rounds to use, between 4 and 31
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">(</span>strength<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="userdetailsservice-재정의">UserDetailsService 재정의</h3>
+<ul>
+<li>UserDetailService는 사용자의 이름, 암호 등 정보를 제공해주며, 단 하나의 read-only 메서드를 제공합니다.
+<ul>
+<li><code>UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;</code></li>
+</ul>
+</li>
+<li>Spring Security는 <code>InMemoryUserDetailsManager</code> 구현을 제공해줍니다. 이 구현은 메모리에 자격 증명을 저장해서 Spring Security가 요청을 인증할 때 사용할 수 있게 해줍니다.</li>
+</ul>
+<blockquote>
+<p><code>InMemoryUserDetailsManager</code> 구현은 예제나 개념 증명 또는 테스트 용도로 사용하기 편리한 구현입니다.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> UserDetailsService <span style="color:#a6e22e">userDetailsService</span><span style="color:#f92672">(</span>PasswordEncoder passwordEncoder<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>UserDetails user <span style="color:#f92672">=</span> User<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span><span style="color:#a6e22e">username</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span><span style="color:#a6e22e">password</span><span style="color:#f92672">(</span>passwordEncoder<span style="color:#f92672">.</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span><span style="color:#a6e22e">roles</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;USER&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> InMemoryUserDetailsManager<span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+</span></span></code></pre></div><ul>
+<li>이제 기본 구성요소 재정의를 완료했습니다. 아래 명령어를 사용하면 InMemoryUserDetailsManager에 등록한 사용자를 이용해서 요청할 수 있습니다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -u user:password http://localhost:8080/hello
+</span></span><span style="display:flex;"><span>&lt; hello!
+</span></span></code></pre></div><h2 id="엔드포인트-권한-부여-구성-재정의">엔드포인트 권한 부여 구성 재정의</h2>
+<p>TBU</p>
+]]></content:encoded></item><item><title>Java ExecutorService에 대하여</title><link>https://jo-minjun.github.io/notes/about-executor-service/</link><pubDate>Fri, 14 Jul 2023 10:18:29 +0900</pubDate><guid>https://jo-minjun.github.io/notes/about-executor-service/</guid><description>ExecutorService ExecutorService를 사용하면 간단하게 스레드풀을 생성해서 병렬처리를 할 수 있습니다. Executors의 스태틱 메서드를 통해 간단하게 ExecutorService를 사용할 수 있습니다. 생성자를 이용해 커스텀하게 생성할 수도 있습니다. 이상적인 풀 사이즈 Task Type Ideal pool size Considerations CPU bound CPU Core count 얼마나 많은 작업이 같은 CPU에서 동작하는지 (Context switching 비용) I/O bound High 각 작업의 평균 대기 시간, 너무 큰 스레드 풀은 메모리 사용량을 고려해야함. int coreCount = Runtime.getRuntime().availableProcessors(); // int coreCount = taskExecutionProperties.</description><content:encoded><![CDATA[<h2 id="executorservice">ExecutorService</h2>
 <ul>
 <li>ExecutorService를 사용하면 간단하게 스레드풀을 생성해서 병렬처리를 할 수 있습니다.</li>
 <li>Executors의 스태틱 메서드를 통해 간단하게 ExecutorService를 사용할 수 있습니다.
@@ -251,7 +334,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// init shutdown and return all queued tasks
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>List<span style="color:#f92672">&lt;</span>Runnable<span style="color:#f92672">&gt;</span> runnables <span style="color:#f92672">=</span> executorService<span style="color:#f92672">.</span><span style="color:#a6e22e">shutdownNow</span><span style="color:#f92672">();</span>
-</span></span></code></pre></div>]]></content:encoded></item><item><title>사소한 ThreadLocal Tips</title><link>https://jo-minjun.github.io/notes/threadlocal-tips/</link><pubDate>Thu, 13 Jul 2023 18:40:44 +0900</pubDate><guid>https://jo-minjun.github.io/notes/threadlocal-tips/</guid><description>가능하다면 로컬 변수를 사용합니다. 프레임워크에 위임합니다. e.g. RequestContextHolder ConcurrentHashMap 같은 요소를 ThreadLocal 변수로 변경할 수 있는지 검토합니다. public class UserContextHolder { public static ThreadLocal&amp;lt;User&amp;gt; holder = new ThreadLocal(); } class HoldingService { public void holdUser() { // Set user for this thread User user = getUser(); UserContextHolder.holder.set(user); } } class SomeService { public void getUser() { // Get user for this thread User user = UserContextHolder.holder.get(); // Remove user; user no longer required UserContextHolder.</description><content:encoded><![CDATA[<ol>
+</span></span></code></pre></div>]]></content:encoded></item><item><title>사소한 Thread-safe Tips</title><link>https://jo-minjun.github.io/notes/thread-safe-tips/</link><pubDate>Thu, 13 Jul 2023 18:40:44 +0900</pubDate><guid>https://jo-minjun.github.io/notes/thread-safe-tips/</guid><description>가능하다면 로컬 변수를 사용합니다. 프레임워크에 위임합니다. e.g. RequestContextHolder ConcurrentHashMap 같은 요소를 ThreadLocal 변수로 변경할 수 있는지 검토합니다. public class UserContextHolder { public static ThreadLocal&amp;lt;User&amp;gt; holder = new ThreadLocal(); } class HoldingService { public void holdUser() { // Set user for this thread User user = getUser(); UserContextHolder.holder.set(user); } } class SomeService { public void getUser() { // Get user for this thread User user = UserContextHolder.holder.get(); // Remove user; user no longer required UserContextHolder.</description><content:encoded><![CDATA[<ol>
 <li>가능하다면 로컬 변수를 사용합니다.</li>
 <li>프레임워크에 위임합니다.
 <ul>
