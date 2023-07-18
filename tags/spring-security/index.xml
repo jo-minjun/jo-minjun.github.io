@@ -118,4 +118,6 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 <blockquote>
 <p>*Spring Security in Action에서 사용된 <code>WebSecurityConfigurerAdapter</code>는 Spring Security 5.7버전 이후로 지원이 중단되었습니다.</p>
 </blockquote>
+<h2 id="authenticationprovider-재정의">AuthenticationProvider 재정의</h2>
+<p>TBU</p>
 ]]></content:encoded></item></channel></rss>
