@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Spring Security on minjun's blog</title><link>https://jo-minjun.github.io/tags/spring-security/</link><description>Recent content in Spring Security on minjun's blog</description><image><title>minjun's blog</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Tue, 18 Jul 2023 15:16:13 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/tags/spring-security/index.xml" rel="self" type="application/rss+xml"/><item><title>Spring Security 기본 구성</title><link>https://jo-minjun.github.io/notes/spring-security-in-action1/</link><pubDate>Tue, 18 Jul 2023 15:16:13 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-security-in-action1/</guid><description>*Spring Security in action을 읽고 작성했습니다.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Spring Security on minjun's blog</title><link>https://jo-minjun.github.io/tags/spring-security/</link><description>Recent content in Spring Security on minjun's blog</description><image><title>minjun's blog</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Tue, 18 Jul 2023 15:16:13 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/tags/spring-security/index.xml" rel="self" type="application/rss+xml"/><item><title>Spring Security 기본 구성</title><link>https://jo-minjun.github.io/notes/spring-security-in-action1/</link><pubDate>Tue, 18 Jul 2023 15:16:13 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-security-in-action1/</guid><description>*Spring Security in Action을 읽고 작성했습니다.
 https://product.kyobobook.co.kr/detail/S000061695014
-Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성요소만 재정의하여 사용할 수 있습니다. Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다. Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This generated password is for development use only. Your security configuration must be updated before running your application in production. 구성요소를 재정의 하지 않으면 위와 같이 기본 사용자 user와 암호(UUID)를 제공합니다.</description><content:encoded><![CDATA[<blockquote>
-<p>*Spring Security in action을 읽고 작성했습니다.<br>
+Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성요소만 재정의하여 사용할 수 있습니다.
+Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다.
+Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This generated password is for development use only. Your security configuration must be updated before running your application in production. 구성요소를 재정의 하지 않으면 위와 같이 기본 사용자 user와 암호(UUID)를 제공합니다.</description><content:encoded><![CDATA[<blockquote>
+<p>*Spring Security in Action을 읽고 작성했습니다.<br>
 <a href="https://product.kyobobook.co.kr/detail/S000061695014">https://product.kyobobook.co.kr/detail/S000061695014</a></p>
 </blockquote>
 <h2 id="spring-security와-구성-요소">Spring Security와 구성 요소</h2>
 <ul>
-<li>Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성요소만 재정의하여 사용할 수 있습니다.</li>
-<li>Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다.
+<li>
+<p>Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성요소만 재정의하여 사용할 수 있습니다.</p>
+</li>
+<li>
+<p>Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>This generated password is <span style="color:#66d9ef">for</span> development use only. Your security configuration must be updated before running your application in production.
 </span></span></code></pre></div></li>
-<li>구성요소를 재정의 하지 않으면 위와 같이 기본 사용자 <code>user</code>와 암호(UUID)를 제공합니다. 애플리케이션의 엔드포인트를 호출하기 위해서는 Basic Auth를 사용하여 인증해야 합니다.
+<li>
+<p>구성요소를 재정의 하지 않으면 위와 같이 기본 사용자 <code>user</code>와 암호(UUID)를 제공합니다. 애플리케이션의 엔드포인트를 호출하기 위해서는 Basic Auth를 사용하여 인증해야 합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 인증을 사용한 경우</span>
 </span></span><span style="display:flex;"><span>curl -u user:41632cba-2835-43e3-85c8-3aeac7ce686a http://localhost:8080/hello
 </span></span><span style="display:flex;"><span>&lt; Hello!
@@ -23,9 +29,10 @@ Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 �
 </span></span><span style="display:flex;"><span>&lt; HTTP/1.1 <span style="color:#ae81ff">401</span>
 </span></span><span style="display:flex;"><span>&lt; ...
 </span></span></code></pre></div></li>
-<li>위와 같은 기본 사용자와 애플리케이션이 시작될 때 발급되는 암호를 이용한 인증은 사전 구성된 <code>UserDetailsService</code>, <code>PasswordEncoder</code>를 통해 구현됩니다.<br>
+<li>
+<p>위와 같은 기본 사용자와 애플리케이션이 시작될 때 발급되는 암호를 이용한 인증은 사전 구성된 <code>UserDetailsService</code>, <code>PasswordEncoder</code>를 통해 구현됩니다.<br>
 <img loading="lazy" src="/images/notes/spring-security-in-action/composition.png" alt="composition"  />
-
+</p>
 <ul>
 <li>가장 기본적인 Spring Security의 구성요소는 아래와 같습니다.</li>
 <li><code>AuthenticationProvider</code>: 인증 논리를 정의하고 사용자와 암호의 관리를 위임합니다.</li>
@@ -60,11 +67,12 @@ Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 �
 <li><code>UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;</code></li>
 </ul>
 </li>
-<li>Spring Security는 <code>InMemoryUserDetailsManager</code> 구현을 제공해줍니다. 이 구현은 메모리에 자격 증명을 저장해서 Spring Security가 요청을 인증할 때 사용할 수 있게 해줍니다.</li>
-</ul>
+<li>Spring Security는 <code>InMemoryUserDetailsManager</code> 구현을 제공해줍니다. 이 구현은 메모리에 자격 증명을 저장해서 Spring Security가 요청을 인증할 때 사용할 수 있게 해줍니다.
 <blockquote>
 <p><code>InMemoryUserDetailsManager</code> 구현은 예제나 개념 증명 또는 테스트 용도로 사용하기 편리한 구현입니다.</p>
 </blockquote>
+</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> UserDetailsService <span style="color:#a6e22e">userDetailsService</span><span style="color:#f92672">(</span>PasswordEncoder passwordEncoder<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>UserDetails user <span style="color:#f92672">=</span> User<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">()</span>
@@ -80,5 +88,34 @@ Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 �
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -u user:password http://localhost:8080/hello
 </span></span><span style="display:flex;"><span>&lt; hello!
 </span></span></code></pre></div><h2 id="엔드포인트-권한-부여-구성-재정의">엔드포인트 권한 부여 구성 재정의</h2>
-<p>TBU</p>
+<ul>
+<li>우리는 모든 엔드포인트를 보호할 필요는 없으며, 보안이 필요한 엔드포인트에 대해 다른 권한 부여 규칙을 선택할 수 있어야 합니다.</li>
+<li>엔드포인트별 다른 권한 부여 규칙을 선택하기 위해 <code>SecurityFilterChain</code>을 사용합니다. <code>SecurityFilterChain</code>을 override하여 요청이 통과하는 인증 필터를 정의할 수 있습니다.</li>
+<li><code>SecurityFilterChain</code>는 @Bean으로 등록해야 하며, <code>SecurityFilterChain</code>과 관련된 구성 설정을 사용하기 위해서 <code>@EnableWebSecurity</code>을 사용해야 합니다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableWebSecurity</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SecurityConfiguration</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> SecurityFilterChain <span style="color:#a6e22e">securityFilterChain</span><span style="color:#f92672">(</span>HttpSecurity http<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> http<span style="color:#f92672">.</span><span style="color:#a6e22e">httpBasic</span><span style="color:#f92672">(</span>Customizer<span style="color:#f92672">.</span><span style="color:#a6e22e">withDefaults</span><span style="color:#f92672">())</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span><span style="color:#a6e22e">authorizeHttpRequests</span><span style="color:#f92672">(</span>authorize <span style="color:#f92672">-&gt;</span> authorize
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">.</span><span style="color:#a6e22e">requestMatchers</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/hello&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">authenticated</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">.</span><span style="color:#a6e22e">anyRequest</span><span style="color:#f92672">().</span><span style="color:#a6e22e">permitAll</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// UserDetailsService, PasswordEncoder
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>위 설정은 <code>/hello</code> 엔드포인트에 대해 인증을 요구하며, 다른 엔드포인트는 인증을 요구하지 않습니다.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl http://localhost:8080/bye
+</span></span><span style="display:flex;"><span>&lt; bye!
+</span></span></code></pre></div></li>
+</ul>
+<blockquote>
+<p>*Spring Security in Action에서 사용된 <code>WebSecurityConfigurerAdapter</code>는 Spring Security 5.7버전 이후로 지원이 중단되었습니다.</p>
+</blockquote>
 ]]></content:encoded></item></channel></rss>
