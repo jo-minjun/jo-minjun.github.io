@@ -155,5 +155,6 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
+<li>이제 <code>/hello</code> 엔트포인트에 요청을 보내면 재정의한 <code>AuthenticationProvider</code>, <code>UserDetailsService</code>, <code>PasswordEncoder를</code> 사용하여 인증합니다.</li>
 </ul>
 ]]></content:encoded></item></channel></rss>
