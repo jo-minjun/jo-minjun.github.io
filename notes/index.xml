@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Notes on minjun's blog</title><link>https://jo-minjun.github.io/notes/</link><description>Recent content in Notes on minjun's blog</description><image><title>minjun's blog</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Tue, 18 Jul 2023 15:16:13 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/notes/index.xml" rel="self" type="application/rss+xml"/><item><title>Spring Security 기본 구성</title><link>https://jo-minjun.github.io/notes/spring-security-in-action1/</link><pubDate>Tue, 18 Jul 2023 15:16:13 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-security-in-action1/</guid><description>*Spring Security in Action을 읽고 작성했습니다.
 https://product.kyobobook.co.kr/detail/S000061695014
-Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성요소만 재정의하여 사용할 수 있습니다.
+Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성 요소만 재정의하여 사용할 수 있습니다.
 Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다.
-Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This generated password is for development use only. Your security configuration must be updated before running your application in production. 구성요소를 재정의 하지 않으면 위와 같이 기본 사용자 user와 암호(UUID)를 제공합니다.</description><content:encoded><![CDATA[<blockquote>
+Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This generated password is for development use only. Your security configuration must be updated before running your application in production.</description><content:encoded><![CDATA[<blockquote>
 <p>*Spring Security in Action을 읽고 작성했습니다.<br>
 <a href="https://product.kyobobook.co.kr/detail/S000061695014">https://product.kyobobook.co.kr/detail/S000061695014</a></p>
 </blockquote>
 <h2 id="spring-security와-구성-요소">Spring Security와 구성 요소</h2>
 <ul>
 <li>
-<p>Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성요소만 재정의하여 사용할 수 있습니다.</p>
+<p>Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성 요소만 재정의하여 사용할 수 있습니다.</p>
 </li>
 <li>
 <p>Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다.</p>
@@ -18,7 +18,7 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 </span></span><span style="display:flex;"><span>This generated password is <span style="color:#66d9ef">for</span> development use only. Your security configuration must be updated before running your application in production.
 </span></span></code></pre></div></li>
 <li>
-<p>구성요소를 재정의 하지 않으면 위와 같이 기본 사용자 <code>user</code>와 암호(UUID)를 제공합니다. 애플리케이션의 엔드포인트를 호출하기 위해서는 Basic Auth를 사용하여 인증해야 합니다.</p>
+<p>구성 요소를 재정의 하지 않으면 위와 같이 기본 사용자 <code>user</code>와 암호(UUID)를 제공합니다. 애플리케이션의 엔드포인트를 호출하기 위해서는 Basic Auth를 사용하여 인증해야 합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 인증을 사용한 경우</span>
 </span></span><span style="display:flex;"><span>curl -u user:41632cba-2835-43e3-85c8-3aeac7ce686a http://localhost:8080/hello
 </span></span><span style="display:flex;"><span>&lt; Hello!
@@ -34,25 +34,25 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 <img loading="lazy" src="/images/notes/spring-security-in-action/composition.png" alt="composition"  />
 </p>
 <ul>
-<li>가장 기본적인 Spring Security의 구성요소는 아래와 같습니다.</li>
+<li>가장 기본적인 Spring Security의 구성 요소는 아래와 같습니다.</li>
 <li><code>AuthenticationProvider</code>: 인증 논리를 정의하고 사용자와 암호의 관리를 위임합니다.</li>
 <li><code>UserDetailsService</code>: 사용자에 대한 세부 정보를 제공합니다.</li>
 <li><code>PasswordEncoder</code>: 인호를 인코딩하며, 암호가 기존 인코딩과 일치하는지 검증합니다.</li>
 </ul>
 </li>
 </ul>
-<h2 id="기본-구성요소-재정의">기본 구성요소 재정의</h2>
+<h2 id="기본-구성-요소-재정의">기본 구성 요소 재정의</h2>
 <ul>
-<li>기본 구성요소를 재정의하여 상황에 맞게 인증을 구현하고 보안을 적용할 수 있습니다.</li>
-<li>기본 구성요소는 직접 구현하여 만들거나, Spring Security에서 재공하는 구현을 사용할 수 있습니다.</li>
-<li><code>UserDetailsService</code>와 <code>PasswordEncoder</code>는 가장 기본적인 구성요소로, 인증에 이용되며 대부분의 애플리케이션은 이 두 구성요소를 재정의합니다.</li>
+<li>기본 구성 요소를 재정의하여 상황에 맞게 인증을 구현하고 보안을 적용할 수 있습니다.</li>
+<li>기본 구성 요소는 직접 구현하여 만들거나, Spring Security에서 재공하는 구현을 사용할 수 있습니다.</li>
+<li><code>UserDetailsService</code>와 <code>PasswordEncoder</code>는 가장 기본적인 구성 요소로, 인증에 이용되며 대부분의 애플리케이션은 이 두 구성 요소를 재정의합니다.</li>
 </ul>
 <blockquote>
 <p>*&ldquo;hello!&ldquo;응답을 반환해주는 <code>/hello</code> 엔드포인트를 구현했다고 가정합니다.</p>
 </blockquote>
 <h3 id="passwordencoder-재정의">PasswordEncoder 재정의</h3>
 <ul>
-<li>먼저 <code>PasswordEncoder</code>부터 재정의해보겠습니다. 이 구성요소는 암호를 인코딩하는 정책에 관한 내용을 설정합니다.</li>
+<li>먼저 <code>PasswordEncoder</code>부터 재정의해보겠습니다. 이 구성 요소는 암호를 인코딩하는 정책에 관한 내용을 설정합니다.</li>
 <li><code>BCryptPasswordEncoder</code>는 Spring Security에서 제공하는 권장 구현입니다.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
@@ -69,7 +69,8 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 </li>
 <li>Spring Security는 <code>InMemoryUserDetailsManager</code> 구현을 제공해줍니다. 이 구현은 메모리에 자격 증명을 저장해서 Spring Security가 요청을 인증할 때 사용할 수 있게 해줍니다.
 <blockquote>
-<p><code>InMemoryUserDetailsManager</code> 구현은 예제나 개념 증명 또는 테스트 용도로 사용하기 편리한 구현입니다.</p>
+<p><code>InMemoryUserDetailsManager</code> 구현은 예제나 개념 증명 또는 테스트 용도로 사용하기 편리한 구현입니다.<br>
+<strong>상용 환경에서의 사용은 권장하지 않습니다.</strong></p>
 </blockquote>
 </li>
 </ul>
@@ -83,15 +84,15 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> InMemoryUserDetailsManager<span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
 </span></span></code></pre></div><ul>
-<li>이제 기본 구성요소 재정의를 완료했습니다. 아래 명령어를 사용하면 InMemoryUserDetailsManager에 등록한 사용자를 이용해서 요청할 수 있습니다.</li>
+<li>이제 기본 구성 요소 재정의를 완료했습니다. 아래 명령어를 사용하면 InMemoryUserDetailsManager에 등록한 사용자를 이용해서 요청할 수 있습니다.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -u user:password http://localhost:8080/hello
 </span></span><span style="display:flex;"><span>&lt; hello!
 </span></span></code></pre></div><h2 id="엔드포인트-권한-부여-구성-재정의">엔드포인트 권한 부여 구성 재정의</h2>
 <ul>
 <li>우리는 모든 엔드포인트를 보호할 필요는 없으며, 보안이 필요한 엔드포인트에 대해 다른 권한 부여 규칙을 선택할 수 있어야 합니다.</li>
-<li>엔드포인트별 다른 권한 부여 규칙을 선택하기 위해 <code>SecurityFilterChain</code>을 사용합니다. <code>SecurityFilterChain</code>을 override하여 요청이 통과하는 인증 필터를 정의할 수 있습니다.</li>
-<li><code>SecurityFilterChain</code>는 @Bean으로 등록해야 하며, <code>SecurityFilterChain</code>과 관련된 구성 설정을 사용하기 위해서 <code>@EnableWebSecurity</code>을 사용해야 합니다.</li>
+<li>엔드포인트별 다른 권한 부여 규칙을 선택하기 위해 <code>SecurityFilterChain</code>을 사용합니다.</li>
+<li><code>SecurityFilterChain</code>는 @Bean으로 등록해야 하며, <code>SecurityFilterChain</code>과 관련된 자동 구성 설정을 사용하기 위해서 <code>@EnableWebSecurity</code>을 사용해야 합니다.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableWebSecurity</span>
@@ -119,7 +120,42 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 <p>*Spring Security in Action에서 사용된 <code>WebSecurityConfigurerAdapter</code>는 Spring Security 5.7버전 이후로 지원이 중단되었습니다.</p>
 </blockquote>
 <h2 id="authenticationprovider-재정의">AuthenticationProvider 재정의</h2>
-<p>TBU</p>
+<ul>
+<li>위 내용처럼 Spring Security는 상당히 유연하므로 다양한 옵션을 선택할 수 있습니다.</li>
+<li>그림을 다시 살펴봅시다. <code>AuthenticationProvider</code>는 인증 논리를 구현하고 사용자와 암호 관리를 <code>UserDetailsService</code>와 <code>PasswordEncoder</code>에 위임합니다.<br>
+<img loading="lazy" src="/images/notes/spring-security-in-action/composition.png" alt="composition"  />
+</li>
+<li>따라서 <code>AuthenticationProvider</code>를 재정의할 때는 주어진 구성 요소를 활용하는 것이 좋습니다.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequiredArgsConstructor</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomAuthenticationProvider</span> <span style="color:#66d9ef">implements</span> AuthenticationProvider <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> UserDetailsService userDetailsService<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PasswordEncoder passwordEncoder<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Authentication <span style="color:#a6e22e">authenticate</span><span style="color:#f92672">(</span>Authentication authentication<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> AuthenticationException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        String username <span style="color:#f92672">=</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        String password <span style="color:#f92672">=</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">getCredentials</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> UserDetails userDetails <span style="color:#f92672">=</span> userDetailsService<span style="color:#f92672">.</span><span style="color:#a6e22e">loadUserByUsername</span><span style="color:#f92672">(</span>username<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// BCryptPasswordEncoder는 해쉬를 생성할 때마다 다른 salt 값을 사용합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 따라서 matches 메서드를 사용해서 값이 일치하는지 검증해야 합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>passwordEncoder<span style="color:#f92672">.</span><span style="color:#a6e22e">matches</span><span style="color:#f92672">(</span>password<span style="color:#f92672">,</span> userDetails<span style="color:#f92672">.</span><span style="color:#a6e22e">getPassword</span><span style="color:#f92672">()))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> UsernamePasswordAuthenticationToken<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> AuthenticationCredentialsNotFoundException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Failed to authenticate&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Authentication 객체가 지원하는 유형인지 확인합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;?&gt;</span> authentication<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> authentication<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>UsernamePasswordAuthenticationToken<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ul>
 ]]></content:encoded></item><item><title>Java ExecutorService에 대하여</title><link>https://jo-minjun.github.io/notes/about-executor-service/</link><pubDate>Fri, 14 Jul 2023 10:18:29 +0900</pubDate><guid>https://jo-minjun.github.io/notes/about-executor-service/</guid><description>ExecutorService ExecutorService를 사용하면 간단하게 스레드풀을 생성해서 병렬처리를 할 수 있습니다. Executors의 스태틱 메서드를 통해 간단하게 ExecutorService를 사용할 수 있습니다. 생성자를 이용해 커스텀하게 생성할 수도 있습니다. 이상적인 풀 사이즈 Task Type Ideal pool size Considerations CPU bound CPU Core count 얼마나 많은 작업이 같은 CPU에서 동작하는지 (Context switching 비용) I/O bound High 각 작업의 평균 대기 시간, 너무 큰 스레드 풀은 메모리 사용량을 고려해야함. int coreCount = Runtime.getRuntime().availableProcessors(); // int coreCount = taskExecutionProperties.</description><content:encoded><![CDATA[<h2 id="executorservice">ExecutorService</h2>
 <ul>
 <li>ExecutorService를 사용하면 간단하게 스레드풀을 생성해서 병렬처리를 할 수 있습니다.</li>
