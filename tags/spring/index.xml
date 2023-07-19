@@ -92,7 +92,7 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 <ul>
 <li>우리는 모든 엔드포인트를 보호할 필요는 없으며, 보안이 필요한 엔드포인트에 대해 다른 권한 부여 규칙을 선택할 수 있어야 합니다.</li>
 <li>엔드포인트별 다른 권한 부여 규칙을 선택하기 위해 <code>SecurityFilterChain</code>을 사용합니다.</li>
-<li><code>SecurityFilterChain</code>는 @Bean으로 등록해야 하며, <code>SecurityFilterChain</code>과 관련된 자동 구성 설정을 사용하기 위해서 <code>@EnableWebSecurity</code>을 사용해야 합니다.</li>
+<li><code>SecurityFilterChain</code>는 <code>@Bean</code>으로 등록해야 하며, <code>SecurityFilterChain</code>과 관련된 자동 구성 설정을 사용하기 위해서 <code>@EnableWebSecurity</code>을 사용해야 합니다.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableWebSecurity</span>
