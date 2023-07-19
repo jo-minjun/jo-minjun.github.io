@@ -130,7 +130,8 @@ Using generated security password: 41632cba-2835-43e3-85c8-3aeac7ce686a This gen
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequiredArgsConstructor</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomAuthenticationProvider</span> <span style="color:#66d9ef">implements</span> AuthenticationProvider <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> UserDetailsService userDetailsService<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 재정의한 구성 요소 사용
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> UserDetailsService userDetailsService<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PasswordEncoder passwordEncoder<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
