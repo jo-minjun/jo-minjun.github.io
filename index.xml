@@ -1,4 +1,220 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>minjun's blog</title><link>https://jo-minjun.github.io/</link><description>Recent content on minjun's blog</description><image><title>minjun's blog</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Tue, 18 Jul 2023 15:16:13 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Spring Security 기본 구성</title><link>https://jo-minjun.github.io/notes/spring-security-in-action1/</link><pubDate>Tue, 18 Jul 2023 15:16:13 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-security-in-action1/</guid><description>*Spring Security in Action을 읽고 작성했습니다.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>minjun's blog</title><link>https://jo-minjun.github.io/</link><description>Recent content on minjun's blog</description><image><title>minjun's blog</title><url>https://jo-minjun.github.io/logo.png</url><link>https://jo-minjun.github.io/logo.png</link></image><generator>Hugo -- gohugo.io</generator><language>kr</language><lastBuildDate>Sat, 23 Sep 2023 02:15:52 +0900</lastBuildDate><atom:link href="https://jo-minjun.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Kubernetes: 애플리케이션 설정을 체계적으로 관리하기</title><link>https://jo-minjun.github.io/notes/kubernetes-env/</link><pubDate>Sat, 23 Sep 2023 02:15:52 +0900</pubDate><guid>https://jo-minjun.github.io/notes/kubernetes-env/</guid><description>쿠버네티스 개발전략을 읽고 작성한 내용입니다.
+https://product.kyobobook.co.kr/detail/S000200103262
+쿠버네티스를 통해서 설정을 외부화하여 관리하는 방법을 알아보겠습니다. 여기서 설정은 데이터베이스 url, username, password, 얼마전에 작업한 뉴렐릭 라이센스 키 같은 값들을 말합니다. 이러한 설정값들은 변경되거나 추가 삭제되는 경우가 많기 때문에 애플리케이션 외부에서 관리하는 것이 유리합니다. 외부화된 설정: Externalized configuration 환경 변수와 실행 인자 실행 인자 우선 실행 인자와 환경 변수에 대해 알아보겠습니다
+prod 프로필을 사용하려면 아래와 같이 실행 인자로 환경 정보를 넘겨줍니다.
+$ java -Dspring.</description><content:encoded><![CDATA[<blockquote>
+<p>쿠버네티스 개발전략을 읽고 작성한 내용입니다.<br>
+<a href="https://product.kyobobook.co.kr/detail/S000200103262">https://product.kyobobook.co.kr/detail/S000200103262</a></p>
+</blockquote>
+<ul>
+<li>쿠버네티스를 통해서 설정을 외부화하여 관리하는 방법을 알아보겠습니다.</li>
+<li>여기서 설정은 데이터베이스 url, username, password, 얼마전에 작업한 뉴렐릭 라이센스 키 같은 값들을 말합니다. 이러한 설정값들은 변경되거나 추가 삭제되는 경우가 많기 때문에 애플리케이션 외부에서 관리하는 것이 유리합니다.
+<ul>
+<li>외부화된 설정: Externalized configuration</li>
+</ul>
+</li>
+</ul>
+<h2 id="환경-변수와-실행-인자">환경 변수와 실행 인자</h2>
+<h3 id="실행-인자">실행 인자</h3>
+<ul>
+<li>
+<p>우선 실행 인자와 환경 변수에 대해 알아보겠습니다</p>
+</li>
+<li>
+<p>prod 프로필을 사용하려면 아래와 같이 실행 인자로 환경 정보를 넘겨줍니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ java -Dspring.profiles.active<span style="color:#f92672">=</span>prod -jar my-app.jar
+</span></span></code></pre></div><ul>
+<li>위 스크립트에서 <code>-Dspring.profiles.active=prod</code>를 실행 인자라고 합니다. 이 실행 인자를 이용해서 애플리케이션에 환경 정보를 넘겨 줄 수 있습니다.</li>
+<li><code>application-prod.yaml</code> 과 같이 미리 정의된 설정 파일을 선택하여 사용할 수 있습니다.</li>
+</ul>
+</li>
+<li>
+<p>그런데 위와 같은 방법은 애플리케이션을 직접 실행하는 환경에서 적합합니다. 쿠버네티스를 사용하는 환경에서는 적합하지 않은데요.</p>
+</li>
+<li>
+<p>쿠버네티스 환경에서는 파드 명세서에 실행 인자를 정의하여 환경 정보를 넘겨줄 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-pod-prod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>	- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-container</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">image</span>: <span style="color:#ae81ff">alswns9288/my-app:1.0.0</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>		- <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">name</span>: <span style="color:#ae81ff">web</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">args</span>: [<span style="color:#e6db74">&#34;-spring.profiles.active=prod&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="환경-변수">환경 변수</h3>
+<ul>
+<li>파드 명세서에 환경 변수를 정의하여 설정을 관리할 수 있습니다
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-pod-prod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>	- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-container</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">image</span>: <span style="color:#ae81ff">alswns9288/my-app:1.0.0</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>		- <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>		- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">SPRING_PROFILES_ACTIVE</span>
+</span></span><span style="display:flex;"><span>		  <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#34;prod&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span></code></pre></div><ul>
+<li>파드 명세서에 name, value 를 정의하여 환경 정보를 넘겨줄 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="컨피그맵을-이용하여-여러-설정값-한번에-관리하기">컨피그맵을 이용하여 여러 설정값 한번에 관리하기</h2>
+<ul>
+<li>실행 인자와 환경 변수는 여러 파드가 동일한 설정값을 사용하는 경우에는 적합하지 않습니다. 이런 경우에는 컨피그맵을 사용하면 설정값을 편리하게 관리할 수 있습니다.</li>
+<li>컨피그맵은 설정값을 key-value 형태로 쿠버네티스 클러스터에 저장하고 파드에서 사용할 수 있도록 도와주는 역할을 합니다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 컨피그맵</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-config</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">data</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">APPLICATION_KEY</span>: <span style="color:#e6db74">&#34;configmap value&#34;</span>
+</span></span></code></pre></div><h3 id="컨피그맵-사용"><strong>컨피그맵 사용</strong></h3>
+<p><strong>&lt;컨피그맵 참조&gt;</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 파드</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>	- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-container</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">image</span>: <span style="color:#ae81ff">alswns9288/my-app:1.0.0</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>		- <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">name</span>: <span style="color:#ae81ff">web</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>		- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">APPLICATION_KEY</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">valueFrom</span>:
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">configMapKeyRef</span>:
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-config</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">key</span>: <span style="color:#ae81ff">APPLICATION_KEY</span>
+</span></span></code></pre></div><p><strong>&lt;컨피그맵을 파일로 참조&gt;</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 컨피그맵</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-config</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">data</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">my-property</span>: <span style="color:#ae81ff">|</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">APPLICATION_KEY</span>: <span style="color:#e6db74">&#34;configmap value&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 파드</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>	- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-container</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">image</span>: <span style="color:#ae81ff">alswns9288/my-app:1.0.0</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>		- <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">name</span>: <span style="color:#ae81ff">web</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">volumeMounts</span>:
+</span></span><span style="display:flex;"><span>		- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">property</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/app/resources</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>		- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">property</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">configMap</span>:
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">items</span>:
+</span></span><span style="display:flex;"><span>				- <span style="color:#f92672">key</span>: <span style="color:#ae81ff">my-properaty</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">path</span>: <span style="color:#ae81ff">application.yaml</span>
+</span></span></code></pre></div><ul>
+<li><strong>&lt;컨피그맵 참조&gt;</strong> 방법과 <strong>&lt;컨피그맵을 파일로 참조&gt;</strong> 방법의 차이는 무엇일까요?
+<ul>
+<li><strong>&lt;컨피그맵 참조&gt;</strong> 방법은 파드를 시작할 때 환경변수를 시스템에 설정하고 파드를 시작합니다. 따라서 컨피그맵을 변경해도 파드의 환경변수 값이 변경되지 않습니다.
+<ul>
+<li>변경된 컨피그맵을 적용하려면 파드를 재시작해야합니다.</li>
+</ul>
+</li>
+<li>반면에 <strong>&lt;컨피그맵을 파일로 참조&gt;</strong> 방법은 파일을 마운트하는 방법입니다. 컨피그맵을 변경하면 마운트된 파일이 변경됩니다. 따라서 파드를 재시작하지 않아도 변경된 컨피그맵을 사용할 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>파드 명세서에서 <code>env</code> 가 아닌 <code>envFrom</code> 을 사용할 수도 있습니다.<br>
+이 방식은 <code>env</code> 처럼 컨피그맵의 특정 key를 참조하는 것이 아닌, 컨피그맵의 전체 키를 참조합니다.</p>
+</blockquote>
+<h2 id="시크릿을-이용해-민감한-설정값-관리하기">시크릿을 이용해 민감한 설정값 관리하기</h2>
+<ul>
+<li>컨피그맵으로 관리하기 민감한 값은 시크릿으로 관리할 수 있습니다</li>
+<li>시크릿은 민감하게 관리해야 하는 설정값들을 별도로 관리할 수 있게 해줍니다.</li>
+<li>시크릿을 생성하는 대표적인 2가지를 알아보겠습니다.</li>
+</ul>
+<h3 id="파일로-시크릿-생성">파일로 시크릿 생성</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat secretfile
+</span></span><span style="display:flex;"><span>secret value
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl create secret generic my-secret --from-file<span style="color:#f92672">=</span>APPLICATION_KEY<span style="color:#f92672">=</span>./secretfile
+</span></span></code></pre></div><h3 id="명세서로-시크릿-생성">명세서로 시크릿 생성</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 시크릿</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Secret</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-secret-manifest</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">data</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">APPLICATION_KEY</span>: <span style="color:#ae81ff">c2VjcmV0IHZhbHVlCg==</span>
+</span></span></code></pre></div><ul>
+<li>명세서를 사용할때는 base64로 인코딩된 값을 사용해야합니다.</li>
+</ul>
+<h3 id="파드에서-시크릿-사용">파드에서 시크릿 사용</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 파드</span>
+</span></span><span style="display:flex;"><span>apiVersion: v1
+</span></span><span style="display:flex;"><span>kind: Pod
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  name: my-pod2
+</span></span><span style="display:flex;"><span>spec:
+</span></span><span style="display:flex;"><span>  containers:
+</span></span><span style="display:flex;"><span>    - name: my-container
+</span></span><span style="display:flex;"><span>      image: <span style="color:#e6db74">&#39;alswns9288/my-app:1.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>      ports:
+</span></span><span style="display:flex;"><span>        - containerPort: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>          name: web
+</span></span><span style="display:flex;"><span>          protocol: TCP
+</span></span><span style="display:flex;"><span>      env:
+</span></span><span style="display:flex;"><span>        - name: APPLICATION_KEY
+</span></span><span style="display:flex;"><span>          valueFrom:
+</span></span><span style="display:flex;"><span>            secretKeyRef:
+</span></span><span style="display:flex;"><span>              name: my-secret
+</span></span><span style="display:flex;"><span>              key: APPLICATION_KEY
+</span></span></code></pre></div><h3 id="시크릿-조회">시크릿 조회</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get secret my-secret -o yaml
+</span></span><span style="display:flex;"><span>apiVersion: v1
+</span></span><span style="display:flex;"><span>data:
+</span></span><span style="display:flex;"><span>  APPLICATION_KEY: c2VjcmV0IHZhbHVlCg<span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span>kind: Secret
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  creationTimestamp: <span style="color:#e6db74">&#34;2023-09-19T16:12:05Z&#34;</span>
+</span></span><span style="display:flex;"><span>  name: my-secret
+</span></span><span style="display:flex;"><span>  namespace: default
+</span></span><span style="display:flex;"><span>  resourceVersion: <span style="color:#e6db74">&#34;5320&#34;</span>
+</span></span><span style="display:flex;"><span>  uid: ccf7e058-755d-4587-ba2b-0d98ff3c8a05
+</span></span><span style="display:flex;"><span>type: Opaque
+</span></span></code></pre></div><ul>
+<li>위와 같이 시크릿을 조회하면 base64로 인코딩된 설정값을 조회할 수 있습니다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo c2VjcmV0IHZhbHVlCg<span style="color:#f92672">==</span> | base64 -D
+</span></span><span style="display:flex;"><span>secret value
+</span></span></code></pre></div><ul>
+<li>이렇게 base64로 되어 있으면 어떻게 민감한 값을 관리할 수 있을까 의문이 들 수 있습니다.</li>
+<li>쿠버네티스는 플러그인으로 암호화 설정을 하거나, 시크릿에 대한 권한 제한으로 처리하도록 가이드하고 있습니다.</li>
+</ul>
+]]></content:encoded></item><item><title>Spring Security 기본 구성</title><link>https://jo-minjun.github.io/notes/spring-security-in-action1/</link><pubDate>Tue, 18 Jul 2023 15:16:13 +0900</pubDate><guid>https://jo-minjun.github.io/notes/spring-security-in-action1/</guid><description>*Spring Security in Action을 읽고 작성했습니다.
 https://product.kyobobook.co.kr/detail/S000061695014
 Spring Security와 구성 요소 Spring Security는 스프링 프로젝트의 사실상 표준(defacto)입니다. 보안에 관련된 사전 구성 요소가 제공되며, 필요에 따라 일부 구성 요소만 재정의하여 사용할 수 있습니다.
 Spring Security 의존성을 프로젝트에 추가하고 애플리케이션을 시작하면 아래와 같은 메시지를 확인할 수 있습니다.
