@@ -47,6 +47,7 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line);
 .projects h2 { margin: 0; font-size: 1.1rem; }
 .projects p { margin: .25rem 0 0; font-size: .95rem; }
 
+.lead { font-size: 1.15rem; font-weight: 600; margin: 1rem 0 .5rem; }
 .features { padding-left: 1.2rem; }
 .features li { margin: .35rem 0; }
 
