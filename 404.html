@@ -1,15 +1,24 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" data-lang-pick>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>페이지를 찾을 수 없어요 / Page not found</title>
+<title>Page not found</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="/assets/site.css">
+<style>
+  html[lang="ko"] section[lang="en"], html[lang="en"] section[lang="ko"] { display: none; }
+</style>
+<script src="/assets/lang.js"></script>
 </head>
 <body>
-<h1>페이지를 찾을 수 없어요</h1>
-<p class="en" lang="en">Page not found.</p>
-<p><a href="/">사이드 프로젝트 목록으로 / Back to side projects</a></p>
+<section lang="ko">
+  <h1>페이지를 찾을 수 없어요</h1>
+  <p><a href="/ko/">홈으로</a></p>
+</section>
+<section lang="en">
+  <h1>Page not found</h1>
+  <p><a href="/en/">Go to home</a></p>
+</section>
 </body>
 </html>

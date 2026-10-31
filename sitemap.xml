@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://jo-minjun.github.io/</loc></url>
-  <url><loc>https://jo-minjun.github.io/honey-bloom/</loc></url>
-  <url><loc>https://jo-minjun.github.io/honey-bloom/privacy/</loc></url>
-  <url><loc>https://jo-minjun.github.io/honey-bloom/support/</loc></url>
-  <url><loc>https://jo-minjun.github.io/petrify/</loc></url>
-  <url><loc>https://jo-minjun.github.io/claude-mermaid-view/</loc></url>
-  <url><loc>https://jo-minjun.github.io/work-log/</loc></url>
-  <url><loc>https://jo-minjun.github.io/dotfiles/</loc></url>
+  <url><loc>https://jo-minjun.github.io/ko/</loc></url>
+  <url><loc>https://jo-minjun.github.io/en/</loc></url>
+  <url><loc>https://jo-minjun.github.io/honey-bloom/ko/</loc></url>
+  <url><loc>https://jo-minjun.github.io/honey-bloom/en/</loc></url>
+  <url><loc>https://jo-minjun.github.io/petrify/ko/</loc></url>
+  <url><loc>https://jo-minjun.github.io/petrify/en/</loc></url>
+  <url><loc>https://jo-minjun.github.io/claude-mermaid-view/ko/</loc></url>
+  <url><loc>https://jo-minjun.github.io/claude-mermaid-view/en/</loc></url>
+  <url><loc>https://jo-minjun.github.io/work-log/ko/</loc></url>
+  <url><loc>https://jo-minjun.github.io/work-log/en/</loc></url>
+  <url><loc>https://jo-minjun.github.io/dotfiles/ko/</loc></url>
+  <url><loc>https://jo-minjun.github.io/dotfiles/en/</loc></url>
+  <url><loc>https://jo-minjun.github.io/honey-bloom/privacy/ko/</loc></url>
+  <url><loc>https://jo-minjun.github.io/honey-bloom/privacy/en/</loc></url>
+  <url><loc>https://jo-minjun.github.io/honey-bloom/support/ko/</loc></url>
+  <url><loc>https://jo-minjun.github.io/honey-bloom/support/en/</loc></url>
 </urlset>
