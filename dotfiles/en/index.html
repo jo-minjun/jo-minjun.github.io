@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>dotfiles</title>
-<meta name="description" content="macOS development environment managed with chezmoi.">
+<meta name="description" content="Sets up the development environment on a new Mac with one command.">
 <link rel="alternate" hreflang="ko" href="https://jo-minjun.github.io/dotfiles/ko/">
 <link rel="alternate" hreflang="en" href="https://jo-minjun.github.io/dotfiles/en/">
 <link rel="alternate" hreflang="x-default" href="https://jo-minjun.github.io/dotfiles/">
@@ -17,7 +17,23 @@
 <h1>dotfiles</h1>
 <p class="kind">Dev environment</p>
 
-<p>A macOS development environment managed with chezmoi. One command installs CLI tools, apps and shell settings on a new Mac. Secrets and licenses come from 1Password.</p>
+<p>dotfiles is a macOS development environment that chezmoi manages. One install command applies CLI tools, apps, shell settings and AI agent settings to a new Mac. chezmoi gets secrets and licenses from 1Password. chezmoi applies work settings from a separate private repository.</p>
+
+<h2>Features</h2>
+<ul class="features">
+  <li><strong>Tools</strong>: Homebrew installs development, cloud and infrastructure, database and AI tools, and apps.</li>
+  <li><strong>Shell and terminal</strong>: chezmoi sets up oh-my-zsh, Powerlevel10k and the Ghostty terminal.</li>
+  <li><strong>Separate accounts</strong>: Under <code>~/Projects/work/</code>, Git uses the work email. In the same folder, the GitHub CLI switches to the work account.</li>
+  <li><strong>AI agents</strong>: chezmoi manages Claude Code settings (LSP, statusline, permissions, subagents, skills) and agent skills.</li>
+  <li><strong>Touch ID for sudo</strong>: When you run sudo in the terminal, you authenticate with Touch ID.</li>
+</ul>
+
+<h2>Details</h2>
+<dl class="facts">
+  <dt>Platform</dt><dd>macOS</dd>
+  <dt>Tools</dt><dd>chezmoi, Homebrew, 1Password CLI</dd>
+  <dt>Install</dt><dd><code>sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jo-minjun</code></dd>
+</dl>
 
 <h2>Links</h2>
 <ul class="list">

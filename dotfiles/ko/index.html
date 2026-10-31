@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>dotfiles</title>
-<meta name="description" content="chezmoi로 관리하는 macOS 개발 환경 설정이에요.">
+<meta name="description" content="명령 하나로 새 Mac의 개발 환경을 설정한다.">
 <link rel="alternate" hreflang="ko" href="https://jo-minjun.github.io/dotfiles/ko/">
 <link rel="alternate" hreflang="en" href="https://jo-minjun.github.io/dotfiles/en/">
 <link rel="alternate" hreflang="x-default" href="https://jo-minjun.github.io/dotfiles/">
@@ -17,7 +17,23 @@
 <h1>dotfiles</h1>
 <p class="kind">개발 환경 설정</p>
 
-<p>chezmoi로 관리하는 macOS 개발 환경 설정이에요. 명령 하나로 새 Mac에 CLI 도구, 앱, 셸 설정을 설치해요. 시크릿과 라이선스는 1Password에서 가져와요.</p>
+<p>dotfiles는 chezmoi로 관리하는 macOS 개발 환경 설정이다. 설치 명령 하나가 새 Mac에 CLI 도구, 앱, 셸 설정, AI 에이전트 설정을 적용한다. chezmoi는 시크릿과 라이선스를 1Password에서 가져온다. chezmoi는 업무 설정을 비공개 저장소에서 따로 적용한다.</p>
+
+<h2>주요 기능</h2>
+<ul class="features">
+  <li><strong>도구 설치</strong>: Homebrew가 개발, 클라우드·인프라, DB, AI 도구와 앱을 설치한다.</li>
+  <li><strong>셸과 터미널</strong>: chezmoi는 oh-my-zsh, Powerlevel10k, Ghostty 터미널을 설정한다.</li>
+  <li><strong>계정 분리</strong>: <code>~/Projects/work/</code> 아래에서는 Git이 회사 이메일을 쓴다. 같은 폴더 아래에서 GitHub CLI는 회사 계정으로 바뀐다.</li>
+  <li><strong>AI 에이전트</strong>: chezmoi는 Claude Code 설정(LSP, statusline, 권한, 서브에이전트, 스킬)과 에이전트 스킬을 관리한다.</li>
+  <li><strong>Touch ID sudo</strong>: 터미널에서 sudo를 실행하면 Touch ID로 인증한다.</li>
+</ul>
+
+<h2>정보</h2>
+<dl class="facts">
+  <dt>플랫폼</dt><dd>macOS</dd>
+  <dt>도구</dt><dd>chezmoi, Homebrew, 1Password CLI</dd>
+  <dt>설치</dt><dd><code>sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jo-minjun</code></dd>
+</dl>
 
 <h2>링크</h2>
 <ul class="list">

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>work-log</title>
-<meta name="description" content="An agent collects what you did each day into a monthly log.">
+<meta name="description" content="An agent collects what you did each day into a monthly work log.">
 <link rel="alternate" hreflang="ko" href="https://jo-minjun.github.io/work-log/ko/">
 <link rel="alternate" hreflang="en" href="https://jo-minjun.github.io/work-log/en/">
 <link rel="alternate" hreflang="x-default" href="https://jo-minjun.github.io/work-log/">
@@ -17,7 +17,23 @@
 <h1>work-log</h1>
 <p class="kind">macOS app · Agent skill</p>
 
-<p>Records what you worked on each day. Claude Code or Codex runs the <code>work-log</code> skill on a schedule. The skill collects your sessions, your Slack messages and decisions from your threads into a monthly Markdown log. A macOS menu bar app manages the schedule and run history.</p>
+<p>work-log is a macOS tool that records what you worked on each day. Claude Code or Codex runs the <code>work-log</code> skill on a schedule. The skill collects evidence of your work and writes it into a monthly Markdown log. You use the log as evidence for stand-ups and performance reviews.</p>
+
+<h2>Features</h2>
+<ul class="features">
+  <li><strong>Sources</strong>: The skill collects your Claude Code sessions, your Slack messages and DMs, and decisions and agreements from your threads.</li>
+  <li><strong>By project</strong>: For each project and date, the log has sections for Claude sessions, Slack, decisions and open items.</li>
+  <li><strong>Project suggestions</strong>: When related items keep collecting in <code>Other</code>, the skill suggests a new project.</li>
+  <li><strong>Menu bar app</strong>: WorkLog.app manages the schedule, Run now, the run history and usage.</li>
+  <li><strong>Log language</strong>: The skill writes the log in English or Korean.</li>
+</ul>
+
+<h2>Details</h2>
+<dl class="facts">
+  <dt>Requirements</dt><dd>macOS 14 or later, Python 3.11 or later</dd>
+  <dt>Agents</dt><dd>Claude Code, Codex (experimental)</dd>
+  <dt>Built with</dt><dd>Swift, Python</dd>
+</dl>
 
 <h2>Links</h2>
 <ul class="list">

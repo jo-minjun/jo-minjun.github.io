@@ -17,7 +17,25 @@
 <h1>Petrify</h1>
 <p class="kind">Obsidian plugin</p>
 
-<p>Converts handwritten note files into Excalidraw or Markdown inside Obsidian, with OCR that makes handwriting searchable. Supports Viwoods and Supernote X-series <code>.note</code> files, and PDF.</p>
+<p>Petrify is an Obsidian plugin that converts handwritten note files into Obsidian notes. Handwritten notes and typed notes usually stay in different places. When you export handwriting as PDF, you cannot search, link or tag it in Obsidian. Petrify converts handwriting into Excalidraw or Markdown files. Petrify uses OCR (optical character recognition) to read the text, so you can search it.</p>
+
+<h2>Features</h2>
+<ul class="features">
+  <li><strong>Supported files</strong>: Petrify reads Viwoods <code>.note</code>, Supernote X-series <code>.note</code> and PDF files.</li>
+  <li><strong>Excalidraw output</strong>: The Excalidraw format keeps your handwriting on a canvas. You can add text, arrows, highlights and links on it.</li>
+  <li><strong>OCR</strong>: Tesseract.js reads the text on your device. Google Cloud Vision reads the text through a Google API.</li>
+  <li><strong>Folder watch</strong>: Petrify watches local folders or Google Drive folders. It converts new and changed files automatically.</li>
+  <li><strong>Drag and drop</strong>: When you drop a handwriting file into the file explorer, Petrify creates the converted file at that location.</li>
+  <li><strong>No duplicates</strong>: Petrify compares file and page hashes and skips files that it already converted.</li>
+</ul>
+
+<h2>Details</h2>
+<dl class="facts">
+  <dt>Status</dt><dd>Not in the community plugin list yet (install with BRAT)</dd>
+  <dt>Requirements</dt><dd>Obsidian 1.11.4 or later, desktop only</dd>
+  <dt>Built with</dt><dd>TypeScript</dd>
+  <dt>License</dt><dd>MIT</dd>
+</dl>
 
 <h2>Links</h2>
 <ul class="list">
@@ -27,7 +45,7 @@
   </span></a></li>
   <li><a href="https://github.com/jo-minjun/petrify/releases"><span class="text">
     <span class="title">Releases</span>
-    <span class="desc">Changelog and downloads</span>
+    <span class="desc">Changes and downloads for each version</span>
   </span></a></li>
 </ul>
 </body>

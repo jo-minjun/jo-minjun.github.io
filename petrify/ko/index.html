@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Petrify</title>
-<meta name="description" content="손글씨 노트를 Obsidian에서 검색할 수 있는 문서로 바꿔요.">
+<meta name="description" content="손글씨 노트를 검색할 수 있는 Obsidian 문서로 바꾼다.">
 <link rel="alternate" hreflang="ko" href="https://jo-minjun.github.io/petrify/ko/">
 <link rel="alternate" hreflang="en" href="https://jo-minjun.github.io/petrify/en/">
 <link rel="alternate" hreflang="x-default" href="https://jo-minjun.github.io/petrify/">
@@ -17,7 +17,25 @@
 <h1>Petrify</h1>
 <p class="kind">Obsidian 플러그인</p>
 
-<p>손글씨 노트 파일을 Obsidian 안에서 Excalidraw나 Markdown으로 바꾸는 플러그인이에요. OCR로 손글씨를 검색할 수 있게 해요. Viwoods와 Supernote X 시리즈의 <code>.note</code> 파일, 그리고 PDF를 지원해요.</p>
+<p>Petrify는 손글씨 노트 파일을 Obsidian 문서로 바꾸는 Obsidian 플러그인이다. 펜으로 쓴 노트와 키보드로 쓴 노트는 보통 서로 다른 곳에 저장된다. 손글씨를 PDF로 내보내면 Obsidian의 검색, 링크, 태그를 쓸 수 없다. Petrify는 손글씨를 Excalidraw 파일이나 Markdown 파일로 바꾼다. Petrify는 OCR(광학 문자 인식)로 손글씨에서 글자를 읽어 검색할 수 있게 한다.</p>
+
+<h2>주요 기능</h2>
+<ul class="features">
+  <li><strong>지원 파일</strong>: Petrify는 Viwoods <code>.note</code>, Supernote X 시리즈 <code>.note</code>, PDF 파일을 읽는다.</li>
+  <li><strong>Excalidraw 출력</strong>: Excalidraw 형식은 손글씨를 캔버스에 그대로 둔다. 사용자는 그 위에 글, 화살표, 강조, 링크를 더한다.</li>
+  <li><strong>OCR</strong>: Tesseract.js는 기기 안에서 글자를 읽는다. Google Cloud Vision은 Google API로 글자를 읽는다.</li>
+  <li><strong>폴더 감시</strong>: Petrify는 로컬 폴더나 Google Drive 폴더를 감시한다. Petrify는 새 파일과 바뀐 파일을 자동으로 변환한다.</li>
+  <li><strong>끌어다 놓기</strong>: 사용자가 파일 탐색기에 손글씨 파일을 놓으면, Petrify는 그 위치에 변환 결과를 만든다.</li>
+  <li><strong>중복 방지</strong>: Petrify는 파일과 페이지의 해시를 비교해서 이미 변환한 파일을 건너뛴다.</li>
+</ul>
+
+<h2>정보</h2>
+<dl class="facts">
+  <dt>상태</dt><dd>커뮤니티 플러그인 등록 전 (BRAT로 설치)</dd>
+  <dt>요구 사항</dt><dd>Obsidian 1.11.4 이상, 데스크톱 전용</dd>
+  <dt>기술</dt><dd>TypeScript</dd>
+  <dt>라이선스</dt><dd>MIT</dd>
+</dl>
 
 <h2>링크</h2>
 <ul class="list">
@@ -27,7 +45,7 @@
   </span></a></li>
   <li><a href="https://github.com/jo-minjun/petrify/releases"><span class="text">
     <span class="title">릴리스</span>
-    <span class="desc">버전별 변경 사항과 내려받기</span>
+    <span class="desc">버전별 변경 사항과 내려받기 파일</span>
   </span></a></li>
 </ul>
 </body>

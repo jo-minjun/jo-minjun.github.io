@@ -1,6 +1,6 @@
 # jo-minjun.github.io
 
-조민준의 사이드 프로젝트 카탈로그 사이트다. 주소는 https://jo-minjun.github.io/ 다.
+조민준의 프로젝트 카탈로그 사이트다. 주소는 https://jo-minjun.github.io/ 다.
 
 빌드 도구 없이 정적 HTML을 이 저장소에서 직접 고친다.
 
@@ -8,7 +8,7 @@
 
 | 경로 | 내용 |
 |---|---|
-| `ko/`, `en/` | 메인 화면. 프로필과 사이드 프로젝트 카드 목록 |
+| `ko/`, `en/` | 메인 화면. 프로필과 프로젝트 카드 목록 |
 | `<프로젝트>/ko/`, `<프로젝트>/en/` | 프로젝트 소개 페이지 (`honey-bloom`, `petrify`, `claude-mermaid-view`, `work-log`, `dotfiles`) |
 | `honey-bloom/privacy/ko/`, `honey-bloom/privacy/en/` | Honey Bloom 개인정보처리방침 |
 | `honey-bloom/support/ko/`, `honey-bloom/support/en/` | Honey Bloom 지원 페이지 |

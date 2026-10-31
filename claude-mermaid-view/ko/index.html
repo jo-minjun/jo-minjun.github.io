@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>claude-mermaid-view</title>
-<meta name="description" content="Claude 답변의 mermaid 블록을 터미널에서 다이어그램으로 그려요.">
+<meta name="description" content="Claude 답변의 mermaid 블록을 터미널에서 다이어그램으로 그린다.">
 <link rel="alternate" hreflang="ko" href="https://jo-minjun.github.io/claude-mermaid-view/ko/">
 <link rel="alternate" hreflang="en" href="https://jo-minjun.github.io/claude-mermaid-view/en/">
 <link rel="alternate" hreflang="x-default" href="https://jo-minjun.github.io/claude-mermaid-view/">
@@ -17,7 +17,23 @@
 <h1>claude-mermaid-view</h1>
 <p class="kind">Claude Code mod</p>
 
-<p>Claude 답변의 mermaid 코드 블록을 터미널 안에서 텍스트 다이어그램으로 그려 주는 Claude Code mod예요. mermaid 원문은 다이어그램 아래에 접혀 있어서 바로 복사하거나 mermaid.live에서 열 수 있어요.</p>
+<p>claude-mermaid-view는 Claude 답변의 mermaid 코드 블록을 터미널 안에서 텍스트 다이어그램으로 그리는 Claude Code mod다. Claude가 그린 ASCII 다이어그램은 문서, PR, Slack으로 옮기면 정렬이 깨진다. mermaid 원문은 문서에 붙여 넣고 한 줄씩 고칠 수 있다. 하지만 터미널은 mermaid 원문을 코드로만 보여 준다. 이 mod는 원문을 mermaid로 그대로 둔다. 이 mod는 터미널 화면에서만 원문을 그림으로 그린다.</p>
+
+<h2>주요 기능</h2>
+<ul class="features">
+  <li><strong>지원 다이어그램</strong>: mod는 flowchart, sequence, class, ER, state, xychart 다이어그램을 그린다.</li>
+  <li><strong>폭 맞춤</strong>: 다이어그램이 터미널보다 넓으면, mod는 간격을 좁히거나 라벨을 줄바꿈해서 다시 그린다.</li>
+  <li><strong>다국어 정렬</strong>: mod는 한글, 중국어, 일본어, 이모지 라벨을 터미널에서 차지하는 실제 폭에 맞춰 정렬한다.</li>
+  <li><strong>원문 도구</strong>: 다이어그램마다 원문 보기, 원문 복사, mermaid.live에서 열기 버튼이 있다.</li>
+  <li><strong>mermaid 지시</strong>: mod는 Claude에게 ASCII 그림 대신 mermaid 블록으로 그리라고 지시한다. 사용자는 <code>/mermaid-prompt</code>로 이 지시를 끄고 켠다.</li>
+  <li><strong>원문 보존</strong>: mod는 화면 표시만 바꾼다. 저장된 메시지에는 mermaid 원문이 그대로 남는다.</li>
+</ul>
+
+<h2>정보</h2>
+<dl class="facts">
+  <dt>설치</dt><dd><code>/plugin install mermaid-view --marketplace jo-minjun/claude-mermaid-view</code></dd>
+  <dt>기술</dt><dd>TypeScript, beautiful-mermaid</dd>
+</dl>
 
 <h2>링크</h2>
 <ul class="list">

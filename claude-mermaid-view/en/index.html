@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>claude-mermaid-view</title>
-<meta name="description" content="Draws mermaid blocks in Claude's replies as diagrams in the terminal.">
+<meta name="description" content="Draws the mermaid blocks in Claude's replies as diagrams in the terminal.">
 <link rel="alternate" hreflang="ko" href="https://jo-minjun.github.io/claude-mermaid-view/ko/">
 <link rel="alternate" hreflang="en" href="https://jo-minjun.github.io/claude-mermaid-view/en/">
 <link rel="alternate" hreflang="x-default" href="https://jo-minjun.github.io/claude-mermaid-view/">
@@ -17,7 +17,23 @@
 <h1>claude-mermaid-view</h1>
 <p class="kind">Claude Code mod</p>
 
-<p>A Claude Code mod that draws the mermaid code blocks in Claude's replies as text diagrams in the terminal. The mermaid source is folded under each diagram, ready to copy or open in mermaid.live.</p>
+<p>claude-mermaid-view is a Claude Code mod. It draws the mermaid code blocks in Claude's replies as text diagrams in the terminal. When you move an ASCII diagram from Claude into docs, PRs or Slack, its alignment breaks. You can paste mermaid source into docs and edit it line by line. But the terminal shows mermaid source only as code. This mod keeps the source as mermaid. The mod draws the source as a diagram only on the terminal screen.</p>
+
+<h2>Features</h2>
+<ul class="features">
+  <li><strong>Diagram types</strong>: The mod draws flowchart, sequence, class, ER, state and xychart diagrams.</li>
+  <li><strong>Fit to width</strong>: When a diagram is wider than the terminal, the mod draws it again with less spacing or wrapped labels.</li>
+  <li><strong>Wide characters</strong>: The mod aligns Korean, Chinese, Japanese and emoji labels to the width that they use in the terminal.</li>
+  <li><strong>Source tools</strong>: Each diagram has buttons to show the source, copy the source and open it in mermaid.live.</li>
+  <li><strong>Mermaid prompt</strong>: The mod tells Claude to draw mermaid blocks instead of ASCII art. You turn this on and off with <code>/mermaid-prompt</code>.</li>
+  <li><strong>Source kept</strong>: The mod changes only the display. The saved message keeps the mermaid source.</li>
+</ul>
+
+<h2>Details</h2>
+<dl class="facts">
+  <dt>Install</dt><dd><code>/plugin install mermaid-view --marketplace jo-minjun/claude-mermaid-view</code></dd>
+  <dt>Built with</dt><dd>TypeScript, beautiful-mermaid</dd>
+</dl>
 
 <h2>Links</h2>
 <ul class="list">
