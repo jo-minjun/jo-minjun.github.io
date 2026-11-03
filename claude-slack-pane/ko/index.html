@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>claude-slack-pane</title>
+<meta name="description" content="Claude Code 대화 옆 패널에서 Slack을 읽고 보내고, 메시지를 프롬프트에 인용한다.">
+<link rel="alternate" hreflang="ko" href="https://jo-minjun.github.io/claude-slack-pane/ko/">
+<link rel="alternate" hreflang="en" href="https://jo-minjun.github.io/claude-slack-pane/en/">
+<link rel="alternate" hreflang="x-default" href="https://jo-minjun.github.io/claude-slack-pane/">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/lang.js"></script>
+</head>
+<body>
+<nav class="top"><a href="/ko/">← 전체 프로젝트</a><a class="lang" href="../en/" hreflang="en" lang="en">English</a></nav>
+
+<h1>claude-slack-pane</h1>
+<p class="kind">Claude Code mod</p>
+
+<p class="lead">Claude Code 대화 옆 패널에 Slack을 띄우는 Claude Code mod다.</p>
+<ul class="features">
+  <li><strong>문제</strong>: Slack 대화를 Claude에게 보여 주려면 Slack 앱을 열고, 메시지를 복사하고, 터미널로 돌아와 붙여 넣어야 한다. 스레드가 길면 이 작업을 여러 번 반복한다.</li>
+  <li><strong>해결</strong>: 이 mod는 터미널 안에서 Slack 채널과 스레드를 보여 준다. 사용자는 메시지나 스레드 전체를 버튼 하나로 다음 프롬프트에 인용한다.</li>
+</ul>
+
+<h2>주요 기능</h2>
+<ul class="features">
+  <li><strong>두 열 화면</strong>: 왼쪽 열은 사용자가 속한 채널, 비공개 채널, DM, 그룹 DM과 메시지 검색을 보여 준다. 오른쪽 열은 연 채널이나 스레드를 보여 준다.</li>
+  <li><strong>검색</strong>: 검색은 <code>in:</code>, <code>from:</code>, <code>after:</code> 같은 Slack 검색 조건을 지원한다. <code>From me</code>는 내가 쓴 메시지만 찾는다.</li>
+  <li><strong>실시간 보기</strong>: mod는 연 채널이나 스레드만 기본 10초마다 다시 읽는다. 사용자는 <code>/slack-pane-refresh</code>로 간격을 5–300초 사이에서 바꾼다.</li>
+  <li><strong>메시지 보내기</strong>: 입력창 위 줄이 메시지가 갈 곳(<code>To #general</code>, <code>Reply in thread · #general</code>)을 보여 준다.</li>
+  <li><strong>이미지 보내기</strong>: 사용자는 파일 경로로 이미지를 첨부하거나, 클립보드의 이미지를 붙여 넣어 보낸다. 클립보드 붙여 넣기는 macOS에서만 된다.</li>
+  <li><strong>Claude에 인용</strong>: <code>Quote message</code>나 <code>Quote thread</code>를 누르면 프롬프트 입력창에 짧은 참조가 들어간다. 프롬프트를 보내면 mod가 메시지나 스레드 전체를 맥락으로 붙인다. mod는 인용한 글을 신뢰하지 않는 데이터로 표시한다.</li>
+  <li><strong>별도 토큰 없음</strong>: mod는 Claude Code에 이미 연결한 Slack MCP 서버로 Slack과 통신한다. Slack 앱이나 별도 토큰은 필요 없다.</li>
+</ul>
+
+<h2>정보</h2>
+<dl class="facts">
+  <dt>설치</dt><dd><code>/plugin install slack-pane --marketplace jo-minjun/claude-slack-pane</code></dd>
+  <dt>필요 조건</dt><dd>Claude Code 2.1.316 이상, Slack MCP 서버 연결</dd>
+  <dt>기술</dt><dd>TypeScript, Slack MCP</dd>
+</dl>
+
+<h2>링크</h2>
+<ul class="list">
+  <li><a href="https://github.com/jo-minjun/claude-slack-pane" target="_blank" rel="noopener"><span class="text">
+    <span class="title">GitHub</span>
+    <span class="desc">소스 코드와 설치 방법</span>
+  </span></a></li>
+</ul>
+</body>
+</html>

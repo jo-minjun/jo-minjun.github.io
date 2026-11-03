@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>claude-slack-pane</title>
+<meta name="description" content="Reads and sends Slack in a pane beside the Claude Code conversation, and quotes messages into prompts.">
+<link rel="alternate" hreflang="ko" href="https://jo-minjun.github.io/claude-slack-pane/ko/">
+<link rel="alternate" hreflang="en" href="https://jo-minjun.github.io/claude-slack-pane/en/">
+<link rel="alternate" hreflang="x-default" href="https://jo-minjun.github.io/claude-slack-pane/">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/lang.js"></script>
+</head>
+<body>
+<nav class="top"><a href="/en/">← All projects</a><a class="lang" href="../ko/" hreflang="ko" lang="ko">한국어</a></nav>
+
+<h1>claude-slack-pane</h1>
+<p class="kind">Claude Code mod</p>
+
+<p class="lead">A Claude Code mod that puts Slack in a pane beside the conversation.</p>
+<ul class="features">
+  <li><strong>Problem</strong>: To show a Slack conversation to Claude, you open the Slack app, copy the messages, go back to the terminal and paste them. For a long thread, you do this many times.</li>
+  <li><strong>Solution</strong>: The mod shows Slack channels and threads in the terminal. You quote a message or a whole thread into your next prompt with one button.</li>
+</ul>
+
+<h2>Features</h2>
+<ul class="features">
+  <li><strong>Two columns</strong>: The left column shows the channels, private channels, DMs and group DMs you are in, plus message search. The right column shows the open channel or thread.</li>
+  <li><strong>Search</strong>: Search supports Slack search modifiers such as <code>in:</code>, <code>from:</code> and <code>after:</code>. <code>From me</code> finds only your own messages.</li>
+  <li><strong>Live view</strong>: The mod reads only the open channel or thread again, every 10 seconds by default. You change the interval to 5–300 seconds with <code>/slack-pane-refresh</code>.</li>
+  <li><strong>Send messages</strong>: The line above the input shows where a message goes (<code>To #general</code>, <code>Reply in thread · #general</code>).</li>
+  <li><strong>Send images</strong>: You attach an image by its file path, or paste the image on the clipboard. Clipboard paste works only on macOS.</li>
+  <li><strong>Quote into Claude</strong>: <code>Quote message</code> or <code>Quote thread</code> puts a short reference in the prompt box. When you send the prompt, the mod attaches the message or the whole thread as context. The mod marks quoted text as untrusted data.</li>
+  <li><strong>No token of its own</strong>: The mod talks to Slack through the Slack MCP server you already connected to Claude Code. It needs no Slack app and no token of its own.</li>
+</ul>
+
+<h2>Details</h2>
+<dl class="facts">
+  <dt>Install</dt><dd><code>/plugin install slack-pane --marketplace jo-minjun/claude-slack-pane</code></dd>
+  <dt>Requires</dt><dd>Claude Code 2.1.316 or later, Slack MCP server connected</dd>
+  <dt>Built with</dt><dd>TypeScript, Slack MCP</dd>
+</dl>
+
+<h2>Links</h2>
+<ul class="list">
+  <li><a href="https://github.com/jo-minjun/claude-slack-pane" target="_blank" rel="noopener"><span class="text">
+    <span class="title">GitHub</span>
+    <span class="desc">Source code and installation</span>
+  </span></a></li>
+</ul>
+</body>
+</html>

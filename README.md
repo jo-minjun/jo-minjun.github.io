@@ -9,7 +9,7 @@
 | 경로 | 내용 |
 |---|---|
 | `ko/`, `en/` | 메인 화면. 프로필과 프로젝트 카드 목록 |
-| `<프로젝트>/ko/`, `<프로젝트>/en/` | 프로젝트 소개 페이지 (`honey-bloom`, `petrify`, `claude-mermaid-view`, `work-log`, `dotfiles`) |
+| `<프로젝트>/ko/`, `<프로젝트>/en/` | 프로젝트 소개 페이지 (`honey-bloom`, `petrify`, `claude-mermaid-view`, `claude-slack-pane`, `work-log`, `dotfiles`) |
 | `honey-bloom/privacy/ko/`, `honey-bloom/privacy/en/` | Honey Bloom 개인정보처리방침 |
 | `honey-bloom/support/ko/`, `honey-bloom/support/en/` | Honey Bloom 지원 페이지 |
 | `assets/site.css` | 메인과 프로젝트 페이지의 공통 스타일 |
