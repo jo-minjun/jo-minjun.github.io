@@ -20,7 +20,7 @@
 <nav class="top"><a href="/honey-bloom/en/">← Honey Bloom</a><a class="lang" href="../ko/" hreflang="ko" lang="ko">한국어</a></nav>
 
 <h1>Honey Bloom Privacy Policy</h1>
-<p class="meta">Effective date: November 1, 2026 (previous version: October 24, 2026)</p>
+<p class="meta">Effective date: November 4, 2026 (previous version: November 1, 2026)</p>
 
 <p>Honey Bloom (the "App") is a mobile puzzle game by the independent developer Jo Minjun (the "Developer"). This policy tells you which data the App uses, where the App keeps it, and how the App uses it.</p>
 
@@ -31,7 +31,7 @@
   <li>Settings</li>
   <li>Ad reward records (ad attempt IDs and receipt IDs)</li>
 </ul>
-<p>When you delete the App or use Settings &gt; Reset all data in the App, this data is deleted too (see section 4).</p>
+<p>When you delete the App or use Settings &gt; Reset all data in the App, this data is deleted too (see section 5).</p>
 
 <h2>2. League (online rankings)</h2>
 <p>In the league, you compete for one week against up to 30 players in the same group. When you clear a level and get league points, the App creates an anonymous account and joins the league automatically. The App then sends the data below to the Developer's league server.</p>
@@ -51,7 +51,7 @@
 <p>The App shows two types of ads through Google AdMob.</p>
 <ul>
   <li>Rewarded ads: You watch these ads only when you choose to. The App uses them for a life refill, a doubled clear reward, boost time, continuing after a failure, and the video rewards on the home screen (petals, boost time and unlimited lives).</li>
-  <li>Interstitial ads: When you leave the result screen of a failed round, the App sometimes shows this type of ad. These ads give no reward.</li>
+  <li>Interstitial ads: When you leave the result screen of a round (failed or completed), the App sometimes shows this type of ad, based on chance and conditions. These ads give no reward.</li>
 </ul>
 <p>To request and show ads, Google can collect and process the data below.</p>
 <ul>
@@ -61,7 +61,22 @@
 </ul>
 <p>Google processes this data under its own policies. The Developer does not receive or keep this data. For more information, see <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
 
-<h2>4. Retention and deletion</h2>
+<h2>4. App analytics and error reporting (Google Firebase)</h2>
+<p>Copies of the App installed from the stores or from test distribution send the data below to Google Firebase. The Developer uses this data to tune game difficulty, fix errors and adjust how often ads appear.</p>
+<table>
+  <tr><th>Data</th><th>Purpose</th></tr>
+  <tr><td>App instance ID (a random identifier created for each installation), and device data such as device model, operating system and app version</td><td>To understand the number of users and their environments</td></tr>
+  <tr><td>Play records: level start, failure and completion with the level number, item use, petal spending, ad rewards received, interstitial ads shown</td><td>To find hard levels and where players stop, and to adjust ad frequency</td></tr>
+  <tr><td>Crash and error records (the code location of the error), and the type of a save failure</td><td>To fix errors</td></tr>
+</table>
+<ul>
+  <li>When the App starts, it gets the interstitial ad conditions from Firebase. This request also uses the app instance ID.</li>
+  <li>The App does not send your nickname, league account ID, email address or game save contents to Firebase. The App does not set a user ID in Firebase.</li>
+  <li>For users in the EEA, the UK or Switzerland, the choice on the consent screen also applies to Firebase analytics (see section 8). If you do not consent, Google consent mode treats analytics storage as denied.</li>
+</ul>
+<p>Google processes this data under the Firebase terms and Google's policies. For more information, see <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a>.</p>
+
+<h2>5. Retention and deletion</h2>
 <p>The Developer keeps league records while the league service operates. League records are your anonymous account ID, nickname, profile picture, season, tier and score. The Developer keeps them to show the rankings of past seasons.</p>
 <p>You can delete your anonymous account and all your data yourself in the App under Settings &gt; Reset all data. The deletion occurs in this sequence:</p>
 <ol>
@@ -69,21 +84,26 @@
   <li>The App deletes the game progress, petals and items on your device.</li>
 </ol>
 <p>You cannot recover deleted data.</p>
+<p>Data sent to Firebase is kept for the periods below and then deleted. Reset all data in the App does not delete data that was already sent to Firebase.</p>
+<ul>
+  <li>Analytics event records: 2 months. User-level analytics records: 14 months after the last activity</li>
+  <li>Crash and error records: 90 days</li>
+</ul>
 <ul>
   <li>If the App cannot confirm that the server deletion is complete (for example, because of a connection problem), the App does not delete the data on your device. Some of your server records can already be deleted. Check your connection and try again.</li>
-  <li>If the App cannot verify your account, the App cannot delete your server records. For example, this occurs when the league sign-in data on your device is damaged, or when the server rejects the identity check. In this case, the App deletes only the data on your device. Your league records, nickname and profile picture stay on the server. Send the nickname that you saw in the league and when you played to the contact in section 10. The Developer finds the records and deletes them.</li>
+  <li>If the App cannot verify your account, the App cannot delete your server records. For example, this occurs when the league sign-in data on your device is damaged, or when the server rejects the identity check. In this case, the App deletes only the data on your device. Your league records, nickname and profile picture stay on the server. Send the nickname that you saw in the league and when you played to the contact in section 11. The Developer finds the records and deletes them.</li>
   <li>When you ask for deletion by email, or when the Developer ends the league service, the Developer deletes the records from the server database without delay. You cannot recover deleted records.</li>
   <li>When you delete the App or your account, the data on your device is deleted too.</li>
 </ul>
 
-<h2>5. Processors and international transfers</h2>
+<h2>6. Processors and international transfers</h2>
 <table>
   <tr><th>Recipient</th><th>Details</th></tr>
-  <tr><td>Supabase, Inc.<br>(<a href="https://supabase.com/privacy">Privacy Policy</a>)</td><td>Processor: Supabase operates the league server and stores its data. Data: the league records and connection records in section 2. Location: Seoul, South Korea (AWS ap-northeast-2). Retention: the same as section 4.</td></tr>
-  <tr><td>Google LLC (USA)<br>(<a href="https://support.google.com/policies/contact/general_privacy_form">contact form</a>)</td><td>International transfer: Google requests, shows and measures ads. Data: the ad-related data in section 3. The App sends this data over the internet to Google servers (in the USA and other countries) with each ad request. Retention: Google's policies. To refuse personalized ads, decline tracking on iOS or delete your Android advertising ID. If you do not want the App to send ad data at all, do not use the App.</td></tr>
+  <tr><td>Supabase, Inc.<br>(<a href="https://supabase.com/privacy">Privacy Policy</a>)</td><td>Processor: Supabase operates the league server and stores its data. Data: the league records and connection records in section 2. Location: Seoul, South Korea (AWS ap-northeast-2). Retention: the same as section 5.</td></tr>
+  <tr><td>Google LLC (USA)<br>(<a href="https://support.google.com/policies/contact/general_privacy_form">contact form</a>)</td><td>International transfer: Google requests, shows and measures ads. Through Firebase, Google also processes app analytics, error reporting and the delivery of ad conditions. Data: the ad-related data in section 3 and the Firebase data in section 4. The App sends this data over the internet to Google servers (in the USA and other countries) with each ad request and while you use the App. Retention: Google's policies for ad data, and section 5 for Firebase data. To refuse personalized ads, decline tracking on iOS or delete your Android advertising ID. If you do not want the App to send ad data at all, do not use the App.</td></tr>
 </table>
 
-<h2>6. Notifications</h2>
+<h2>7. Notifications</h2>
 <p>The App schedules two types of notifications on your device.</p>
 <table>
   <tr><th>Notification</th><th>When</th></tr>
@@ -92,22 +112,22 @@
 </table>
 <p>The App does not send data to a server for these notifications. You can turn off notifications in your device settings.</p>
 
-<h2>7. Consent and choices (including personalized ads)</h2>
+<h2>8. Consent and choices (including personalized ads)</h2>
 <ul>
-  <li>When users in the EEA, the UK or Switzerland start the App for the first time, the App shows Google's consent screen. You can change your consent at any time in the App under Settings &gt; Privacy settings.</li>
+  <li>When users in the EEA, the UK or Switzerland start the App for the first time, the App shows Google's consent screen. This choice applies to both ads and Firebase analytics. You can change your consent at any time in the App under Settings &gt; Privacy settings.</li>
   <li>On iOS, the App asks if you allow tracking. If you do not allow tracking, you can still play and get ad rewards in the same way. If you do not allow tracking, you see non-personalized ads. You can change this choice in Settings &gt; Privacy &amp; Security &gt; Tracking.</li>
   <li>On Android, you can reset or delete your advertising ID in device settings.</li>
-  <li>You can delete your league records yourself in the App under Settings &gt; Reset all data (see section 4).</li>
-  <li>You can also ask by email to see, correct, delete or stop the processing of your league records. Send the nickname shown in the league and when you played to the contact in section 10. The Developer checks the request, completes it within 10 days and tells you the result.</li>
+  <li>You can delete your league records yourself in the App under Settings &gt; Reset all data (see section 5).</li>
+  <li>You can also ask by email to see, correct, delete or stop the processing of your league records. Send the nickname shown in the league and when you played to the contact in section 11. The Developer checks the request, completes it within 10 days and tells you the result.</li>
 </ul>
 
-<h2>8. Children</h2>
+<h2>9. Children</h2>
 <p>The App is not for children under 13. The Developer does not knowingly collect personal information from children.</p>
 
-<h2>9. Changes</h2>
+<h2>10. Changes</h2>
 <p>If the data that the App processes changes, the Developer updates this page and its effective date.</p>
 
-<h2>10. Privacy officer and contact</h2>
+<h2>11. Privacy officer and contact</h2>
 <p>Privacy officer: Jo Minjun<br>
 Email: <a href="mailto:alswns9288@gmail.com">alswns9288@gmail.com</a></p>
 </body>
