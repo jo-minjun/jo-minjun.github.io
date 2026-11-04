@@ -24,27 +24,32 @@
 
 <p>Honey Bloom (the "App") is a mobile puzzle game by the independent developer Jo Minjun (the "Developer"). This policy tells you which data the App uses, where the App keeps it, and how the App uses it.</p>
 
-<h2>1. Data stored only on your device</h2>
-<p>The App does not ask you to sign up or log in. The App keeps the data below only on your device. The App does not send this data to the Developer's servers.</p>
+<h2>1. Data stored on your device</h2>
+<p>The App keeps the data below on your device.</p>
 <ul>
   <li>Game progress and in-game currency</li>
   <li>Settings</li>
   <li>Ad reward records (ad attempt IDs and receipt IDs)</li>
+  <li>Currency records that the App has not sent to the server yet (see section 2)</li>
 </ul>
-<p>When you delete the App or use Settings &gt; Reset all data in the App, this data is deleted too (see section 5).</p>
+<p>The vibration and reduce motion settings and the ad reward records stay only on your device. When you delete the App, the data on your device is deleted. The server data in section 2 stays when you delete the App, so you can get your progress and currency back when you install the App again.</p>
 
-<h2>2. League (online rankings)</h2>
-<p>In the league, you compete for one week against up to 30 players in the same group. When you clear a level and get league points, the App creates an anonymous account and joins the league automatically. The App then sends the data below to the Developer's league server.</p>
+<h2>2. Account and data stored on the server (Google Firebase)</h2>
+<p>The App has no sign-up or login screen. When the App first connects to the internet, it creates an anonymous account automatically. If your device is signed in to Game Center (iOS) or Play Games (Android), the App links that game account to the anonymous account without showing a screen. Because of this, you keep the same account with the same game account when you install the App again or change devices. The App stores the data below, linked to the account, on the Developer's server (Google Firebase).</p>
 <table>
   <tr><th>Data</th><th>Purpose</th></tr>
-  <tr><td>Anonymous account ID (a random identifier that the App creates)</td><td>To identify each player, to assign groups</td></tr>
-  <tr><td>Nickname, chosen profile picture</td><td>To show the leaderboard</td></tr>
-  <tr><td>Season, tier, total score</td><td>To calculate rankings, promotion and demotion</td></tr>
+  <tr><td>Anonymous account ID (a random identifier), short account ID (in the form <code>HB-XXXX-XXXX</code>, shown at the bottom of Settings), the identifier of the linked Game Center or Play Games account</td><td>To identify each account, to find the same account when you install the App again or change devices, to answer support requests</td></tr>
+  <tr><td>Progress backup: current level, completed levels, unclaimed clear rewards, tutorial progress, language and music and sound effect volumes, backup time</td><td>To restore your progress when you install the App again or change devices</td></tr>
+  <tr><td>Currency ledger: your balances of petals, item stock, boost time and unlimited lives, and the records of what you got and spent (record type, level number, product, ad reward type, device date and time of the record, and the server's result)</td><td>To check what you get and spend, to keep your balances, to block rewards that were not earned</td></tr>
+  <tr><td>League: nickname, chosen profile picture, season, tier, group, score, season results and rewards</td><td>To show the leaderboard, to calculate rankings, promotion and demotion, and season rewards</td></tr>
 </table>
 <ul>
-  <li>Other players in your group can see your nickname, profile picture and score on the leaderboard. Do not use a nickname that identifies you, such as your real name or contact details.</li>
-  <li>The App does not send your email address, phone number, advertising identifier or location to the league server.</li>
-  <li>When the App sends a request to the server, the hosting provider's logs can record connection data, such as your IP address.</li>
+  <li>In the league, you compete for one week against up to 30 players in the same group. When you clear your first level in a week, the server puts you in the league.</li>
+  <li>Other players in your group can see your nickname, profile picture and score on the leaderboard. To build the leaderboard, the apps of players in your group also receive your anonymous account ID, but they do not show it. Do not use a nickname that identifies you, such as your real name or contact details.</li>
+  <li>The App does not offer in-app purchases yet. When purchases are added, the server will store purchase records (transaction ID, product, amount and currency, purchase time, platform, refund status) linked to your account.</li>
+  <li>The App does not put your email address, phone number, advertising identifier or location in this server data.</li>
+  <li>Location: this data is stored in Cloud Firestore in the Seoul, South Korea region (asia-northeast3), and the server functions run in the same region. Firebase Authentication handles the anonymous account and the game account link, and this data can be stored on Google servers in the USA and other countries.</li>
+  <li>When the App sends a request to the server, Google Cloud logs can record connection data, such as your IP address.</li>
 </ul>
 
 <h2>3. Advertising (Google AdMob)</h2>
@@ -72,35 +77,41 @@
 </table>
 <ul>
   <li>When the App starts, it gets the interstitial ad conditions from Firebase. This request also uses the app instance ID.</li>
-  <li>The App does not send your nickname, league account ID, email address or game save contents to Firebase. The App does not set a user ID in Firebase.</li>
+  <li>The App does not send your anonymous account ID, short account ID, nickname, email address or game save contents to analytics or error reporting. The App does not set a user ID in analytics or error reporting. Because of this, analytics and error records are not linked to the account in section 2.</li>
   <li>For users in the EEA, the UK or Switzerland, the choice on the consent screen also applies to Firebase analytics (see section 8). If you do not consent, Google consent mode treats analytics storage as denied.</li>
 </ul>
 <p>Google processes this data under the Firebase terms and Google's policies. For more information, see <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a>.</p>
 
 <h2>5. Retention and deletion</h2>
-<p>The Developer keeps league records while the league service operates. League records are your anonymous account ID, nickname, profile picture, season, tier and score. The Developer keeps them to show the rankings of past seasons.</p>
-<p>You can delete your anonymous account and all your data yourself in the App under Settings &gt; Reset all data. The deletion occurs in this sequence:</p>
+<p>The Developer keeps the account data, progress backup, currency ledger and league records in section 2 while your account exists. League records are kept after a season ends, to show the rankings of past seasons.</p>
+<p>You can delete your account and its data yourself in the App under Settings &gt; Reset all data. The deletion occurs in this sequence:</p>
 <ol>
-  <li>The server deletes, without delay, your league records for all seasons, your nickname, your profile picture and your anonymous (authentication) account.</li>
+  <li>The server marks the account as deleted. After this, the server refuses all writes from this account.</li>
+  <li>The server moves your purchase records to pseudonymous records that are no longer linked to your account (see below).</li>
+  <li>The server deletes, without delay, your progress backup, your currency ledger (balances and records), your short account ID, your league records for all seasons, your nickname, your profile picture and the transfer tickets this account created.</li>
+  <li>The server deletes your anonymous (authentication) account. The link to your Game Center or Play Games account is removed too.</li>
   <li>The App deletes the game progress, petals and items on your device.</li>
 </ol>
-<p>You cannot recover deleted data.</p>
-<p>Data sent to Firebase is kept for the periods below and then deleted. Reset all data in the App does not delete data that was already sent to Firebase.</p>
+<p>You cannot recover deleted data. Petals and items do not come back.</p>
+<ul>
+  <li>Purchase records: the server keeps only the transaction ID, product, amount and currency, purchase time, platform and refund status, and changes them into pseudonymous records that do not identify your account. The server keeps these records for 5 years from the day the account was deleted, and then deletes them. This is to keep transaction records as the applicable laws require. If a payment of a deleted account is refunded later, the server only marks the refund on the pseudonymous record. The App has no purchases yet, so no purchase records are moved to pseudonymous records now.</li>
+  <li>Deleted-account mark: the server keeps the anonymous account ID of the deleted account, the time of deletion and the reason (account deletion or account switch). This prevents server records from being created again while the deleted account's sign-in is still valid for a short time. This mark holds none of the other data in section 2.</li>
+  <li>Account switch: if the game account that the App tries to link to a new anonymous account is already linked to an earlier account, the App switches to the earlier account. The server then deletes the new account's data and authentication account in the same way. Petals that the new account got through purchases are moved to the earlier account. The one-time transfer ticket used for the switch expires after 10 minutes.</li>
+  <li>If there is no internet connection, if a server error occurs, or if the App cannot confirm the server deletion within 20 seconds, the App does not delete the data on your device and tells you that the deletion failed. Some of your server records can already be deleted. Check your connection and try again. When you try again, an account that is already deleted counts as deleted.</li>
+  <li>If you only played without an internet connection and no server account was created, the App deletes only the data on your device. The server has no data to delete.</li>
+  <li>When you ask for deletion by email, the Developer deletes the account's data in the same way.</li>
+  <li>When you only delete the App, only the data on your device is deleted, and the server data stays.</li>
+</ul>
+<p>Data sent to Firebase for analytics and error reporting (section 4) is not linked to your account, so Reset all data in the App does not delete it. This data is kept for the periods below and then deleted.</p>
 <ul>
   <li>Analytics event records: 2 months. User-level analytics records: 14 months after the last activity</li>
   <li>Crash and error records: 90 days</li>
-</ul>
-<ul>
-  <li>If the App cannot confirm that the server deletion is complete (for example, because of a connection problem), the App does not delete the data on your device. Some of your server records can already be deleted. Check your connection and try again.</li>
-  <li>If the App cannot verify your account, the App cannot delete your server records. For example, this occurs when the league sign-in data on your device is damaged, or when the server rejects the identity check. In this case, the App deletes only the data on your device. Your league records, nickname and profile picture stay on the server. Send the nickname that you saw in the league and when you played to the contact in section 11. The Developer finds the records and deletes them.</li>
-  <li>When you ask for deletion by email, or when the Developer ends the league service, the Developer deletes the records from the server database without delay. You cannot recover deleted records.</li>
-  <li>When you delete the App or your account, the data on your device is deleted too.</li>
 </ul>
 
 <h2>6. Processors and international transfers</h2>
 <table>
   <tr><th>Recipient</th><th>Details</th></tr>
-  <tr><td>Supabase, Inc.<br>(<a href="https://supabase.com/privacy">Privacy Policy</a>)</td><td>Processor: Supabase operates the league server and stores its data. Data: the league records and connection records in section 2. Location: Seoul, South Korea (AWS ap-northeast-2). Retention: the same as section 5.</td></tr>
+  <tr><td>Google LLC (USA)<br>(<a href="https://support.google.com/policies/contact/general_privacy_form">contact form</a>)</td><td>Processor: through Firebase (Cloud Firestore, Cloud Functions, Firebase Authentication), Google operates the account, progress backup, currency ledger and league server and stores its data. Data: the data in section 2 and connection records. Location: Cloud Firestore data is stored in the Seoul, South Korea region (asia-northeast3), and authentication account data can be stored on Google servers in the USA and other countries. Retention: the same as section 5.</td></tr>
   <tr><td>Google LLC (USA)<br>(<a href="https://support.google.com/policies/contact/general_privacy_form">contact form</a>)</td><td>International transfer: Google requests, shows and measures ads. Through Firebase, Google also processes app analytics, error reporting and the delivery of ad conditions. Data: the ad-related data in section 3 and the Firebase data in section 4. The App sends this data over the internet to Google servers (in the USA and other countries) with each ad request and while you use the App. Retention: Google's policies for ad data, and section 5 for Firebase data. To refuse personalized ads, decline tracking on iOS or delete your Android advertising ID. If you do not want the App to send ad data at all, do not use the App.</td></tr>
 </table>
 
@@ -118,8 +129,8 @@
   <li>When users in the EEA, the UK or Switzerland start the App for the first time, the App shows Google's consent screen. This choice applies to both ads and Firebase analytics. You can change your consent at any time in the App under Settings &gt; Privacy settings.</li>
   <li>On iOS, the App asks if you allow tracking. If you do not allow tracking, you can still play and get ad rewards in the same way. If you do not allow tracking, you see non-personalized ads. You can change this choice in Settings &gt; Privacy &amp; Security &gt; Tracking.</li>
   <li>On Android, you can reset or delete your advertising ID in device settings.</li>
-  <li>You can delete your league records yourself in the App under Settings &gt; Reset all data (see section 5).</li>
-  <li>You can also ask by email to see, correct, delete or stop the processing of your league records. Send the nickname shown in the league and when you played to the contact in section 11. The Developer checks the request, completes it within 10 days and tells you the result.</li>
+  <li>You can delete your account and server data yourself in the App under Settings &gt; Reset all data (see section 5).</li>
+  <li>You can also ask by email to see, correct, delete or stop the processing of the data in section 2. Send the short account ID shown at the bottom of Settings to the contact in section 11. The Developer checks the request, completes it within 10 days and tells you the result.</li>
 </ul>
 
 <h2>9. Children</h2>
