@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 조민준의 프로젝트 카탈로그 사이트다. 주소는 https://jo-minjun.github.io/ 다. 빌드 도구, 테스트, 린트가 없다. 정적 HTML과 CSS를 이 저장소에서 직접 고친다.
 
-사이트 파일은 모두 `docs/` 아래에 있다. 이 문서에 나오는 사이트 파일 경로(`assets/site.css`, `404.html` 등)는 `docs/` 기준이다. `README.md`와 `CLAUDE.md`만 저장소 최상위에 있다.
+사이트 파일은 모두 `docs/` 아래에 있다. 이 문서에 나오는 사이트 파일 경로(`assets/site.css`, `404.html` 등)는 `docs/` 기준이다. `README.md`, `CLAUDE.md`, `DESIGN.md`만 저장소 최상위에 있다.
 
 ## 명령
 
@@ -45,6 +45,8 @@ Honey Bloom이 새 정보를 수집·저장·전송하거나 새 알림·권한�
 
 ## 스타일
 
+디자인 기준(색상, 글꼴, 간격, 컴포넌트, 접근성, 금지 사항)은 최상위 `DESIGN.md`에 있다. 디자인 값을 바꾸면 `DESIGN.md`와 `site.css`의 `:root`를 함께 고친다.
+
 `assets/site.css` 하나가 모든 페이지의 스타일을 정한다. 페이지에 `<style>`이나 `style` 속성을 추가하지 않는다. `404.html`의 언어 숨김 규칙만 예외다.
 
 - **디자인 값**: 색상, 글꼴 굵기, 모서리 반경, 줄 간격은 `site.css` 맨 위 `:root`의 변수로 쓴다. 새 색상이나 굵기를 규칙 안에 직접 적지 않는다.
@@ -52,12 +54,4 @@ Honey Bloom이 새 정보를 수집·저장·전송하거나 새 알림·권한�
 - **한글 줄 간격**: `:lang(ko)`가 `--leading-heading`과 `--leading-prose`를 더 넓은 값으로 바꾼다. `<html lang>` 값에 따라 줄 간격이 달라진다.
 - **정책 페이지**: 개인정보처리방침, 이용약관, 지원 페이지는 `<main class="doc">`를 쓴다. `.doc`는 제목 크기, 목록, 긴 글의 줄 간격을 바꾼다.
 - **링크 모양은 속성이 정한다**: `target="_blank"`가 있는 `.contact`, `.list`, `footer`의 링크에는 CSS가 `↗`를 붙인다. `.contact` 안의 `mailto:` 링크는 검은 알약 모양 버튼이 된다. HTML에 화살표 글자를 직접 넣지 않는다.
-
-디자인 규칙은 아래와 같다.
-
-- 테마는 흰 배경 하나다. 다크 모드 규칙을 추가하지 않는다.
-- 그림자를 쓰지 않는다. 층은 `--canvas-soft` 배경과 1px 선으로 구분한다.
-- 누를 수 있는 요소는 알약 모양(`--radius-full`)이다. 카드는 `--radius-md`, 표와 접는 줄은 `--radius-sm`이다.
-- 강조색이 없다. 본문 링크는 글자색에 밑줄을 쓴다.
-- `--muted` 색 글자는 `--canvas-soft` 배경 위에 쓰지 않는다. 이 조합의 명도 대비는 4.46:1이어서 WCAG AA 기준 4.5:1에 못 미친다.
-- 표의 칸은 `overflow-wrap: break-word`를 쓴다. `body`의 `anywhere`를 그대로 물려받으면 짧은 열이 글자마다 줄바꿈된다.
+- **표의 줄바꿈**: 표의 칸은 `overflow-wrap: break-word`를 쓴다. `body`의 `anywhere`를 그대로 물려받으면 짧은 열이 글자마다 줄바꿈된다.

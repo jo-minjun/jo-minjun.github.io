@@ -2,7 +2,7 @@
 
 조민준의 프로젝트 카탈로그 사이트다. 주소는 https://jo-minjun.github.io/ 다.
 
-빌드 도구 없이 정적 HTML을 이 저장소에서 직접 고친다. 사이트 파일은 모두 `docs/` 아래에 있다.
+빌드 도구 없이 정적 HTML을 이 저장소에서 직접 고친다. 사이트 파일은 모두 `docs/` 아래에 있다. 디자인 기준은 [`DESIGN.md`](DESIGN.md)에 있다.
 
 ## 구조
 
@@ -50,7 +50,7 @@ Honey Bloom이 새 정보를 수집·저장·전송하거나 새 알림·권한�
 
 ## 배포
 
-`main`에 push하면 GitHub Pages가 `docs/` 폴더를 사이트 최상위(`/`)로 게시한다. 저장소 최상위의 `README.md`, `CLAUDE.md`는 게시하지 않는다. `docs/.nojekyll` 파일이 있어서 Jekyll 변환은 하지 않는다.
+`main`에 push하면 GitHub Pages가 `docs/` 폴더를 사이트 최상위(`/`)로 게시한다. 저장소 최상위의 `README.md`, `CLAUDE.md`, `DESIGN.md`는 게시하지 않는다. `docs/.nojekyll` 파일이 있어서 Jekyll 변환은 하지 않는다.
 
 GitHub Pages 설정의 게시 폴더는 `main` 브랜치의 `/docs`다. `docs/` 폴더의 이름을 바꾸면 사이트 전체가 게시되지 않는다.
 
