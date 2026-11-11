@@ -18,7 +18,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 페이지 구조
 
-템플릿이 없다. 본문 페이지 20개가 `<nav class="top">`, `<main>`, `<footer>`를 각자 가진다. 상단 링크나 푸터를 바꾸면 본문 페이지 20개를 모두 고친다. 푸터는 `404.html`에도 언어별로 2개 있다.
+템플릿이 없다. 본문 페이지 20개가 `<nav class="top">`, `<main>`, `<footer>`를 각자 가진다. 같은 내용이 여러 파일에 반복되므로, 내용을 바꿀 때는 아래 "함께 고쳐야 하는 파일"을 따른다.
 
 | 종류 | 파일 | 동작 |
 |---|---|---|
@@ -28,10 +28,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - 두 언어 파일은 같은 내용을 담는다. 한쪽을 고치면 다른 쪽도 함께 고친다.
 - 한국어 본문은 `~다`체로 쓴다. 지원 페이지의 자주 묻는 질문 답변과 404 페이지만 `~습니다`체다.
-- 언어를 고르는 순서와 프로젝트를 추가하는 절차는 `README.md`에 있다. 프로젝트를 추가하면 `sitemap.xml`, `404.html`, `llms.txt`도 고친다.
-- 모든 페이지의 `<head>`에 파비콘 링크가 있다. 본문 페이지는 `canonical`과 Open Graph 태그(`og:url`, `og:title`, `og:description`, `og:image`)를 가진다. 페이지 제목이나 설명을 바꾸면 이 태그도 함께 고친다.
+- 언어를 고르는 순서와 프로젝트를 추가하는 절차는 `README.md`에 있다.
+- 모든 페이지의 `<head>`에 파비콘 링크가 있다. 본문 페이지는 `canonical`과 Open Graph 태그(`og:url`, `og:title`, `og:description`, `og:image`)를 가진다.
 - 언어 이동 페이지의 `description`과 `og:description`은 영어 본문 페이지의 설명을 쓴다. 링크 미리보기 크롤러는 JavaScript를 실행하지 않아서 언어 이동 페이지를 그대로 읽기 때문이다.
 - `archive/`는 예전 블로그 글의 보관본이다. 화면에서 링크하지 않고, 사이트 스타일도 적용하지 않는다.
+
+## 함께 고쳐야 하는 파일
+
+아래 변경을 하면 오른쪽 파일도 같은 커밋에서 고친다. 모든 경우에 한국어와 영어 파일을 함께 고친다.
+
+| 바꾸는 것 | 함께 고칠 파일 |
+|---|---|
+| 프로젝트를 추가하거나 지움 | 홈 카드(`ko/index.html`, `en/index.html`의 `.projects`), 프로젝트 폴더의 3개 파일, `sitemap.xml`, `404.html`의 한국어·영어 프로젝트 목록, `llms.txt`의 `Projects` |
+| 프로젝트가 아닌 페이지를 추가하거나 지움(예: Honey Bloom 문서) | `sitemap.xml`, `llms.txt`, 그 페이지로 가는 링크 목록(예: `honey-bloom/ko/`, `honey-bloom/en/`의 문서 목록). 새 페이지에는 `hreflang`, `canonical`, Open Graph 태그를 넣는다 |
+| 프로젝트 이름, 종류, 한 줄 설명 | 프로젝트 페이지의 `<title>`, `description`, `og:title`, `og:description`, `.kind`, 홈 카드, 언어 이동 페이지의 `<title>`, `description`, `og:title`, `og:description`, `404.html`의 프로젝트 목록, `llms.txt` |
+| 페이지 제목이나 설명 | 같은 파일의 `og:title`, `og:description`. 영어 설명이면 언어 이동 페이지의 `description`, `og:description`. `llms.txt`에 있는 페이지면 그 설명 |
+| 페이지 주소(아래 등록된 주소는 바꾸지 않는다) | 언어 이동·한국어·영어 3개 파일의 `hreflang`, `canonical`, `og:url`, `sitemap.xml`, `llms.txt`, 이 주소로 가는 모든 링크 |
+| 상단 링크나 푸터 | 본문 페이지 20개, `404.html`의 푸터 2개 |
+| 이름이나 직함 | 홈의 `header`, 모든 푸터, `og:site_name`, `og:image:alt`, `assets/og-image.png`, `llms.txt`, `DESIGN.md`의 공유 이미지 설명 |
+| 디자인 값 | `DESIGN.md`, `site.css`의 `:root`. 색상이 바뀌면 `favicon.ico`, `apple-touch-icon.png`, `assets/og-image.png`도 다시 만든다 |
+| Honey Bloom이 새 정보를 수집·저장·전송하거나 새 알림·권한을 씀 | `honey-bloom/privacy/ko/index.html`, `honey-bloom/privacy/en/index.html`. 두 파일의 시행일도 바꾼다 |
 
 ## 주소를 바꾸면 안 되는 파일
 
@@ -43,11 +59,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `/honey-bloom/support/` | App Store Connect |
 | `/app-ads.txt` | AdMob |
 
-Honey Bloom이 새 정보를 수집·저장·전송하거나 새 알림·권한을 쓰면 `honey-bloom/privacy/ko/index.html`과 `honey-bloom/privacy/en/index.html`을 함께 고친다.
-
 ## 스타일
 
-디자인 기준(색상, 글꼴, 간격, 컴포넌트, 접근성, 금지 사항)은 최상위 `DESIGN.md`에 있다. 디자인 값을 바꾸면 `DESIGN.md`와 `site.css`의 `:root`를 함께 고친다.
+디자인 기준(색상, 글꼴, 간격, 컴포넌트, 접근성, 아이콘과 공유 이미지, 금지 사항)은 최상위 `DESIGN.md`에 있다.
 
 `assets/site.css` 하나가 모든 페이지의 스타일을 정한다. 페이지에 `<style>`이나 `style` 속성을 추가하지 않는다. `404.html`의 언어 숨김 규칙만 예외다.
 
