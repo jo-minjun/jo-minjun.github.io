@@ -6,13 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 조민준의 프로젝트 카탈로그 사이트다. 주소는 https://jo-minjun.github.io/ 다. 빌드 도구, 테스트, 린트가 없다. 정적 HTML과 CSS를 이 저장소에서 직접 고친다.
 
+사이트 파일은 모두 `docs/` 아래에 있다. 이 문서에 나오는 사이트 파일 경로(`assets/site.css`, `404.html` 등)는 `docs/` 기준이다. `README.md`와 `CLAUDE.md`만 저장소 최상위에 있다.
+
 ## 명령
 
-- 로컬 확인: 저장소 최상위에서 `python3 -m http.server 8000`을 실행하고 http://localhost:8000/ 을 연다.
+- 로컬 확인: 저장소 최상위에서 `python3 -m http.server 8000 --directory docs`를 실행하고 http://localhost:8000/ 을 연다.
 - 404 페이지 확인: http://localhost:8000/404.html 을 직접 연다. 로컬 서버는 없는 주소에 `404.html`을 보여 주지 않는다.
-- 배포: `main`에 push하면 GitHub Pages가 저장소 최상위를 그대로 게시한다. 배포 명령은 따로 없다.
+- 배포: `main`에 push하면 GitHub Pages가 `docs/` 폴더를 사이트 최상위로 게시한다. 배포 명령은 따로 없다. GitHub Pages 설정의 게시 폴더는 `main` 브랜치의 `/docs`다.
 
-주의: 공개하면 안 되는 파일은 이 저장소에 커밋하지 않는다. `.nojekyll`이 있어서 GitHub Pages는 `.md` 파일을 포함한 모든 파일을 원본 그대로 공개 주소로 내보낸다(`/README.md`, `/CLAUDE.md`).
+주의: 공개하면 안 되는 파일은 이 저장소에 커밋하지 않는다. `docs/.nojekyll`이 있어서 GitHub Pages는 `docs/` 안의 파일을 `.md`까지 모두 원본 그대로 공개 주소로 내보낸다. `docs/` 밖의 파일은 사이트에 게시되지 않지만, 공개 저장소라서 GitHub에서 누구나 읽을 수 있다.
 
 ## 페이지 구조
 

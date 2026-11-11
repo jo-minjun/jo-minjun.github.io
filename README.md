@@ -2,9 +2,11 @@
 
 조민준의 프로젝트 카탈로그 사이트다. 주소는 https://jo-minjun.github.io/ 다.
 
-빌드 도구 없이 정적 HTML을 이 저장소에서 직접 고친다.
+빌드 도구 없이 정적 HTML을 이 저장소에서 직접 고친다. 사이트 파일은 모두 `docs/` 아래에 있다.
 
 ## 구조
+
+아래 경로는 `docs/` 기준이다.
 
 | 경로 | 내용 |
 |---|---|
@@ -44,28 +46,30 @@ JavaScript가 꺼져 있으면 기본 주소는 언어 선택 링크만 보여 �
 | `/honey-bloom/support/` | App Store Connect |
 | `/app-ads.txt` | AdMob. 도메인 최상위 경로에서만 찾는다 |
 
-Honey Bloom이 새 정보를 수집·저장·전송하거나 새 알림·권한을 쓰면 `honey-bloom/privacy/ko/index.html`과 `honey-bloom/privacy/en/index.html`도 함께 고친다.
+Honey Bloom이 새 정보를 수집·저장·전송하거나 새 알림·권한을 쓰면 `docs/honey-bloom/privacy/ko/index.html`과 `docs/honey-bloom/privacy/en/index.html`도 함께 고친다.
 
 ## 배포
 
-`main`에 push하면 GitHub Pages가 저장소 최상위(`/`)를 그대로 게시한다. `.nojekyll` 파일이 있어서 Jekyll 변환은 하지 않는다.
+`main`에 push하면 GitHub Pages가 `docs/` 폴더를 사이트 최상위(`/`)로 게시한다. 저장소 최상위의 `README.md`, `CLAUDE.md`는 게시하지 않는다. `docs/.nojekyll` 파일이 있어서 Jekyll 변환은 하지 않는다.
+
+GitHub Pages 설정의 게시 폴더는 `main` 브랜치의 `/docs`다. `docs/` 폴더의 이름을 바꾸면 사이트 전체가 게시되지 않는다.
 
 ## 로컬에서 확인하기
 
-1. 저장소 최상위에서 `python3 -m http.server 8000`을 실행한다.
+1. 저장소 최상위에서 `python3 -m http.server 8000 --directory docs`를 실행한다.
 2. 브라우저에서 http://localhost:8000/ 을 연다.
 
 로컬 서버는 없는 주소에 `404.html`을 보여 주지 않는다. 404 페이지는 http://localhost:8000/404.html 로 직접 연다.
 
 ## 프로젝트 추가하기
 
-1. `ko/index.html`과 `en/index.html`의 `<ul class="projects">`에 카드를 추가한다.
-2. 기존 프로젝트 폴더를 복사해 `<프로젝트>/index.html`(언어 이동), `<프로젝트>/ko/index.html`, `<프로젝트>/en/index.html`을 만든다.
-3. `sitemap.xml`에 `ko/`, `en/` 주소를 추가한다.
+1. `docs/ko/index.html`과 `docs/en/index.html`의 `<ul class="projects">`에 카드를 추가한다.
+2. `docs/` 안의 기존 프로젝트 폴더를 복사해 `<프로젝트>/index.html`(언어 이동), `<프로젝트>/ko/index.html`, `<프로젝트>/en/index.html`을 만든다.
+3. `docs/sitemap.xml`에 `ko/`, `en/` 주소를 추가한다.
 
 ## Archive
 
-`archive/`에는 예전 블로그의 글(Markdown)과 그림을 보관한다. 자세한 출처는 [`archive/README.md`](archive/README.md)에 있다.
+`docs/archive/`에는 예전 블로그의 글(Markdown)과 그림을 보관한다. 자세한 출처는 [`docs/archive/README.md`](docs/archive/README.md)에 있다.
 
 - 화면에서 링크하지 않지만, `/archive/notes/kafka.md` 같은 직접 주소로는 열린다.
 - 원본 저장소 [jo-minjun/my-blog](https://github.com/jo-minjun/my-blog)는 배포 워크플로를 끄고 보관(archive) 상태로 두었다.
