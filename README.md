@@ -12,7 +12,8 @@
 | `<프로젝트>/ko/`, `<프로젝트>/en/` | 프로젝트 소개 페이지 (`honey-bloom`, `petrify`, `claude-mermaid-view`, `claude-slack-pane`, `work-log`, `dotfiles`) |
 | `honey-bloom/privacy/ko/`, `honey-bloom/privacy/en/` | Honey Bloom 개인정보처리방침 |
 | `honey-bloom/support/ko/`, `honey-bloom/support/en/` | Honey Bloom 지원 페이지 |
-| `assets/site.css` | 메인과 프로젝트 페이지의 공통 스타일 |
+| `assets/site.css` | 모든 페이지의 공통 스타일. 색상, 글꼴 굵기, 모서리 반경 값은 파일 맨 위 `:root`에 있다 |
+| `assets/fonts/pretendard/` | Pretendard 글꼴 1.3.9 파일과 라이선스. `site.css`가 불러온다 |
 | `assets/lang.js` | 언어 감지, 언어 이동, 고른 언어 기억 |
 | `404.html` | 없는 주소로 들어왔을 때 보여 주는 페이지. 브라우저 언어에 맞는 문구만 보여 준다 |
 | `sitemap.xml`, `robots.txt` | 검색 엔진용 파일 |
