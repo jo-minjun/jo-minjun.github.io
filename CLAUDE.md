@@ -28,7 +28,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - 두 언어 파일은 같은 내용을 담는다. 한쪽을 고치면 다른 쪽도 함께 고친다.
 - 한국어 본문은 `~다`체로 쓴다. 지원 페이지의 자주 묻는 질문 답변과 404 페이지만 `~습니다`체다.
-- 언어를 고르는 순서와 프로젝트를 추가하는 절차는 `README.md`에 있다. 프로젝트를 추가하면 `sitemap.xml`도 고친다.
+- 언어를 고르는 순서와 프로젝트를 추가하는 절차는 `README.md`에 있다. 프로젝트를 추가하면 `sitemap.xml`, `404.html`, `llms.txt`도 고친다.
+- 모든 페이지의 `<head>`에 파비콘 링크가 있다. 본문 페이지는 `canonical`과 Open Graph 태그(`og:url`, `og:title`, `og:description`, `og:image`)를 가진다. 페이지 제목이나 설명을 바꾸면 이 태그도 함께 고친다.
+- 언어 이동 페이지의 `description`과 `og:description`은 영어 본문 페이지의 설명을 쓴다. 링크 미리보기 크롤러는 JavaScript를 실행하지 않아서 언어 이동 페이지를 그대로 읽기 때문이다.
 - `archive/`는 예전 블로그 글의 보관본이다. 화면에서 링크하지 않고, 사이트 스타일도 적용하지 않는다.
 
 ## 주소를 바꾸면 안 되는 파일

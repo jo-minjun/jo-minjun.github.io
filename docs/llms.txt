@@ -1,0 +1,24 @@
+# Jo Minjun
+
+> Project catalog of Jo Minjun (조민준), a product engineer. Each page has a Korean version under `/ko/` and an English version under `/en/`. The links below are the English versions.
+
+## Projects
+
+- [Honey Bloom](https://jo-minjun.github.io/honey-bloom/en/): A mobile puzzle game for iOS and Android. Bees carry nectar into honeycomb cells. Not released yet.
+- [Petrify](https://jo-minjun.github.io/petrify/en/): An Obsidian plugin that turns handwritten notes into searchable Obsidian notes.
+- [claude-mermaid-view](https://jo-minjun.github.io/claude-mermaid-view/en/): A Claude Code mod that draws the mermaid blocks in Claude's replies as diagrams in the terminal.
+- [claude-slack-pane](https://jo-minjun.github.io/claude-slack-pane/en/): A Claude Code mod that reads and sends Slack in a pane beside the Claude Code conversation.
+- [work-log](https://jo-minjun.github.io/work-log/en/): A macOS app and agent skill that collect what you did each day into a monthly work log.
+- [dotfiles](https://jo-minjun.github.io/dotfiles/en/): A macOS development environment that chezmoi manages.
+
+## Honey Bloom documents
+
+- [Privacy Policy](https://jo-minjun.github.io/honey-bloom/privacy/en/): The data that the app stores and sends, and how the app uses it.
+- [Terms of Use](https://jo-minjun.github.io/honey-bloom/terms/en/): The rules for using the app, and how to report a nickname.
+- [Support](https://jo-minjun.github.io/honey-bloom/support/en/): How to contact the developer, and FAQ.
+
+## Optional
+
+- [Home (English)](https://jo-minjun.github.io/en/): Profile and project list.
+- [Home (Korean)](https://jo-minjun.github.io/ko/): 프로필과 프로젝트 목록.
+- [GitHub](https://github.com/jo-minjun): Source code of the projects.

@@ -18,7 +18,10 @@
 | `assets/fonts/pretendard/` | Pretendard 글꼴 1.3.9 파일과 라이선스. `site.css`가 불러온다 |
 | `assets/lang.js` | 언어 감지, 언어 이동, 고른 언어 기억 |
 | `404.html` | 없는 주소로 들어왔을 때 보여 주는 페이지. 브라우저 언어에 맞는 문구만 보여 준다 |
-| `sitemap.xml`, `robots.txt` | 검색 엔진용 파일 |
+| `sitemap.xml`, `robots.txt` | 검색 엔진용 파일. `robots.txt`는 `/archive/` 크롤링을 막는다 |
+| `llms.txt` | AI 도구가 읽는 사이트 안내. [llmstxt.org](https://llmstxt.org/) 형식이다 |
+| `favicon.ico`, `apple-touch-icon.png` | 브라우저 탭 아이콘(16·32·48px)과 iOS 홈 화면 아이콘(180px) |
+| `assets/og-image.png` | 링크 미리보기 이미지(1200×630). 모든 페이지의 `og:image`가 가리킨다 |
 | `app-ads.txt` | AdMob 앱 확인 파일 |
 | `naver22e8fb10ccdb32540bda493104bf37fe.html` | 네이버 사이트 소유 확인 파일 |
 | `archive/` | 예전 Hugo 블로그의 글 원본. 화면에서 링크하지 않는다 |
@@ -64,13 +67,15 @@ GitHub Pages 설정의 게시 폴더는 `main` 브랜치의 `/docs`다. `docs/` 
 ## 프로젝트 추가하기
 
 1. `docs/ko/index.html`과 `docs/en/index.html`의 `<ul class="projects">`에 카드를 추가한다.
-2. `docs/` 안의 기존 프로젝트 폴더를 복사해 `<프로젝트>/index.html`(언어 이동), `<프로젝트>/ko/index.html`, `<프로젝트>/en/index.html`을 만든다.
+2. `docs/` 안의 기존 프로젝트 폴더를 복사해 `<프로젝트>/index.html`(언어 이동), `<프로젝트>/ko/index.html`, `<프로젝트>/en/index.html`을 만든다. 복사한 파일의 `<head>`에서 `description`, `hreflang`, `canonical`, `og:url`, `og:title`, `og:description`도 새 주소와 내용으로 바꾼다.
 3. `docs/sitemap.xml`에 `ko/`, `en/` 주소를 추가한다.
 4. `docs/404.html`의 한국어, 영어 프로젝트 목록에 링크를 추가한다.
+5. `docs/llms.txt`의 `Projects` 목록에 영어 페이지 링크를 추가한다.
 
 ## Archive
 
 `docs/archive/`에는 예전 블로그의 글(Markdown)과 그림을 보관한다. 자세한 출처는 [`docs/archive/README.md`](docs/archive/README.md)에 있다.
 
 - 화면에서 링크하지 않지만, `/archive/notes/kafka.md` 같은 직접 주소로는 열린다.
+- `robots.txt`가 `/archive/` 크롤링을 막는다. Markdown 원문이 검색 결과에 나오지 않게 하기 위해서다.
 - 원본 저장소 [jo-minjun/my-blog](https://github.com/jo-minjun/my-blog)는 배포 워크플로를 끄고 보관(archive) 상태로 두었다.
