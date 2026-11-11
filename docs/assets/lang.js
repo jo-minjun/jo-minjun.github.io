@@ -23,7 +23,13 @@
     location.replace(lang + '/' + location.search + (hash === lang ? '' : location.hash));
     return;
   }
-  if (root.hasAttribute('data-lang-pick')) root.lang = preferred();
+  if (root.hasAttribute('data-lang-pick')) {
+    // 없는 주소라도 주소에 언어 폴더(/ko/, /en/)가 있으면 그 언어로 보여 준다.
+    var inPath = location.pathname.match(/\/(ko|en)(\/|$)/);
+    root.lang = inPath ? inPath[1] : preferred();
+    var title = root.getAttribute('data-title-' + root.lang);
+    if (title) document.title = title;
+  }
 
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[hreflang]');

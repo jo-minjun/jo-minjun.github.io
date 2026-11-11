@@ -66,6 +66,7 @@ GitHub Pages 설정의 게시 폴더는 `main` 브랜치의 `/docs`다. `docs/` 
 1. `docs/ko/index.html`과 `docs/en/index.html`의 `<ul class="projects">`에 카드를 추가한다.
 2. `docs/` 안의 기존 프로젝트 폴더를 복사해 `<프로젝트>/index.html`(언어 이동), `<프로젝트>/ko/index.html`, `<프로젝트>/en/index.html`을 만든다.
 3. `docs/sitemap.xml`에 `ko/`, `en/` 주소를 추가한다.
+4. `docs/404.html`의 한국어, 영어 프로젝트 목록에 링크를 추가한다.
 
 ## Archive
 

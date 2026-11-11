@@ -18,16 +18,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 페이지 구조
 
-템플릿이 없다. 본문 페이지 20개가 `<nav class="top">`, `<main>`, `<footer>`를 각자 가진다. 상단 링크나 푸터를 바꾸면 본문 페이지 20개를 모두 고친다.
+템플릿이 없다. 본문 페이지 20개가 `<nav class="top">`, `<main>`, `<footer>`를 각자 가진다. 상단 링크나 푸터를 바꾸면 본문 페이지 20개를 모두 고친다. 푸터는 `404.html`에도 언어별로 2개 있다.
 
 | 종류 | 파일 | 동작 |
 |---|---|---|
 | 언어 이동 페이지 | `index.html`, `<프로젝트>/index.html`, `honey-bloom/{privacy,terms,support}/index.html` | `<html data-lang-redirect>`가 있다. `assets/lang.js`가 `ko/` 또는 `en/`으로 보낸다. JavaScript가 꺼져 있으면 언어 선택 링크만 보인다. `nav`와 `footer`는 없다 |
 | 본문 페이지 | `ko/index.html`, `en/index.html`로 끝나는 파일 | 실제 내용을 담는다. 상단의 `a[hreflang]`을 누르면 `lang.js`가 고른 언어를 `localStorage`의 `lang`에 저장한다 |
-| 404 페이지 | `404.html` | `<html data-lang-pick>`이 있다. `lang.js`가 `<html lang>`을 바꾸고, 페이지 안의 `<style>`이 다른 언어의 `<section>`을 숨긴다 |
+| 404 페이지 | `404.html` | `<html data-lang-pick>`이 있다. `lang.js`는 주소에 든 언어 폴더(`/ko/`, `/en/`)를 먼저 따르고, 없으면 고른 언어나 브라우저 언어를 따른다. 그 뒤 `<html lang>`과 탭 제목(`data-title-ko`)을 바꾼다. 페이지 안의 `<style>`이 다른 언어의 `lang` 블록을 숨긴다. 프로젝트 목록을 따로 담는다 |
 
 - 두 언어 파일은 같은 내용을 담는다. 한쪽을 고치면 다른 쪽도 함께 고친다.
-- 한국어 본문은 `~다`체로 쓴다. 지원 페이지의 자주 묻는 질문 답변만 `~습니다`체다.
+- 한국어 본문은 `~다`체로 쓴다. 지원 페이지의 자주 묻는 질문 답변과 404 페이지만 `~습니다`체다.
 - 언어를 고르는 순서와 프로젝트를 추가하는 절차는 `README.md`에 있다. 프로젝트를 추가하면 `sitemap.xml`도 고친다.
 - `archive/`는 예전 블로그 글의 보관본이다. 화면에서 링크하지 않고, 사이트 스타일도 적용하지 않는다.
 
