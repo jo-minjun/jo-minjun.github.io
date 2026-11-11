@@ -21,15 +21,18 @@
 <p class="lead">A macOS development environment that chezmoi manages.</p>
 <ul class="features">
   <li><strong>Problem</strong>: On each new Mac, you must set up development tools, apps, shell settings and AI agent settings again.</li>
-  <li><strong>Solution</strong>: One install command applies all of these settings. chezmoi gets secrets and licenses from 1Password. chezmoi applies work settings from a separate private repository.</li>
+  <li><strong>Solution</strong>: One install command applies all of these settings. chezmoi gets secrets and licenses from 1Password.</li>
 </ul>
 
 <h2>Features</h2>
 <ul class="features">
   <li><strong>Tools</strong>: Homebrew installs development, cloud and infrastructure, database and AI tools, and apps.</li>
+  <li><strong>Runtime versions</strong>: mise installs the default versions of Node.js, Java, Python and Kotlin.</li>
   <li><strong>Shell and terminal</strong>: chezmoi sets up oh-my-zsh, Powerlevel10k and the Ghostty terminal.</li>
   <li><strong>Separate accounts</strong>: Under <code>~/Projects/work/</code>, Git uses the work email. In the same folder, the GitHub CLI switches to the work account.</li>
-  <li><strong>AI agents</strong>: chezmoi manages Claude Code settings (LSP, statusline, permissions, subagents, skills) and agent skills.</li>
+  <li><strong>Work settings</strong>: Work accounts, infrastructure details and work skills are in the private repository <code>dotfiles-work</code>. In the last install step, chezmoi applies this repository as a separate chezmoi source. When chezmoi cannot access this repository, it skips this step.</li>
+  <li><strong>AI agents</strong>: chezmoi manages Claude Code settings (LSP, statusline, permissions, subagents, skills) and Codex settings. Claude Code and Codex read the same global instruction file. chezmoi also installs Claude Code plugins, MCP servers, agent skills and graphify, a tool that builds a knowledge graph from code and documents.</li>
+  <li><strong>macOS settings</strong>: chezmoi sets the key repeat speed, Dock auto-hide and a lock screen shortcut. chezmoi also applies the BetterTouchTool license and presets.</li>
   <li><strong>Touch ID for sudo</strong>: When you run sudo in the terminal, you authenticate with Touch ID.</li>
 </ul>
 
